@@ -1,0 +1,129 @@
+  .secao_movimento{
+    padding: 0;
+    margin-bottom: 50px;
+    margin-top: 100px;
+  }
+
+  .secao_movimento .formulario1 {
+    max-width: 400px;
+    margin: auto;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    gap: 15px;
+  }
+  .secao_movimento .formulario2 {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .secao_movimento .table-responsive {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    -ms-overflow-style: -ms-autohiding-scrollbar;
+  }
+  
+  .secao_movimento #caixa,  #caixa2 {
+    width: 100%;
+    background-color: rgb(196, 110, 104);
+    padding: 60px ;
+    margin-top: 30px;
+    border: 1px solid #d3a4a4;
+    border-radius: 5px;  
+  }
+  
+  .secao_movimento .table{
+    border-collapse: collapse;
+    max-width: 100%;
+  }
+  .secao_movimento .table thead th {
+    background-color: #f8f9fa;
+    text-align: center;
+  }
+  .secao_movimento .table th,
+  .secao_movimento .table td {
+    border: 1px solid #dee2e6;
+    padding: 8px;
+    text-align: left;
+  }
+  
+  .secao_movimento .opcoes-a{
+    background-color: white;
+    gap: 15px;
+  }
+  
+  .secao_movimento tr {
+    background-color: white;
+  }
+  
+  .secao_movimento .btn-custom {
+    background-color: rgb(98, 245, 106);
+  }
+
+  .autocomplete {
+    position: relative;
+  }
+
+  .secao_movimento #Nome {
+      width: 100%;
+      padding: 5px;
+      box-sizing: border-box;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+  }
+
+  .secao_movimento #suggestions {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      position: absolute;
+      width: 100%;
+      background-color: #fff;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      border-radius: 4px;
+      z-index: 1;
+  }
+
+  .secao_movimento .suggestion {
+      padding: 10px;
+      cursor: pointer;
+  }
+  
+  
+  @media screen and (max-width: 768px) {
+  
+    .secao_movimento #caixa,  #caixa2 {
+      padding: 20px 20px;
+      margin-top:80px;
+      width: 100vw;
+    }
+    
+    .secao_movimento .table-responsive {
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      -ms-overflow-style: -ms-autohiding-scrollbar;
+    }
+    
+    .secao_movimento tr {
+      display: flex;
+      flex-direction: row;
+      
+    }
+    .secao_movimento .table {
+      width: auto;
+      margin-bottom: 0;
+    }
+  
+    .secao_movimento .table th,
+    .secao_movimento .table td {
+      display: block;
+      width: 100%;
+      box-sizing: border-box;
+    }
+  
+  
+  }

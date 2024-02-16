@@ -1,0 +1,66 @@
+/*dashboard*/ 
+
+.secao_dash{
+  padding: 0;
+}
+
+.secao_dash .container{
+  margin-top: 100px;
+  margin-bottom: 100px;
+}
+
+.secao_dash #organiza{
+  display: flex;
+  justify-content: center; 
+  gap: 50px;
+}
+
+.card {
+  margin-bottom: 20px;
+  padding: 20px 100px;
+  border: 1px solid #dee2e6;
+}
+.card-body {
+  display: flex;
+  flex-direction: column;
+  align-items: center; 
+}
+
+.font{
+  font-size: 25px;
+}
+
+.secao_dash #caixa {
+  display: flex;
+  justify-content: center;
+  padding: 100px 600px;
+  margin-bottom: 300px;
+  gap: 20px;
+  background-color: rgb(196, 110, 104);
+
+}
+
+@media screen and (max-width: 768px) {
+
+  .secao_dash{
+    padding: 5px 5px;
+    
+  }
+  .secao_dash .container{
+    margin-top: 150px;
+  }
+  .secao_dash #organiza{
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .card {
+    margin-bottom: 10px;
+    padding: 10px 30px;
+  }
+  
+  .secao_dash #caixa {
+    padding: 70px 50px;
+    margin-bottom: 50px;
+  }
+}

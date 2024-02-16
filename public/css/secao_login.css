@@ -1,0 +1,50 @@
+/* login */
+
+.secao_login {
+  padding: 0;
+}
+
+.secao_login .container {
+  padding: 50px 300px;
+  margin-bottom: 300px;
+}
+
+.secao_login h1 {
+  margin-top: 4px;
+}
+
+.secao_login form {
+  margin-top: 20px;
+}
+
+.secao_login #caixa {
+  background-color: rgb(196, 110, 104);
+  padding: 70px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+}
+
+.secao_login .form-group a {
+  color: rgb(255, 255, 255);
+  text-decoration: none;
+  display: block;
+  margin-top: 10px;
+}
+
+@media screen and (max-width: 768px) {
+
+  .secao_login {
+    margin-top: 10px;
+  }
+  .secao_login #caixa {
+    padding: 50px;
+   
+  }
+  
+  .secao_login .container {
+    padding: 40px;
+    margin-bottom: 300px;
+  }
+
+
+}
