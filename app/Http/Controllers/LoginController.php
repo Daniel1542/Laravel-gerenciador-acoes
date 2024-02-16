@@ -1,10 +1,10 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use App\Models\MovimentoAtivos; 
-
+use App\Models\MovimentoAtivos;
 
 class LoginController extends Controller
 {
@@ -28,8 +28,6 @@ class LoginController extends Controller
         $acoesCount = MovimentoAtivos::where('tipo', 'acao')->distinct('nome')->count('nome');
         $fiisCount = MovimentoAtivos::where('tipo', 'fundo imobiliario')->distinct('nome')->count('nome');
 
-    return view('principal.dashboard', compact('acoesCount', 'fiisCount'));
+        return view('principal.dashboard', compact('acoesCount', 'fiisCount'));
     }
-
-
 }

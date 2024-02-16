@@ -10,8 +10,8 @@ class UsersSeeder extends Seeder
     public function run()
     {
         User::create([
-            'email' => 'admim@gmail.com',         
-            'password'=> 'aaaa1111',
-        ]);      
+            'email' => 'admim@gmail.com',
+            'password' => 'aaaa1111',
+        ]);
     }
 }

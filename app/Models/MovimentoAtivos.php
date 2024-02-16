@@ -10,15 +10,15 @@ class MovimentoAtivos extends Model
     use HasFactory;
 
     protected $table = 'movimento_ativos';
-    protected $fillable = [  
-        'tipo',  
+    protected $fillable = [
+        'tipo',
         'movimento',
         'nome',
-        'data',   
-        'corretagem',  
-        'quantidade',    
-        'valor',   
-        'valortotal',   
+        'data',
+        'corretagem',
+        'quantidade',
+        'valor',
+        'valortotal',
     ];
     protected $dates = ['data'];
 }

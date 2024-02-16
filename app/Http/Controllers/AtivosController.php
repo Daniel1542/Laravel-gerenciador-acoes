@@ -1,10 +1,10 @@
 <?php
 
 namespace App\Http\Controllers;
-use Illuminate\Http\Request;
-use App\Models\MovimentoAtivos; 
-use Carbon\Carbon;
 
+use Illuminate\Http\Request;
+use App\Models\MovimentoAtivos;
+use Carbon\Carbon;
 
 class AtivosController extends Controller
 {
@@ -19,7 +19,7 @@ class AtivosController extends Controller
         return view('crud.addAtivo');
     }
     public function store(Request $request)
-    {       
+    {
         $request->validate([
             'tipo' => 'required|in:fundo imobiliario,acao',
             'movimento' => 'required|in:compra,venda',
@@ -27,11 +27,11 @@ class AtivosController extends Controller
             'data' => 'required|date|before_or_equal:' . now()->toDateString(),
             'corretagem' => 'required|numeric|gt:-1',
             'quantidade' => 'required|numeric|gt:0',
-            'valor' => 'required|numeric|gt:0',   
-              
-        ]);  
-        
-        $ativos = new MovimentoAtivos;
+            'valor' => 'required|numeric|gt:0',
+
+        ]);
+
+        $ativos = new MovimentoAtivos();
 
         $ativos-> tipo = $request->tipo;
         $ativos-> movimento = $request->movimento;
@@ -40,12 +40,11 @@ class AtivosController extends Controller
         $ativos-> corretagem = $request->corretagem;
         $ativos-> valor = $request->valor;
         $ativos-> data = $request->data;
-        $ativos-> valortotal =($request->corretagem + ($request->valor * $request->quantidade));
-      
+        $ativos-> valortotal = ($request->corretagem + ($request->valor * $request->quantidade));
+
         $ativos->save();
-       
+
         return redirect('/addativos')->with('msg', 'Cadastrado com sucesso.');
-        
     }
 
     public function edit($id)
@@ -53,7 +52,6 @@ class AtivosController extends Controller
         $ativos  = MovimentoAtivos::find($id);
 
         return view('crud.editarAtivo', compact('ativos'));
-
     }
     public function update(Request $request, string $id)
     {
@@ -64,12 +62,12 @@ class AtivosController extends Controller
             'data' => 'required|date|before_or_equal:' . now()->toDateString(),
             'corretagem' => 'required|numeric|gt:-1',
             'quantidade' => 'required|numeric|gt:0',
-            'valor' => 'required|numeric|gt:0',   
-                        
+            'valor' => 'required|numeric|gt:0',
+
         ]);
 
         $movimentos = MovimentoAtivos::find($id);
-       
+
         $movimentos->update([
             'tipo' => $request->tipo,
             'movimento' => $request->movimento,
@@ -80,15 +78,14 @@ class AtivosController extends Controller
             'valor' => $request->valor,
             'valortotal' => $request->corretagem + ($request->valor * $request->quantidade),
         ]);
-            
-        return redirect()->route('movimento.index')->with('msg', 'Movimento atualizado com sucesso.');      
- 
+
+        return redirect()->route('movimento.index')->with('msg', 'Movimento atualizado com sucesso.');
     }
 
     public function destroy(string $id)
     {
         $ativos = MovimentoAtivos::find($id);
-        
+
         $ativos->delete();
 
         return redirect()->route('movimento.index')->with('msg', 'Ativo na lista excluído com sucesso.');
@@ -110,7 +107,7 @@ class AtivosController extends Controller
                 $dataTransacao = Carbon::parse($movimento->data)->format('d/m/Y');
                 $corretage = $movimento->corretagem;
                 $quantidadeTotal = $movimento->quantidade;
-                $valo = $movimento->valor;  
+                $valo = $movimento->valor;
                 $valorFinal = $movimento->valortotal;
 
                 $dadosAtivos[] = [
@@ -121,22 +118,19 @@ class AtivosController extends Controller
                     'corretagem' =>  $corretage,
                     'quantidade' =>  $quantidadeTotal,
                     'valor' => $valo,
-                    'valorFinal' => $valorFinal,           
+                    'valorFinal' => $valorFinal,
                 ];
             }
         }
         return view('crud.mostrarAtivo', compact('dadosAtivos'));
-    
     }
 
     public function buscarativos(Request $request)
     {
         $termo = $request->input('termo');
-    
+
         $ativos = MovimentoAtivos::where('nome', 'like', $termo . '%')->pluck('nome');
-    
+
         return response()->json($ativos);
     }
-
-
 }

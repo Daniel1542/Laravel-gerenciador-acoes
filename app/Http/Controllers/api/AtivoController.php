@@ -1,9 +1,10 @@
 <?php
 
 namespace App\Http\Controllers\api;
+
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\MovimentoAtivos;  
+use App\Models\MovimentoAtivos;
 
 class AtivoController extends Controller
 {
@@ -38,7 +39,7 @@ class AtivoController extends Controller
     public function update(Request $request, string $id)
     {
         $Ativos = MovimentoAtivos::findOrFail($id);
-        $Ativos-> update ($request->all());
+        $Ativos-> update($request->all());
     }
 
     /**
@@ -47,6 +48,6 @@ class AtivoController extends Controller
     public function destroy(string $id)
     {
         $Ativos = MovimentoAtivos::findOrFail($id);
-        $Ativos-> delete ();
+        $Ativos-> delete();
     }
 }

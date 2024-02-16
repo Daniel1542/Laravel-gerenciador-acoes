@@ -15,7 +15,7 @@
   padding: 60px ;
   margin-top: 50px;
   border: 1px solid #d3a4a4;
-  border-radius: 5px;  
+  border-radius: 5px;
 }
 
 .secao_ativos .table{
@@ -49,17 +49,17 @@
     padding: 20px 20px;
     margin-top:80px;
   }
-  
+
   .secao_ativos .table-responsive {
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
     -ms-overflow-style: -ms-autohiding-scrollbar;
   }
-  
+
   .secao_ativos tr {
     display: flex;
     flex-direction: row;
-    
+
   }
   .secao_ativos .table {
     width: auto;

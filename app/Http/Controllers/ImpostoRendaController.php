@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use Illuminate\Http\Request;
 use App\Models\MovimentoAtivos;
 use App\Exports\AtivosExport;
@@ -24,21 +25,21 @@ class ImpostoRendaController extends Controller
 
         $movimentosAcoesAgrupados = $movimentosAcoes->groupBy('nome');
         $movimentosFissAgrupados = $movimentosFiis->groupBy('nome');
- 
+
         foreach ($movimentosAcoesAgrupados as $nome => $movimentos) {
             $compras = $movimentos->where('movimento', 'compra');
-            $vendas = $movimentos->where('movimento', 'venda');       
-    
+            $vendas = $movimentos->where('movimento', 'venda');
+
             $quantidadeCompra = $compras->sum('quantidade');
-            $quantidadeVenda = $vendas->sum('quantidade'); 
+            $quantidadeVenda = $vendas->sum('quantidade');
 
             $valorCompra = $compras->sum('valortotal');
-    
+
             $quantidadeTotal = $quantidadeCompra - $quantidadeVenda;
 
 
             $movimento = $quantidadeTotal > 0 ? 'compra' : 'venda';
-    
+
             $dadosAtivos[] = [
                 'nome' => $nome,
                 'compra' => [
@@ -54,18 +55,18 @@ class ImpostoRendaController extends Controller
 
         foreach ($movimentosFissAgrupados as $nome => $movimentos) {
             $compras = $movimentos->where('movimento', 'compra');
-            $vendas = $movimentos->where('movimento', 'venda');       
-    
+            $vendas = $movimentos->where('movimento', 'venda');
+
             $quantidadeCompra = $compras->sum('quantidade');
-            $quantidadeVenda = $vendas->sum('quantidade'); 
+            $quantidadeVenda = $vendas->sum('quantidade');
 
             $valorCompra = $compras->sum('valortotal');
-    
+
             $quantidadeTotal = $quantidadeCompra - $quantidadeVenda;
 
 
             $movimento = $quantidadeTotal > 0 ? 'compra' : 'venda';
-    
+
             $dadosfiis[] = [
                 'nome' => $nome,
                 'compra' => [
@@ -78,8 +79,8 @@ class ImpostoRendaController extends Controller
                 ],
             ];
         }
-        
-        return view('ir.impostoRenda', compact('dadosAtivos','dadosfiis'));
+
+        return view('ir.impostoRenda', compact('dadosAtivos', 'dadosfiis'));
     }
 
     public function exportAtivos(Request $request)
@@ -89,40 +90,39 @@ class ImpostoRendaController extends Controller
         $tipo = $request->input('tipo');
         $movimentosAcoes = MovimentoAtivos::where('tipo', $tipo)
         ->whereIn('movimento', ['compra', 'venda'])
-        ->whereBetween('data', [$data_inicio, $data_fim])->get();     
+        ->whereBetween('data', [$data_inicio, $data_fim])->get();
 
         $dadosAtivos = [];
-    
+
         $movimentosAcoesAgrupados = $movimentosAcoes->groupBy('nome');
-    
+
         foreach ($movimentosAcoesAgrupados as $nome => $movimentos) {
             foreach ($movimentos as $movimento) {
-
                 $compras = $movimentos->where('movimento', 'compra');
                 $vendas = $movimentos->where('movimento', 'venda');
-        
+
                 $quantidadeCompra = $compras->sum('quantidade');
                 $quantidadeVenda = $vendas->sum('quantidade');
                 $corretagem = $compras->sum('corretagem') + $vendas->sum('corretagem');
-        
+
                 $valorCompra = $compras->sum('valortotal');
                 $valorVenda = $vendas->sum('valortotal');
                 $valorFinal = $valorCompra -  $valorVenda;
 
                 $dataTransacao = Carbon::parse($movimento->data)->format('d/m/Y');
-        
+
                 $quantidadeTotal = $quantidadeCompra - $quantidadeVenda;
-        
+
                 $dadosAtivos[] = [
                     'nome' => $nome,
                     'datatransacao' =>  $dataTransacao,
-                    'quantidadeCompra' =>  $quantidadeCompra > 0 ?$quantidadeCompra: '0',
-                    'quantidadeVenda' =>  $quantidadeVenda > 0 ?$quantidadeVenda : '0',
-                    'quantidadeTotal' =>  $quantidadeTotal > 0 ?$quantidadeTotal: '0',
-                    'SomaCorretagem' =>  $corretagem > 0 ?'R$ ' . number_format(($corretagem), 2, ',', '.') : 'R$ 0,00',
+                    'quantidadeCompra' =>  $quantidadeCompra > 0 ? $quantidadeCompra : '0',
+                    'quantidadeVenda' =>  $quantidadeVenda > 0 ? $quantidadeVenda : '0',
+                    'quantidadeTotal' =>  $quantidadeTotal > 0 ? $quantidadeTotal : '0',
+                    'SomaCorretagem' =>  $corretagem > 0 ? 'R$ ' . number_format(($corretagem), 2, ',', '.') : 'R$ 0,00',
                     'valorCompra' => $valorCompra > 0 ?  'R$ ' . number_format(($valorCompra), 2, ',', '.') : 'R$ 0,00',
-                    'valorVenda' => $valorVenda > 0 ? 'R$ ' . number_format(($valorVenda), 2, ',', '.') : 'R$ 0,00',          
-                    'valorFinal' => $valorFinal > 0 ? 'R$ ' . number_format(($valorFinal), 2, ',', '.') : 'R$ 0,00',           
+                    'valorVenda' => $valorVenda > 0 ? 'R$ ' . number_format(($valorVenda), 2, ',', '.') : 'R$ 0,00',
+                    'valorFinal' => $valorFinal > 0 ? 'R$ ' . number_format(($valorFinal), 2, ',', '.') : 'R$ 0,00',
                 ];
             }
         }
@@ -130,9 +130,8 @@ class ImpostoRendaController extends Controller
         if ($tipo == "fundo imobiliario") {
             return Excel::download(new AtivosExport($dadosAtivos), 'Fiis.xlsx');
         } else {
-            return Excel::download(new AtivosExport($dadosAtivos), 'Ações.xlsx');        
+            return Excel::download(new AtivosExport($dadosAtivos), 'Ações.xlsx');
         }
-    
     }
 
     public function exportIrpdfPdf(Request $request)
@@ -145,21 +144,21 @@ class ImpostoRendaController extends Controller
 
         $movimentosAcoesAgrupados = $movimentosAcoes->groupBy('nome');
         $movimentosFissAgrupados = $movimentosFiis->groupBy('nome');
- 
+
         foreach ($movimentosAcoesAgrupados as $nome => $movimentos) {
             $compras = $movimentos->where('movimento', 'compra');
-            $vendas = $movimentos->where('movimento', 'venda');       
-    
+            $vendas = $movimentos->where('movimento', 'venda');
+
             $quantidadeCompra = $compras->sum('quantidade');
-            $quantidadeVenda = $vendas->sum('quantidade'); 
+            $quantidadeVenda = $vendas->sum('quantidade');
 
             $valorCompra = $compras->sum('valortotal');
-    
+
             $quantidadeTotal = $quantidadeCompra - $quantidadeVenda;
 
 
             $movimento = $quantidadeTotal > 0 ? 'compra' : 'venda';
-    
+
             $dadosAtivos[] = [
                 'nome' => $nome,
                 'compra' => [
@@ -175,18 +174,18 @@ class ImpostoRendaController extends Controller
 
         foreach ($movimentosFissAgrupados as $nome => $movimentos) {
             $compras = $movimentos->where('movimento', 'compra');
-            $vendas = $movimentos->where('movimento', 'venda');       
-    
+            $vendas = $movimentos->where('movimento', 'venda');
+
             $quantidadeCompra = $compras->sum('quantidade');
-            $quantidadeVenda = $vendas->sum('quantidade'); 
+            $quantidadeVenda = $vendas->sum('quantidade');
 
             $valorCompra = $compras->sum('valortotal');
-    
+
             $quantidadeTotal = $quantidadeCompra - $quantidadeVenda;
 
 
             $movimento = $quantidadeTotal > 0 ? 'compra' : 'venda';
-    
+
             $dadosfiis[] = [
                 'nome' => $nome,
                 'compra' => [
@@ -199,10 +198,9 @@ class ImpostoRendaController extends Controller
                 ],
             ];
         }
-        
-        $pdf = PDF::loadView('PDF.irpdf', compact('dadosAtivos','dadosfiis'));
+
+        $pdf = PDF::loadView('PDF.irpdf', compact('dadosAtivos', 'dadosfiis'));
 
         return $pdf->stream('download.pdf');
     }
-
 }

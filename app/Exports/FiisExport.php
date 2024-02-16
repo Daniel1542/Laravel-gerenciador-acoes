@@ -29,7 +29,7 @@ class FiisExport implements FromCollection, WithHeadings
             'Corretagem',
             'Compras',
             'Vendas',
-            'Valor total',      
+            'Valor total',
         ];
     }
 }

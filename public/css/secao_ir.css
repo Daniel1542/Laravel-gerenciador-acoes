@@ -3,7 +3,7 @@
     margin-bottom: 100px;
     margin-top: 50px;
   }
-  
+
   .secao_ir .input-group{
     display: flex;
     justify-content: center;
@@ -12,7 +12,7 @@
   }
   .secao_ir .container.text-center {
     position: relative;
-    margin-top: 80px; 
+    margin-top: 80px;
   }
 
   .secao_ir .formulario {
@@ -20,38 +20,38 @@
     flex-direction: column;
     gap: 10px;
   }
-  
+
   .secao_ir #caixa,  #caixa2 {
     width: 100%;
     background-color: rgb(196, 110, 104);
     padding: 50px ;
     margin-top: 15px;
     border: 1px solid #d3a4a4;
-    border-radius: 5px;  
+    border-radius: 5px;
   }
   .secao_ir div_container{
     width: 100%;
     overflow-x: auto;
   }
-  
+
   .secao_ir .table{
     border-collapse: collapse;
     max-width: 100%;
   }
-  
+
   .secao_ir .table_body{
     display: flex;
     flex-direction: column;
     gap: 1px;
   }
-  
+
   .secao_ir .opcoes-a{
     background-color: white;
     display: flex;
     flex-direction: row;
     gap: 10px;
   }
-  
+
   .secao_ir .opcoes{
     background-color: white;
     display: flex;
@@ -63,7 +63,7 @@
   #caixa2 tr {
     background-color: white;
   }
-  
+
   .secao_ir #caixa th td,
   #caixa2 th td {
     border: 1px solid #c57676;
@@ -75,9 +75,9 @@
   .secao_ir .btn-custom{
     background-color: rgb(233, 255, 198);
   }
-  
+
   @media screen and (max-width: 768px) {
-  
+
     .secao_ir #caixa,  #caixa2 {
       padding: 20px 20px;
       margin-top: 10px;
@@ -86,18 +86,18 @@
       gap: 10px;
     }
     .secao_ir .container.text-center {
-      margin-top: 100px; 
+      margin-top: 100px;
     }
     .secao_ir div_container{
       display: block;
     }
-  
+
     .secao_ir #caixa th td,
     #caixa2 th td {
       display: block;
       width: 100%;
       box-sizing: border-box;
   }
-  
-  
+
+
   }

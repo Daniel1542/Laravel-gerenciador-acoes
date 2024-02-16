@@ -1,4 +1,4 @@
-
+<<<<<<< HEAD
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
 
 <p align="center">
@@ -55,4 +55,6 @@ Sinta-se à vontade para contribuir com melhorias ou relatar problemas.
 ## Licença
 
 O framework Laravel é um software de código aberto licenciado sob a [licença MIT](https://opensource.org/licenses/MIT).
-
+=======
+# Laravel_gerenciador
+>>>>>>> d448d4cdf7019d0a64560431888c925d814940bd

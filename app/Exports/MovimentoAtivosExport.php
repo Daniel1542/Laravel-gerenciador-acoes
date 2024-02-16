@@ -22,13 +22,13 @@ class MovimentoAtivosExport implements FromCollection, WithHeadings
     {
         return [
             'nome',
-            'tipo',  
+            'tipo',
             'movimento',
-            'data',   
-            'corretagem',  
-            'quantidade',  
-            'valor',  
-            'valor total',   
+            'data',
+            'corretagem',
+            'quantidade',
+            'valor',
+            'valor total',
         ];
     }
 }
