@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
 
 <p align="center">
@@ -28,10 +28,12 @@ Este projeto é um site ainda em desenvolvimento para auxiliar na declaração d
 
 - Framework Laravel
 - Bootstrap para o design responsivo
-- HTML,CSS
+- BLADE, CSS
 - Javascript para fazer ajax
 - Banco de dados laragon SQL
 - Api rest
+- Code Sniffer
+- phpUnit
 - CRUD (Create, Read, Update, Delete)
 - Tela de login e cadastro
 - Opção de baixar dados em formato Excel e PDF
@@ -40,8 +42,9 @@ Este projeto é um site ainda em desenvolvimento para auxiliar na declaração d
 
 1. Clone o repositório
 2. Execute `composer install`
-3. Configure o arquivo `.env` com as informações do banco de dados
-4. Execute `php artisan migrate` para criar as tabelas no banco de dados
+3. Crie um arquivo `.env`
+3. Copie o arquivo `.env.example` para `.env` e ajuste as configurações, como a conexão com o banco de dados.
+4. Execute `php artisan migrate --seed` para criar as tabelas no banco de dados com as migrações e sementes, se aplicável.
 
 ### Uso
 
@@ -55,6 +58,4 @@ Sinta-se à vontade para contribuir com melhorias ou relatar problemas.
 ## Licença
 
 O framework Laravel é um software de código aberto licenciado sob a [licença MIT](https://opensource.org/licenses/MIT).
-=======
-# Laravel_gerenciador
->>>>>>> d448d4cdf7019d0a64560431888c925d814940bd
+

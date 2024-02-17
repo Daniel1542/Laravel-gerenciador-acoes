@@ -24,7 +24,7 @@ class AtivosController extends Controller
             'tipo' => 'required|in:fundo imobiliario,acao',
             'movimento' => 'required|in:compra,venda',
             'nome' => 'required|string|max:6|regex:/^[a-z0-9]+$/',
-            'data' => 'required|date|before_or_equal:' . now()->toDateString(),
+            'data' => 'required|date|before_or_equal:now',
             'corretagem' => 'required|numeric|gt:-1',
             'quantidade' => 'required|numeric|gt:0',
             'valor' => 'required|numeric|gt:0',
@@ -47,9 +47,9 @@ class AtivosController extends Controller
         return redirect('/addativos')->with('msg', 'Cadastrado com sucesso.');
     }
 
-    public function edit($id)
+    public function edit(string $id)
     {
-        $ativos  = MovimentoAtivos::find($id);
+        $ativos  = MovimentoAtivos::findOrFail($id);
 
         return view('crud.editarAtivo', compact('ativos'));
     }
@@ -59,32 +59,35 @@ class AtivosController extends Controller
             'tipo' => 'required|in:fundo imobiliario,acao',
             'movimento' => 'required|in:compra,venda',
             'nome' => 'required|string|max:6|regex:/^[a-z0-9]+$/',
-            'data' => 'required|date|before_or_equal:' . now()->toDateString(),
+            'data' => 'required|date|before_or_equal:now',
             'corretagem' => 'required|numeric|gt:-1',
             'quantidade' => 'required|numeric|gt:0',
             'valor' => 'required|numeric|gt:0',
 
         ]);
 
-        $movimentos = MovimentoAtivos::find($id);
+        $movimentos = MovimentoAtivos::findOrFail($id);
 
-        $movimentos->update([
-            'tipo' => $request->tipo,
-            'movimento' => $request->movimento,
-            'nome' => $request->nome,
-            'data' => $request->data,
-            'corretagem' => $request->corretagem,
-            'quantidade' => $request->quantidade,
-            'valor' => $request->valor,
-            'valortotal' => $request->corretagem + ($request->valor * $request->quantidade),
+        $dadosAtualizados = $request->only([
+            'tipo',
+            'movimento',
+            'nome',
+            'data',
+            'corretagem',
+            'quantidade',
+            'valor',
         ]);
+
+        $dadosAtualizados['valortotal'] = $request->corretagem + ($request->valor * $request->quantidade);
+
+        $movimentos->update($dadosAtualizados);
 
         return redirect()->route('movimento.index')->with('msg', 'Movimento atualizado com sucesso.');
     }
 
     public function destroy(string $id)
     {
-        $ativos = MovimentoAtivos::find($id);
+        $ativos = MovimentoAtivos::findOrFail($id);
 
         $ativos->delete();
 

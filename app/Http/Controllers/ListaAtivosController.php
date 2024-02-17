@@ -61,5 +61,4 @@ class ListaAtivosController extends Controller
         }
         return view('crud.listaativos', compact('dadosAcoes', 'dadosfiis'));
     }
-
 }
