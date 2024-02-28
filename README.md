@@ -27,7 +27,7 @@ Este projeto é um site ainda em desenvolvimento para auxiliar na declaração d
 ### Recursos Principais
 
 - Framework Laravel
-- Bootstrap para o design responsivo
+- Bootstrap
 - BLADE
 - CSS
 - PHP
