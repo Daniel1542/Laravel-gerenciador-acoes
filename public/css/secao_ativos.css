@@ -50,19 +50,12 @@
     margin-top:80px;
   }
 
-  .secao_ativos .table-responsive {
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
-    -ms-overflow-style: -ms-autohiding-scrollbar;
-  }
-
   .secao_ativos tr {
     display: flex;
     flex-direction: row;
 
   }
   .secao_ativos .table {
-    width: auto;
     margin-bottom: 0;
   }
 

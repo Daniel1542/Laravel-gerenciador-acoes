@@ -70,7 +70,7 @@
               <td> {{ $acao['valor'] }}</td>
               <td> {{ $acao['corretagem'] }}</td> 
               <td> {{ $acao['data']}}</td>     
-              <td>
+              <td class="buttons">
                 <form action="{{ route('ativos.edit', ['id' => $acao['id']]) }}" method="GET" style="display: inline;">
                   {{ csrf_field() }}
                   <button type="submit" class="btn btn-warning">Editar</button>
@@ -113,7 +113,7 @@
               <td> {{ $fii['valor'] }}</td>
               <td> {{ $fii['corretagem'] }}</td> 
               <td> {{ $fii['data']}}</td>           
-              <td>       
+              <td class="buttons">       
                 <form action="{{ route('ativos.edit', ['id' => $fii['id']]) }}" method="GET" style="display: inline;">
                   {{ csrf_field() }}
                   <button type="submit" class="btn btn-warning">Editar</button>

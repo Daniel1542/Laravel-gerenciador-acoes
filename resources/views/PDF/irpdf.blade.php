@@ -46,14 +46,14 @@
             </div>
             <table class="table">
               @foreach ($dadosAtivos as $ativo)
-                @if (isset($ativo['compra']['quantidadeTotal']) && $ativo['compra']['quantidadeTotal'] > 0)
+                @if (isset($ativo['compra']['quantidadeTotal']) && ($ativo['compra']['total']) > 0)
                   <tr>
                     <td> Compra de {{ $ativo['compra']['quantidadeTotal'] }} ações de {{ $ativo['nome'] }}, custo total {{number_format ($ativo['compra']['total'], 2) }} reais.</td>    
                   </tr>
                 @endif
               @endforeach
               @foreach ($dadosAtivos as $ativo)
-                @if (isset($ativo['venda']['quantidadeTotal']) && $ativo['venda']['quantidadeTotal'] > 0)
+                @if (isset($ativo['venda']['quantidadeTotal']) && ($ativo['venda']['total'])> 0)
                   <tr>
                     <td> Venda de {{ $ativo['venda']['quantidadeTotal'] }} ações de {{ $ativo['nome'] }}, custo total {{ number_format($ativo['venda']['total'], 2) }} reais.</td>
                   </tr>
@@ -65,14 +65,14 @@
             </div>
             <table class="table">
               @foreach ($dadosfiis as $ativo)
-                @if (isset($ativo['compra']['quantidadeTotal']) && $ativo['compra']['quantidadeTotal'] > 0)
+                @if (isset($ativo['compra']['quantidadeTotal']) && ($ativo['compra']['total']) > 0)
                   <tr>
                     <td> Compra de {{ $ativo['compra']['quantidadeTotal'] }} ações de {{ $ativo['nome'] }}, custo total {{number_format ($ativo['compra']['total'], 2) }} reais.</td>    
                   </tr>
                 @endif
               @endforeach
               @foreach ($dadosfiis as $ativo)
-                @if (isset($ativo['venda']['quantidadeTotal']) && $ativo['venda']['quantidadeTotal'] > 0)
+                @if (isset($ativo['venda']['quantidadeTotal']) && ($ativo['venda']['total']) > 0)
                   <tr>
                     <td> Venda de {{ $ativo['venda']['quantidadeTotal'] }} ações de {{ $ativo['nome'] }}, custo total {{ number_format($ativo['venda']['total'], 2) }} reais.</td>
                   </tr>

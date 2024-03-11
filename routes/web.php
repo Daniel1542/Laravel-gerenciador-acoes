@@ -29,6 +29,10 @@ Route::resource('movimento', MovimentoAtivosController::class);
 
 Route::get('/dashboard', [LoginController::class, 'dash'])->name('principal.dashboard');
 
+/*opcoes*/
+
+Route::get('/opcoes', [ImpostoRendaController::class, 'opcoes'])->name('imposto.opcoes');
+
 /*ativos*/
 
 Route::get('/addativos', [AtivosController::class, 'create'])->name('ativos.create');
@@ -43,14 +47,13 @@ Route::delete('/ativos/{id}', [AtivosController::class, 'destroy'])->name('ativo
 Route::get('/buscar-ativos', [AtivosController::class, 'buscarativos']);
 
 /*PDF*/
-
 Route::get('/export-MovimentoAtivosPdf', [MovimentoAtivosController::class, 'exportMovimentoAtivosPdf'])->name('movimento.exportMovimentoAtivosPdf');
-Route::get('/export-IrPdf', [ImpostoRendaController::class, 'exportIrpdfPdf'])->name('imposto.exportIrpdfPdf');
+Route::get('/export-IrPdf/{data_ini}/{data_fi}/{tip}', [ImpostoRendaController::class, 'exportIrpdfPdf'])->name('imposto.exportIrpdfPdf');
 
 /*Excel*/
 
 Route::get('/export-movimentos', [MovimentoAtivosController::class, 'exportMovimentoAtivos'])->name('movimento.exportMovimentoAtivos');
-Route::get('/export-ativos', [ImpostoRendaController::class, 'exportAtivos'])->name('imposto.exportAtivos');
+Route::get('/exportAtivos/{data_ini}/{data_fi}/{tip}', [ImpostoRendaController::class, 'exportAtivos'])->name('imposto.exportAtivos');
 
 /*User*/
 

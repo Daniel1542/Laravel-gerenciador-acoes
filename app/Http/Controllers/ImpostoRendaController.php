@@ -17,10 +17,14 @@ class ImpostoRendaController extends Controller
     public function index()
     {
 
-        $movimentosAcoes = MovimentoAtivos::where('tipo', 'acao')->whereIn('movimento', ['compra', 'venda'])->get();
+        $movimentosAcoes = MovimentoAtivos::where('tipo', 'acao')
+        ->whereIn('movimento', ['compra', 'venda'])
+        ->get();
         $dadosAtivos = [];
 
-        $movimentosFiis = MovimentoAtivos::where('tipo', 'fundo imobiliario')->whereIn('movimento', ['compra', 'venda'])->get();
+        $movimentosFiis = MovimentoAtivos::where('tipo', 'fundo imobiliario')
+        ->whereIn('movimento', ['compra', 'venda'])
+        ->get();
         $dadosfiis = [];
 
         $movimentosAcoesAgrupados = $movimentosAcoes->groupBy('nome');
@@ -83,14 +87,37 @@ class ImpostoRendaController extends Controller
         return view('ir.impostoRenda', compact('dadosAtivos', 'dadosfiis'));
     }
 
-    public function exportAtivos(Request $request)
-    {
+    public function opcoes(Request $request){
+        $baixar = $request->input('baixar');
         $data_inicio = $request->input('data_inicio');
         $data_fim = $request->input('data_fim');
         $tipo = $request->input('tipo');
+        if ( $baixar == 'Excel'){
+            return redirect()->route('imposto.exportAtivos', [
+                'data_ini' => $data_inicio,
+                'data_fi' => $data_fim,
+                'tip' => $tipo,
+            ]);
+
+        }
+        else{
+            return redirect()->route('imposto.exportIrpdfPdf', [
+                'data_ini' => $data_inicio,
+                'data_fi' => $data_fim,
+                'tip' => $tipo,
+            ]);
+        }
+    }
+
+    public function exportAtivos($data_ini, $data_fi, $tip)
+    {
+        $data_inicio = $data_ini;
+        $data_fim = $data_fi;
+        $tipo = $tip;
         $movimentosAcoes = MovimentoAtivos::where('tipo', $tipo)
         ->whereIn('movimento', ['compra', 'venda'])
-        ->whereBetween('data', [$data_inicio, $data_fim])->get();
+        ->whereBetween('data', [$data_inicio, $data_fim])
+        ->get();
 
         $dadosAtivos = [];
 
@@ -134,12 +161,21 @@ class ImpostoRendaController extends Controller
         }
     }
 
-    public function exportIrpdfPdf(Request $request)
+    public function exportIrpdfPdf($data_ini, $data_fi, $tip)
     {
-        $movimentosAcoes = MovimentoAtivos::where('tipo', 'acao')->whereIn('movimento', ['compra', 'venda'])->get();
+        $data_inicio = $data_ini;
+        $data_fim = $data_fi;
+        $tipo = $tip;
+        $movimentosAcoes = MovimentoAtivos::where('tipo', 'acao')
+        ->whereIn('movimento', ['compra', 'venda'])
+        ->whereBetween('data', [$data_inicio, $data_fim])
+        ->get();
         $dadosAtivos = [];
 
-        $movimentosFiis = MovimentoAtivos::where('tipo', 'fundo imobiliario')->whereIn('movimento', ['compra', 'venda'])->get();
+        $movimentosFiis = MovimentoAtivos::where('tipo', 'fundo imobiliario')
+        ->whereIn('movimento', ['compra', 'venda'])
+        ->whereBetween('data', [$data_inicio, $data_fim])
+        ->get();
         $dadosfiis = [];
 
         $movimentosAcoesAgrupados = $movimentosAcoes->groupBy('nome');

@@ -40,31 +40,32 @@
     border-collapse: collapse;
     max-width: 100%;
   }
-  .secao_movimento .table thead th {
-    background-color: #f8f9fa;
-    text-align: center;
+
+  .secao_movimento .buttons{
+    display: flex;
+    gap: 10px;
   }
-  .secao_movimento .table th,
+
+  .secao_movimento .btn-warning{
+    padding: 5px;
+  }
+
+  .secao_movimento .btn-danger{
+    padding: 5px;
+  }
+
+  .secao_movimento .table thead th,
   .secao_movimento .table td {
     border: 1px solid #dee2e6;
     padding: 8px;
-    text-align: left;
-  }
-
-  .secao_movimento .opcoes-a{
-    background-color: white;
-    gap: 15px;
-  }
-
-  .secao_movimento tr {
-    background-color: white;
+    text-align: center;
   }
 
   .secao_movimento .btn-custom {
     background-color: rgb(98, 245, 106);
   }
 
-  .autocomplete {
+  .secao_movimento .autocomplete {
     position: relative;
   }
 
@@ -93,37 +94,22 @@
       cursor: pointer;
   }
 
-
   @media screen and (max-width: 768px) {
 
     .secao_movimento #caixa,  #caixa2 {
-      padding: 20px 20px;
+      padding: 2px;
       margin-top:80px;
-      width: 100vw;
-    }
-
-    .secao_movimento .table-responsive {
-      overflow-x: auto;
-      -webkit-overflow-scrolling: touch;
-      -ms-overflow-style: -ms-autohiding-scrollbar;
-    }
-
-    .secao_movimento tr {
-      display: flex;
-      flex-direction: row;
-
+      width: 99vw;
     }
     .secao_movimento .table {
-      width: auto;
-      margin-bottom: 0;
+      width: 100%;
     }
 
-    .secao_movimento .table th,
+    .secao_movimento .table thead th,
     .secao_movimento .table td {
-      display: block;
       width: 100%;
+      padding: 5px;    
       box-sizing: border-box;
     }
-
 
   }
