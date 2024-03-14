@@ -28,10 +28,13 @@ Route::resource('movimento', MovimentoAtivosController::class);
 /*dashboard*/
 
 Route::get('/dashboard', [LoginController::class, 'dash'])->name('principal.dashboard');
+Route::get('/grafico', [LoginController::class, 'grafico'])->name('principal.grafico');
 
 /*opcoes*/
 
 Route::get('/opcoes', [ImpostoRendaController::class, 'opcoes'])->name('imposto.opcoes');
+Route::get('/opcoes-move', [MovimentoAtivosController::class, 'opcoesmove'])->name('movimento.opcoesmove');
+
 
 /*ativos*/
 
@@ -47,12 +50,12 @@ Route::delete('/ativos/{id}', [AtivosController::class, 'destroy'])->name('ativo
 Route::get('/buscar-ativos', [AtivosController::class, 'buscarativos']);
 
 /*PDF*/
-Route::get('/export-MovimentoAtivosPdf', [MovimentoAtivosController::class, 'exportMovimentoAtivosPdf'])->name('movimento.exportMovimentoAtivosPdf');
+Route::get('/export-MovimentoAtivosPdf/{data_ini}/{data_fi}/{tip}', [MovimentoAtivosController::class, 'exportMovimentoAtivosPdf'])->name('movimento.exportMovimentoAtivosPdf');
 Route::get('/export-IrPdf/{data_ini}/{data_fi}/{tip}', [ImpostoRendaController::class, 'exportIrpdfPdf'])->name('imposto.exportIrpdfPdf');
 
 /*Excel*/
 
-Route::get('/export-movimentos', [MovimentoAtivosController::class, 'exportMovimentoAtivos'])->name('movimento.exportMovimentoAtivos');
+Route::get('/export-movimentos/{data_ini}/{data_fi}/{tip}', [MovimentoAtivosController::class, 'exportMovimentoAtivos'])->name('movimento.exportMovimentoAtivos');
 Route::get('/exportAtivos/{data_ini}/{data_fi}/{tip}', [ImpostoRendaController::class, 'exportAtivos'])->name('imposto.exportAtivos');
 
 /*User*/

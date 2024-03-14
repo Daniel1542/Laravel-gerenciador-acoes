@@ -5,14 +5,14 @@
 }
 
 .secao_dash .container{
-  margin-top: 100px;
+  margin-top: 150px;
   margin-bottom: 100px;
 }
 
 .secao_dash #organiza{
   display: flex;
   justify-content: center;
-  gap: 50px;
+  gap: 80px;
 }
 
 .card {
@@ -33,9 +33,8 @@
 .secao_dash #caixa {
   display: flex;
   justify-content: center;
-  padding: 100px 600px;
-  margin-bottom: 300px;
-  gap: 20px;
+  padding: 120px 100px;
+  margin-bottom: 100px;
   background-color: rgb(196, 110, 104);
 
 }
@@ -43,6 +42,7 @@
 @media screen and (max-width: 768px) {
 
   .secao_dash{
+    width: 99vw;
     padding: 5px 5px;
 
   }

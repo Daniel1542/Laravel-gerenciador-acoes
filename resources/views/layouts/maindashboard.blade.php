@@ -21,6 +21,8 @@
   <!-- Bootstrap JavaScript (jQuery e Popper.js) -->
   <link rel="stylesheet" href="/js/app.js">
   <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>  
+  <!-- Adicione este CDN ao seu arquivo de layout -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
 </head>
 <body class="corpo">

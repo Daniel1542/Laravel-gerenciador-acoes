@@ -164,5 +164,27 @@ class MovimentoAtivosSeeder extends Seeder
             'valor' => '15',
             'valortotal' => '17',
         ]);
+
+        MovimentoAtivos::create([
+            'tipo' => 'fundo imobiliario',
+            'movimento' => 'compra',
+            'nome' => 'mxrf11',
+            'data' => '2024-01-02',
+            'corretagem' => '2',
+            'quantidade' => '10',
+            'valor' => '10',
+            'valortotal' => '102',
+        ]);
+
+        MovimentoAtivos::create([
+            'tipo' => 'acao',
+            'movimento' => 'compra',
+            'nome' => 'bbse3',
+            'data' => '2024-02-05',
+            'corretagem' => '1',
+            'quantidade' => '100',
+            'valor' => '25',
+            'valortotal' => '2501',
+        ]);
     }
 }

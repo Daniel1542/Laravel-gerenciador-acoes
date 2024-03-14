@@ -37,7 +37,6 @@ Este projeto é um site para auxiliar na declaração de imposto de renda de aç
 - Code Sniffer
 - phpUnit
 - Laragon
-- CRUD (Create, Read, Update, Delete)
 - Opção de baixar dados em formato Excel e PDF
 
 ### Instalação

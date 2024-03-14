@@ -41,7 +41,6 @@ class ImpostoRendaController extends Controller
 
             $quantidadeTotal = $quantidadeCompra - $quantidadeVenda;
 
-
             $movimento = $quantidadeTotal > 0 ? 'compra' : 'venda';
 
             $dadosAtivos[] = [

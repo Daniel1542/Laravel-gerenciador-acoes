@@ -28,13 +28,16 @@
     }
 
     .secao_ativos .table thead th {
+      background-color: rgb(73, 140, 199);
       text-align: center;
+      border: 1px solid #dee2e6;
       padding: 10px;
     }
 
-    .secao_ativos .table th,
     .secao_ativos .table td {
+      background-color: rgb(166, 203, 236);
       border: 1px solid #dee2e6;
+      text-align: center;
       padding: 10px;
     }
     .secao_ativos .fundos{
@@ -59,6 +62,7 @@
               <th class="opcoes-a">Quantidade: </th>
               <th class="opcoes-a">Valor: </th>       
               <th class="opcoes-a">Corretagem: </th>
+              <th class="opcoes-a">Total: </th>
               <th class="opcoes-a">Data: </th>             
             </tr>
           </thead>
@@ -67,8 +71,9 @@
               <td> {{ $acao['nome'] }}</td>
               <td> {{ $acao['movimento'] }}</td> 
               <td> {{ $acao['quantidade']}}</td>         
-              <td> {{ $acao['valor'] }}</td>
-              <td> {{ $acao['corretagem'] }}</td> 
+              <td> {{ $acao['valor'] }} R$</td>
+              <td> {{ $acao['corretagem'] }} R$</td> 
+              <td> {{ $acao['valortotal'] }} R$ </td> 
               <td> {{ $acao['data']}}</td>                              
             </tr> 
           @endforeach    
@@ -84,6 +89,7 @@
               <th class="opcoes-a">Quantidade: </th>
               <th class="opcoes-a">Valor: </th>       
               <th class="opcoes-a">Corretagem: </th>
+              <th class="opcoes-a">Total: </th>
               <th class="opcoes-a">Data: </th>             
             </tr>
           </thead>
@@ -92,8 +98,9 @@
               <td> {{ $acao['nome'] }}</td>
               <td> {{ $acao['movimento'] }}</td> 
               <td> {{ $acao['quantidade']}}</td>         
-              <td> {{ $acao['valor'] }}</td>
-              <td> {{ $acao['corretagem'] }}</td> 
+              <td> {{ $acao['valor'] }} R$</td>
+              <td> {{ $acao['corretagem'] }} R$</td> 
+              <td> {{ $acao['valortotal'] }} R$ </td> 
               <td> {{ $acao['data']}}</td>                           
             </tr> 
           @endforeach    

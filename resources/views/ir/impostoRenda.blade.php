@@ -32,8 +32,8 @@
               </select>
             </div>
           </div>
-          <div class="mb-3">
-            <button type="submit" class="btn btn-custom mb-2 mx-2">Baixar</button>
+          <div class="mb-1">
+            <button type="submit" class="btn btn-custom mb-1">Baixar</button>
           </div>
         </form>
       </div>
@@ -49,14 +49,14 @@
         <table class="table">
           <tbody class="table_body">
             @foreach ($dadosAtivos as $ativo)
-              @if (isset($ativo['compra']['quantidadeTotal']) && $ativo['compra']['total'] > 0)
+              @if ($ativo['compra']['quantidadeTotal'] > 0 && $ativo['compra']['total'] > 0)
                 <tr>
                   <td> Compra de {{ $ativo['compra']['quantidadeTotal'] }} ações de {{ $ativo['nome'] }}, custo total {{number_format ($ativo['compra']['total'], 2) }} reais.</td>    
                 </tr>
               @endif
             @endforeach
             @foreach ($dadosAtivos as $ativo)
-              @if (isset($ativo['venda']['quantidadeTotal']) && $ativo['venda']['total'] > 0)
+              @if ($ativo['venda']['quantidadeTotal'] > 0 && $ativo['venda']['total'] > 0)
                 <tr>
                   <td> Venda de {{ $ativo['venda']['quantidadeTotal'] }} ações de {{ $ativo['nome'] }}, custo total {{ number_format($ativo['venda']['total'], 2) }} reais.</td>
                 </tr>

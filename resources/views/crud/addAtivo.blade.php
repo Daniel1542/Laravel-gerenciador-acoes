@@ -2,10 +2,10 @@
 @section('title','Cadastrar')
 @section('content')
 
-  <section class='secao_acoes'>
+  <section class="secao_acoes">
     <div class="container" id="cima">
-      <div class="row justify-content-left">
-        <div class="col-md-6 text-left">
+      <div class="row justify-content-center">
+        <div class="text-center">
             <h1 class="mt-4">Cadastrar</h1>
         </div>
       </div>

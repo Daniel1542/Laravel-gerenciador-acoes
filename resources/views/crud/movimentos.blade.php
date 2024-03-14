@@ -17,28 +17,34 @@
         </form>
       </div> 
       <div class="container mt-4">
-        <form class="formulario2" action="{{ route('movimento.exportMovimentoAtivos') }}" method="GET">
+        <form class="formulario2" action="{{ route('movimento.opcoesmove') }}" method="GET">
           {{ csrf_field() }}
-          <div class="row mb-3">
-            <div class="col-md-4 mb-3">
+          <div class="row mb-1">
+            <div class="col-md-3 mb-3">
               <label for="data_inicio" class="form-label">Data Início:</label>
               <input type="date" class="form-control" id="data_inicio" name="data_inicio" required>
             </div>
-            <div class="col-md-4 mb-3">
+            <div class="col-md-3 mb-3">
               <label for="data_fim" class="form-label">Data Fim:</label>
               <input type="date" class="form-control" id="data_fim" name="data_fim" required>
             </div>
-            <div class="col-md-4 mb-3">
+            <div class="col-md-3 mb-3">
               <label for="tipo" class="form-label">Tipo:</label>
               <select class="form-select" id="tipo" name="tipo" required>
                 <option value="acao">Ação</option>
                 <option value="fundo imobiliario">Fundo Imobiliário</option>
               </select>
             </div>
+            <div class="col-md-3 mb-3">
+              <label for="baixar" class="form-label">Baixar:</label>
+              <select class="form-select" id="baixar" name="baixar" required>
+                <option value="PDF">PDF</option>
+                <option value="Excel">Excel</option>
+              </select>
+            </div>
           </div>
           <div class="mb-1">
-            <button type="submit" class="btn btn-custom mb-1 mx-2">Baixar Excel</button>
-            <a class="btn btn-custom mb-1 mx-2" href="{{ route('movimento.exportMovimentoAtivosPdf', ['data_inicio' => request('data_inicio'), 'data_fim' => request('data_fim'), 'tipo' => request('tipo')]) }}">Baixar PDF de todos ativos</a>
+            <button type="submit" class="btn btn-custom">Baixar Excel</button>
           </div>
         </form>
       </div>

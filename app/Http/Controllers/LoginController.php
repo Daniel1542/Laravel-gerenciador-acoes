@@ -30,4 +30,23 @@ class LoginController extends Controller
 
         return view('principal.dashboard', compact('acoesCount', 'fiisCount'));
     }
+    
+    public function grafico()
+    {
+        $acoesCount = MovimentoAtivos::where('tipo', 'acao')->distinct('nome')->count('nome');
+        $fiisCount = MovimentoAtivos::where('tipo', 'fundo imobiliario')->distinct('nome')->count('nome');
+        $data = [
+            'labels' => ['Ações', 'Fundos Imobiliários'],
+            'datasets' => [
+                [
+                    'data' => [$acoesCount, $fiisCount],
+                    'backgroundColor' => ['#FF6384', '#36A2EB'],
+                ]
+            ]
+        ];
+    
+        return response()->json($data);   
+
+    }
+
 }
