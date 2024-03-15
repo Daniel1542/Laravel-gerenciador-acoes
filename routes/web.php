@@ -7,38 +7,27 @@ use App\Http\Controllers\AtivosController;
 use App\Http\Controllers\ListaAtivosController;
 use App\Http\Controllers\ImpostoRendaController;
 use App\Http\Controllers\MovimentoAtivosController;
+use App\Http\Controllers\DashboardController;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider and all of them will
-| be assigned to the "web" middleware group. Make something great!
-|
-*/
 
 Route::resource('ativos', AtivosController::class);
 Route::resource('user', UserController::class);
 Route::resource('lista', ListaAtivosController::class);
 Route::resource('imposto', ImpostoRendaController::class);
 Route::resource('movimento', MovimentoAtivosController::class);
+Route::resource('dashboard', DashboardController::class);
 
 /*dashboard*/
 
-Route::get('/dashboard', [LoginController::class, 'dash'])->name('principal.dashboard');
-Route::get('/grafico', [LoginController::class, 'grafico'])->name('principal.grafico');
+Route::get('/dashboard', [DashboardController::class, 'dash'])->name('principal.dashboard');
+Route::get('/grafico', [DashboardController::class, 'grafico'])->name('principal.grafico');
 
 /*opcoes*/
 
 Route::get('/opcoes', [ImpostoRendaController::class, 'opcoes'])->name('imposto.opcoes');
 Route::get('/opcoes-move', [MovimentoAtivosController::class, 'opcoesmove'])->name('movimento.opcoesmove');
 
-
 /*ativos*/
-
-Route::get('/addativos', [AtivosController::class, 'create'])->name('ativos.create');
 
 Route::get('/ativos/show', [AtivosController::class, 'show'])->name('ativos.show');
 

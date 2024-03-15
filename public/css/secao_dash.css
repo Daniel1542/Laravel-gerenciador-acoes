@@ -20,6 +20,7 @@
   padding: 20px 100px;
   border: 1px solid #dee2e6;
 }
+
 .card-body {
   display: flex;
   flex-direction: column;
@@ -36,18 +37,27 @@
   padding: 120px 100px;
   margin-bottom: 100px;
   background-color: rgb(196, 110, 104);
-
 }
+
+.secao_dash #caixa2 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 10px;
+  padding: 100px;
+  margin-bottom: 50px;
+  background-color: rgb(196, 110, 104);
+}
+
 
 @media screen and (max-width: 768px) {
 
   .secao_dash{
     width: 99vw;
-    padding: 5px 5px;
-
+    
   }
   .secao_dash .container{
-    margin-top: 150px;
+    margin-bottom: 10px;
   }
   .secao_dash #organiza{
     flex-direction: column;
@@ -56,11 +66,17 @@
 
   .card {
     margin-bottom: 10px;
-    padding: 10px 30px;
+    padding: 10px;
   }
 
   .secao_dash #caixa {
-    padding: 70px 50px;
-    margin-bottom: 50px;
+    width: 98vw;
+    padding: 50px;
+   
+  }
+  .secao_dash #caixa2 {
+    width: 98vw;
+    padding: 50px;
+   
   }
 }

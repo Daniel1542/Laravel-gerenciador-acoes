@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use App\Models\MovimentoAtivos;
 
 class LoginController extends Controller
 {
@@ -21,32 +20,6 @@ class LoginController extends Controller
         } else {
             return redirect()->back()->with('msg', 'erro');
         }
-    }
-
-    public function dash()
-    {
-        $acoesCount = MovimentoAtivos::where('tipo', 'acao')->distinct('nome')->count('nome');
-        $fiisCount = MovimentoAtivos::where('tipo', 'fundo imobiliario')->distinct('nome')->count('nome');
-
-        return view('principal.dashboard', compact('acoesCount', 'fiisCount'));
-    }
-    
-    public function grafico()
-    {
-        $acoesCount = MovimentoAtivos::where('tipo', 'acao')->distinct('nome')->count('nome');
-        $fiisCount = MovimentoAtivos::where('tipo', 'fundo imobiliario')->distinct('nome')->count('nome');
-        $data = [
-            'labels' => ['Ações', 'Fundos Imobiliários'],
-            'datasets' => [
-                [
-                    'data' => [$acoesCount, $fiisCount],
-                    'backgroundColor' => ['#FF6384', '#36A2EB'],
-                ]
-            ]
-        ];
-    
-        return response()->json($data);   
-
     }
 
 }

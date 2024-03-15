@@ -36,6 +36,7 @@ class ListaAtivosController extends Controller
                 'nome' => $nome,
                 'quantidadeTotal' => $quantidadeTotal,
                 'precoMedio'  =>  $valorCompra / $quantidadeCompra,
+                'valorTotal'  =>  $valorCompleto,
             ];
         }
 
@@ -57,6 +58,7 @@ class ListaAtivosController extends Controller
                 'nome' => $nome,
                 'quantidadeTotal' => $quantidadeTotal,
                 'precoMedio'  =>  $valorCompra / $quantidadeCompra,
+                'valorTotal'  =>  $valorCompleto,
             ];
         }
         return view('crud.listaativos', compact('dadosAcoes', 'dadosfiis'));

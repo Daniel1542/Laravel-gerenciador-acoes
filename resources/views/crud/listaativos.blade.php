@@ -15,7 +15,8 @@
             <tr>
               <th class="opcoes-a">Ação:</th>
               <th class="opcoes-a">Quantidade: </th>
-              <th class="opcoes-a">Preço Médio: </th>               
+              <th class="opcoes-a">Preço Médio: </th>     
+              <th class="opcoes-a">Total: </th>            
             </tr>
           </thead>
           @foreach($dadosAcoes as $acao)  
@@ -23,7 +24,8 @@
               <tr>
                 <td> {{ $acao['nome'] }}</td>
                 <td> {{ $acao['quantidadeTotal'] }}</td> 
-                <td> {{ number_format($acao['precoMedio'], 2) }}</td>                       
+                <td> {{ number_format($acao['precoMedio'], 2) }} R$</td>
+                <td> {{ number_format ($acao['valorTotal'], 2) }} R$</td>                                     
               </tr> 
             @endif
           @endforeach    
@@ -42,7 +44,8 @@
             <tr>
               <th class="opcoes-a">Fundos imobiliarios:</th>
               <th class="opcoes-a">Quantidade: </th>
-              <th class="opcoes-a">Preço Médio: </th>                     
+              <th class="opcoes-a">Preço Médio: </th>   
+              <th class="opcoes-a">Total: </th>                              
             </tr>
           </thead>
           @foreach($dadosfiis as $fii)    
@@ -50,7 +53,8 @@
               <tr>
                 <td> {{ $fii['nome'] }}</td>           
                 <td> {{ $fii['quantidadeTotal'] }}</td> 
-                <td> {{ number_format ($fii['precoMedio'], 2) }}</td>                         
+                <td> {{ number_format ($fii['precoMedio'], 2) }} R$</td>    
+                <td> {{ number_format ($fii['valorTotal'], 2) }} R$</td>                            
               </tr> 
             @endif
           @endforeach    

@@ -5,6 +5,7 @@
 <section class="secao_dash">
     <div class="container">
         <div class="row" id="caixa">
+            <h1 class="text-center">Quantidade</h1>
             <div class="col-md-6" id="organiza">
                 <div class="card mt-3">   
                     <div class="card-body">
@@ -31,36 +32,14 @@
     </div>
 </section>
 <section class="secao_dash">
-    <div class="container">
-        <div class="row" id="caixa">
-            <canvas id="graficoPizza"></canvas>
-        </div>
+    <div id="caixa2">
+        <h1 class="text-center">Porcentagem por ativo</h1>
+        <div>
+            <canvas id="graficoPizza"></canvas> 
+        </div>       
     </div>
 </section>
 
-
-<script>
-    document.addEventListener('DOMContentLoaded', function() {
-    fetch('/grafico')
-        .then(response => response.json())
-        .then(data => {
-            // Use os dados para criar o gráfico
-            var ctx = document.getElementById('graficoPizza').getContext('2d');
-            var myChart = new Chart(ctx, {
-                type: 'pie',
-                data: {
-                    labels: data.labels,
-                    datasets: [{
-                        data: data.datasets[0].data,
-                        backgroundColor: data.datasets[0].backgroundColor,
-                        borderColor: data.datasets[0].borderColor,
-                        borderWidth: 1
-                    }]
-                }
-            });
-        });
-});
-
-</script>
+<script src="js/graficos.js"></script>
   
 @endsection
