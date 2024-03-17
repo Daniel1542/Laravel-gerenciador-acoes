@@ -8,12 +8,6 @@ use Carbon\Carbon;
 
 class AtivosController extends Controller
 {
-    public function index()
-    {
-        $ativos = MovimentoAtivos::all();
-        return view('welcome', compact('ativos'));
-    }
-
     public function create()
     {
         return view('crud.addAtivo');

@@ -4,8 +4,8 @@
 
 <section class="secao_dash">
     <div class="container">
-        <div class="row" id="caixa">
-            <h1 class="text-center">Quantidade</h1>
+        <div id="caixa">
+            <h1>Quantidade</h1>
             <div class="col-md-6" id="organiza">
                 <div class="card mt-3">   
                     <div class="card-body">
@@ -31,12 +31,17 @@
         </div>
     </div>
 </section>
-<section class="secao_dash">
+<section class="secao_dash2">
     <div id="caixa2">
-        <h1 class="text-center">Porcentagem por ativo</h1>
-        <div>
-            <canvas id="graficoPizza"></canvas> 
-        </div>       
+        <h1>Porcentagem por ativo</h1>
+        <div class="container">
+            <div>
+                <canvas id="graficoPizza"></canvas> 
+            </div>
+            <div>
+                <canvas id="graficoPizza2"></canvas> 
+            </div>          
+        </div>
     </div>
 </section>
 

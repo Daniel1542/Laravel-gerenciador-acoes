@@ -3,9 +3,9 @@
 @section('content')
 
   <section class="secao_ir">
-    <div class="container text-center">
+    <div class="container-total">
       <h1>Imposto de renda</h1>
-      <div class="container mt-4">
+      <div class="container">
         <form class="formulario" action="{{ route('imposto.opcoes') }}" method="GET">
           {{ csrf_field() }}
           <div class="row mb-4">
@@ -38,11 +38,12 @@
         </form>
       </div>
     </div>
-    <!-- Tabela para listar -->
+  </section>
+  <section class="secao_ir2">
     <div class="container" id="caixa">
       <div class="row justify-content-center">
         <div class="col-md-6 text-center">
-            <h1 class="mt-4" style="margin-bottom:20px;">Ações</h1>
+          <h1 class="mt-4" style="margin-bottom:20px;">Ações</h1>
         </div>
       </div>
       <div class="div_container">
@@ -66,26 +67,28 @@
         </table>
       </div>  
     </div>
+  </section>
+  <section class="secao_ir3">
     <div class="container" id="caixa2">
       <div class="row justify-content-center">
         <div class="col-md-6 text-center">
-            <h1 class="mt-4" style="margin-bottom:20px;">Fiis</h1>
+          <h1 class="mt-4" style="margin-bottom:20px;">Fiis</h1>
         </div>
       </div>
       <div class="div_container">
         <table class="table">
           <tbody class="table_body"> 
             @foreach ($dadosfiis as $fiis)
-              @if (isset($fiis['compra']['quantidadeTotal']) && $fiis['compra']['total'] > 0)
+              @if ($fiis['compra']['quantidadeTotal'] > 0 && $fiis['compra']['total'] > 0)
                 <tr>
-                  <td> Compra de {{ $fiis['compra']['quantidadeTotal'] }} fundos imobiliários de {{ $fiis['nome'] }}, custo total {{number_format ($fiis['compra']['total'], 2) }} reais.</td>    
+                  <td> Compra de {{ $fiis['compra']['quantidadeTotal'] }} fundos imobiliários {{ $fiis['nome'] }}, custo total {{number_format ($fiis['compra']['total'], 2) }} reais.</td>    
                 </tr>
               @endif
             @endforeach    
             @foreach ($dadosfiis as $fiis)
-              @if (isset($fiis['venda']['quantidadeTotal']) && $fiis['venda']['total'] > 0)
+              @if ($fiis['venda']['quantidadeTotal'] > 0 && $fiis['venda']['total'] > 0)
                 <tr>
-                  <td> Venda de {{ $fiis['venda']['quantidadeTotal'] }} fundos imobiliários de {{ $fiis['nome'] }}, custo total {{number_format ($fiis['venda']['total'], 2) }} reais.</td>    
+                  <td> Venda de {{ $fiis['venda']['quantidadeTotal'] }} fundos imobiliários {{ $fiis['nome'] }}, custo total {{number_format ($fiis['venda']['total'], 2) }} reais.</td>    
                 </tr>
               @endif
             @endforeach  

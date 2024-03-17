@@ -7,9 +7,6 @@ use App\Models\MovimentoAtivos;
 
 class MovimentoAtivosSeeder extends Seeder
 {
-    /**
-     * Run the database seeds.
-     */
     public function run()
     {
         MovimentoAtivos::create([
@@ -21,7 +18,6 @@ class MovimentoAtivosSeeder extends Seeder
             'quantidade' => '3',
             'valor' => '10',
             'valortotal' => '33',
-
         ]);
 
         MovimentoAtivos::create([
@@ -33,7 +29,6 @@ class MovimentoAtivosSeeder extends Seeder
             'quantidade' => '1',
             'valor' => '15',
             'valortotal' => '19',
-
         ]);
 
         MovimentoAtivos::create([
@@ -45,7 +40,6 @@ class MovimentoAtivosSeeder extends Seeder
             'quantidade' => '5',
             'valor' => '20',
             'valortotal' => '103',
-
         ]);
 
         MovimentoAtivos::create([
@@ -57,7 +51,6 @@ class MovimentoAtivosSeeder extends Seeder
             'quantidade' => '5',
             'valor' => '10',
             'valortotal' => '52',
-
         ]);
 
         MovimentoAtivos::create([
@@ -69,7 +62,6 @@ class MovimentoAtivosSeeder extends Seeder
             'quantidade' => '2',
             'valor' => '50',
             'valortotal' => '103',
-
         ]);
 
         MovimentoAtivos::create([
@@ -81,7 +73,6 @@ class MovimentoAtivosSeeder extends Seeder
             'quantidade' => '2',
             'valor' => '20',
             'valortotal' => '45',
-
         ]);
 
         MovimentoAtivos::create([
@@ -93,10 +84,7 @@ class MovimentoAtivosSeeder extends Seeder
             'quantidade' => '10',
             'valor' => '50',
             'valortotal' => '500',
-
         ]);
-
-
 
         MovimentoAtivos::create([
             'tipo' => 'acao',
@@ -107,7 +95,6 @@ class MovimentoAtivosSeeder extends Seeder
             'quantidade' => '3',
             'valor' => '10',
             'valortotal' => '31',
-
         ]);
 
         MovimentoAtivos::create([
@@ -127,9 +114,9 @@ class MovimentoAtivosSeeder extends Seeder
             'nome' => 'prio3',
             'data' => '2018-07-20',
             'corretagem' => '0',
-            'quantidade' => '3',
+            'quantidade' => '12',
             'valor' => '18',
-            'valortotal' => '54',
+            'valortotal' => '216',
         ]);
 
         MovimentoAtivos::create([
@@ -172,8 +159,8 @@ class MovimentoAtivosSeeder extends Seeder
             'data' => '2024-01-02',
             'corretagem' => '2',
             'quantidade' => '10',
-            'valor' => '10',
-            'valortotal' => '102',
+            'valor' => '50',
+            'valortotal' => '502',
         ]);
 
         MovimentoAtivos::create([
@@ -183,8 +170,41 @@ class MovimentoAtivosSeeder extends Seeder
             'data' => '2024-02-05',
             'corretagem' => '1',
             'quantidade' => '100',
-            'valor' => '25',
-            'valortotal' => '2501',
+            'valor' => '10',
+            'valortotal' => '1001',
+        ]);
+
+        MovimentoAtivos::create([
+            'tipo' => 'acao',
+            'movimento' => 'compra',
+            'nome' => 'abcb4',
+            'data' => '2024-02-15',
+            'corretagem' => '1',
+            'quantidade' => '20',
+            'valor' => '10.23',
+            'valortotal' => '204.6',
+        ]);
+
+        MovimentoAtivos::create([
+            'tipo' => 'fundo imobiliario',
+            'movimento' => 'venda',
+            'nome' => 'vino11',
+            'data' => '2021-05-12',
+            'corretagem' => '0',
+            'quantidade' => '7',
+            'valor' => '40',
+            'valortotal' => '280',
+        ]);
+
+        MovimentoAtivos::create([
+            'tipo' => 'acao',
+            'movimento' => 'compra',
+            'nome' => 'rani3',
+            'data' => '2012-02-15',
+            'corretagem' => '12',
+            'quantidade' => '20',
+            'valor' => '5',
+            'valortotal' => '112',
         ]);
     }
 }
