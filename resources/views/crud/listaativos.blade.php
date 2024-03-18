@@ -32,6 +32,8 @@
         </table>
       </div>
     </div>
+  </section>
+  <section class="secao_ativos2">
     <div class="container" id="caixa2">
       <div class="row justify-content-center">
         <div class="col-md-6 text-center">

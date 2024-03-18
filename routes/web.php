@@ -20,7 +20,8 @@ Route::resource('dashboard', DashboardController::class);
 /*dashboard*/
 
 Route::get('/dashboard', [DashboardController::class, 'dash'])->name('principal.dashboard');
-Route::get('/graficoPorcentagem', [DashboardController::class, 'graficoPorcentagem'])->name('principal.graficoPorcentagem');
+Route::get('/graficoAcoes', [DashboardController::class, 'graficoAcoes'])->name('principal.graficoAcoes');
+Route::get('/graficoFiis', [DashboardController::class, 'graficoFiis'])->name('principal.graficoFiis');
 Route::get('/graficoTotal', [DashboardController::class, 'graficoTotal'])->name('principal.graficoTotal');
 
 /*opcoes*/

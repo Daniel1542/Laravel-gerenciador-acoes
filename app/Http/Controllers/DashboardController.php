@@ -9,34 +9,12 @@ class DashboardController extends Controller
     {
         $acoesCount = MovimentoAtivos::where('tipo', 'acao')->distinct('nome')->count('nome');
         $fiisCount = MovimentoAtivos::where('tipo', 'fundo imobiliario')->distinct('nome')->count('nome');
-
-        return view('principal.dashboard', compact('acoesCount', 'fiisCount'));
-    }
-    
-    public function graficoPorcentagem()
-    {
-        $acoesCount = MovimentoAtivos::where('tipo', 'acao')->distinct('nome')->count('nome');
-        $fiisCount = MovimentoAtivos::where('tipo', 'fundo imobiliario')->distinct('nome')->count('nome');
         $total = $acoesCount + $fiisCount;
        
         $acoesPercent = ($acoesCount / $total) * 100;
         $fiisPercent = ($fiisCount / $total) * 100;
 
-        $acoesPercent = floatval($acoesPercent);
-        $fiisPercent = floatval($fiisPercent);
-
-        $data = [
-            'labels' => ['Ações', 'Fundos Imobiliários'],
-            'datasets' => [
-                [
-                    'data' => [$acoesPercent, $fiisPercent],
-                    'backgroundColor' => ['#FF6384', '#36A2EB'],
-                ]
-            ]
-        ];
-    
-        return response()->json($data);   
-
+        return view('principal.dashboard', compact('acoesCount', 'fiisCount','acoesPercent','fiisPercent'));
     }
 
     function gerarCoresAleatorias($quantidade)
@@ -53,18 +31,17 @@ class DashboardController extends Controller
         return '#' . str_pad(dechex(mt_rand(0, 0xFFFFFF)), 6, '0', STR_PAD_LEFT);
     }
 
-    
-    public function graficoTotal()
+    /*acoes*/
+
+    public function graficoAcoes()
     {
         $movimentosAcoes = MovimentoAtivos::where('tipo', 'acao')
         ->whereIn('movimento', ['compra', 'venda'])
         ->get();
 
-        $dadosAcoes = [];
+        $movimentoAcao = $movimentosAcoes->groupBy('nome');
 
-        $movimentosAcoesAgrupados = $movimentosAcoes->groupBy('nome');
-
-        foreach ($movimentosAcoesAgrupados as $nome => $movimentos) {
+        foreach ($movimentoAcao as $nome => $movimentos) {
             $compras = $movimentos->where('movimento', 'compra');
             $vendas = $movimentos->where('movimento', 'venda');
 
@@ -77,11 +54,7 @@ class DashboardController extends Controller
                 'nome' => $nome,
                 'valorTotal'  =>  $valorCompleto,
             ];
-        }
-
-        $labels = [];
-        foreach ($dadosAcoes as $acao) {
-            $labels[] = $acao['nome'];
+            $labels[] = $nome;
         }
 
         $data = [
@@ -89,12 +62,90 @@ class DashboardController extends Controller
             'datasets' => [
                 [
                     'data' => array_column($dadosAcoes, 'valorTotal'),
-                    'backgroundColor' => $this->gerarCoresAleatorias(50),
+                    'backgroundColor' => $this->gerarCoresAleatorias(50), 
                 ]
             ]
         ];
         
         return response()->json($data);  
     }
+
+    /*fiis*/
+
+    public function graficoFiis()
+    {
+        $movimentosFiis = MovimentoAtivos::where('tipo', 'fundo imobiliario')
+        ->whereIn('movimento', ['compra', 'venda'])
+        ->get();
+
+        $movimentosFiisAgrupados = $movimentosFiis->groupBy('nome');
+
+        foreach ($movimentosFiisAgrupados as $nome => $movimentos) {
+            $compras = $movimentos->where('movimento', 'compra');
+            $vendas = $movimentos->where('movimento', 'venda');
+
+            $valorCompra = $compras->sum('valortotal');
+            $valorVenda = $vendas->sum('valortotal');
+
+            $valorCompleto =  $valorCompra - $valorVenda;
+
+            $dadosFiis[] = [
+                'nome' => $nome,
+                'valorTotal'  =>  $valorCompleto,
+            ];
+            $labels[] = $nome;
+        }
+        $data = [
+            'labels' => $labels,
+            'datasets' => [
+                [
+                    'data' => array_column($dadosFiis, 'valorTotal'),
+                    'backgroundColor' => $this->gerarCoresAleatorias(50), 
+                ]
+            ]
+        ];
+
+        return response()->json($data);  
+    }
+
+    /*total*/
+
+    public function graficoTotal()
+    {
+        $movimentosAcoes = MovimentoAtivos::whereIn('tipo', ['acao', 'fundo imobiliario'])
+            ->whereIn('movimento', ['compra', 'venda'])
+            ->get();
+    
+        $movimentosAgrupados = $movimentosAcoes->groupBy('nome');
+    
+        $dados = [];
+    
+        foreach ($movimentosAgrupados as $nome => $movimentos) {
+            $compras = $movimentos->where('movimento', 'compra');
+            $vendas = $movimentos->where('movimento', 'venda');
+    
+            $valorCompra = $compras->sum('valortotal');
+            $valorVenda = $vendas->sum('valortotal');
+    
+            $valorTotal = $valorCompra - $valorVenda;
+    
+            $dados[] = [
+                'nome' => $nome,
+                'valorTotal' => $valorTotal,
+            ];
+            $labels[] = $nome;
+        }
+        $data = [
+            'labels' => $labels,
+            'datasets' => [
+                [
+                    'data' => array_column($dados, 'valorTotal'),
+                    'backgroundColor' => $this->gerarCoresAleatorias(50), 
+                ]
+            ]
+        ];
+    
+        return response()->json($data);
+    }    
    
 }
