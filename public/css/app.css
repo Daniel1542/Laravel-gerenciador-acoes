@@ -5,6 +5,7 @@
 
 /*main*/
 .msm{
+  margin-top: 200px;
   display: flex;
   align-items: center;
   background-color: rgb(138, 224, 124);
@@ -12,7 +13,7 @@
 }
 
 .alert {
-  margin-top: 100px;
+  margin-top: 200px;
 }
 
 .form-group{
@@ -92,8 +93,10 @@ header{
 .secao_acoes{
   padding: 0;
 }
+
 .secao_acoes #cima{
-  margin-top: 80px;
+  flex-direction: column;
+  margin-top: 120px;
 }
 
 .secao_acoes #caixa {
@@ -102,7 +105,16 @@ header{
   margin-top: 20px;
   margin-bottom: 100px;
   border: 1px solid #d3a4a4;
-  border-radius: 7px;
+  border-radius: 6px;
+}
+
+.secao_acoes .form-group{
+  margin: 5px;
+  gap: 5px;
+}
+
+.secao_acoes .btn-primary{
+  margin-top: 15px;
 }
 
 /*footer*/
@@ -129,21 +141,31 @@ footer a:hover {
 @media screen and (max-width: 768px) {
 
   header{
-    gap: 10px;
-
+    justify-content: space-around;
   }
-  header .dropdown {
-    margin-right: auto;
+
+  .secao_acoes{
+    width: 99vw;
+  }
+
+  .secao_acoes .form-group{
+    margin: 10px;
+    gap: 10px;
+    text-align: center;
+  }
+
+  .secao_acoes select, .secao_acoes input{
+    text-align: center;
   }
 
   .secao_acoes #caixa {
-    padding: 70px 85px;
+    width: 100%;
+    padding: 25px;
     margin-bottom: 50px;
   }
 
   footer{
-    margin-top: 50px;
-    padding: 0;
+    margin-top: 80px;
   }
 
 }

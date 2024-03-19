@@ -3,7 +3,7 @@
   padding: 0;
 }
 
-.secao_ir2{
+.secao_ir2 .secao_ir3{
   padding: 0;
   margin-bottom: 100px;
   margin-top: 10px;
@@ -62,7 +62,7 @@
 
 .secao_ir2 #caixa tr, 
 .secao_ir3 #caixa2 tr {
-  background-color: white;
+  background-color: rgb(255, 255, 255);
 }
 
 .secao_ir2 #caixa th td,
@@ -72,24 +72,30 @@
   white-space: nowrap;
 }
 
-
 @media screen and (max-width: 768px) {
+
+.secao_ir{
+  padding: 5px;
+} 
 
 .secao_ir2 #caixa, 
 .secao_ir3 #caixa2 {
-  padding: 20px 20px;
-  margin-top: 10px;
+  padding: 20px;
+  margin-top: 20px;
 }
 
 .secao_ir .container-total{
   width: 99vw;
-  margin-bottom: 10px;
-  margin-top: 140px;
+  gap: 15px;
+  margin-bottom: 50px;
+  margin-top: 130px;
+}
+.secao_ir .container {
+  padding: 0;
 }
 
-.secao_ir .container{
-  margin-top: 15px;
-  padding: 0;
+.secao_ir .formulario {
+  padding: 15px;
 }
 
 .secao_ir2 .div_container,

@@ -11,9 +11,6 @@ use Carbon\Carbon;
 
 class MovimentoAtivosController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function index()
     {
         $Acoes = MovimentoAtivos::where('tipo', 'acao')->get();
@@ -72,7 +69,6 @@ class MovimentoAtivosController extends Controller
     /**
      * excel
      */
-
     public function exportMovimentoAtivos($data_ini, $data_fi, $tip)
     {
         $data_inicio = $data_ini;
@@ -120,7 +116,6 @@ class MovimentoAtivosController extends Controller
     /**
      * pdf
      */
-
     public function exportMovimentoAtivosPdf($data_ini, $data_fi, $tip)
     {
         $data_inicio = $data_ini;

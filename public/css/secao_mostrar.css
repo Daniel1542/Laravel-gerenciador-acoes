@@ -23,33 +23,22 @@
 }
 .secao_mostrar .table{
     border-collapse: collapse;
-    max-width: 100%;
+    width: 100%;
 }
-.secao_mostrar .table thead th {
-    background-color: #f8f9fa;
-    text-align: center;
-}
+
 .secao_mostrar .table th,
 .secao_mostrar .table td {
     border: 1px solid #dee2e6;
-    padding: 8px;
-    text-align: left;
-}
-
-.secao_mostrar .opcoes-a{
-    background-color: white;
     gap: 15px;
-}
-
-.secao_mostrar tr {
-    background-color: white;
+    padding: 8px;
+    text-align: center;
 }
 
 
 @media screen and (max-width: 768px) {
 
     .secao_mostrar #caixa {
-        padding: 20px 20px;
+        padding: 20px;
         margin-top:200px;
         width: 100vw;
     }
@@ -57,7 +46,6 @@
     .secao_mostrar tr {
         display: flex;
         flex-direction: row;
-
     }
     .secao_mostrar .table {
         width: auto;
@@ -70,6 +58,5 @@
         width: 100%;
         box-sizing: border-box;
     }
-
 
   }

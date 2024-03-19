@@ -37,8 +37,8 @@ class AtivosController extends Controller
         $ativos-> valortotal = ($request->corretagem + ($request->valor * $request->quantidade));
 
         $ativos->save();
-
-        return redirect('/addativos')->with('msg', 'Cadastrado com sucesso.');
+        
+        return redirect()->route('principal.dashboard')->with('msg', 'Cadastrado com sucesso.');
     }
 
     public function edit(string $id)

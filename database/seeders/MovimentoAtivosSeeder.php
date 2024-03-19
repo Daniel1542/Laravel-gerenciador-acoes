@@ -206,5 +206,16 @@ class MovimentoAtivosSeeder extends Seeder
             'valor' => '5',
             'valortotal' => '112',
         ]);
+        
+        MovimentoAtivos::create([
+            'tipo' => 'fundo imobiliario',
+            'movimento' => 'compra',
+            'nome' => 'ggrc11',
+            'data' => '2013-05-10',
+            'corretagem' => '1.50',
+            'quantidade' => '50',
+            'valor' => '10',
+            'valortotal' => '501.50',
+        ]);
     }
 }

@@ -13,10 +13,10 @@
         <table class="table" >
           <thead>
             <tr>
-              <th class="opcoes-a">Ação:</th>
-              <th class="opcoes-a">Quantidade: </th>
-              <th class="opcoes-a">Preço Médio: </th>     
-              <th class="opcoes-a">Total: </th>            
+              <th>Ação:</th>
+              <th>Quantidade: </th>
+              <th>Preço Médio: </th>     
+              <th>Total: </th>            
             </tr>
           </thead>
           @foreach($dadosAcoes as $acao)  
@@ -44,10 +44,10 @@
         <table class="table" >
           <thead>
             <tr>
-              <th class="opcoes-a">Fundos imobiliarios:</th>
-              <th class="opcoes-a">Quantidade: </th>
-              <th class="opcoes-a">Preço Médio: </th>   
-              <th class="opcoes-a">Total: </th>                              
+              <th>Fundos imobiliarios:</th>
+              <th>Quantidade: </th>
+              <th>Preço Médio: </th>   
+              <th>Total: </th>                              
             </tr>
           </thead>
           @foreach($dadosfiis as $fii)    

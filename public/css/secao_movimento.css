@@ -38,7 +38,7 @@
 
   .secao_movimento .table{
     border-collapse: collapse;
-    max-width: 100%;
+    width: 100%;
   }
 
   .secao_movimento .buttons{
@@ -54,10 +54,10 @@
     padding: 5px;
   }
 
-  .secao_movimento .table thead th,
+  .secao_movimento .table th,
   .secao_movimento .table td {
     border: 1px solid #dee2e6;
-    padding: 8px;
+    padding: 5px;
     text-align: center;
   }
 
@@ -101,14 +101,10 @@
       margin-top:80px;
       width: 99vw;
     }
-    .secao_movimento .table {
-      width: 100%;
-    }
 
-    .secao_movimento .table thead th,
+    .secao_movimento .table th,
     .secao_movimento .table td {
-      width: 100%;
-      padding: 5px;    
+      width: 100%;   
       box-sizing: border-box;
     }
 

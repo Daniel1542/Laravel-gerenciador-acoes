@@ -4,12 +4,7 @@
 
   <section class="secao_acoes">
     <div class="container" id="cima">
-      <div class="row justify-content-center">
-        <div class="text-center">
-            <h1 class="mt-4">Cadastrar</h1>
-        </div>
-      </div>
-      <!-- Formulário de Cadastro -->
+      <h1 class="text-center">Cadastrar</h1>
       <div class="container" id="caixa">
         <form action="{{ route('ativos.store') }}" method="POST" enctype="multipart/form-data">
           {{ csrf_field() }}
@@ -47,7 +42,7 @@
             <label for="valor">Valor:</label>
             <input type="number" step="0.01" id="valor" name="valor" required>
           </div>
-          <div class="form-group" style="margin-top: 15px;">
+          <div class="form-group">
             <button type="submit" class="btn btn-primary">Cadastrar</button>
           </div>  
         </form>
