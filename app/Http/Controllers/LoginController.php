@@ -21,5 +21,10 @@ class LoginController extends Controller
             return redirect()->back()->with('msg', 'erro');
         }
     }
+    public function logout()
+    {
+        Auth::logout();
+        return redirect('/');
+    }
 
 }

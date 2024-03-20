@@ -17,9 +17,10 @@ document.addEventListener('DOMContentLoaded', function() {
                 options: {
                     plugins: {
                         legend: {
-                            labels: {
-                                color: 'white' 
-                            }
+                            display: false, 
+                        },
+                        labels: {
+                            color: 'white' 
                         }
                     }
                 }
@@ -46,15 +47,17 @@ document.addEventListener('DOMContentLoaded', function() {
                 options: {
                     plugins: {
                         legend: {
-                            labels: {
-                                color: 'white' 
-                            }
+                            display: false, 
+                        },
+                        labels: {
+                            color: 'white' 
                         }
                     }
                 }
             });
         });
 });
+
 
 document.addEventListener('DOMContentLoaded', function() {
     fetch('/graficoTotal')
@@ -75,9 +78,10 @@ document.addEventListener('DOMContentLoaded', function() {
                 options: {
                     plugins: {
                         legend: {
-                            labels: {
-                                color: 'white' 
-                            }
+                            display: false, 
+                        },
+                        labels: {
+                            color: 'white' 
                         }
                     }
                 }

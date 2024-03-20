@@ -9,15 +9,16 @@
   margin-bottom: 80px;
 }
 
-.secao_dash #organiza{
+.secao_dash #organiza,#organiza2{
   display: flex;
   justify-content: center;
   gap: 80px;
 }
 
 .card {
+  width: 100%;
   margin-bottom: 25px;
-  padding: 30px 80px;
+  padding: 40px 80px;
   border: 1px solid #dee2e6;
 }
 
@@ -33,9 +34,9 @@
 
 .secao_dash #caixa {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
-  padding: 30px;
+  padding: 40px;
   border-radius: 2%;
   background-color: rgb(196, 110, 104);
 }
@@ -46,7 +47,7 @@
   align-items: center;
   gap: 20px;
   border-radius: 2%;
-  padding: 30px;
+  padding: 40px;
   margin-bottom: 55px;
   background-color: rgb(196, 110, 104);
 }
@@ -69,19 +70,24 @@
   .secao_dash2 .container {
     flex-direction: column;
   }
-  .secao_dash #organiza{
+  .secao_dash #organiza, #organiza2{
     flex-direction: column;
-    gap: 10px;
+    gap: 50px;
+    padding: 20px;
   }
   .card {
     margin-bottom: 5px;
-    padding: 20px 60px;
+    padding: 20px 40px;
+
+  }
+  .secao_dash #caixa{
+    flex-direction: column;
+    width: 100%;
   }
 
-  .secao_dash #caixa, .secao_dash2 #caixa2{
-    width: 98vw;
-    padding: 50px;
-   
+   .secao_dash2 #caixa2{
+    padding: 20px;
+    width: 100%;
   }
  
 }

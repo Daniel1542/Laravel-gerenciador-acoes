@@ -41,6 +41,7 @@
           <li><a class="dropdown-item" href="{{ route('lista.index')}}">Mostrar ativos</a></li>
           <li><a class="dropdown-item" href="{{ route('imposto.index')}}">Imposto de renda</a></li>
           <li><a class="dropdown-item" href="{{ route('movimento.index')}}">Movimentações</a></li>
+          <li><a class="dropdown-item" href="{{ route('logout')}}">Sair</a></li>
         </ul>    
       </div>
     </div>
@@ -69,6 +70,9 @@
         <li><a class="dropdown-item" href="{{ route('movimento.index')}}">Movimentações</a></li>
       </ul>    
     </div>
+    <div class="d-none d-lg-block">
+      <a class="btn btn-secondary" href="{{ route('logout') }}">Sair</a>
+    </div>  
   </header>
   <main>
     @if (session('msg'))

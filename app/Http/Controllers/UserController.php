@@ -9,8 +9,7 @@ class UserController extends Controller
 {
     public function index()
     {
-        $usu = User::all();
-        return view('welcome', compact('usu'));
+        return view('welcome');
     }
     /* cadastro*/
     public function create()
@@ -23,11 +22,6 @@ class UserController extends Controller
             'email' => 'required|email|unique:users',
             'password' => 'required|string|min:6|regex:/^(?=.*[a-zA-Z])(?=.*\d)/',
         ]);
-
-        if (strlen($credenciais['password']) < 6) {
-            // Usuário não atende aos requisitos mínimos
-            return redirect()->back()->with('msg', 'Erro: O nome e a senha devem ter pelo menos 6 caracteres.');
-        }
 
         $user = new User();
         $user->email = $request->email;

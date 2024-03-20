@@ -19,7 +19,7 @@ Route::resource('dashboard', DashboardController::class);
 
 /*dashboard*/
 
-Route::get('/dashboard', [DashboardController::class, 'dash'])->name('principal.dashboard');
+Route::get('/dashboard', [DashboardController::class, 'dash'])->name('principal.dashboard')->middleware('auth');
 Route::get('/graficoAcoes', [DashboardController::class, 'graficoAcoes'])->name('principal.graficoAcoes');
 Route::get('/graficoFiis', [DashboardController::class, 'graficoFiis'])->name('principal.graficoFiis');
 Route::get('/graficoTotal', [DashboardController::class, 'graficoTotal'])->name('principal.graficoTotal');
@@ -31,26 +31,28 @@ Route::get('/opcoes-move', [MovimentoAtivosController::class, 'opcoesmove'])->na
 
 /*ativos*/
 
-Route::get('/ativos/show', [AtivosController::class, 'show'])->name('ativos.show');
-
-Route::get('/ativos/{id}/edit', [AtivosController::class, 'edit'])->name('ativos.edit');
-Route::delete('/ativos/{id}', [AtivosController::class, 'destroy'])->name('ativos.destroy');
+Route::get('/ativos/show', [AtivosController::class, 'show'])->name('ativos.show')->middleware('auth');
+Route::get('/ativos/{id}/edit', [AtivosController::class, 'edit'])->name('ativos.edit')->middleware('auth');
+Route::delete('/ativos/{id}', [AtivosController::class, 'destroy'])->name('ativos.destroy')->middleware('auth');
 
 /*busca*/
 
 Route::get('/buscar-ativos', [AtivosController::class, 'buscarativos']);
 
 /*PDF*/
-Route::get('/export-MovimentoAtivosPdf/{data_ini}/{data_fi}/{tip}', [MovimentoAtivosController::class, 'exportMovimentoAtivosPdf'])->name('movimento.exportMovimentoAtivosPdf');
-Route::get('/export-IrPdf/{data_ini}/{data_fi}/{tip}', [ImpostoRendaController::class, 'exportIrpdfPdf'])->name('imposto.exportIrpdfPdf');
+Route::get('/export-MovimentoAtivosPdf/{data_ini}/{data_fi}/{tip}', [MovimentoAtivosController::class, 'exportMovimentoAtivosPdf'])->name('movimento.exportMovimentoAtivosPdf')->middleware('auth');
+Route::get('/export-IrPdf/{data_ini}/{data_fi}/{tip}', [ImpostoRendaController::class, 'exportIrpdfPdf'])->name('imposto.exportIrpdfPdf')->middleware('auth');
 
 /*Excel*/
 
-Route::get('/export-movimentos/{data_ini}/{data_fi}/{tip}', [MovimentoAtivosController::class, 'exportMovimentoAtivos'])->name('movimento.exportMovimentoAtivos');
-Route::get('/exportAtivos/{data_ini}/{data_fi}/{tip}', [ImpostoRendaController::class, 'exportAtivos'])->name('imposto.exportAtivos');
+Route::get('/export-movimentos/{data_ini}/{data_fi}/{tip}', [MovimentoAtivosController::class, 'exportMovimentoAtivos'])->name('movimento.exportMovimentoAtivos')->middleware('auth');
+Route::get('/exportAtivos/{data_ini}/{data_fi}/{tip}', [ImpostoRendaController::class, 'exportAtivos'])->name('imposto.exportAtivos')->middleware('auth');
 
 /*User*/
 
 Route::get('/cadastro', [UserController::class, 'create'])->name('user.create');
 Route::post('/auth', [LoginController::class, 'auth'])->name('auth');
+Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 Route::get('/', [UserController::class, 'index'])->name('user.index');
+
+
