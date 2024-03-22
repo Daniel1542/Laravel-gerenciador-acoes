@@ -7,6 +7,7 @@ use App\Models\MovimentoAtivos;
 
 class ListaAtivosController extends Controller
 {
+
     public function index()
     {
         $movimentosAcoes = MovimentoAtivos::where('tipo', 'acao')->whereIn('movimento', ['compra', 'venda'])->get();

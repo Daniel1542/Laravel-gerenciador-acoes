@@ -74,8 +74,8 @@
               <td> {{ $acao['nome'] }}</td>
               <td> {{ $acao['movimento'] }}</td> 
               <td> {{ $acao['quantidade'] }}</td>         
-              <td> {{ $acao['valor'] }} R$</td>
-              <td> {{ $acao['corretagem'] }} R$</td> 
+              <td> R$ {{ $acao['valor'] }}</td>
+              <td> R$ {{ $acao['corretagem'] }}</td> 
               <td> {{ $acao['data'] }}</td>     
               <td class="buttons">
                 <form action="{{ route('ativos.edit', ['id' => $acao['id']]) }}" method="GET" style="display: inline;">
@@ -118,8 +118,8 @@
             <td> {{ $fii['nome'] }}</td>
             <td> {{ $fii['movimento'] }}</td> 
             <td> {{ $fii['quantidade'] }}</td>         
-            <td> {{ $fii['valor'] }} R$</td>
-            <td> {{ $fii['corretagem'] }}R$</td> 
+            <td> R$ {{ $fii['valor'] }}</td>
+            <td> R$ {{ $fii['corretagem'] }}</td> 
             <td> {{ $fii['data'] }}</td>           
             <td class="buttons">       
               <form action="{{ route('ativos.edit', ['id' => $fii['id']]) }}" method="GET" style="display: inline;">

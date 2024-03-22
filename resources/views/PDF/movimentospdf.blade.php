@@ -23,22 +23,19 @@
       width: 100%;
     }
 
-    .secao_ativos .opcoes-a{
-      gap: 10px;
-    }
-
     .secao_ativos .table thead th {
       background-color: rgb(73, 140, 199);
       text-align: center;
       border: 1px solid #dee2e6;
-      padding: 10px;
+      padding: 8px;
+      gap: 10px;
     }
 
     .secao_ativos .table td {
       background-color: rgb(166, 203, 236);
       border: 1px solid #dee2e6;
       text-align: center;
-      padding: 10px;
+      padding: 8px;
     }
     .secao_ativos .fundos{
       margin-top: 50px
@@ -57,23 +54,23 @@
         <table class="table" >
           <thead>
             <tr>
-              <th class="opcoes-a">Nome:</th>   
-              <th class="opcoes-a">Movimento:</th>   
-              <th class="opcoes-a">Quantidade: </th>
-              <th class="opcoes-a">Valor: </th>       
-              <th class="opcoes-a">Corretagem: </th>
-              <th class="opcoes-a">Total: </th>
-              <th class="opcoes-a">Data: </th>             
+              <th>Nome:</th>   
+              <th>Movimento:</th>   
+              <th>Quantidade:</th>
+              <th>Valor:</th>       
+              <th>Corretagem:</th>
+              <th>Total:</th>
+              <th>Data:</th>             
             </tr>
           </thead>
           @foreach($dadosAcoes as $acao)         
             <tr>
               <td> {{ $acao['nome'] }}</td>
               <td> {{ $acao['movimento'] }}</td> 
-              <td> {{ $acao['quantidade']}}</td>         
-              <td> {{ $acao['valor'] }} R$</td>
-              <td> {{ $acao['corretagem'] }} R$</td> 
-              <td> {{ $acao['valortotal'] }} R$ </td> 
+              <td> {{ $acao['quantidade'] }}</td>         
+              <td> R$ {{ $acao['valor'] }}</td>
+              <td> R$ {{ $acao['corretagem'] }}</td> 
+              <td> R$ {{ $acao['valortotal'] }}</td> 
               <td> {{ $acao['data']}}</td>                              
             </tr> 
           @endforeach    
@@ -84,13 +81,13 @@
         <table class="table" >
           <thead>
             <tr>
-              <th class="opcoes-a">Nome:</th>   
-              <th class="opcoes-a">Movimento:</th>   
-              <th class="opcoes-a">Quantidade: </th>
-              <th class="opcoes-a">Valor: </th>       
-              <th class="opcoes-a">Corretagem: </th>
-              <th class="opcoes-a">Total: </th>
-              <th class="opcoes-a">Data: </th>             
+              <th>Nome:</th>   
+              <th>Movimento:</th>   
+              <th>Quantidade:</th>
+              <th>Valor:</th>       
+              <th>Corretagem:</th>
+              <th>Total:</th>
+              <th>Data:</th>             
             </tr>
           </thead>
           @foreach($dadosFiis as $acao)         
@@ -98,9 +95,9 @@
               <td> {{ $acao['nome'] }}</td>
               <td> {{ $acao['movimento'] }}</td> 
               <td> {{ $acao['quantidade']}}</td>         
-              <td> {{ $acao['valor'] }} R$</td>
-              <td> {{ $acao['corretagem'] }} R$</td> 
-              <td> {{ $acao['valortotal'] }} R$ </td> 
+              <td> R$ {{ $acao['valor'] }}</td>
+              <td> R$ {{ $acao['corretagem'] }}</td> 
+              <td> R$ {{ $acao['valortotal'] }}</td> 
               <td> {{ $acao['data']}}</td>                           
             </tr> 
           @endforeach    

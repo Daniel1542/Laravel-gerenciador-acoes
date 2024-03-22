@@ -23,7 +23,6 @@ class AtivosExport implements FromCollection, WithHeadings
     {
         return [
             'Nome',
-            'Data',
             'Quant Compra',
             'Quant Venda',
             'Quantidade total',
