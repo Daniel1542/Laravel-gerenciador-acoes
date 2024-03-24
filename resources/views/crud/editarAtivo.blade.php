@@ -4,12 +4,12 @@
 
 <section class='secao_acoes'>
   <div class="container" id="cima">
-    <div class="row justify-content-left">
-      <div class="col-md-6 text-left">
+    <div class="row justify-content-center">
+      <div class="col-md-6 text-center">
           <h1 class="mt-4">Editar</h1>
       </div>
     </div>
-    <!-- Formulário de Cadastro -->
+    <!-- Formulário de Editação -->
     <div class="container" id="caixa">
       <form action="{{ route('ativos.update', $ativos->id) }}" method="POST" enctype="multipart/form-data">
         {{ csrf_field() }}
@@ -48,7 +48,7 @@
           <label for="valor">Valor:</label>
           <input type="number" step="0.01" id="valor" name="valor" value="{{ $ativos->valor }}" required>
         </div>
-        <div class="form-group" style="margin-top: 15px;">
+        <div class="form-group mt-2">
           <button type="submit" class="btn btn-primary">Editar</button>
         </div>  
       </form>

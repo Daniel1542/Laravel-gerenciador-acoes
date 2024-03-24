@@ -6,7 +6,7 @@
   <div class="container" id="caixa">
     <div class="row justify-content-center">
       <div class="col-md-6 text-center">
-        <h1 class="mt-2" style="margin-bottom:20px;">Ativos</h1>
+        <h1 class="mt-2 mb-2">Ativos</h1>
       </div>
     </div>
     <div class="table-responsive">
@@ -21,18 +21,18 @@
             <th>Data: </th>        
           </tr>
         </thead>
-        @foreach($dadosAtivos as $acao)
-          <tbody>
+        <tbody>
+          @foreach($dadosAtivos as $acao)
             <tr>
               <td> {{ $acao['nome'] }}</td>
               <td> {{ $acao['movimento'] }}</td> 
               <td> {{ $acao['quantidade']}}</td>         
-              <td> {{ $acao['valor'] }}</td>
-              <td> {{ $acao['corretagem'] }}</td> 
+              <td>R$ {{ number_format($acao['valor'], 2) }}</td>
+              <td>R$ {{ number_format($acao['corretagem'], 2) }}</td>
               <td> {{ $acao['data']}}</td>                     
             </tr> 
-          </tbody>         
-        @endforeach    
+          @endforeach    
+        </tbody>         
       </table>
     </div>
   </div>

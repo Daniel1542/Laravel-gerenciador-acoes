@@ -52,7 +52,7 @@
   <div class="container" id="caixa">
     <div class="row justify-content-center">
       <div class="col-md-6 text-center">
-        <h1 class="mt-2" style="margin-bottom:20px;">Ações</h1>
+        <h1 class="mt-2 mb-2">Ações</h1>
       </div>
     </div>
     <div class="table-responsive">
@@ -60,11 +60,11 @@
         <thead>
           <tr>   
             <th>Ação:</th>
-            <th>Movimento</th>   
-            <th>Quantidade: </th>
-            <th>Valor: </th>       
-            <th>Corretagem: </th>
-            <th>Data: </th>   
+            <th>Movimento:</th>   
+            <th>Quantidade:</th>
+            <th>Valor investido:</th>       
+            <th>Corretagem:</th>
+            <th>Data:</th>   
             <th>Opções</th>         
           </tr>
         </thead>
@@ -74,8 +74,8 @@
               <td> {{ $acao['nome'] }}</td>
               <td> {{ $acao['movimento'] }}</td> 
               <td> {{ $acao['quantidade'] }}</td>         
-              <td> R$ {{ $acao['valor'] }}</td>
-              <td> R$ {{ $acao['corretagem'] }}</td> 
+              <td>R$ {{ number_format($acao['valor'], 2) }}</td>
+              <td>R$ {{ number_format($acao['corretagem'], 2) }}</td>
               <td> {{ $acao['data'] }}</td>     
               <td class="buttons">
                 <form action="{{ route('ativos.edit', ['id' => $acao['id']]) }}" method="GET" style="display: inline;">
@@ -97,7 +97,7 @@
   <div class="container" id="caixa2">
     <div class="row justify-content-center">
       <div class="col-md-6 text-center">
-        <h1 class="mt-2" style="margin-bottom:20px;">Fiis</h1>
+        <h1 class="mt-2 mb-2">Fiis</h1>
       </div>
     </div>
     <div class="table-responsive">
@@ -105,35 +105,37 @@
         <thead>
         <tr>
           <th>Ação:</th>
-          <th>Movimento</th>   
-          <th>Quantidade: </th>
-          <th>Valor: </th>       
-          <th>Corretagem: </th>
-          <th>Data: </th>   
+          <th>Movimento:</th>   
+          <th>Quantidade:</th>
+          <th>Valor investido:</th>       
+          <th>Corretagem:</th>
+          <th>Data:</th>   
           <th>Opções</th>     
         </tr>
         </thead>
-        @foreach($dadosFiis as $fii)      
-          <tr>
-            <td> {{ $fii['nome'] }}</td>
-            <td> {{ $fii['movimento'] }}</td> 
-            <td> {{ $fii['quantidade'] }}</td>         
-            <td> R$ {{ $fii['valor'] }}</td>
-            <td> R$ {{ $fii['corretagem'] }}</td> 
-            <td> {{ $fii['data'] }}</td>           
-            <td class="buttons">       
-              <form action="{{ route('ativos.edit', ['id' => $fii['id']]) }}" method="GET" style="display: inline;">
-                {{ csrf_field() }}
-                <button type="submit" class="btn btn-warning">Editar</button>
-              </form>
-              <form action="{{ route('ativos.destroy', ['id' => $fii['id']]) }}" method="POST" style="display: inline;">
-                {{ csrf_field() }}
-                @method('DELETE')
-                <button type="submit" class="btn btn-danger" onclick="return confirm('Tem certeza que deseja excluir?')">Excluir</button>
-              </form>              
-            </td>                 
-          </tr> 
-        @endforeach    
+        <tbody>
+          @foreach($dadosFiis as $fii) 
+            <tr>
+              <td> {{ $fii['nome'] }}</td>
+              <td> {{ $fii['movimento'] }}</td> 
+              <td> {{ $fii['quantidade'] }}</td>  
+              <td>R$ {{ number_format($fii['valor'], 2) }}</td>
+              <td>R$ {{ number_format($fii['corretagem'], 2) }}</td>
+              <td> {{ $fii['data'] }}</td>           
+              <td class="buttons">       
+                <form action="{{ route('ativos.edit', ['id' => $fii['id']]) }}" method="GET" style="display: inline;">
+                  {{ csrf_field() }}
+                  <button type="submit" class="btn btn-warning">Editar</button>
+                </form>
+                <form action="{{ route('ativos.destroy', ['id' => $fii['id']]) }}" method="POST" style="display: inline;">
+                  {{ csrf_field() }}
+                  @method('DELETE')
+                  <button type="submit" class="btn btn-danger" onclick="return confirm('Tem certeza que deseja excluir?')">Excluir</button>
+                </form>              
+              </td>                 
+            </tr> 
+          @endforeach    
+        </tbody>   
       </table>
     </div>
   </div>

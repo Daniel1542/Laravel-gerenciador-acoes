@@ -1,15 +1,14 @@
 
 .secao_mostrar{
     padding: 0;
-    margin-top: 100px;
-}
-.secao_mostrar #cima{
-    margin-top: 80px;
+    margin-top: 50px;
 }
 
 .secao_mostrar #caixa {
+    display: flex;
+    flex-direction: column;
     background-color: rgb(196, 110, 104);
-    padding: 50px;
+    padding: 60px;
     margin-top: 100px;
     margin-bottom: 400px;
     border: 1px solid #d3a4a4;
@@ -29,8 +28,7 @@
 .secao_mostrar .table th,
 .secao_mostrar .table td {
     border: 1px solid #dee2e6;
-    gap: 15px;
-    padding: 8px;
+    padding: 5px;
     text-align: center;
 }
 
@@ -40,21 +38,12 @@
     .secao_mostrar #caixa {
         padding: 20px;
         margin-top:200px;
-        width: 100vw;
-    }
-
-    .secao_mostrar tr {
-        display: flex;
-        flex-direction: row;
-    }
-    .secao_mostrar .table {
-        width: auto;
-        margin-bottom: 0;
+        width: 99vw;
     }
 
     .secao_mostrar .table th,
     .secao_mostrar .table td {
-        display: block;
+        padding: 10px;
         width: 100%;
         box-sizing: border-box;
     }

@@ -46,18 +46,15 @@
     gap: 10px;
   }
 
-  .secao_movimento .btn-warning{
-    padding: 5px;
-  }
-
-  .secao_movimento .btn-danger{
-    padding: 5px;
+  .secao_movimento .btn-warning, .secao_movimento  .btn-danger{
+    padding: 4px;
+    margin: 5px;
   }
 
   .secao_movimento .table th,
   .secao_movimento .table td {
     border: 1px solid #dee2e6;
-    padding: 5px;
+    padding: 4px;
     text-align: center;
   }
 
@@ -106,6 +103,10 @@
     .secao_movimento .table td {
       width: 100%;   
       box-sizing: border-box;
+    }
+
+    .secao_movimento .btn-warning, .secao_movimento  .btn-danger{
+      margin: 4px;
     }
 
   }

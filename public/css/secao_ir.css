@@ -3,32 +3,27 @@
   padding: 0;
 }
 
-.secao_ir2{
+.secao_ir2 .secao_ir3{
   padding: 0;
   margin-bottom: 100px;
-  margin-top: 10px;
-}
-
-.secao_ir3{
-  padding: 0;
-  margin-bottom: 50px;
   margin-top: 10px;
 }
 
 .secao_ir .container-total{
   display: flex;
   flex-direction: column;
-  justify-content: center;
   text-align: center;
   margin-bottom: 20px;
   margin-top: 150px;
 }
 
+.secao_ir .container{
+  padding: 25px;
+}
+
 .secao_ir .formulario {
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
   border: 1px solid #f1eedc;
   border-radius: 4px;
   padding: 20px;
@@ -44,16 +39,14 @@
   display: flex;
   flex-direction: column;
   background-color: rgb(196, 110, 104);
-  padding: 30px;
+  padding: 50px;
   margin-top: 15px;
   border: 1px solid #d3a4a4;
   border-radius: 5px;
 }
-
-.secao_ir2 .table-responsive, .secao_ir3 .table-responsive {
+.secao_ir2 .div_container,
+.secao_ir3 .div_container{
   overflow-x: auto;
-  -webkit-overflow-scrolling: touch;
-  -ms-overflow-style: -ms-autohiding-scrollbar;
 }
 
 .secao_ir2 .table, 
@@ -62,52 +55,74 @@
   width: 100%;
 }
 
-.secao_ir2 #caixa tr, 
-.secao_ir3 #caixa2 tr {
+.secao_ir2 .table_body, 
+.secao_ir3 .table_body{
   display: flex;
+  flex-direction: column;
+  gap: 1px;
 }
 
-.secao_ir2 #caixa td,
-.secao_ir3 #caixa2 td {
-  width: 100%;
+.secao_ir2 thead tr th,
+.secao_ir3 thead tr th{
   border: 1px solid #c57676;
-  padding: 6px;
+  text-align: center;
+  padding: 5px;
+}
+
+.secao_ir2 tr, 
+.secao_ir3 tr {
+  background-color: rgb(255, 255, 255);
+}
+
+
+.secao_ir2 .tbody tr td,
+.secao_ir3 .tbody tr td {
+  background-color: rgb(255, 255, 255);
+  border: 1px solid #c57676;
+  padding: 5px;
   white-space: nowrap;
 }
 
 @media screen and (max-width: 768px) {
-  
-  .secao_ir .container-total {
-    margin-top: 100px;
-  }
 
-  .secao_ir .formulario {
-    padding: 30px;
-  }
-
-  .secao_ir2 #caixa,
-  .secao_ir3 #caixa2 {
-    padding: 20px;
+  .secao_ir2 #caixa{
+    padding: 10px;
+    width: 99vw;
     margin-top: 20px;
   }
 
-  .secao_ir .container-total {
+  .secao_ir3 #caixa2 {
+    padding: 10px;
+    width: 99vw;
+    margin-top: 50px;
+  }
+
+  .secao_ir .container-total{
+    justify-content: center;
+    gap: 15px;
+    margin: auto;
+    margin-bottom: 50px;
     margin-top: 130px;
+  }
+  .secao_ir .container {
+    width: 99vw;
+    padding: 5px;
   }
 
   .secao_ir .formulario {
-    padding: 15px;
+    padding: 10px;
   }
 
-  .secao_ir2 .table-responsive,
-  .secao_ir3 .table-responsive {
-    display: block;
+  .secao_ir2 thead tr th,
+  .secao_ir3 thead tr th{
+    width: 100%;
   }
 
-  .secao_ir2 #caixa td,
-  .secao_ir3 #caixa2 td {
-    display: block;
+  .secao_ir2 .tbody tr td,
+  .secao_ir3 .tbody tr td {
+    width: 100%;
     box-sizing: border-box;
+    margin: auto;
   }
 
 }
