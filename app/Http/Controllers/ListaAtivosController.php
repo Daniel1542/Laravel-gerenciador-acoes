@@ -2,11 +2,43 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Models\MovimentoAtivos;
 
 class ListaAtivosController extends Controller
 {
+    function mostrarTudo($movimento){
+
+        foreach ($movimento as $nome => $movimentos) {
+            $compras = $movimentos->where('movimento', 'compra');
+            $vendas = $movimentos->where('movimento', 'venda');
+
+            $quantidadeCompra = $compras->sum('quantidade');
+            $quantidadeVenda = $vendas->sum('quantidade');
+
+            $valorCompra = $compras->sum('valortotal');
+            $valorVenda = $vendas->sum('valortotal');
+
+            $valorCompleto =  $valorCompra - $valorVenda;
+
+            $quantidadeTotal = $quantidadeCompra - $quantidadeVenda;
+
+            if ($quantidadeTotal != 0) {
+                $porcentagem = $valorCompleto / $quantidadeTotal;
+            } else {
+                $porcentagem = 0; 
+            }
+
+            $dados[] = [
+                'nome' => $nome,
+                'quantidadeTotal' => $quantidadeTotal,
+                'precoMedio'  =>  $valorCompra / $quantidadeCompra,
+                'valorTotal'  =>  $valorCompleto,
+                'porcentagem'  =>  $porcentagem,
+            ];
+        }
+        return $dados;
+
+    }
 
     public function index()
     {
@@ -16,52 +48,9 @@ class ListaAtivosController extends Controller
         $movimentosFiis = MovimentoAtivos::where('tipo', 'fundo imobiliario')->whereIn('movimento', ['compra', 'venda'])->get();
         $dadosfiis = [];
 
-        $movimentosAcoesAgrupados = $movimentosAcoes->groupBy('nome');
-        $movimentosFissAgrupados = $movimentosFiis->groupBy('nome');
+        $dadosAcoes = $this->mostrarTudo($movimentosAcoes->groupBy('nome'));
+        $dadosfiis = $this->mostrarTudo($movimentosFiis->groupBy('nome'));
 
-        foreach ($movimentosAcoesAgrupados as $nome => $movimentos) {
-            $compras = $movimentos->where('movimento', 'compra');
-            $vendas = $movimentos->where('movimento', 'venda');
-
-            $quantidadeCompra = $compras->sum('quantidade');
-            $quantidadeVenda = $vendas->sum('quantidade');
-
-            $valorCompra = $compras->sum('valortotal');
-            $valorVenda = $vendas->sum('valortotal');
-
-            $valorCompleto =  $valorCompra - $valorVenda;
-
-            $quantidadeTotal = $quantidadeCompra - $quantidadeVenda;
-
-            $dadosAcoes[] = [
-                'nome' => $nome,
-                'quantidadeTotal' => $quantidadeTotal,
-                'precoMedio'  =>  $valorCompra / $quantidadeCompra,
-                'valorTotal'  =>  $valorCompleto,
-            ];
-        }
-
-        foreach ($movimentosFissAgrupados as $nome => $movimentos) {
-            $compras = $movimentos->where('movimento', 'compra');
-            $vendas = $movimentos->where('movimento', 'venda');
-
-            $quantidadeCompra = $compras->sum('quantidade');
-            $quantidadeVenda = $vendas->sum('quantidade');
-
-            $valorCompra = $compras->sum('valortotal');
-            $valorVenda = $vendas->sum('valortotal');
-
-            $valorCompleto =  $valorCompra - $valorVenda;
-
-            $quantidadeTotal = $quantidadeCompra - $quantidadeVenda;
-
-            $dadosfiis[] = [
-                'nome' => $nome,
-                'quantidadeTotal' => $quantidadeTotal,
-                'precoMedio'  =>  $valorCompra / $quantidadeCompra,
-                'valorTotal'  =>  $valorCompleto,
-            ];
-        }
         return view('crud.listaativos', compact('dadosAcoes', 'dadosfiis'));
     }
 }

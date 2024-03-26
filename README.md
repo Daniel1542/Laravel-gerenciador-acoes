@@ -24,6 +24,10 @@ Este projeto é um site para auxiliar na declaração de imposto de renda de aç
 
 ![Exemplo de Screenshot](imagens/movimento.png)
 
+![Exemplo de Screenshot](imagens/Diagrama.png)
+
+![Exemplo de Screenshot](imagens/drawSQL.png)
+
 ### Recursos Principais
 
 - Framework Laravel
@@ -42,11 +46,12 @@ Este projeto é um site para auxiliar na declaração de imposto de renda de aç
 ### Instalação
 
 1. Clone o repositório.
-2. Execute `composer install`.
-3. Crie um arquivo `.env`.
-3. Copie o arquivo `.env.example` para `.env` e ajuste as configurações, como a conexão com o banco de dados.
-4. Execute o Laragon para iniciar o banco de dados.
-5. Execute `php artisan migrate --seed` para criar as tabelas no banco de dados com as migrações e sementes, se aplicável.
+2. Execute `composer update`.
+3. Execute `composer install`.
+4. Crie um arquivo `.env`.
+5. Copie o arquivo `.env.example` para `.env` e ajuste as configurações, como a conexão com o banco de dados.
+6. Execute o Laragon para iniciar o banco de dados.
+7. Execute `php artisan migrate --seed` para criar as tabelas no banco de dados com as migrações e sementes, se aplicável.
 
 ### Uso
 

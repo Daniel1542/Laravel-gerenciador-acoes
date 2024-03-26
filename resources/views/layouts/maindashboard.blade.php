@@ -10,6 +10,7 @@
   <link rel="stylesheet" href="/css/secao_ir.css">
   <link rel="stylesheet" href="/css/secao_movimento.css">
   <link rel="stylesheet" href="/css/secao_mostrar.css">
+  <link rel="stylesheet" href="/css/secao_acoes.css">
 
   <!-- Font awesome -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.2/css/fontawesome.min.css" integrity="sha384-BY+fdrpOd3gfeRvTSMT+VUZmA728cfF9Z2G42xpaRkUGu2i3DyzpTURDo5A6CaLK" crossorigin="anonymous">

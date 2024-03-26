@@ -82,21 +82,19 @@ class ImpostoRendaController extends Controller
     
     function opcoes(Request $request){
         $baixar = $request->input('baixar');
-        $data_inicio = $request->input('data_inicio');
-        $data_fim = $request->input('data_fim');
+        $data = $request->input('data');
+      
         $tipo = $request->input('tipo');
         if ( $baixar == 'Excel'){
             return redirect()->route('imposto.exportAtivos', [
-                'data_ini' => $data_inicio,
-                'data_fi' => $data_fim,
+                'data_ini' => $data,
                 'tip' => $tipo,
             ]);
 
         }
         else{
             return redirect()->route('imposto.exportIrpdfPdf', [
-                'data_ini' => $data_inicio,
-                'data_fi' => $data_fim,
+                'data_ini' => $data,
                 'tip' => $tipo,
             ]);
         }
@@ -120,20 +118,19 @@ class ImpostoRendaController extends Controller
 
     /* PDF*/
 
-    public function exportIrpdfPdf($data_ini, $data_fi, $tip)
+    public function exportIrpdfPdf($data_ini, $tip)
     {
         $data_inicio = $data_ini;
-        $data_fim = $data_fi;
         $tipo = $tip;
         $movimentosAcoes = MovimentoAtivos::where('tipo', 'acao')
         ->whereIn('movimento', ['compra', 'venda'])
-        ->whereBetween('data', [$data_inicio, $data_fim])
+        ->whereYear('data', $data_inicio)
         ->get();
         $dadosAtivos = [];
 
         $movimentosFiis = MovimentoAtivos::where('tipo', 'fundo imobiliario')
         ->whereIn('movimento', ['compra', 'venda'])
-        ->whereBetween('data', [$data_inicio, $data_fim])
+        ->whereYear('data', $data_inicio)
         ->get();
         $dadosfiis = [];
 
@@ -147,14 +144,13 @@ class ImpostoRendaController extends Controller
 
     /* excel*/
 
-    public function exportAtivos($data_ini, $data_fi, $tip)
+    public function exportAtivos($data_ini, $tip)
     {
         $data_inicio = $data_ini;
-        $data_fim = $data_fi;
         $tipo = $tip;
         $movimentosAtivos = MovimentoAtivos::where('tipo', $tipo)
         ->whereIn('movimento', ['compra', 'venda'])
-        ->whereBetween('data', [$data_inicio, $data_fim])
+        ->whereYear('data', $data_inicio)
         ->get();
 
         $dadosAtivos = [];

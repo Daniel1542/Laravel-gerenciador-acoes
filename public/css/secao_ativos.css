@@ -52,7 +52,6 @@
   }
 
   .secao_ativos tr, .secao_ativos2 tr {
-    display: flex;
     flex-direction: row;
   }
 

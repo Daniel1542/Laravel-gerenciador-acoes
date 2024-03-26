@@ -18,7 +18,14 @@
 }
 
 .secao_ir .container{
-  padding: 25px;
+  margin-top: 10px;
+  padding: 0;
+}
+.secao_ir .container2{
+  display: flex;
+  flex-direction: column;
+  margin-top: 10px;
+  padding: 0;
 }
 
 .secao_ir .formulario {
@@ -27,6 +34,12 @@
   border: 1px solid #f1eedc;
   border-radius: 4px;
   padding: 20px;
+  gap: 10px;
+}
+.secao_ir .formulario2 {
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
   gap: 10px;
 }
 
@@ -87,25 +100,23 @@
 
   .secao_ir2 #caixa{
     padding: 10px;
-    width: 99vw;
+    width: 98vw;
     margin-top: 20px;
   }
 
   .secao_ir3 #caixa2 {
     padding: 10px;
-    width: 99vw;
+    width: 98vw;
     margin-top: 50px;
   }
 
   .secao_ir .container-total{
     justify-content: center;
     gap: 15px;
-    margin: auto;
     margin-bottom: 50px;
     margin-top: 130px;
   }
   .secao_ir .container {
-    width: 99vw;
     padding: 5px;
   }
 

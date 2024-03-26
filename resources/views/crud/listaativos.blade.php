@@ -10,9 +10,10 @@
         <thead>
           <tr>
             <th>Ação:</th>
-            <th>Quantidade: </th>
-            <th>Preço Médio: </th>     
-            <th>Total: </th>            
+            <th>Quantidade:</th>
+            <th>Preço Médio:</th>     
+            <th>Total:</th>
+            <th>Porcentagem:</th>                 
           </tr>
         </thead>
         <tbody>
@@ -22,7 +23,8 @@
                 <td> {{ $acao['nome'] }}</td>
                 <td> {{ $acao['quantidadeTotal'] }}</td> 
                 <td> R$ {{ number_format($acao['precoMedio'], 2) }}</td>
-                <td> R$ {{ number_format ($acao['valorTotal'], 2) }}</td>                                     
+                <td> R$ {{ number_format ($acao['valorTotal'], 2) }}</td>
+                <td> {{ number_format ($acao['porcentagem'], 2) }} %</td>     
               </tr> 
             @endif
           @endforeach   
@@ -38,10 +40,11 @@
       <table class="table">
         <thead>
           <tr>
-            <th>Fundos imobiliarios:</th>
-            <th>Quantidade: </th>
-            <th>Preço Médio: </th>   
-            <th>Total: </th>                              
+            <th>Fundo imobiliário:</th>
+            <th>Quantidade:</th>
+            <th>Preço Médio:</th>   
+            <th>Total:</th>    
+            <th>Porcentagem:</th>                                          
           </tr>
         </thead>
         <tbody>
@@ -51,7 +54,8 @@
                 <td> {{ $fii['nome'] }}</td>           
                 <td> {{ $fii['quantidadeTotal'] }}</td> 
                 <td> R$ {{ number_format ($fii['precoMedio'], 2) }}</td>    
-                <td> R$ {{ number_format ($fii['valorTotal'], 2) }}</td>                            
+                <td> R$ {{ number_format ($fii['valorTotal'], 2) }}</td>     
+                <td> {{ number_format ($fii['porcentagem'], 2) }} %</td>     
               </tr> 
             @endif
           @endforeach    

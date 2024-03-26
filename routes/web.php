@@ -41,12 +41,12 @@ Route::get('/buscar-ativos', [AtivosController::class, 'buscarativos']);
 
 /*PDF*/
 Route::get('/export-MovimentoAtivosPdf/{data_ini}/{data_fi}/{tip}', [MovimentoAtivosController::class, 'exportMovimentoAtivosPdf'])->name('movimento.exportMovimentoAtivosPdf')->middleware('auth');
-Route::get('/export-IrPdf/{data_ini}/{data_fi}/{tip}', [ImpostoRendaController::class, 'exportIrpdfPdf'])->name('imposto.exportIrpdfPdf')->middleware('auth');
+Route::get('/export-IrPdf/{data_ini}/{tip}', [ImpostoRendaController::class, 'exportIrpdfPdf'])->name('imposto.exportIrpdfPdf')->middleware('auth');
 
 /*Excel*/
 
 Route::get('/export-movimentos/{data_ini}/{data_fi}/{tip}', [MovimentoAtivosController::class, 'exportMovimentoAtivos'])->name('movimento.exportMovimentoAtivos')->middleware('auth');
-Route::get('/exportAtivos/{data_ini}/{data_fi}/{tip}', [ImpostoRendaController::class, 'exportAtivos'])->name('imposto.exportAtivos')->middleware('auth');
+Route::get('/exportAtivos/{data_ini}/{tip}', [ImpostoRendaController::class, 'exportAtivos'])->name('imposto.exportAtivos')->middleware('auth');
 
 /*User*/
 

@@ -8,23 +8,28 @@
       <div class="container">
         <form class="formulario" action="{{ route('imposto.opcoes') }}" method="GET">
           {{ csrf_field() }}
-          <div class="row mb-4">
-            <div class="col-md-3">
-              <label for="data_inicio" class="form-label">Data Início:</label>
-              <input type="date" class="form-control" id="data_inicio" name="data_inicio" required>
+          <div class="row mb-4 justify-content-center">
+            <div class="col-md-4">
+              <label for="data" class="form-label">Data:</label>
+              <select class="form-select" id="data" name="data" required>
+                <?php
+                $anoAtual = date('Y');
+                $anosParaExibir = 20;
+        
+                for ($i = $anoAtual; $i >= $anoAtual - $anosParaExibir; $i--) {
+                    echo "<option value='$i'>$i</option>";
+                }
+                ?>
+              </select>
             </div>
-            <div class="col-md-3">
-              <label for="data_fim" class="form-label">Data Fim:</label>
-              <input type="date" class="form-control" id="data_fim" name="data_fim" required>
-            </div>
-            <div class="col-md-3">
+            <div class="col-md-4">
               <label for="tipo" class="form-label">Tipo:</label>
               <select class="form-select" id="tipo" name="tipo" required>
                 <option value="acao">Ação</option>
                 <option value="fundo imobiliario">Fundo Imobiliário</option>
               </select>
             </div>
-            <div class="col-md-3">
+            <div class="col-md-4">
               <label for="baixar" class="form-label">Baixar:</label>
               <select class="form-select" id="baixar" name="baixar" required>
                 <option value="PDF">PDF</option>
@@ -35,6 +40,29 @@
           <div class="mb-1">
             <button type="submit" class="btn btn-custom">Baixar</button>
           </div>
+        </form>
+      </div>
+      <div class="container2">
+        <form class="formulario2" action="{{ route('imposto.opcoes') }}" method="GET">
+          {{ csrf_field() }}
+          <div class="row justify-content-center">
+            <div class="col-md-4">
+              <label for="data" class="form-label">Procurar por ano:</label>
+              <select class="form-select" id="data" name="data" required>
+                <?php
+                $anoAtual = date('Y');
+                $anosParaExibir = 20;
+        
+                for ($i = $anoAtual; $i >= $anoAtual - $anosParaExibir; $i--) {
+                    echo "<option value='$i'>$i</option>";
+                }
+                ?>
+              </select>
+            </div>  
+          </div> 
+          <div class="mt-1">
+            <button type="submit" class="btn btn-custom">Buscar</button>
+          </div>            
         </form>
       </div>
     </div>

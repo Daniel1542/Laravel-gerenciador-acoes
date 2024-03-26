@@ -217,5 +217,16 @@ class MovimentoAtivosSeeder extends Seeder
             'valor' => '10',
             'valortotal' => '501.50',
         ]);
+
+        MovimentoAtivos::create([
+            'tipo' => 'fundo imobiliario',
+            'movimento' => 'compra',
+            'nome' => 'vghf11',
+            'data' => '2020-09-15',
+            'corretagem' => '1.70',
+            'quantidade' => '20',
+            'valor' => '12',
+            'valortotal' => '241.70',
+        ]);
     }
 }

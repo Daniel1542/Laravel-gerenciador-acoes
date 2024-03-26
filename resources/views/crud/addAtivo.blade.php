@@ -11,15 +11,15 @@
           <div class="form-group">
             <label for="tipo">Tipo de ativo:</label>
             <select id="tipo" name="tipo" required>
-                <option value="fundo imobiliario">fundo imobiliario</option>
-                <option value="acao">acao</option>
+              <option value="fundo imobiliario">fundo imobiliario</option>
+              <option value="acao">acao</option>
             </select>
           </div>
           <div class="form-group">
             <label for="movimento">Tipo de Operação:</label>
             <select id="movimento" name="movimento" required>
-                <option value="compra">compra</option>
-                <option value="venda">venda</option>
+              <option value="compra">compra</option>
+              <option value="venda">venda</option>
             </select>
           </div>
           <div class="form-group">
