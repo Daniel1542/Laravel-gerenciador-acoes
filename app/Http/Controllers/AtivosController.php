@@ -22,7 +22,6 @@ class AtivosController extends Controller
             'corretagem' => 'required|numeric|gt:-1',
             'quantidade' => 'required|numeric|gt:0',
             'valor' => 'required|numeric|gt:0',
-
         ]);
 
         $ativos = new MovimentoAtivos();
@@ -57,7 +56,6 @@ class AtivosController extends Controller
             'corretagem' => 'required|numeric|gt:-1',
             'quantidade' => 'required|numeric|gt:0',
             'valor' => 'required|numeric|gt:0',
-
         ]);
 
         $movimentos = MovimentoAtivos::findOrFail($id);
@@ -122,7 +120,9 @@ class AtivosController extends Controller
         return view('crud.mostrarAtivo', compact('dadosAtivos'));
     }
 
-    public function buscarativos(Request $request)
+    /*js para sugestão de busca*/
+
+    function buscarAtivos(Request $request)
     {
         $termo = $request->input('termo');
 

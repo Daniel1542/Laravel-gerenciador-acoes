@@ -10,6 +10,8 @@ use Maatwebsite\Excel\Facades\Excel;
 
 class ImpostoRendaController extends Controller
 {
+    /*function pdf e index*/
+
     function calcularMovimentos($movimentos) {
         $dados = [];
     
@@ -38,7 +40,7 @@ class ImpostoRendaController extends Controller
     
         return $dados;
     }
-
+    /*function excel*/
     function calcularMovimentosExcel($movimentosAtivos) {
         $dados = [];
     
@@ -79,6 +81,8 @@ class ImpostoRendaController extends Controller
     
         return $dados;
     }
+
+    /*function baixar excel ou pdf*/
     
     function opcoes(Request $request){
         $baixar = $request->input('baixar');
@@ -100,14 +104,17 @@ class ImpostoRendaController extends Controller
         }
     }
     
-    public function index()
+    public function index(Request $request)
     {
+        $anoSelecionado = $request->input('data');
         $movimentosAcoes = MovimentoAtivos::where('tipo', 'acao')
             ->whereIn('movimento', ['compra', 'venda'])
+            ->whereYear('data', $anoSelecionado)
             ->get();
     
         $movimentosFiis = MovimentoAtivos::where('tipo', 'fundo imobiliario')
             ->whereIn('movimento', ['compra', 'venda'])
+            ->whereYear('data', $anoSelecionado)
             ->get();
     
         $dadosAtivos = $this->calcularMovimentos($movimentosAcoes->groupBy('nome'));

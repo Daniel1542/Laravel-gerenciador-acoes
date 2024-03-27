@@ -35,11 +35,12 @@ Route::get('/ativos/show', [AtivosController::class, 'show'])->name('ativos.show
 Route::get('/ativos/{id}/edit', [AtivosController::class, 'edit'])->name('ativos.edit')->middleware('auth');
 Route::delete('/ativos/{id}', [AtivosController::class, 'destroy'])->name('ativos.destroy')->middleware('auth');
 
-/*busca*/
+/*busca ativos*/
 
-Route::get('/buscar-ativos', [AtivosController::class, 'buscarativos']);
+Route::get('/buscar-ativos', [AtivosController::class, 'buscarAtivos'])->name('ativos.buscarAtivos');
 
 /*PDF*/
+
 Route::get('/export-MovimentoAtivosPdf/{data_ini}/{data_fi}/{tip}', [MovimentoAtivosController::class, 'exportMovimentoAtivosPdf'])->name('movimento.exportMovimentoAtivosPdf')->middleware('auth');
 Route::get('/export-IrPdf/{data_ini}/{tip}', [ImpostoRendaController::class, 'exportIrpdfPdf'])->name('imposto.exportIrpdfPdf')->middleware('auth');
 

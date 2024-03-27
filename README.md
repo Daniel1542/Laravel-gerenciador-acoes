@@ -50,8 +50,9 @@ Este projeto é um site para auxiliar na declaração de imposto de renda de aç
 3. Execute `composer install`.
 4. Crie um arquivo `.env`.
 5. Copie o arquivo `.env.example` para `.env` e ajuste as configurações, como a conexão com o banco de dados.
-6. Execute o Laragon para iniciar o banco de dados.
-7. Execute `php artisan migrate --seed` para criar as tabelas no banco de dados com as migrações e sementes, se aplicável.
+6. Execute `php artisan key:generate`.
+7. Execute o Laragon para iniciar o banco de dados.
+8. Execute `php artisan migrate --seed` para criar as tabelas no banco de dados com as migrações e sementes.
 
 ### Uso
 

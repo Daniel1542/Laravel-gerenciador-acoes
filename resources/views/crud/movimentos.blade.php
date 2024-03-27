@@ -140,6 +140,6 @@
     </div>
   </div>
 </section>
-<script src="js/ajax.js"></script>
+<script src="js/movimento_buscar_ativo.js"></script>
 
 @endsection
