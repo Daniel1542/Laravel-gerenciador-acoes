@@ -70,7 +70,7 @@
               <td> {{ $acao['quantidade'] }}</td>         
               <td> R$ {{ $acao['valor'] }}</td>
               <td> R$ {{ $acao['corretagem'] }}</td> 
-              <td> R$ {{ $acao['valortotal'] }}</td> 
+              <td> R$ {{ $acao['valor_total'] }}</td> 
               <td> {{ $acao['data']}}</td>                              
             </tr> 
           @endforeach    
@@ -97,7 +97,7 @@
               <td> {{ $acao['quantidade']}}</td>         
               <td> R$ {{ $acao['valor'] }}</td>
               <td> R$ {{ $acao['corretagem'] }}</td> 
-              <td> R$ {{ $acao['valortotal'] }}</td> 
+              <td> R$ {{ $acao['valor_total'] }}</td> 
               <td> {{ $acao['data']}}</td>                           
             </tr> 
           @endforeach    

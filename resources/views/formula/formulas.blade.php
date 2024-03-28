@@ -1,10 +1,10 @@
 @extends('layouts.maindashboard')
-@section('title', 'Movimentações')
+@section('title', 'Fórmulas')
 @section('content')
 
 <section class="secao_movimento">
   <div class="container text-center">
-    <h1 class="mt-4 mb-4">Buscar ativo</h1>
+    <h1 class="mt-4 mb-4">Fórmulas</h1>
     <div class="container mb-4">     
       <form class="formulario1" action="{{ route('ativos.show') }}" method="GET">
         {{ csrf_field() }}

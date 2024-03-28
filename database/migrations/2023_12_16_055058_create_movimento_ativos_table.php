@@ -20,7 +20,7 @@ return new class extends Migration
             $table->float('corretagem');
             $table->integer('quantidade');
             $table->float('valor');
-            $table->float('valortotal')->nullable;
+            $table->float('valor_total')->nullable;
             $table->timestamps();
         });
     }

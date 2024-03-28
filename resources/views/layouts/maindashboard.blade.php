@@ -6,11 +6,11 @@
   <link rel="stylesheet" href="/css/app.css">
   <link rel="stylesheet" href="/css/secao_ativos.css">
   <link rel="stylesheet" href="/css/secao_dash.css">
-  <link rel="stylesheet" href="/css/secao_login.css">
   <link rel="stylesheet" href="/css/secao_ir.css">
   <link rel="stylesheet" href="/css/secao_movimento.css">
   <link rel="stylesheet" href="/css/secao_mostrar.css">
   <link rel="stylesheet" href="/css/secao_acoes.css">
+  <link rel="stylesheet" href="/css/formula.css">
 
   <!-- Font awesome -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.2/css/fontawesome.min.css" integrity="sha384-BY+fdrpOd3gfeRvTSMT+VUZmA728cfF9Z2G42xpaRkUGu2i3DyzpTURDo5A6CaLK" crossorigin="anonymous">
@@ -42,6 +42,7 @@
           <li><a class="dropdown-item" href="{{ route('lista.index')}}">Mostrar ativos</a></li>
           <li><a class="dropdown-item" href="{{ route('imposto.index')}}">Imposto de renda</a></li>
           <li><a class="dropdown-item" href="{{ route('movimento.index')}}">Movimentações</a></li>
+          <li><a class="dropdown-item" href="{{ route('formula.index')}}">Fórmulas</a></li>
           <li><a class="dropdown-item" href="{{ route('logout')}}">Sair</a></li>
         </ul>    
       </div>
@@ -53,6 +54,7 @@
       <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
         <li><a class="dropdown-item" href="{{ route('ativos.create')}}">Compra e venda</a></li>
         <li><a class="dropdown-item" href="{{ route('lista.index')}}">Mostrar</a></li>
+        <li><a class="dropdown-item" href="{{ route('formula.index')}}">Fórmulas</a></li>
       </ul>    
     </div>
     <div class="dropdown d-none d-lg-block">

@@ -45,8 +45,8 @@ class DashboardController extends Controller
             $compras = $movimentos->where('movimento', 'compra');
             $vendas = $movimentos->where('movimento', 'venda');
 
-            $valorCompra = $compras->sum('valortotal');
-            $valorVenda = $vendas->sum('valortotal');
+            $valorCompra = $compras->sum('valor_total');
+            $valorVenda = $vendas->sum('valor_total');
 
             $valorCompleto =  $valorCompra - $valorVenda;
 
@@ -84,8 +84,8 @@ class DashboardController extends Controller
             $compras = $movimentos->where('movimento', 'compra');
             $vendas = $movimentos->where('movimento', 'venda');
 
-            $valorCompra = $compras->sum('valortotal');
-            $valorVenda = $vendas->sum('valortotal');
+            $valorCompra = $compras->sum('valor_total');
+            $valorVenda = $vendas->sum('valor_total');
 
             $valorCompleto =  $valorCompra - $valorVenda;
 
@@ -124,8 +124,8 @@ class DashboardController extends Controller
             $compras = $movimentos->where('movimento', 'compra');
             $vendas = $movimentos->where('movimento', 'venda');
     
-            $valorCompra = $compras->sum('valortotal');
-            $valorVenda = $vendas->sum('valortotal');
+            $valorCompra = $compras->sum('valor_total');
+            $valorVenda = $vendas->sum('valor_total');
     
             $valorTotal = $valorCompra - $valorVenda;
     

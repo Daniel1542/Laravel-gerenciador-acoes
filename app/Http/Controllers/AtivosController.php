@@ -17,7 +17,7 @@ class AtivosController extends Controller
         $request->validate([
             'tipo' => 'required|in:fundo imobiliario,acao',
             'movimento' => 'required|in:compra,venda',
-            'nome' => 'required|string|max:6|regex:/^[a-z0-9]+$/',
+            'nome' => 'required|string|max:6|regex:/^[A-Z0-9]+$/',
             'data' => 'required|date|before_or_equal:now',
             'corretagem' => 'required|numeric|gt:-1',
             'quantidade' => 'required|numeric|gt:0',
@@ -33,7 +33,7 @@ class AtivosController extends Controller
         $ativos-> corretagem = $request->corretagem;
         $ativos-> valor = $request->valor;
         $ativos-> data = $request->data;
-        $ativos-> valortotal = ($request->corretagem + ($request->valor * $request->quantidade));
+        $ativos-> valor_total = ($request->corretagem + ($request->valor * $request->quantidade));
 
         $ativos->save();
         
@@ -51,7 +51,7 @@ class AtivosController extends Controller
         $request->validate([
             'tipo' => 'required|in:fundo imobiliario,acao',
             'movimento' => 'required|in:compra,venda',
-            'nome' => 'required|string|max:6|regex:/^[a-z0-9]+$/',
+            'nome' => 'required|string|max:6|regex:/^[A-Z0-9]+$/',
             'data' => 'required|date|before_or_equal:now',
             'corretagem' => 'required|numeric|gt:-1',
             'quantidade' => 'required|numeric|gt:0',
@@ -70,7 +70,7 @@ class AtivosController extends Controller
             'valor',
         ]);
 
-        $dadosAtualizados['valortotal'] = $request->corretagem + ($request->valor * $request->quantidade);
+        $dadosAtualizados['valor_total'] = $request->corretagem + ($request->valor * $request->quantidade);
 
         $movimentos->update($dadosAtualizados);
 
@@ -96,23 +96,23 @@ class AtivosController extends Controller
 
         foreach ($movimentosAcoesAgrupados as $nome => $movimentos) {
             foreach ($movimentos as $movimento) {
-                $nom = $movimento->nome;
-                $tip = $movimento->tipo;
-                $move = $movimento->movimento;
+                $nome = $movimento->nome;
+                $tipo = $movimento->tipo;
+                $movimento = $movimento->movimento;
                 $dataTransacao = Carbon::parse($movimento->data)->format('d/m/Y');
-                $corretage = $movimento->corretagem;
+                $corretagem = $movimento->corretagem;
                 $quantidadeTotal = $movimento->quantidade;
-                $valo = $movimento->valor;
-                $valorFinal = $movimento->valortotal;
+                $valor = $movimento->valor;
+                $valorFinal = $movimento->valor_total;
 
                 $dadosAtivos[] = [
-                    'nome' => $nom,
-                    'tipo' => $tip,
-                    'movimento' => $move,
+                    'nome' => $nome,
+                    'tipo' => $tipo,
+                    'movimento' => $movimento,
                     'data' =>  $dataTransacao,
-                    'corretagem' =>  $corretage,
+                    'corretagem' =>  $corretagem,
                     'quantidade' =>  $quantidadeTotal,
-                    'valor' => $valo,
+                    'valor' => $valor,
                     'valorFinal' => $valorFinal,
                 ];
             }

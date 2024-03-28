@@ -15,8 +15,8 @@ class ListaAtivosController extends Controller
             $quantidadeCompra = $compras->sum('quantidade');
             $quantidadeVenda = $vendas->sum('quantidade');
 
-            $valorCompra = $compras->sum('valortotal');
-            $valorVenda = $vendas->sum('valortotal');
+            $valorCompra = $compras->sum('valor_total');
+            $valorVenda = $vendas->sum('valor_total');
 
             $valorCompleto =  $valorCompra - $valorVenda;
 

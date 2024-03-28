@@ -62,6 +62,6 @@
     </div>
 </section>
 
-<script src="js/graficos.js"></script>
+<script src="js/dash_graficos.js"></script>
   
 @endsection

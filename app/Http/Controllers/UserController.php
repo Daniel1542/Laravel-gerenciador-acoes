@@ -14,7 +14,7 @@ class UserController extends Controller
     /* cadastro*/
     public function create()
     {
-        return view('criacao.cadastro');
+        return view('criacao_usuario.cadastro');
     }
     public function store(Request $request)
     {

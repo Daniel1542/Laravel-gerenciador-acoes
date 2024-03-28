@@ -30,7 +30,7 @@
         </div>
         <div class="form-group">
           <label for="nome">Ativo:</label>
-          <input type="text" id="nome" name="nome"  value="{{ $ativos->nome }}" required>
+          <input type="text" id="nome" name="nome"  value="{{ $ativos->nome }}" oninput="this.value = this.value.toUpperCase()" required>
         </div>
         <div class="form-group">
           <label for="data">Data:</label>

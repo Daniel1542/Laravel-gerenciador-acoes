@@ -10,7 +10,7 @@ use Maatwebsite\Excel\Facades\Excel;
 
 class ImpostoRendaController extends Controller
 {
-    /*function pdf e index*/
+    /*function para fazer pdf e retornar index*/
 
     function calcularMovimentos($movimentos) {
         $dados = [];
@@ -29,11 +29,11 @@ class ImpostoRendaController extends Controller
                 'nome' => $nome,
                 'compra' => [
                     'quantidadeTotal' => $quantidadeTotal,
-                    'total' => $quantidadeCompra > 0 ? $compras->sum('valortotal') : 0,
+                    'total' => $quantidadeCompra > 0 ? $compras->sum('valor_total') : 0,
                 ],
                 'venda' => [
                     'quantidadeTotal' => $quantidadeVenda,
-                    'total' => $quantidadeVenda > 0 ? $vendas->sum('valortotal') : 0,
+                    'total' => $quantidadeVenda > 0 ? $vendas->sum('valor_total') : 0,
                 ],
             ];
         }
@@ -54,10 +54,10 @@ class ImpostoRendaController extends Controller
             foreach ($movimentos as $movimento) {
                 if ($movimento->movimento === 'compra') {
                     $quantidadeCompraTotal += $movimento->quantidade;
-                    $valorCompraTotal += $movimento->valortotal;
+                    $valorCompraTotal += $movimento->valor_total;
                 } elseif ($movimento->movimento === 'venda') {
                     $quantidadeVendaTotal += $movimento->quantidade;
-                    $valorVendaTotal += $movimento->valortotal;
+                    $valorVendaTotal += $movimento->valor_total;
                 }
     
                 $corretagemTotal += $movimento->corretagem;

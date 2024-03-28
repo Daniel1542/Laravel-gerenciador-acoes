@@ -24,7 +24,7 @@
           </div>
           <div class="form-group">
             <label for="nome">Ativo:</label>
-            <input type="text" id="nome" name="nome" required>
+            <input type="text" id="nome" name="nome" oninput="this.value = this.value.toUpperCase()" required>
           </div>
           <div class="form-group">
             <label for="data">Data:</label>
