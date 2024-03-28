@@ -2,16 +2,11 @@
     padding: 0;
 }
   
-.secao_acoes #cima{
-    flex-direction: column;
-    margin-top: 120px;
-}
-
 .secao_acoes #caixa {
     background-color: rgb(196, 110, 104);
     padding: 50px;
-    margin-top: 20px;
-    margin-bottom: 100px;
+    margin-top: 150px;
+    margin-bottom: 20px;
     border: 1px solid #d3a4a4;
     border-radius: 6px;
 }

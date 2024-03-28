@@ -30,7 +30,9 @@
 <body class="corpo">
   <header>
     <div class="dropdown">
-      <a class="dropdown-item" href="{{ route('principal.dashboard')}}">Dashboard</a>
+      <a class="dropdown-item" href="{{ route('principal.dashboard')}}">      
+        <img class="logo" src="logo/bear_and_bull.svg" alt="logo">
+      </a> 
     </div>
     <div class="col-lg-3">
       <div class="dropdown d-lg-none">

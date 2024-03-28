@@ -3,9 +3,9 @@
 @section('content')
 
   <section class="secao_acoes">
-    <div class="container" id="cima">
-      <h1 class="text-center">Cadastrar</h1>
+    <div class="container">
       <div class="container" id="caixa">
+        <h1 class="text-center mb-4">Cadastrar</h1>
         <form action="{{ route('ativos.store') }}" method="POST" enctype="multipart/form-data">
           {{ csrf_field() }}
           <div class="form-group">

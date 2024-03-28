@@ -9,7 +9,7 @@
           <h1 class="mt-4">Editar</h1>
       </div>
     </div>
-    <!-- Formulário de Editação -->
+    <!-- Formulário de Edição -->
     <div class="container" id="caixa">
       <form action="{{ route('ativos.update', $ativos->id) }}" method="POST" enctype="multipart/form-data">
         {{ csrf_field() }}
