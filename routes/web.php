@@ -14,9 +14,8 @@ use App\Http\Controllers\FormulasController;
 Route::resource('ativos', AtivosController::class);
 Route::resource('user', UserController::class);
 Route::resource('lista', ListaAtivosController::class);
-Route::resource('imposto', ImpostoRendaController::class);
 Route::resource('movimento', MovimentoAtivosController::class);
-Route::resource('dashboard', DashboardController::class);
+Route::resource('imposto', ImpostoRendaController::class);
 Route::resource('formula', FormulasController::class);
 
 

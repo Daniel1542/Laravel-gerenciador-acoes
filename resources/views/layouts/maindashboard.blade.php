@@ -10,7 +10,7 @@
   <link rel="stylesheet" href="/css/secao_movimento.css">
   <link rel="stylesheet" href="/css/secao_mostrar.css">
   <link rel="stylesheet" href="/css/secao_acoes.css">
-  <link rel="stylesheet" href="/css/formula.css">
+  <link rel="stylesheet" href="/css/secao_formula.css">
 
   <!-- Font awesome -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.2/css/fontawesome.min.css" integrity="sha384-BY+fdrpOd3gfeRvTSMT+VUZmA728cfF9Z2G42xpaRkUGu2i3DyzpTURDo5A6CaLK" crossorigin="anonymous">
@@ -30,9 +30,9 @@
 <body class="corpo">
   <header>
     <div class="dropdown">
-      <a class="dropdown-item" href="{{ route('principal.dashboard')}}">      
+      <a href="{{ route('principal.dashboard') }}">
         <img class="logo" src="logo/bear_and_bull.svg" alt="logo">
-      </a> 
+      </a>
     </div>
     <div class="col-lg-3">
       <div class="dropdown d-lg-none">

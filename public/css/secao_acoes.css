@@ -3,12 +3,13 @@
 }
   
 .secao_acoes #caixa {
+    text-align: center;
     background-color: rgb(196, 110, 104);
-    padding: 50px;
-    margin-top: 150px;
+    padding: 80px;
+    margin-top: 200px;
     margin-bottom: 20px;
     border: 1px solid #d3a4a4;
-    border-radius: 6px;
+    border-radius: 5px;
 }
 
 .secao_acoes .form-group{
@@ -43,5 +44,3 @@
     }
 
 }
-
-

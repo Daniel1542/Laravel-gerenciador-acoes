@@ -2,7 +2,7 @@
 @section('title', 'Fórmulas')
 @section('content')
 
-<section class="secao_movimento">
+<section class="secao_formula">
   <div class="container text-center">
     <h1 class="mt-4 mb-4">Fórmulas</h1>
     <div class="container mb-4">     

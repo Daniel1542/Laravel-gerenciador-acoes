@@ -1,0 +1,112 @@
+.secao_formula{
+    padding: 0;
+    margin-bottom: 50px;
+    margin-top: 100px;
+  }
+
+  .secao_formula .formulario1 {
+    max-width: 400px;
+    margin: auto;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    gap: 15px;
+  }
+  .secao_formula .formulario2 {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .secao_formula .table-responsive {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    -ms-overflow-style: -ms-autohiding-scrollbar;
+  }
+
+  .secao_formula #caixa,  #caixa2 {
+    width: 100%;
+    background-color: rgb(196, 110, 104);
+    padding: 60px ;
+    margin-top: 30px;
+    border: 1px solid #d3a4a4;
+    border-radius: 5px;
+  }
+
+  .secao_formula .table{
+    border-collapse: collapse;
+    width: 100%;
+  }
+
+  .secao_formula .buttons{
+    display: flex;
+    gap: 10px;
+  }
+
+  .secao_formula .btn-warning, .secao_formula  .btn-danger{
+    padding: 4px;
+    margin: 5px;
+  }
+
+  .secao_formula .table th,
+  .secao_formula .table td {
+    border: 1px solid #dee2e6;
+    padding: 4px;
+    text-align: center;
+  }
+
+  .secao_formula .btn-custom {
+    background-color: rgb(98, 245, 106);
+  }
+
+  .secao_formula .autocomplete {
+    position: relative;
+  }
+
+  .secao_formula #Nome {
+      width: 100%;
+      padding: 5px;
+      box-sizing: border-box;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+  }
+
+  .secao_formula #suggestions {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      position: absolute;
+      width: 100%;
+      background-color: #fff;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      border-radius: 4px;
+      z-index: 1;
+  }
+
+  .secao_formula .suggestion {
+      padding: 10px;
+      cursor: pointer;
+  }
+
+  @media screen and (max-width: 768px) {
+
+    .secao_formula #caixa,  #caixa2 {
+      padding: 2px;
+      margin-top:80px;
+      width: 99vw;
+    }
+
+    .secao_formula .table th,
+    .secao_formula .table td {
+      width: 100%;   
+      box-sizing: border-box;
+    }
+
+    .secao_formula .btn-warning, .secao_formula  .btn-danger{
+      margin: 4px;
+    }
+
+  }
