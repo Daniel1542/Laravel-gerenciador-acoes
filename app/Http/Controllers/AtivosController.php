@@ -15,13 +15,13 @@ class AtivosController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'tipo' => 'required|in:fundo imobiliario,acao',
-            'movimento' => 'required|in:compra,venda',
-            'nome' => 'required|string|max:6|regex:/^[A-Z0-9]+$/',
-            'data' => 'required|date|before_or_equal:now',
-            'corretagem' => 'required|numeric|gt:-1',
-            'quantidade' => 'required|numeric|gt:0',
-            'valor' => 'required|numeric|gt:0',
+            'tipo' => 'in:fundo imobiliario,acao',
+            'movimento' => 'in:compra,venda',
+            'nome' => 'string|max:6|regex:/^[A-Z0-9]+$/',
+            'data' => 'date|before_or_equal:now',
+            'corretagem' => 'numeric|gt:-1',
+            'quantidade' => 'numeric|gt:0',
+            'valor' => 'numeric|gt:0',
         ]);
 
         $ativos = new MovimentoAtivos();
@@ -37,7 +37,7 @@ class AtivosController extends Controller
 
         $ativos->save();
         
-        return redirect()->route('principal.dashboard')->with('msg', 'Cadastrado com sucesso.');
+        return redirect()->route('movimento.index')->with('msg', 'Cadastrado com sucesso.');
     }
 
     public function edit(string $id)
@@ -49,13 +49,13 @@ class AtivosController extends Controller
     public function update(Request $request, string $id)
     {
         $request->validate([
-            'tipo' => 'required|in:fundo imobiliario,acao',
-            'movimento' => 'required|in:compra,venda',
-            'nome' => 'required|string|max:6|regex:/^[A-Z0-9]+$/',
-            'data' => 'required|date|before_or_equal:now',
-            'corretagem' => 'required|numeric|gt:-1',
-            'quantidade' => 'required|numeric|gt:0',
-            'valor' => 'required|numeric|gt:0',
+            'tipo' => 'in:fundo imobiliario,acao',
+            'movimento' => 'in:compra,venda',
+            'nome' => 'string|max:6|regex:/^[A-Z0-9]+$/',
+            'data' => 'date|before_or_equal:now',
+            'corretagem' => 'numeric|gt:-1',
+            'quantidade' => 'numeric|gt:0',
+            'valor' => 'numeric|gt:0',
         ]);
 
         $movimentos = MovimentoAtivos::findOrFail($id);
@@ -88,34 +88,23 @@ class AtivosController extends Controller
     public function show(Request $request)
     {
         $nome = $request->input('Nome');
-        $ativo = MovimentoAtivos::where('nome', $nome)->get();
+        $ativos = MovimentoAtivos::where('nome', $nome)->get();
 
         $dadosAtivos = [];
 
-        $movimentosAcoesAgrupados = $ativo->groupBy('nome');
+        $movimentosAcoesAgrupados = $ativos->groupBy('nome');
 
-        foreach ($movimentosAcoesAgrupados as $nome => $movimentos) {
-            foreach ($movimentos as $movimento) {
-                $nome = $movimento->nome;
-                $tipo = $movimento->tipo;
-                $movimento = $movimento->movimento;
-                $dataTransacao = Carbon::parse($movimento->data)->format('d/m/Y');
-                $corretagem = $movimento->corretagem;
-                $quantidadeTotal = $movimento->quantidade;
-                $valor = $movimento->valor;
-                $valorFinal = $movimento->valor_total;
-
-                $dadosAtivos[] = [
-                    'nome' => $nome,
-                    'tipo' => $tipo,
-                    'movimento' => $movimento,
-                    'data' =>  $dataTransacao,
-                    'corretagem' =>  $corretagem,
-                    'quantidade' =>  $quantidadeTotal,
-                    'valor' => $valor,
-                    'valorFinal' => $valorFinal,
-                ];
-            }
+        foreach ($ativos as $ativo) {
+            $dadosAtivos[] = [
+                'nome' => $ativo->nome,
+                'tipo' => $ativo->tipo,
+                'movimento' => $ativo->movimento,
+                'data' => Carbon::parse($ativo->data)->format('d/m/Y'),
+                'corretagem' => $ativo->corretagem,
+                'quantidade' => $ativo->quantidade,
+                'valor' => $ativo->valor,
+                'valorFinal' => $ativo->valor_total,
+            ];
         }
         return view('crud.mostrarAtivo', compact('dadosAtivos'));
     }

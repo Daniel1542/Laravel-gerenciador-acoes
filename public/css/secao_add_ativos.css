@@ -1,43 +1,41 @@
-.secao_acoes{
+.secao_add_ativos{
+    margin-top: 250px;
     padding: 0;
 }
   
-.secao_acoes #caixa {
-    text-align: center;
+.secao_add_ativos #caixa {
     background-color: rgb(196, 110, 104);
     padding: 80px;
-    margin-top: 200px;
-    margin-bottom: 20px;
     border: 1px solid #d3a4a4;
     border-radius: 5px;
 }
 
-.secao_acoes .form-group{
+.secao_add_ativos .form-group{
     margin: 5px;
     gap: 5px;
 }
 
-.secao_acoes .btn-primary{
+.secao_add_ativos .btn-primary{
     margin-top: 15px;
 }
 
 @media screen and (max-width: 768px) {
     
-    .secao_acoes{
+    .secao_add_ativos{
         width: 98vw;
     }
     
-    .secao_acoes .form-group{
+    .secao_add_ativos .form-group{
         margin: 10px;
         gap: 10px;
         text-align: center;
     }
 
-    .secao_acoes select, .secao_acoes input{
+    .secao_add_ativos select, .secao_add_ativos input{
         text-align: center;
     }
 
-    .secao_acoes #caixa {
+    .secao_add_ativos #caixa {
         width: 100%;
         padding: 20px;
         margin-bottom: 50px;

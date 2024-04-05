@@ -13,29 +13,31 @@ class MovimentoAtivosController extends Controller
 {
     function MovimentosIndex($ativos){
         $dados=[];
-        foreach ($ativos as $nome => $movimentos) {
-            foreach ($movimentos as $movimentoAtivo) {
-                $dados[] = [
-                    'id' => $movimentoAtivo['id'],
-                    'nome' => $movimentoAtivo['nome'],
-                    'quantidade' => $movimentoAtivo['quantidade'],
-                    'valor' => $movimentoAtivo['valor'],
-                    'movimento' => $movimentoAtivo['movimento'],
-                    'corretagem' => $movimentoAtivo['corretagem'],
-                    'data' => Carbon::parse($movimentoAtivo['data'])->format('d/m/Y'),
-                ];
-            }
+        foreach ($ativos as $movimentoAtivo) { 
+            $dados[] = [
+                'id' => $movimentoAtivo['id'],
+                'nome' => $movimentoAtivo['nome'],
+                'quantidade' => $movimentoAtivo['quantidade'],
+                'valor' => $movimentoAtivo['valor'],
+                'movimento' => $movimentoAtivo['movimento'],
+                'corretagem' => $movimentoAtivo['corretagem'],
+                'data' => Carbon::parse($movimentoAtivo['data'])->format('d/m/Y'),
+            ];
         }
         return $dados;
     }
     
     public function index()
     {
-        $Acoes = MovimentoAtivos::where('tipo', 'acao')->get();
-        $Fiis = MovimentoAtivos::where('tipo', 'fundo imobiliario')->get();
+        $Acoes = MovimentoAtivos::where('tipo', 'acao')
+        ->orderBy('data') 
+        ->get();
+        $Fiis = MovimentoAtivos::where('tipo', 'fundo imobiliario')
+        ->orderBy('data') 
+        ->get();
     
-        $dadosAcoes = $this->MovimentosIndex($Acoes->groupBy('nome')->toArray());
-        $dadosFiis = $this->MovimentosIndex($Fiis->groupBy('nome')->toArray());
+        $dadosAcoes = $this->MovimentosIndex($Acoes->toArray());
+        $dadosFiis = $this->MovimentosIndex($Fiis->toArray());
     
         return view('crud.movimentos', compact('dadosAcoes', 'dadosFiis'));
     }
@@ -75,34 +77,31 @@ class MovimentoAtivosController extends Controller
         $tipo = $tip;
         $movimentosAcoes = MovimentoAtivos::where('tipo', $tipo)
         ->whereBetween('data', [$data_inicio, $data_fim])
+        ->orderBy('data') 
         ->get();
 
         $dadosAtivos = [];
 
-        $movimentosAcoesAgrupados = $movimentosAcoes->groupBy('nome');
-
-        foreach ($movimentosAcoesAgrupados as $nome => $movimentos) {
-            foreach ($movimentos as $movimento) {
-                $nome = $movimento->nome;
-                $tipo = $movimento->tipo;
-                $move = $movimento->movimento;
-                $dataTransacao = Carbon::parse($movimento->data)->format('d/m/Y');
-                $corretagem = $movimento->corretagem;
-                $quantidadeTotal = $movimento->quantidade;
-                $valor = $movimento->valor;
-                $valorFinal = $movimento->valor_total;
-
-                $dadosAtivos[] = [
-                    'nome' => $nome,
-                    'tipo' => $tipo,
-                    'movimento' => $move,
-                    'data' =>  $dataTransacao,
-                    'corretagem' =>  $corretagem > 0 ? 'R$ ' . number_format(($corretage), 2, ',', '.') : 'R$ 0,00',
-                    'quantidade' =>  $quantidadeTotal > 0 ? $quantidadeTotal : '0',
-                    'valor' => $valor > 0 ?  'R$ ' . number_format(($valo), 2, ',', '.') : 'R$ 0,00',
-                    'valorFinal' => $valorFinal > 0 ? 'R$ ' . number_format(($valorFinal), 2, ',', '.') : 'R$ 0,00',
-                ];
-            }
+        foreach ($movimentosAcoes as $movimento) {
+            $nome = $movimento->nome;
+            $tipo = $movimento->tipo;
+            $move = $movimento->movimento;
+            $dataTransacao = Carbon::parse($movimento->data)->format('d/m/Y');
+            $corretagem = $movimento->corretagem;
+            $quantidadeTotal = $movimento->quantidade;
+            $valor = $movimento->valor;
+            $valorFinal = $movimento->valor_total;
+    
+            $dadosAtivos[] = [
+                'nome' => $nome,
+                'tipo' => $tipo,
+                'movimento' => $move,
+                'data' =>  $dataTransacao,
+                'corretagem' =>  $corretagem > 0 ? 'R$ ' . number_format(($corretagem), 2, ',', '.') : 'R$ 0,00',
+                'quantidade' =>  $quantidadeTotal > 0 ? $quantidadeTotal : '0',
+                'valor' => $valor > 0 ?  'R$ ' . number_format(($valor), 2, ',', '.') : 'R$ 0,00',
+                'valorFinal' => $valorFinal > 0 ? 'R$ ' . number_format(($valorFinal), 2, ',', '.') : 'R$ 0,00',
+            ];
         }
 
         if ($tipo == "fundo imobiliario") {
@@ -120,13 +119,20 @@ class MovimentoAtivosController extends Controller
         $data_inicio = $data_ini;
         $data_fim = $data_fi;
         $tipo = $tip;
+
+
         $Acoes = MovimentoAtivos::where('tipo', 'acao')
         ->whereBetween('data', [$data_inicio, $data_fim])
+        ->orderBy('data') 
         ->get();
+
         $dadosAcoes = [];
+
         $Fiis = MovimentoAtivos::where('tipo', 'fundo imobiliario')
         ->whereBetween('data', [$data_inicio, $data_fim])
+        ->orderBy('data') 
         ->get();
+
         $dadosFiis = [];
 
         foreach ($Acoes as $movimentoacao) {
@@ -141,7 +147,7 @@ class MovimentoAtivosController extends Controller
                 'data' => Carbon::parse($movimentoacao->data)->format('d/m/Y'),
             ];
         }
-
+    
         foreach ($Fiis as $movimentofii) {
             $dadosFiis[] = [
                 'id' => $movimentofii->id,

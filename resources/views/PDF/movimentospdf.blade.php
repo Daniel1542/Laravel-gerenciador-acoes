@@ -90,15 +90,15 @@
               <th>Data:</th>             
             </tr>
           </thead>
-          @foreach($dadosFiis as $acao)         
+          @foreach($dadosFiis as $fiis)         
             <tr>
-              <td> {{ $acao['nome'] }}</td>
-              <td> {{ $acao['movimento'] }}</td> 
-              <td> {{ $acao['quantidade']}}</td>         
-              <td> R$ {{ $acao['valor'] }}</td>
-              <td> R$ {{ $acao['corretagem'] }}</td> 
-              <td> R$ {{ $acao['valor_total'] }}</td> 
-              <td> {{ $acao['data']}}</td>                           
+              <td> {{ $fiis['nome'] }}</td>
+              <td> {{ $fiis['movimento'] }}</td> 
+              <td> {{ $fiis['quantidade']}}</td>         
+              <td> R$ {{ $fiis['valor'] }}</td>
+              <td> R$ {{ $fiis['corretagem'] }}</td> 
+              <td> R$ {{ $fiis['valor_total'] }}</td> 
+              <td> {{ $fiis['data']}}</td>                           
             </tr> 
           @endforeach    
         </table>

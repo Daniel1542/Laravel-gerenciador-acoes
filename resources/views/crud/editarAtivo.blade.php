@@ -2,7 +2,7 @@
 @section('title','Editar')
 @section('content')
 
-<section class='secao_acoes'>
+<section class='secao_add_ativos'>
   <div class="container" id="caixa">
     <h1 class="mt-1">Editar</h1>
     <form action="{{ route('ativos.update', $ativos->id) }}" method="POST" enctype="multipart/form-data">

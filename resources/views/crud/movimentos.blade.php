@@ -44,7 +44,7 @@
           </div>
         </div>
         <div class="mb-1">
-          <button type="submit" class="btn btn-custom">Baixar Excel</button>
+          <button type="submit" class="btn btn-custom">Baixar</button>
         </div>
       </form>
     </div>
@@ -104,7 +104,7 @@
       <table class="table" >
         <thead>
         <tr>
-          <th>Ação:</th>
+          <th>Fii:</th>
           <th>Movimento:</th>   
           <th>Quantidade:</th>
           <th>Valor investido:</th>       

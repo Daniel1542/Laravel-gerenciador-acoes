@@ -18,7 +18,7 @@ class MovimentoAtivos extends Model
         'corretagem',
         'quantidade',
         'valor',
-        'valortotal',
+        'valor_total',
     ];
     protected $dates = ['data'];
 }

@@ -22,6 +22,12 @@ class ListaAtivosController extends Controller
 
             $quantidadeTotal = $quantidadeCompra - $quantidadeVenda;
 
+            if ($quantidadeCompra != 0) {
+                $precoMedio = $valorCompra / $quantidadeCompra;
+            } else {
+                $precoMedio = 0;
+            }
+
             if ($quantidadeTotal != 0) {
                 $porcentagem = $valorCompleto / $quantidadeTotal;
             } else {
@@ -31,7 +37,7 @@ class ListaAtivosController extends Controller
             $dados[] = [
                 'nome' => $nome,
                 'quantidadeTotal' => $quantidadeTotal,
-                'precoMedio'  =>  $valorCompra / $quantidadeCompra,
+                'precoMedio'  =>  $precoMedio,
                 'valorTotal'  =>  $valorCompleto,
                 'porcentagem'  =>  $porcentagem,
             ];
@@ -42,13 +48,18 @@ class ListaAtivosController extends Controller
 
     public function index()
     {
-        $movimentosAcoes = MovimentoAtivos::where('tipo', 'acao')->whereIn('movimento', ['compra', 'venda'])->get();
+        $movimentosAcoes = MovimentoAtivos::where('tipo', 'acao')
+        ->whereIn('movimento', ['compra', 'venda'])
+        ->get();
         $dadosAcoes = [];
 
-        $movimentosFiis = MovimentoAtivos::where('tipo', 'fundo imobiliario')->whereIn('movimento', ['compra', 'venda'])->get();
+        $movimentosFiis = MovimentoAtivos::where('tipo', 'fundo imobiliario')
+        ->whereIn('movimento', ['compra', 'venda'])
+        ->get();
         $dadosfiis = [];
 
         $dadosAcoes = $this->mostrarTudo($movimentosAcoes->groupBy('nome'));
+        
         $dadosfiis = $this->mostrarTudo($movimentosFiis->groupBy('nome'));
 
         return view('crud.listaativos', compact('dadosAcoes', 'dadosfiis'));

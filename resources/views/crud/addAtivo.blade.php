@@ -2,7 +2,7 @@
 @section('title','Cadastrar')
 @section('content')
 
-<section class="secao_acoes">
+<section class="secao_add_ativos">
   <div class="container" id="caixa">
     <h1 class="mb-2">Cadastrar</h1>
     <form action="{{ route('ativos.store') }}" method="POST" enctype="multipart/form-data">
