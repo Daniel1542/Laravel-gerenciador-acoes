@@ -1,11 +1,11 @@
 .secao_add_ativos{
-    margin-top: 250px;
     padding: 0;
 }
   
 .secao_add_ativos #caixa {
     background-color: rgb(196, 110, 104);
-    padding: 80px;
+    padding: 50px;
+    margin-top: 250px;
     border: 1px solid #d3a4a4;
     border-radius: 5px;
 }
@@ -33,6 +33,7 @@
 
     .secao_add_ativos select, .secao_add_ativos input{
         text-align: center;
+        padding: 3px;
     }
 
     .secao_add_ativos #caixa {

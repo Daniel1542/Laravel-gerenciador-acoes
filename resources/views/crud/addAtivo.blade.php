@@ -4,7 +4,7 @@
 
 <section class="secao_add_ativos">
   <div class="container" id="caixa">
-    <h1 class="mb-2">Cadastrar</h1>
+    <h1 class="mb-2 text-center">Cadastrar</h1>
     <form action="{{ route('ativos.store') }}" method="POST" enctype="multipart/form-data">
       {{ csrf_field() }}
       <div class="form-group">

@@ -9,7 +9,7 @@
   margin-top: 200px;
   display: flex;
   align-items: center;
-  background-color: rgb(138, 224, 124);
+  background-color: #2de627;
   width: 100%;
 }
 
@@ -27,7 +27,7 @@
   display: flex;
   align-items: center;
   flex-direction: column;
-  background-color: rgb(192, 208, 233);
+  background-color: #7ec8e6;
   padding: 0;
 }
 main{
@@ -54,21 +54,20 @@ header{
   height: 100px;
   padding: 15px;
   gap: 15px;
-  background-color: #e4d5d5;
+  background-color: #ebe1b7;
 }
 
 /* Estilos para o menu suspenso */
 
 .dropdown {
   margin: 10px 0;
-  position: relative;
   display: inline-block;
 }
 
 .dropdown-menu {
   display: none;
   position: absolute;
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  box-shadow: 0px 0px 10px #000000;
   z-index: 1;
 }
 
@@ -79,13 +78,13 @@ header{
 .btn-secondary {
   background-color: #6c757d;
   border: none;
-  padding: 10px 10px;
+  padding: 10px;
   cursor: pointer;
   transition: background-color 0.3s ease;
 }
 
 .btn-secondary:hover {
-  background-color: #495057; /* Cor de fundo quando o botão é hover */
+  background-color: #495057; 
 }
 
 .logo{
@@ -98,7 +97,7 @@ footer{
   text-align: center;
   padding: 10px;
   margin-top: 100px;
-  background-color: #e4d5d5;
+  background-color: #ebe1b7;
   width: 100%;
   bottom: 0;
 }
