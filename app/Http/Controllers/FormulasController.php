@@ -1,13 +1,15 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use Illuminate\Http\Request;
 use App\Models\MovimentoAtivos;
 use Carbon\Carbon;
 
 class FormulasController extends Controller
 {
-    public function index(){
+    public function index()
+    {
         $Acoes = MovimentoAtivos::where('tipo', 'acao')->get();
         $dadosAcoes = [];
         $Fiis = MovimentoAtivos::where('tipo', 'fundo imobiliario')->get();
@@ -36,6 +38,6 @@ class FormulasController extends Controller
                 'data' => Carbon::parse($movimentofii->data)->format('d/m/Y'),
             ];
         }
-        return view('formula.formulas',compact('dadosAcoes', 'dadosFiis'));
+        return view('formula.formulas', compact('dadosAcoes', 'dadosFiis'));
     }
 }

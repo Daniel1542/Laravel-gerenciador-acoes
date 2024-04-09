@@ -39,7 +39,7 @@ Este projeto é um site para auxiliar na declaração de imposto de renda de aç
 - Banco de dados SQL
 - Api rest
 - Code Sniffer
-- phpUnit
+- PhpUnit
 - Laragon
 - Opção de baixar dados em formato Excel e PDF
 

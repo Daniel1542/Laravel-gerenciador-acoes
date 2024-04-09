@@ -10,7 +10,6 @@ use App\Http\Controllers\MovimentoAtivosController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\FormulasController;
 
-
 Route::resource('ativos', AtivosController::class);
 Route::resource('user', UserController::class);
 Route::resource('lista', ListaAtivosController::class);
@@ -57,5 +56,3 @@ Route::get('/cadastro', [UserController::class, 'create'])->name('user.create');
 Route::post('/auth', [LoginController::class, 'auth'])->name('auth');
 Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 Route::get('/', [UserController::class, 'index'])->name('user.index');
-
-

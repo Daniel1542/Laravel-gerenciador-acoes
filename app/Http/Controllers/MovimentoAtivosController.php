@@ -11,9 +11,10 @@ use Carbon\Carbon;
 
 class MovimentoAtivosController extends Controller
 {
-    function MovimentosIndex($ativos){
-        $dados=[];
-        foreach ($ativos as $movimentoAtivo) { 
+    private function MovimentosIndex($ativos)
+    {
+        $dados = [];
+        foreach ($ativos as $movimentoAtivo) {
             $dados[] = [
                 'id' => $movimentoAtivo['id'],
                 'nome' => $movimentoAtivo['nome'],
@@ -26,39 +27,38 @@ class MovimentoAtivosController extends Controller
         }
         return $dados;
     }
-    
+
     public function index()
     {
         $Acoes = MovimentoAtivos::where('tipo', 'acao')
-        ->orderBy('data') 
+        ->orderBy('data')
         ->get();
         $Fiis = MovimentoAtivos::where('tipo', 'fundo imobiliario')
-        ->orderBy('data') 
+        ->orderBy('data')
         ->get();
-    
+
         $dadosAcoes = $this->MovimentosIndex($Acoes->toArray());
         $dadosFiis = $this->MovimentosIndex($Fiis->toArray());
-    
+
         return view('crud.movimentos', compact('dadosAcoes', 'dadosFiis'));
     }
      /**
      * Opções de escolha entre excel e pdf
      */
 
-    public function opcoesMove(Request $request){
+    public function opcoesMove(Request $request)
+    {
         $baixar = $request->input('baixar');
         $data_inicio = $request->input('data_inicio');
         $data_fim = $request->input('data_fim');
         $tipo = $request->input('tipo');
-        if ( $baixar == 'Excel'){
+        if ($baixar == 'Excel') {
             return redirect()->route('movimento.exportMovimentoAtivos', [
                 'data_ini' => $data_inicio,
                 'data_fi' => $data_fim,
                 'tip' => $tipo,
             ]);
-
-        }
-        else{
+        } else {
             return redirect()->route('movimento.exportMovimentoAtivosPdf', [
                 'data_ini' => $data_inicio,
                 'data_fi' => $data_fim,
@@ -77,7 +77,7 @@ class MovimentoAtivosController extends Controller
         $tipo = $tip;
         $movimentosAcoes = MovimentoAtivos::where('tipo', $tipo)
         ->whereBetween('data', [$data_inicio, $data_fim])
-        ->orderBy('data') 
+        ->orderBy('data')
         ->get();
 
         $dadosAtivos = [];
@@ -91,7 +91,7 @@ class MovimentoAtivosController extends Controller
             $quantidadeTotal = $movimento->quantidade;
             $valor = $movimento->valor;
             $valorFinal = $movimento->valor_total;
-    
+
             $dadosAtivos[] = [
                 'nome' => $nome,
                 'tipo' => $tipo,
@@ -123,14 +123,14 @@ class MovimentoAtivosController extends Controller
 
         $Acoes = MovimentoAtivos::where('tipo', 'acao')
         ->whereBetween('data', [$data_inicio, $data_fim])
-        ->orderBy('data') 
+        ->orderBy('data')
         ->get();
 
         $dadosAcoes = [];
 
         $Fiis = MovimentoAtivos::where('tipo', 'fundo imobiliario')
         ->whereBetween('data', [$data_inicio, $data_fim])
-        ->orderBy('data') 
+        ->orderBy('data')
         ->get();
 
         $dadosFiis = [];
@@ -147,14 +147,14 @@ class MovimentoAtivosController extends Controller
                 'data' => Carbon::parse($movimentoacao->data)->format('d/m/Y'),
             ];
         }
-    
+
         foreach ($Fiis as $movimentofii) {
             $dadosFiis[] = [
                 'id' => $movimentofii->id,
                 'nome' => $movimentofii->nome,
                 'movimento' => $movimentofii->movimento,
                 'quantidade' => $movimentofii->quantidade,
-                'valor' => number_format(floatval($movimentofii->valor), 2, '.', ''),        
+                'valor' => number_format(floatval($movimentofii->valor), 2, '.', ''),
                 'corretagem' => number_format(floatval($movimentofii->corretagem), 2, '.', ''),
                 'valor_total' => number_format(floatval($movimentofii->valor_total), 2, '.', ''),
                 'data' => Carbon::parse($movimentofii->data)->format('d/m/Y'),

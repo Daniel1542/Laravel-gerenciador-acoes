@@ -36,7 +36,7 @@ class AtivosController extends Controller
         $ativos-> valor_total = ($request->corretagem + ($request->valor * $request->quantidade));
 
         $ativos->save();
-        
+
         return redirect()->route('movimento.index')->with('msg', 'Cadastrado com sucesso.');
     }
 
@@ -111,7 +111,7 @@ class AtivosController extends Controller
 
     /*js para sugestão de busca*/
 
-    function buscarAtivos(Request $request)
+    public function buscarAtivos(Request $request)
     {
         $termo = $request->input('termo');
 

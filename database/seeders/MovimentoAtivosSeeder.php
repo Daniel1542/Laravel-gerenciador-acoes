@@ -206,7 +206,7 @@ class MovimentoAtivosSeeder extends Seeder
             'valor' => '5',
             'valor_total' => '112',
         ]);
-        
+
         MovimentoAtivos::create([
             'tipo' => 'fundo imobiliario',
             'movimento' => 'compra',

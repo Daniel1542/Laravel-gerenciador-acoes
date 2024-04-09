@@ -1,16 +1,16 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use App\Models\MovimentoAtivos;
 
 class DashboardController extends Controller
 {
-
     /*funcoes dos graficos*/
 
-    function funcoesGraficos($dado)
+    private function funcoesGraficos($dado)
     {
-        $dados=[];
+        $dados = [];
         $labels = [];
 
         foreach ($dado as $nome => $movimentos) {
@@ -34,26 +34,14 @@ class DashboardController extends Controller
             'datasets' => [
                 [
                     'data' => array_column($dados, 'valorTotal'),
-                    'backgroundColor' => $this->gerarCoresAleatorias(50), 
+                    'backgroundColor' => $this->gerarCoresAleatorias(50),
                 ]
             ]
         ];
         return $data;
     }
 
-    public function dash()
-    {
-        $acoesCount = MovimentoAtivos::where('tipo', 'acao')->distinct('nome')->count('nome');
-        $fiisCount = MovimentoAtivos::where('tipo', 'fundo imobiliario')->distinct('nome')->count('nome');
-        $total = $acoesCount + $fiisCount;
-       
-        $acoesPercent = ($acoesCount / $total) * 100;
-        $fiisPercent = ($fiisCount / $total) * 100;
-
-        return view('principal.dashboard', compact('acoesCount', 'fiisCount','acoesPercent','fiisPercent'));
-    }
-
-    function gerarCoresAleatorias($quantidade)
+    private function gerarCoresAleatorias($quantidade)
     {
         $cores = [];
         for ($i = 0; $i < $quantidade; $i++) {
@@ -62,10 +50,24 @@ class DashboardController extends Controller
         return $cores;
     }
 
-    function gerarCorAleatoria()
+    private function gerarCorAleatoria()
     {
         return '#' . str_pad(dechex(mt_rand(0, 0xFFFFFF)), 6, '0', STR_PAD_LEFT);
     }
+
+    public function dash()
+    {
+        $acoesCount = MovimentoAtivos::where('tipo', 'acao')->distinct('nome')->count('nome');
+        $fiisCount = MovimentoAtivos::where('tipo', 'fundo imobiliario')->distinct('nome')->count('nome');
+        $total = $acoesCount + $fiisCount;
+
+        $acoesPercent = ($acoesCount / $total) * 100;
+        $fiisPercent = ($fiisCount / $total) * 100;
+
+        return view('principal.dashboard', compact('acoesCount', 'fiisCount', 'acoesPercent', 'fiisPercent'));
+    }
+
+
 
     /*graficos*/
 
@@ -78,8 +80,8 @@ class DashboardController extends Controller
         ->get();
 
         $dadosAtivos = $this->funcoesGraficos($movimentosAcoes->groupBy('nome'));
-        
-        return response()->json($dadosAtivos);  
+
+        return response()->json($dadosAtivos);
     }
 
     /*fiis*/
@@ -92,7 +94,7 @@ class DashboardController extends Controller
 
         $dadosAtivos = $this->funcoesGraficos($movimentosFiis->groupBy('nome'));
 
-        return response()->json($dadosAtivos);  
+        return response()->json($dadosAtivos);
     }
 
     /*total*/
@@ -102,10 +104,9 @@ class DashboardController extends Controller
         $movimentos = MovimentoAtivos::whereIn('tipo', ['acao', 'fundo imobiliario'])
             ->whereIn('movimento', ['compra', 'venda'])
             ->get();
-    
+
             $dadosAtivos = $this->funcoesGraficos($movimentos->groupBy('nome'));
 
-            return response()->json($dadosAtivos);  
-    }    
-   
+            return response()->json($dadosAtivos);
+    }
 }

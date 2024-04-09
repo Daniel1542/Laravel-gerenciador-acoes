@@ -6,7 +6,8 @@ use App\Models\MovimentoAtivos;
 
 class ListaAtivosController extends Controller
 {
-    function mostrarTudo($movimento){
+    private function mostrarTudo($movimento)
+    {
 
         foreach ($movimento as $nome => $movimentos) {
             $compras = $movimentos->where('movimento', 'compra');
@@ -31,7 +32,7 @@ class ListaAtivosController extends Controller
             if ($quantidadeTotal != 0) {
                 $porcentagem = $valorCompleto / $quantidadeTotal;
             } else {
-                $porcentagem = 0; 
+                $porcentagem = 0;
             }
 
             $dados[] = [
@@ -43,7 +44,6 @@ class ListaAtivosController extends Controller
             ];
         }
         return $dados;
-
     }
 
     public function index()
@@ -59,7 +59,7 @@ class ListaAtivosController extends Controller
         $dadosfiis = [];
 
         $dadosAcoes = $this->mostrarTudo($movimentosAcoes->groupBy('nome'));
-        
+
         $dadosfiis = $this->mostrarTudo($movimentosFiis->groupBy('nome'));
 
         return view('crud.listaativos', compact('dadosAcoes', 'dadosfiis'));

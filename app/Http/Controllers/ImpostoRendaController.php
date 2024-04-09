@@ -12,19 +12,20 @@ class ImpostoRendaController extends Controller
 {
     /*function para fazer pdf e retornar index*/
 
-    function calcularMovimentos($movimentos) {
+    private function calcularMovimentos($movimentos)
+    {
         $dados = [];
-    
+
         foreach ($movimentos as $nome => $movimentos) {
             $compras = $movimentos->where('movimento', 'compra');
             $vendas = $movimentos->where('movimento', 'venda');
-    
+
             $quantidadeCompra = $compras->sum('quantidade');
             $quantidadeVenda = $vendas->sum('quantidade');
             $quantidadeTotal = $quantidadeCompra - $quantidadeVenda;
-    
+
             $movimento = $quantidadeTotal > 0 ? 'compra' : 'venda';
-    
+
             $dados[] = [
                 'nome' => $nome,
                 'compra' => [
@@ -37,20 +38,21 @@ class ImpostoRendaController extends Controller
                 ],
             ];
         }
-    
+
         return $dados;
     }
     /*function excel*/
-    function calcularMovimentosExcel($movimentosAtivos) {
+    private function calcularMovimentosExcel($movimentosAtivos)
+    {
         $dados = [];
-    
+
         foreach ($movimentosAtivos as $nome => $movimentos) {
             $quantidadeCompraTotal = 0;
             $quantidadeVendaTotal = 0;
             $valorCompraTotal = 0;
             $valorVendaTotal = 0;
             $corretagemTotal = 0;
-    
+
             foreach ($movimentos as $movimento) {
                 if ($movimento->movimento === 'compra') {
                     $quantidadeCompraTotal += $movimento->quantidade;
@@ -59,14 +61,14 @@ class ImpostoRendaController extends Controller
                     $quantidadeVendaTotal += $movimento->quantidade;
                     $valorVendaTotal += $movimento->valor_total;
                 }
-    
+
                 $corretagemTotal += $movimento->corretagem;
             }
 
             $quantidadeTotal = $quantidadeCompraTotal - $quantidadeVendaTotal;
 
             $valorFinal = $valorCompraTotal - $valorVendaTotal + $corretagemTotal;
-    
+
             $dados[] = [
                 'nome' => $nome,
                 'quantidadeCompra' => $quantidadeCompraTotal > 0 ? $quantidadeCompraTotal : '0',
@@ -78,32 +80,31 @@ class ImpostoRendaController extends Controller
                 'valorFinal' => $valorFinal > 0 ? 'R$ ' . number_format($valorFinal, 2, ',', '.') : 'R$ 0,00',
             ];
         }
-    
+
         return $dados;
     }
 
     /*function baixar excel ou pdf*/
-    
-    function opcoes(Request $request){
+
+    public function opcoes(Request $request)
+    {
         $baixar = $request->input('baixar');
         $data = $request->input('data');
-      
+
         $tipo = $request->input('tipo');
-        if ( $baixar == 'Excel'){
+        if ($baixar == 'Excel') {
             return redirect()->route('imposto.exportAtivos', [
                 'data_ini' => $data,
                 'tip' => $tipo,
             ]);
-
-        }
-        else{
+        } else {
             return redirect()->route('imposto.exportIrpdfPdf', [
                 'data_ini' => $data,
                 'tip' => $tipo,
             ]);
         }
     }
-    
+
     public function index(Request $request)
     {
         $anoSelecionado = $request->input('data');
@@ -111,15 +112,15 @@ class ImpostoRendaController extends Controller
             ->whereIn('movimento', ['compra', 'venda'])
             ->whereYear('data', $anoSelecionado)
             ->get();
-    
+
         $movimentosFiis = MovimentoAtivos::where('tipo', 'fundo imobiliario')
             ->whereIn('movimento', ['compra', 'venda'])
             ->whereYear('data', $anoSelecionado)
             ->get();
-    
+
         $dadosAtivos = $this->calcularMovimentos($movimentosAcoes->groupBy('nome'));
         $dadosfiis = $this->calcularMovimentos($movimentosFiis->groupBy('nome'));
-    
+
         return view('ir.impostoRenda', compact('dadosAtivos', 'dadosfiis'));
     }
 
@@ -169,7 +170,5 @@ class ImpostoRendaController extends Controller
         } else {
             return Excel::download(new AtivosExport($dadosAtivos), 'Ações.xlsx');
         }
-        
     }
-  
 }
