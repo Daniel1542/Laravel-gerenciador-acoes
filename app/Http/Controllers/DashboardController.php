@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Illuminate\Support\Facades\Auth;
 use App\Models\MovimentoAtivos;
 
 class DashboardController extends Controller
@@ -57,12 +57,29 @@ class DashboardController extends Controller
 
     public function dash()
     {
-        $acoesCount = MovimentoAtivos::where('tipo', 'acao')->distinct('nome')->count('nome');
-        $fiisCount = MovimentoAtivos::where('tipo', 'fundo imobiliario')->distinct('nome')->count('nome');
+        $user = Auth::user();
+
+        $total = MovimentoAtivos::where('user_id', $user->id)->count();
+
+        $acoesCount = MovimentoAtivos::where('user_id', $user->id)
+            ->where('tipo', 'acao')
+            ->distinct('nome')
+            ->count('nome');
+
+        $fiisCount = MovimentoAtivos::where('user_id', $user->id)
+            ->where('tipo', 'fundo imobiliario')
+            ->distinct('nome')
+            ->count('nome');
+
         $total = $acoesCount + $fiisCount;
 
-        $acoesPercent = ($acoesCount / $total) * 100;
-        $fiisPercent = ($fiisCount / $total) * 100;
+        if ($total != 0) {
+            $acoesPercent = ($acoesCount / $total) * 100;
+            $fiisPercent = ($fiisCount / $total) * 100;
+        } else {
+            $acoesPercent = 0;
+            $fiisPercent = 0;
+        }
 
         return view('principal.dashboard', compact('acoesCount', 'fiisCount', 'acoesPercent', 'fiisPercent'));
     }
@@ -75,9 +92,12 @@ class DashboardController extends Controller
 
     public function graficoAcoes()
     {
-        $movimentosAcoes = MovimentoAtivos::where('tipo', 'acao')
-        ->whereIn('movimento', ['compra', 'venda'])
-        ->get();
+        $user = Auth::user();
+
+        $movimentosAcoes = MovimentoAtivos::where('user_id', $user->id)
+            ->where('tipo', 'acao')
+            ->whereIn('movimento', ['compra', 'venda'])
+            ->get();
 
         $dadosAtivos = $this->funcoesGraficos($movimentosAcoes->groupBy('nome'));
 
@@ -88,9 +108,12 @@ class DashboardController extends Controller
 
     public function graficoFiis()
     {
-        $movimentosFiis = MovimentoAtivos::where('tipo', 'fundo imobiliario')
-        ->whereIn('movimento', ['compra', 'venda'])
-        ->get();
+        $user = Auth::user();
+
+        $movimentosFiis = MovimentoAtivos::where('user_id', $user->id)
+            ->where('tipo', 'fundo imobiliario')
+            ->whereIn('movimento', ['compra', 'venda'])
+            ->get();
 
         $dadosAtivos = $this->funcoesGraficos($movimentosFiis->groupBy('nome'));
 
@@ -101,12 +124,15 @@ class DashboardController extends Controller
 
     public function graficoTotal()
     {
-        $movimentos = MovimentoAtivos::whereIn('tipo', ['acao', 'fundo imobiliario'])
+        $user = Auth::user();
+
+        $movimentos = MovimentoAtivos::where('user_id', $user->id)
+            ->whereIn('tipo', ['acao', 'fundo imobiliario'])
             ->whereIn('movimento', ['compra', 'venda'])
             ->get();
 
-            $dadosAtivos = $this->funcoesGraficos($movimentos->groupBy('nome'));
+        $dadosAtivos = $this->funcoesGraficos($movimentos->groupBy('nome'));
 
-            return response()->json($dadosAtivos);
+        return response()->json($dadosAtivos);
     }
 }

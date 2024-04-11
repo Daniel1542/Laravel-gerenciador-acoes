@@ -10,6 +10,7 @@ class MovimentoAtivosSeeder extends Seeder
     public function run()
     {
         MovimentoAtivos::create([
+            'user_id' => '1',
             'tipo' => 'acao',
             'movimento' => 'compra',
             'nome' => 'VALE3',
@@ -21,6 +22,7 @@ class MovimentoAtivosSeeder extends Seeder
         ]);
 
         MovimentoAtivos::create([
+            'user_id' => '1',
             'tipo' => 'acao',
             'movimento' => 'venda',
             'nome' => 'VALE3',
@@ -32,6 +34,7 @@ class MovimentoAtivosSeeder extends Seeder
         ]);
 
         MovimentoAtivos::create([
+            'user_id' => '1',
             'tipo' => 'acao',
             'movimento' => 'compra',
             'nome' => 'PETR4',
@@ -43,6 +46,7 @@ class MovimentoAtivosSeeder extends Seeder
         ]);
 
         MovimentoAtivos::create([
+            'user_id' => '1',
             'tipo' => 'acao',
             'movimento' => 'venda',
             'nome' => 'PETR4',
@@ -54,6 +58,7 @@ class MovimentoAtivosSeeder extends Seeder
         ]);
 
         MovimentoAtivos::create([
+            'user_id' => '1',
             'tipo' => 'fundo imobiliario',
             'movimento' => 'compra',
             'nome' => 'MXRF11',
@@ -65,6 +70,7 @@ class MovimentoAtivosSeeder extends Seeder
         ]);
 
         MovimentoAtivos::create([
+            'user_id' => '1',
             'tipo' => 'fundo imobiliario',
             'movimento' => 'compra',
             'nome' => 'VISC11',
@@ -76,6 +82,7 @@ class MovimentoAtivosSeeder extends Seeder
         ]);
 
         MovimentoAtivos::create([
+            'user_id' => '1',
             'tipo' => 'fundo imobiliario',
             'movimento' => 'compra',
             'nome' => 'VINO11',
@@ -87,6 +94,7 @@ class MovimentoAtivosSeeder extends Seeder
         ]);
 
         MovimentoAtivos::create([
+            'user_id' => '1',
             'tipo' => 'acao',
             'movimento' => 'compra',
             'nome' => 'WEGE3',
@@ -98,6 +106,7 @@ class MovimentoAtivosSeeder extends Seeder
         ]);
 
         MovimentoAtivos::create([
+            'user_id' => '1',
             'tipo' => 'acao',
             'movimento' => 'compra',
             'nome' => 'RANI3',
@@ -109,6 +118,7 @@ class MovimentoAtivosSeeder extends Seeder
         ]);
 
         MovimentoAtivos::create([
+            'user_id' => '1',
             'tipo' => 'acao',
             'movimento' => 'compra',
             'nome' => 'PRIO3',
@@ -120,6 +130,7 @@ class MovimentoAtivosSeeder extends Seeder
         ]);
 
         MovimentoAtivos::create([
+            'user_id' => '1',
             'tipo' => 'acao',
             'movimento' => 'venda',
             'nome' => 'PRIO3',
@@ -131,6 +142,7 @@ class MovimentoAtivosSeeder extends Seeder
         ]);
 
         MovimentoAtivos::create([
+            'user_id' => '1',
             'tipo' => 'fundo imobiliario',
             'movimento' => 'compra',
             'nome' => 'HGLG11',
@@ -142,6 +154,7 @@ class MovimentoAtivosSeeder extends Seeder
         ]);
 
         MovimentoAtivos::create([
+            'user_id' => '1',
             'tipo' => 'fundo imobiliario',
             'movimento' => 'venda',
             'nome' => 'MXRF11',
@@ -153,6 +166,7 @@ class MovimentoAtivosSeeder extends Seeder
         ]);
 
         MovimentoAtivos::create([
+            'user_id' => '1',
             'tipo' => 'fundo imobiliario',
             'movimento' => 'compra',
             'nome' => 'MXRF11',
@@ -164,6 +178,7 @@ class MovimentoAtivosSeeder extends Seeder
         ]);
 
         MovimentoAtivos::create([
+            'user_id' => '1',
             'tipo' => 'acao',
             'movimento' => 'compra',
             'nome' => 'BBSE3',
@@ -175,6 +190,7 @@ class MovimentoAtivosSeeder extends Seeder
         ]);
 
         MovimentoAtivos::create([
+            'user_id' => '1',
             'tipo' => 'acao',
             'movimento' => 'compra',
             'nome' => 'ABCB4',
@@ -186,6 +202,7 @@ class MovimentoAtivosSeeder extends Seeder
         ]);
 
         MovimentoAtivos::create([
+            'user_id' => '1',
             'tipo' => 'fundo imobiliario',
             'movimento' => 'venda',
             'nome' => 'VINO11',
@@ -197,6 +214,7 @@ class MovimentoAtivosSeeder extends Seeder
         ]);
 
         MovimentoAtivos::create([
+            'user_id' => '1',
             'tipo' => 'acao',
             'movimento' => 'compra',
             'nome' => 'RANI3',
@@ -208,6 +226,7 @@ class MovimentoAtivosSeeder extends Seeder
         ]);
 
         MovimentoAtivos::create([
+            'user_id' => '1',
             'tipo' => 'fundo imobiliario',
             'movimento' => 'compra',
             'nome' => 'GGRC11',
@@ -219,6 +238,7 @@ class MovimentoAtivosSeeder extends Seeder
         ]);
 
         MovimentoAtivos::create([
+            'user_id' => '1',
             'tipo' => 'fundo imobiliario',
             'movimento' => 'compra',
             'nome' => 'VGHF11',
@@ -230,6 +250,7 @@ class MovimentoAtivosSeeder extends Seeder
         ]);
 
         MovimentoAtivos::create([
+            'user_id' => '1',
             'tipo' => 'acao',
             'movimento' => 'compra',
             'nome' => 'ABCB4',
@@ -241,6 +262,7 @@ class MovimentoAtivosSeeder extends Seeder
         ]);
 
         MovimentoAtivos::create([
+            'user_id' => '1',
             'tipo' => 'acao',
             'movimento' => 'compra',
             'nome' => 'TAEE11',

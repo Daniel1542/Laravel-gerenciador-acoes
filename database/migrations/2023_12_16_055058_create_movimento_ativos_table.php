@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('movimento_ativos', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->string('tipo');
             $table->string('movimento');
             $table->string('nome');

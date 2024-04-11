@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\MovimentoAtivos;
+use Illuminate\Support\Facades\Auth;
 use App\Exports\AtivosExport;
 use Barryvdh\DomPDF\Facade\Pdf;
 use Maatwebsite\Excel\Facades\Excel;
@@ -12,11 +13,11 @@ class ImpostoRendaController extends Controller
 {
     /*function para fazer pdf e retornar index*/
 
-    private function calcularMovimentos($movimentos)
+    private function calcularMovimentos($movimento)
     {
         $dados = [];
 
-        foreach ($movimentos as $nome => $movimentos) {
+        foreach ($movimento as $nome => $movimentos) {
             $compras = $movimentos->where('movimento', 'compra');
             $vendas = $movimentos->where('movimento', 'venda');
 
@@ -107,15 +108,19 @@ class ImpostoRendaController extends Controller
 
     public function index(Request $request)
     {
+        $user = Auth::user();
+
         $anoSelecionado = $request->input('data');
         $movimentosAcoes = MovimentoAtivos::where('tipo', 'acao')
             ->whereIn('movimento', ['compra', 'venda'])
             ->whereYear('data', $anoSelecionado)
+            ->where('user_id', $user->id) 
             ->get();
 
         $movimentosFiis = MovimentoAtivos::where('tipo', 'fundo imobiliario')
             ->whereIn('movimento', ['compra', 'venda'])
             ->whereYear('data', $anoSelecionado)
+            ->where('user_id', $user->id) 
             ->get();
 
         $dadosAtivos = $this->calcularMovimentos($movimentosAcoes->groupBy('nome'));
@@ -128,18 +133,22 @@ class ImpostoRendaController extends Controller
 
     public function exportIrpdfPdf($data_ini, $tip)
     {
+        $user = Auth::user();
+
         $data_inicio = $data_ini;
         $tipo = $tip;
         $movimentosAcoes = MovimentoAtivos::where('tipo', 'acao')
-        ->whereIn('movimento', ['compra', 'venda'])
-        ->whereYear('data', $data_inicio)
-        ->get();
+            ->whereIn('movimento', ['compra', 'venda'])
+            ->whereYear('data', $data_inicio)
+            ->where('user_id', $user->id) 
+            ->get();
         $dadosAtivos = [];
 
         $movimentosFiis = MovimentoAtivos::where('tipo', 'fundo imobiliario')
-        ->whereIn('movimento', ['compra', 'venda'])
-        ->whereYear('data', $data_inicio)
-        ->get();
+            ->whereIn('movimento', ['compra', 'venda'])
+            ->whereYear('data', $data_inicio)
+            ->where('user_id', $user->id) 
+            ->get();
         $dadosfiis = [];
 
         $dadosAtivos = $this->calcularMovimentos($movimentosAcoes->groupBy('nome'));
@@ -154,12 +163,15 @@ class ImpostoRendaController extends Controller
 
     public function exportAtivos($data_ini, $tip)
     {
+        $user = Auth::user();
+
         $data_inicio = $data_ini;
         $tipo = $tip;
         $movimentosAtivos = MovimentoAtivos::where('tipo', $tipo)
-        ->whereIn('movimento', ['compra', 'venda'])
-        ->whereYear('data', $data_inicio)
-        ->get();
+            ->whereIn('movimento', ['compra', 'venda'])
+            ->whereYear('data', $data_inicio)
+            ->where('user_id', $user->id) 
+            ->get();
 
         $dadosAtivos = [];
 

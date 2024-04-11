@@ -21,14 +21,14 @@ Route::resource('formula', FormulasController::class);
 /*dashboard*/
 
 Route::get('/dashboard', [DashboardController::class, 'dash'])->name('principal.dashboard')->middleware('auth');
-Route::get('/graficoAcoes', [DashboardController::class, 'graficoAcoes'])->name('principal.graficoAcoes');
-Route::get('/graficoFiis', [DashboardController::class, 'graficoFiis'])->name('principal.graficoFiis');
-Route::get('/graficoTotal', [DashboardController::class, 'graficoTotal'])->name('principal.graficoTotal');
+Route::get('/graficoAcoes', [DashboardController::class, 'graficoAcoes'])->name('principal.graficoAcoes')->middleware('auth');
+Route::get('/graficoFiis', [DashboardController::class, 'graficoFiis'])->name('principal.graficoFiis')->middleware('auth');
+Route::get('/graficoTotal', [DashboardController::class, 'graficoTotal'])->name('principal.graficoTotal')->middleware('auth');
 
 /*opcoes*/
 
-Route::get('/opcoes', [ImpostoRendaController::class, 'opcoes'])->name('imposto.opcoes');
-Route::get('/opcoes-move', [MovimentoAtivosController::class, 'opcoesmove'])->name('movimento.opcoesmove');
+Route::get('/opcoes', [ImpostoRendaController::class, 'opcoes'])->name('imposto.opcoes')->middleware('auth');
+Route::get('/opcoes-move', [MovimentoAtivosController::class, 'opcoesmove'])->name('movimento.opcoesmove')->middleware('auth');
 
 /*ativos*/
 
@@ -38,7 +38,7 @@ Route::delete('/ativos/{id}', [AtivosController::class, 'destroy'])->name('ativo
 
 /*busca ativos*/
 
-Route::get('/buscar-ativos', [AtivosController::class, 'buscarAtivos'])->name('ativos.buscarAtivos');
+Route::get('/buscar-ativos', [AtivosController::class, 'buscarAtivos'])->name('ativos.buscarAtivos')->middleware('auth');
 
 /*PDF*/
 
@@ -54,5 +54,5 @@ Route::get('/exportAtivos/{data_ini}/{tip}', [ImpostoRendaController::class, 'ex
 
 Route::get('/cadastro', [UserController::class, 'create'])->name('user.create');
 Route::post('/auth', [LoginController::class, 'auth'])->name('auth');
-Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
+Route::get('/logout', [LoginController::class, 'logout'])->name('logout')->middleware('auth');
 Route::get('/', [UserController::class, 'index'])->name('user.index');

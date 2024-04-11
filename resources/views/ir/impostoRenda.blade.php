@@ -91,7 +91,7 @@
                   <td> Compra de {{ $ativo['compra']['quantidadeTotal'] }} ação de {{ $ativo['nome'] }}, custo total R${{number_format ($ativo['compra']['total'], 2) }}.</td>    
                 </tr>
               @endif
-              @if ($ativo['compra']['quantidadeTotal'] > 0 && $ativo['compra']['total'] > 0)
+              @if ($ativo['compra']['quantidadeTotal'] > 1 && $ativo['compra']['total'] > 0)
                 <tr>
                   <td> Compra de {{ $ativo['compra']['quantidadeTotal'] }} ações de {{ $ativo['nome'] }}, custo total R${{number_format ($ativo['compra']['total'], 2) }}.</td>    
                 </tr>
@@ -103,7 +103,7 @@
                   <td> venda de {{ $ativo['venda']['quantidadeTotal'] }} ação de {{ $ativo['nome'] }}, custo total R${{number_format ($ativo['venda']['total'], 2) }}.</td>    
                 </tr>
               @endif
-              @if ($ativo['venda']['quantidadeTotal'] > 0 && $ativo['venda']['total'] > 0)
+              @if ($ativo['venda']['quantidadeTotal'] > 1 && $ativo['venda']['total'] > 0)
                 <tr>
                   <td> Venda de {{ $ativo['venda']['quantidadeTotal'] }} ações de {{ $ativo['nome'] }}, custo total R${{ number_format($ativo['venda']['total'], 2) }}.</td>
                 </tr>
@@ -141,7 +141,7 @@
                   <td> Compra de {{ $fiis['compra']['quantidadeTotal'] }} fundo imobiliário {{ $fiis['nome'] }}, custo total R$ {{number_format ($fiis['compra']['total'], 2) }}.</td>    
                 </tr>
               @endif
-              @if ($fiis['compra']['quantidadeTotal'] > 0 && $fiis['compra']['total'] > 0)
+              @if ($fiis['compra']['quantidadeTotal'] > 1 && $fiis['compra']['total'] > 0)
                 <tr>
                   <td> Compra de {{ $fiis['compra']['quantidadeTotal'] }} fundos imobiliários {{ $fiis['nome'] }}, custo total R$ {{number_format ($fiis['compra']['total'], 2) }}.</td>    
                 </tr>              
@@ -153,7 +153,7 @@
                   <td> venda de {{ $fiis['venda']['quantidadeTotal'] }} fundo imobiliário {{ $fiis['nome'] }}, custo total R$ {{number_format ($fiis['venda']['total'], 2) }}.</td>    
                 </tr>
               @endif
-              @if ($fiis['venda']['quantidadeTotal'] > 0 && $fiis['venda']['total'] > 0)
+              @if ($fiis['venda']['quantidadeTotal'] > 1 && $fiis['venda']['total'] > 0)
                 <tr>
                   <td> Venda de {{ $fiis['venda']['quantidadeTotal'] }} fundos imobiliários {{ $fiis['nome'] }}, custo total R$ {{number_format ($fiis['venda']['total'], 2) }}.</td>    
                 </tr>

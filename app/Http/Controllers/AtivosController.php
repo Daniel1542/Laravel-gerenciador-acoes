@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\MovimentoAtivos;
+use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
 
 class AtivosController extends Controller
@@ -24,8 +25,11 @@ class AtivosController extends Controller
             'valor' => 'numeric|gt:0',
         ]);
 
+        $user = Auth::user();
+
         $ativos = new MovimentoAtivos();
 
+        $ativos->user_id = $user->id;
         $ativos-> tipo = $request->tipo;
         $ativos-> movimento = $request->movimento;
         $ativos-> nome = $request->nome;
@@ -42,7 +46,10 @@ class AtivosController extends Controller
 
     public function edit(string $id)
     {
-        $ativos  = MovimentoAtivos::findOrFail($id);
+        $user = Auth::user();
+
+        $ativos  = MovimentoAtivos::where('user_id', $user->id)
+            ->findOrFail($id);
 
         return view('crud.editarAtivo', compact('ativos'));
     }
@@ -58,7 +65,10 @@ class AtivosController extends Controller
             'valor' => 'numeric|gt:0',
         ]);
 
-        $movimentos = MovimentoAtivos::findOrFail($id);
+        $user = Auth::user();
+
+        $movimentos = MovimentoAtivos::where('user_id', $user->id)
+            ->findOrFail($id);
 
         $dadosAtualizados = $request->only([
             'tipo',
@@ -79,7 +89,10 @@ class AtivosController extends Controller
 
     public function destroy(string $id)
     {
-        $ativos = MovimentoAtivos::findOrFail($id);
+        $user = Auth::user();
+
+        $ativos = MovimentoAtivos::where('user_id', $user->id)
+            ->findOrFail($id);
 
         $ativos->delete();
 
@@ -88,7 +101,11 @@ class AtivosController extends Controller
     public function show(Request $request)
     {
         $nome = $request->input('Nome');
-        $ativos = MovimentoAtivos::where('nome', $nome)->get();
+
+        $user = Auth::user();
+
+        $ativos = MovimentoAtivos::where('user_id', $user->id)
+            ->where('nome', $nome)->get();
 
         $dadosAtivos = [];
 
@@ -113,9 +130,13 @@ class AtivosController extends Controller
 
     public function buscarAtivos(Request $request)
     {
+        $user = Auth::user();
+
         $termo = $request->input('termo');
 
-        $ativos = MovimentoAtivos::where('nome', 'like', $termo . '%')->pluck('nome');
+        $ativos = MovimentoAtivos::where('user_id', $user->id)
+            ->where('nome', 'like', $termo . '%')
+            ->pluck('nome');
 
         return response()->json($ativos);
     }

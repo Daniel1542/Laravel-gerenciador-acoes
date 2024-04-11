@@ -1,14 +1,14 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Illuminate\Support\Facades\Auth;
 use App\Models\MovimentoAtivos;
 
 class ListaAtivosController extends Controller
 {
     private function mostrarTudo($movimento)
     {
-
+        $dados = [];
         foreach ($movimento as $nome => $movimentos) {
             $compras = $movimentos->where('movimento', 'compra');
             $vendas = $movimentos->where('movimento', 'venda');
@@ -48,14 +48,18 @@ class ListaAtivosController extends Controller
 
     public function index()
     {
+        $user = Auth::user();
+
         $movimentosAcoes = MovimentoAtivos::where('tipo', 'acao')
-        ->whereIn('movimento', ['compra', 'venda'])
-        ->get();
+            ->whereIn('movimento', ['compra', 'venda'])
+            ->where('user_id', $user->id) 
+            ->get();
         $dadosAcoes = [];
 
         $movimentosFiis = MovimentoAtivos::where('tipo', 'fundo imobiliario')
-        ->whereIn('movimento', ['compra', 'venda'])
-        ->get();
+            ->whereIn('movimento', ['compra', 'venda'])
+            ->where('user_id', $user->id) 
+            ->get();
         $dadosfiis = [];
 
         $dadosAcoes = $this->mostrarTudo($movimentosAcoes->groupBy('nome'));

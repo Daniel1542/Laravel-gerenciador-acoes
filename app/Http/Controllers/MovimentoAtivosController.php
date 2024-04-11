@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use App\Models\MovimentoAtivos;
 use App\Exports\MovimentoAtivosExport;
 use Maatwebsite\Excel\Facades\Excel;
@@ -30,12 +31,16 @@ class MovimentoAtivosController extends Controller
 
     public function index()
     {
+        $user = Auth::user();
+
         $Acoes = MovimentoAtivos::where('tipo', 'acao')
-        ->orderBy('data')
-        ->get();
+            ->orderBy('data')
+            ->where('user_id', $user->id) 
+            ->get();
         $Fiis = MovimentoAtivos::where('tipo', 'fundo imobiliario')
-        ->orderBy('data')
-        ->get();
+            ->orderBy('data')
+            ->where('user_id', $user->id) 
+            ->get();
 
         $dadosAcoes = $this->MovimentosIndex($Acoes->toArray());
         $dadosFiis = $this->MovimentosIndex($Fiis->toArray());
@@ -75,10 +80,14 @@ class MovimentoAtivosController extends Controller
         $data_inicio = $data_ini;
         $data_fim = $data_fi;
         $tipo = $tip;
+
+        $user = Auth::user();
+
         $movimentosAcoes = MovimentoAtivos::where('tipo', $tipo)
-        ->whereBetween('data', [$data_inicio, $data_fim])
-        ->orderBy('data')
-        ->get();
+            ->whereBetween('data', [$data_inicio, $data_fim])
+            ->orderBy('data')
+            ->where('user_id', $user->id) 
+            ->get();
 
         $dadosAtivos = [];
 
@@ -120,18 +129,21 @@ class MovimentoAtivosController extends Controller
         $data_fim = $data_fi;
         $tipo = $tip;
 
+        $user = Auth::user();
 
         $Acoes = MovimentoAtivos::where('tipo', 'acao')
-        ->whereBetween('data', [$data_inicio, $data_fim])
-        ->orderBy('data')
-        ->get();
+            ->whereBetween('data', [$data_inicio, $data_fim])
+            ->orderBy('data')
+            ->where('user_id', $user->id) 
+            ->get();
 
         $dadosAcoes = [];
 
         $Fiis = MovimentoAtivos::where('tipo', 'fundo imobiliario')
-        ->whereBetween('data', [$data_inicio, $data_fim])
-        ->orderBy('data')
-        ->get();
+            ->whereBetween('data', [$data_inicio, $data_fim])
+            ->orderBy('data')
+            ->where('user_id', $user->id) 
+            ->get();
 
         $dadosFiis = [];
 

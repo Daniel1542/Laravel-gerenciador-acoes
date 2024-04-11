@@ -11,6 +11,7 @@ class MovimentoAtivos extends Model
 
     protected $table = 'movimento_ativos';
     protected $fillable = [
+        'user_id',
         'tipo',
         'movimento',
         'nome',
@@ -21,4 +22,9 @@ class MovimentoAtivos extends Model
         'valor_total',
     ];
     protected $dates = ['data'];
+
+    public function movimentoAtivos()
+    {
+        return $this->hasMany(MovimentoAtivos::class);
+    }
 }
