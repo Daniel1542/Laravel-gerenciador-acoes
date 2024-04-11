@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use Illuminate\Support\Facades\Auth;
 use App\Models\MovimentoAtivos;
 
@@ -52,13 +53,13 @@ class ListaAtivosController extends Controller
 
         $movimentosAcoes = MovimentoAtivos::where('tipo', 'acao')
             ->whereIn('movimento', ['compra', 'venda'])
-            ->where('user_id', $user->id) 
+            ->where('user_id', $user->id)
             ->get();
         $dadosAcoes = [];
 
         $movimentosFiis = MovimentoAtivos::where('tipo', 'fundo imobiliario')
             ->whereIn('movimento', ['compra', 'venda'])
-            ->where('user_id', $user->id) 
+            ->where('user_id', $user->id)
             ->get();
         $dadosfiis = [];
 

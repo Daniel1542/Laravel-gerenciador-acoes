@@ -35,11 +35,11 @@ class MovimentoAtivosController extends Controller
 
         $Acoes = MovimentoAtivos::where('tipo', 'acao')
             ->orderBy('data')
-            ->where('user_id', $user->id) 
+            ->where('user_id', $user->id)
             ->get();
         $Fiis = MovimentoAtivos::where('tipo', 'fundo imobiliario')
             ->orderBy('data')
-            ->where('user_id', $user->id) 
+            ->where('user_id', $user->id)
             ->get();
 
         $dadosAcoes = $this->MovimentosIndex($Acoes->toArray());
@@ -86,7 +86,7 @@ class MovimentoAtivosController extends Controller
         $movimentosAcoes = MovimentoAtivos::where('tipo', $tipo)
             ->whereBetween('data', [$data_inicio, $data_fim])
             ->orderBy('data')
-            ->where('user_id', $user->id) 
+            ->where('user_id', $user->id)
             ->get();
 
         $dadosAtivos = [];
@@ -134,7 +134,7 @@ class MovimentoAtivosController extends Controller
         $Acoes = MovimentoAtivos::where('tipo', 'acao')
             ->whereBetween('data', [$data_inicio, $data_fim])
             ->orderBy('data')
-            ->where('user_id', $user->id) 
+            ->where('user_id', $user->id)
             ->get();
 
         $dadosAcoes = [];
@@ -142,7 +142,7 @@ class MovimentoAtivosController extends Controller
         $Fiis = MovimentoAtivos::where('tipo', 'fundo imobiliario')
             ->whereBetween('data', [$data_inicio, $data_fim])
             ->orderBy('data')
-            ->where('user_id', $user->id) 
+            ->where('user_id', $user->id)
             ->get();
 
         $dadosFiis = [];

@@ -114,13 +114,13 @@ class ImpostoRendaController extends Controller
         $movimentosAcoes = MovimentoAtivos::where('tipo', 'acao')
             ->whereIn('movimento', ['compra', 'venda'])
             ->whereYear('data', $anoSelecionado)
-            ->where('user_id', $user->id) 
+            ->where('user_id', $user->id)
             ->get();
 
         $movimentosFiis = MovimentoAtivos::where('tipo', 'fundo imobiliario')
             ->whereIn('movimento', ['compra', 'venda'])
             ->whereYear('data', $anoSelecionado)
-            ->where('user_id', $user->id) 
+            ->where('user_id', $user->id)
             ->get();
 
         $dadosAtivos = $this->calcularMovimentos($movimentosAcoes->groupBy('nome'));
@@ -140,14 +140,14 @@ class ImpostoRendaController extends Controller
         $movimentosAcoes = MovimentoAtivos::where('tipo', 'acao')
             ->whereIn('movimento', ['compra', 'venda'])
             ->whereYear('data', $data_inicio)
-            ->where('user_id', $user->id) 
+            ->where('user_id', $user->id)
             ->get();
         $dadosAtivos = [];
 
         $movimentosFiis = MovimentoAtivos::where('tipo', 'fundo imobiliario')
             ->whereIn('movimento', ['compra', 'venda'])
             ->whereYear('data', $data_inicio)
-            ->where('user_id', $user->id) 
+            ->where('user_id', $user->id)
             ->get();
         $dadosfiis = [];
 
@@ -170,7 +170,7 @@ class ImpostoRendaController extends Controller
         $movimentosAtivos = MovimentoAtivos::where('tipo', $tipo)
             ->whereIn('movimento', ['compra', 'venda'])
             ->whereYear('data', $data_inicio)
-            ->where('user_id', $user->id) 
+            ->where('user_id', $user->id)
             ->get();
 
         $dadosAtivos = [];
