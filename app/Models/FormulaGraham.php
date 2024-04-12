@@ -12,6 +12,7 @@ class FormulaGraham extends Model
     protected $table = 'formula_graham';
     protected $fillable = [
         'user_id',
+        'nome',
         'lpa',
         'vpa',
     ];

@@ -3,80 +3,69 @@
 @section('content')
 
 <section class="secao_formula">
-  <div class="container text-center">
-    <h1 class="mt-4 mb-4">Fórmulas</h1>
-    <div class="container mb-4">     
-      <form class="formulario1" action="{{ route('ativos.show') }}" method="GET">
-        {{ csrf_field() }}
-        <label for="Nome">Nome:</label>
-        <div class="autocomplete">
-          <input type="text" id="Nome" name="Nome" autocomplete="off">
-          <ul id="suggestions"></ul>
-        </div>
-        <button class="btn btn-primary" type="submit">Buscar</button>
-      </form>
-    </div> 
-    <div class="container mt-4">
-      <form class="formulario2" action="{{ route('movimento.opcoesmove') }}" method="GET">
-        {{ csrf_field() }}
-        <div class="row mb-1">
-          <div class="col-md-3 mb-3">
-            <label for="data_inicio" class="form-label">Data Início:</label>
-            <input type="date" class="form-control" id="data_inicio" name="data_inicio" required>
+  <div class="container">
+    <h1 class="mt-4 mb-4 text-center">Fórmulas</h1>
+    <form action="{{ route('ativos.show') }}" method="GET">
+      {{ csrf_field() }}
+      <div class="container" id="caixa">
+        <h1 class="mt-4 mb-4">Fórmula de Bazin</h1>
+        <div class="opcoes">
+          <div class="col-md-3">
+            <label for="nome" class="form-label">Nome:</label>
+            <input type="text" class="form-control" id="nome" name="nome" required>
           </div>
-          <div class="col-md-3 mb-3">
-            <label for="data_fim" class="form-label">Data Fim:</label>
-            <input type="date" class="form-control" id="data_fim" name="data_fim" required>
+          <div class="col-md-3">
+            <label for="dpa" class="form-label">DPA:</label>
+            <input type="text" class="form-control" id="dpa" name="dpa" required>
           </div>
-          <div class="col-md-3 mb-3">
-            <label for="tipo" class="form-label">Tipo:</label>
-            <select class="form-select" id="tipo" name="tipo" required>
-              <option value="acao">Ação</option>
-              <option value="fundo imobiliario">Fundo Imobiliário</option>
-            </select>
-          </div>
-          <div class="col-md-3 mb-3">
-            <label for="baixar" class="form-label">Baixar:</label>
-            <select class="form-select" id="baixar" name="baixar" required>
-              <option value="PDF">PDF</option>
-              <option value="Excel">Excel</option>
-            </select>
+          <div class="col-md-3">
+            <label for="dividend_yield" class="form-label">Dividend yield:</label>
+            <input type="text" class="form-control" id="dividend_yield" name="dividend_yield" required>
           </div>
         </div>
-        <div class="mb-1">
-          <button type="submit" class="btn btn-custom">Baixar Excel</button>
-        </div>
-      </form>
-    </div>
-  </div>
-  <div class="container" id="caixa">
-    <div class="row justify-content-center">
-      <div class="col-md-6 text-center">
-        <h1 class="mt-2 mb-4">Ações</h1>
       </div>
-    </div>
+    </form>
+    <form action="{{ route('ativos.show') }}" method="GET">
+      {{ csrf_field() }}
+      <div class="container" id="caixa">
+        <h1 class="mt-4 mb-4">Fórmula de graham</h1>
+        <div class="opcoes">
+          <div class="col-md-3">
+            <label for="nome" class="form-label">Nome:</label>
+            <input type="text" class="form-control" id="nome" name="nome" required>
+          </div>
+          <div class="col-md-3">
+            <label for="lpa" class="form-label">LPA:</label>
+            <input type="text" class="form-control" id="lpa" name="lpa" required>
+          </div>
+          <div class="col-md-3">
+            <label for="vpa" class="form-label">VPA:</label>
+            <input type="text" class="form-control" id="vpa" name="vpa" required>
+          </div>
+        </div>
+      </div>
+    </form>  
+  </div>
+</section>
+<section class="secao_formula_2">
+  <div class="container" id="caixa_2">
+    <h1 class="mt-2 mb-4">Bazin</h1>
     <div class="table-responsive">
-      <table class="table" >
+      <table class="table">
         <thead>
           <tr>   
-            <th>Ação:</th>
-            <th>Movimento:</th>   
-            <th>Quantidade:</th>
-            <th>Valor investido:</th>       
-            <th>Corretagem:</th>
-            <th>Data:</th>   
-            <th>Opções</th>         
+            <th>Nome:</th>
+            <th>DPA:</th>   
+            <th>Dividend yield:</th>     
+            <th>Opções:</th>             
           </tr>
         </thead>
-        @foreach($dadosAcoes as $acao)     
-          <tbody>
+        <tbody>
+          @foreach($dadosAcoes as $acao)     
             <tr>
-              <td> {{ $acao['nome'] }}</td>
-              <td> {{ $acao['movimento'] }}</td> 
-              <td> {{ $acao['quantidade'] }}</td>         
+              <td> {{ $acao['nome'] }}</td>     
               <td>R$ {{ number_format($acao['valor'], 2) }}</td>
               <td>R$ {{ number_format($acao['corretagem'], 2) }}</td>
-              <td> {{ $acao['data'] }}</td>     
               <td class="buttons">
                 <form action="{{ route('ativos.edit', ['id' => $acao['id']]) }}" method="GET" style="display: inline;">
                   {{ csrf_field() }}
@@ -87,41 +76,34 @@
                   @method('DELETE')
                   <button type="submit" class="btn btn-danger" onclick="return confirm('Tem certeza que deseja excluir?')">Excluir</button>
                 </form>              
-              </td>                 
+              </td>        
+                  
             </tr> 
-          </tbody>    
-        @endforeach    
+          @endforeach    
+        </tbody>    
       </table>
     </div>
   </div>
-  <div class="container" id="caixa2">
-    <div class="row justify-content-center">
-      <div class="col-md-6 text-center">
-        <h1 class="mt-2 mb-4">Fiis</h1>
-      </div>
-    </div>
+</section>
+<section class="secao_formula_3">
+  <div class="container" id="caixa_3">
+    <h1 class="mt-2 mb-4">Graham</h1>
     <div class="table-responsive">
-      <table class="table" >
+      <table class="table">
         <thead>
-        <tr>
-          <th>Ação:</th>
-          <th>Movimento:</th>   
-          <th>Quantidade:</th>
-          <th>Valor investido:</th>       
-          <th>Corretagem:</th>
-          <th>Data:</th>   
-          <th>Opções</th>     
-        </tr>
+          <tr>
+            <th>Nome:</th>
+            <th>DPA:</th>   
+            <th>Dividend yield:</th> 
+            <th>Opções:</th>                  
+          </tr>
         </thead>
         <tbody>
           @foreach($dadosFiis as $fii) 
             <tr>
-              <td> {{ $fii['nome'] }}</td>
-              <td> {{ $fii['movimento'] }}</td> 
-              <td> {{ $fii['quantidade'] }}</td>  
+              <td> {{ $fii['nome'] }}</td>    
               <td>R$ {{ number_format($fii['valor'], 2) }}</td>
-              <td>R$ {{ number_format($fii['corretagem'], 2) }}</td>
-              <td> {{ $fii['data'] }}</td>           
+              <td>R$ {{ number_format($fii['corretagem'], 2) }}</td>        
               <td class="buttons">       
                 <form action="{{ route('ativos.edit', ['id' => $fii['id']]) }}" method="GET" style="display: inline;">
                   {{ csrf_field() }}
@@ -134,12 +116,11 @@
                 </form>              
               </td>                 
             </tr> 
-          @endforeach    
-        </tbody>   
+          @endforeach  
+        </tbody>    
       </table>
     </div>
   </div>
 </section>
-<script src="js/movimento_buscar_ativo.js"></script>
 
 @endsection

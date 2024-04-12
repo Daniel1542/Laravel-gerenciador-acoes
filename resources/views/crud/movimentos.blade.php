@@ -49,14 +49,10 @@
       </form>
     </div>
   </div>
-  <div class="container" id="caixa">
-    <div class="row justify-content-center">
-      <div class="col-md-6 text-center">
-        <h1 class="mt-2 mb-4">Ações</h1>
-      </div>
-    </div>
+  <div class="container" id="caixa"> 
+    <h1 class="mt-2 mb-4 text-center">Ações</h1>
     <div class="table-responsive">
-      <table class="table" >
+      <table class="table">
         <thead>
           <tr>   
             <th>Ação:</th>
@@ -65,11 +61,11 @@
             <th>Valor investido:</th>       
             <th>Corretagem:</th>
             <th>Data:</th>   
-            <th>Opções</th>         
+            <th>Opções:</th>         
           </tr>
         </thead>
-        @foreach($dadosAcoes as $acao)     
-          <tbody>
+        <tbody>
+          @foreach($dadosAcoes as $acao)     
             <tr>
               <td> {{ $acao['nome'] }}</td>
               <td> {{ $acao['movimento'] }}</td> 
@@ -89,19 +85,15 @@
                 </form>              
               </td>                 
             </tr> 
-          </tbody>    
-        @endforeach    
+          @endforeach  
+        </tbody>              
       </table>
     </div>
   </div>
   <div class="container" id="caixa2">
-    <div class="row justify-content-center">
-      <div class="col-md-6 text-center">
-        <h1 class="mt-2 mb-4">Fiis</h1>
-      </div>
-    </div>
+    <h1 class="mt-2 mb-4 text-center">Fiis</h1>
     <div class="table-responsive">
-      <table class="table" >
+      <table class="table">
         <thead>
         <tr>
           <th>Fii:</th>
@@ -110,7 +102,7 @@
           <th>Valor investido:</th>       
           <th>Corretagem:</th>
           <th>Data:</th>   
-          <th>Opções</th>     
+          <th>Opções:</th>     
         </tr>
         </thead>
         <tbody>

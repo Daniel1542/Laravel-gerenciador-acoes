@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('formula_graham', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
+            $table->string('nome');
             $table->float('lpa');
             $table->float('vpa');
             $table->timestamps();
