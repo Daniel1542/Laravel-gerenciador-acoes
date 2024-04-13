@@ -67,6 +67,6 @@ class ListaAtivosController extends Controller
 
         $dadosfiis = $this->mostrarTudo($movimentosFiis->groupBy('nome'));
 
-        return view('crud.listaativos', compact('dadosAcoes', 'dadosfiis'));
+        return view('crud.listaAtivos', compact('dadosAcoes', 'dadosfiis'));
     }
 }

@@ -1,4 +1,4 @@
-@extends('layouts.maindashboard')
+@extends('layouts.mainDashboard')
 @section('title','Ativos')
 @section('content')
 

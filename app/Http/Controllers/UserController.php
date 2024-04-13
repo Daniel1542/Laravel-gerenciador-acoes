@@ -18,21 +18,20 @@ class UserController extends Controller
     }
     public function store(Request $request)
     {
-    try {
-        $credenciais = $request->validate([
+        try {
+            $credenciais = $request->validate([
             'email' => 'required|email|unique:users',
             'password' => 'required|string|min:6|regex:/^(?=.*[a-zA-Z])(?=.*\d)/',
-        ]);
+            ]);
 
-        $user = new User();
-        $user->email = $request->email;
-        $user->password = bcrypt($request->password);
-        $user->save();
+            $user = new User();
+            $user->email = $request->email;
+            $user->password = bcrypt($request->password);
+            $user->save();
 
-        return redirect('/')->with('msg', 'Cadastrado com sucesso.');
-    } catch (\Exception $e) {
-
-        return redirect()->back()->withErrors(['message' => 'Erro ao cadastrar usuário.']);
-    }
+            return redirect('/')->with('msg', 'Cadastrado com sucesso.');
+        } catch (\Exception $e) {
+            return redirect()->back()->withErrors(['message' => 'Erro ao cadastrar usuário.']);
+        }
     }
 }

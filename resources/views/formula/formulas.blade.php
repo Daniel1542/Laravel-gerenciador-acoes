@@ -1,17 +1,17 @@
-@extends('layouts.maindashboard')
+@extends('layouts.mainDashboard')
 @section('title', 'Fórmulas')
 @section('content')
 
 <section class="secao_formula">
   <div class="container">
     <h1 class="mt-4 mb-4 text-center">Fórmulas</h1>
-    <form action="{{ route('ativos.show') }}" method="GET">
+    <form action="{{ route('formula.createBazin') }}" method="POST" enctype="multipart/form-data">
       {{ csrf_field() }}
       <div class="container" id="caixa">
         <h1 class="mt-4 mb-4">Fórmula de Bazin</h1>
         <div class="opcoes">
           <div class="col-md-3">
-            <label for="nome" class="form-label">Nome:</label>
+            <label for="nome" class="form-label">Nome do ativo:</label>
             <input type="text" class="form-control" id="nome" name="nome" required>
           </div>
           <div class="col-md-3">
@@ -23,15 +23,18 @@
             <input type="text" class="form-control" id="dividend_yield" name="dividend_yield" required>
           </div>
         </div>
+        <div>
+          <button type="submit" class="btn btn-custom">Salvar</button>
+        </div>
       </div>
     </form>
-    <form action="{{ route('ativos.show') }}" method="GET">
+    <form action="{{ route('formula.createBazin') }}" method="POST" enctype="multipart/form-data">
       {{ csrf_field() }}
       <div class="container" id="caixa">
-        <h1 class="mt-4 mb-4">Fórmula de graham</h1>
+        <h1 class="mt-4 mb-4">Fórmula de Graham</h1>
         <div class="opcoes">
           <div class="col-md-3">
-            <label for="nome" class="form-label">Nome:</label>
+            <label for="nome" class="form-label">Nome do ativo:</label>
             <input type="text" class="form-control" id="nome" name="nome" required>
           </div>
           <div class="col-md-3">
@@ -42,6 +45,9 @@
             <label for="vpa" class="form-label">VPA:</label>
             <input type="text" class="form-control" id="vpa" name="vpa" required>
           </div>
+        </div>
+        <div>
+          <button type="submit" class="btn btn-custom">Salvar</button>
         </div>
       </div>
     </form>  
@@ -56,28 +62,29 @@
           <tr>   
             <th>Nome:</th>
             <th>DPA:</th>   
-            <th>Dividend yield:</th>     
+            <th>Dividend yield:</th> 
+            <th>Preço teto:</th> 
             <th>Opções:</th>             
           </tr>
         </thead>
         <tbody>
-          @foreach($dadosAcoes as $acao)     
+          @foreach($dadosBazin as $bazin)     
             <tr>
-              <td> {{ $acao['nome'] }}</td>     
-              <td>R$ {{ number_format($acao['valor'], 2) }}</td>
-              <td>R$ {{ number_format($acao['corretagem'], 2) }}</td>
-              <td class="buttons">
-                <form action="{{ route('ativos.edit', ['id' => $acao['id']]) }}" method="GET" style="display: inline;">
+              <td>{{ $bazin['nome'] }}</td>     
+              <td>{{ $bazin['dpa'] }}</td>
+              <td>{{ $bazin['dividend_yield'] }} %</td>
+              <td>R$ {{ $bazin['preco_teto'] }}</td>
+              <td class="buttons"> 
+                <form action="{{ route('formula.editBazin', ['id' => $bazin['id']]) }}" method="GET" style="display: inline;">
                   {{ csrf_field() }}
                   <button type="submit" class="btn btn-warning">Editar</button>
                 </form>
-                <form action="{{ route('ativos.destroy', ['id' => $acao['id']]) }}" method="POST" style="display: inline;">
+                <form action="{{ route('formula.destroyBazin', ['id' => $bazin['id']]) }}" method="POST" style="display: inline;">
                   {{ csrf_field() }}
                   @method('DELETE')
                   <button type="submit" class="btn btn-danger" onclick="return confirm('Tem certeza que deseja excluir?')">Excluir</button>
                 </form>              
-              </td>        
-                  
+              </td>                        
             </tr> 
           @endforeach    
         </tbody>    
@@ -85,7 +92,7 @@
     </div>
   </div>
 </section>
-<section class="secao_formula_3">
+<section class="secao_formula_2">
   <div class="container" id="caixa_3">
     <h1 class="mt-2 mb-4">Graham</h1>
     <div class="table-responsive">
@@ -95,21 +102,23 @@
             <th>Nome:</th>
             <th>DPA:</th>   
             <th>Dividend yield:</th> 
+            <th>Preço justo:</th> 
             <th>Opções:</th>                  
           </tr>
         </thead>
         <tbody>
-          @foreach($dadosFiis as $fii) 
+          @foreach($dadosGraham as $graham) 
             <tr>
-              <td> {{ $fii['nome'] }}</td>    
-              <td>R$ {{ number_format($fii['valor'], 2) }}</td>
-              <td>R$ {{ number_format($fii['corretagem'], 2) }}</td>        
-              <td class="buttons">       
-                <form action="{{ route('ativos.edit', ['id' => $fii['id']]) }}" method="GET" style="display: inline;">
+              <td> {{ $graham['nome'] }}</td>    
+              <td> {{ $graham['lpa'] }}</td>
+              <td> {{ $graham['vpa'] }}</td>
+              <td>R$ {{ $graham['preco_justo'] }}</td>
+              <td class="buttons">    
+                <form action="{{ route('formula.editBazin', ['id' => $graham['id']]) }}" method="GET" style="display: inline;">
                   {{ csrf_field() }}
                   <button type="submit" class="btn btn-warning">Editar</button>
                 </form>
-                <form action="{{ route('ativos.destroy', ['id' => $fii['id']]) }}" method="POST" style="display: inline;">
+                <form action="{{ route('formula.destroyBazin', ['id' => $graham['id']]) }}" method="POST" style="display: inline;">
                   {{ csrf_field() }}
                   @method('DELETE')
                   <button type="submit" class="btn btn-danger" onclick="return confirm('Tem certeza que deseja excluir?')">Excluir</button>
@@ -122,5 +131,7 @@
     </div>
   </div>
 </section>
+
+<script src="js/formulas_opcoes.js"></script>
 
 @endsection

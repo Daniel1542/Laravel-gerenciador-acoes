@@ -58,13 +58,13 @@ class MovimentoAtivosController extends Controller
         $data_fim = $request->input('data_fim');
         $tipo = $request->input('tipo');
         if ($baixar == 'Excel') {
-            return redirect()->route('movimento.exportMovimentoAtivos', [
+            return redirect()->route('movimento.exportMovimentoExcel', [
                 'data_ini' => $data_inicio,
                 'data_fi' => $data_fim,
                 'tip' => $tipo,
             ]);
         } else {
-            return redirect()->route('movimento.exportMovimentoAtivosPdf', [
+            return redirect()->route('movimento.exportMovimentoPdf', [
                 'data_ini' => $data_inicio,
                 'data_fi' => $data_fim,
                 'tip' => $tipo,
@@ -75,7 +75,7 @@ class MovimentoAtivosController extends Controller
     /**
      * gerar excel
      */
-    public function exportMovimentoAtivos($data_ini, $data_fi, $tip)
+    public function exportMovimentoExcel($data_ini, $data_fi, $tip)
     {
         $data_inicio = $data_ini;
         $data_fim = $data_fi;
@@ -123,7 +123,7 @@ class MovimentoAtivosController extends Controller
     /**
     * gerar pdf
     */
-    public function exportMovimentoAtivosPdf($data_ini, $data_fi, $tip)
+    public function exportMovimentPdf($data_ini, $data_fi, $tip)
     {
         $data_inicio = $data_ini;
         $data_fim = $data_fi;
@@ -173,7 +173,7 @@ class MovimentoAtivosController extends Controller
             ];
         }
 
-        $pdf = PDF::loadView('PDF.movimentospdf', compact('dadosAcoes', 'dadosFiis'));
+        $pdf = PDF::loadView('PDF.movimentosPdf', compact('dadosAcoes', 'dadosFiis'));
 
         return $pdf->stream('download.pdf');
     }

@@ -10,12 +10,12 @@ use App\Http\Controllers\MovimentoAtivosController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\FormulasController;
 
-Route::resource('ativos', AtivosController::class);
+Route::resource('ativos', AtivosController::class)->middleware('auth');
 Route::resource('user', UserController::class);
-Route::resource('lista', ListaAtivosController::class);
-Route::resource('movimento', MovimentoAtivosController::class);
-Route::resource('imposto', ImpostoRendaController::class);
-Route::resource('formula', FormulasController::class);
+Route::resource('lista', ListaAtivosController::class)->middleware('auth');
+Route::resource('movimento', MovimentoAtivosController::class)->middleware('auth');
+Route::resource('imposto', ImpostoRendaController::class)->middleware('auth');
+Route::resource('formula', FormulasController::class)->middleware('auth');
 
 
 /*dashboard*/
@@ -32,7 +32,6 @@ Route::get('/opcoes-move', [MovimentoAtivosController::class, 'opcoesmove'])->na
 
 /*ativos*/
 
-Route::get('/ativos/show', [AtivosController::class, 'show'])->name('ativos.show')->middleware('auth');
 Route::get('/ativos/{id}/edit', [AtivosController::class, 'edit'])->name('ativos.edit')->middleware('auth');
 Route::delete('/ativos/{id}', [AtivosController::class, 'destroy'])->name('ativos.destroy')->middleware('auth');
 
@@ -40,15 +39,23 @@ Route::delete('/ativos/{id}', [AtivosController::class, 'destroy'])->name('ativo
 
 Route::get('/buscar-ativos', [AtivosController::class, 'buscarAtivos'])->name('ativos.buscarAtivos')->middleware('auth');
 
+/*formulas*/
+
+Route::post('/criar-Bazin', [FormulasController::class, 'createBazin'])->name('formula.createBazin')->middleware('auth');
+Route::get('/bazin/{id}/edit', [FormulasController::class, 'editBazin'])->name('formula.editBazin')->middleware('auth');
+Route::delete('/bazin/{id}/delete', [FormulasController::class, 'destroyBazin'])->name('formula.destroyBazin')->middleware('auth');
+Route::put('/formula/{id}', [FormulasController::class, 'updateBazin'])->name('formula.updateBazin')->middleware('auth');
+
+
 /*PDF*/
 
-Route::get('/export-MovimentoAtivosPdf/{data_ini}/{data_fi}/{tip}', [MovimentoAtivosController::class, 'exportMovimentoAtivosPdf'])->name('movimento.exportMovimentoAtivosPdf')->middleware('auth');
-Route::get('/export-IrPdf/{data_ini}/{tip}', [ImpostoRendaController::class, 'exportIrpdfPdf'])->name('imposto.exportIrpdfPdf')->middleware('auth');
+Route::get('/export-Movimento-Pdf/{data_ini}/{data_fi}/{tip}', [MovimentoAtivosController::class, 'exportMovimentoPdf'])->name('movimento.exportMovimentoPdf')->middleware('auth');
+Route::get('/export-Ir-Pdf/{data_ini}/{tip}', [ImpostoRendaController::class, 'exportIrPdf'])->name('imposto.exportIrPdf')->middleware('auth');
 
 /*Excel*/
 
-Route::get('/export-movimentos/{data_ini}/{data_fi}/{tip}', [MovimentoAtivosController::class, 'exportMovimentoAtivos'])->name('movimento.exportMovimentoAtivos')->middleware('auth');
-Route::get('/exportAtivos/{data_ini}/{tip}', [ImpostoRendaController::class, 'exportAtivos'])->name('imposto.exportAtivos')->middleware('auth');
+Route::get('/export-Excel/{data_ini}/{data_fi}/{tip}', [MovimentoAtivosController::class, 'exportMovimentoExcel'])->name('movimento.exportMovimentoExcel')->middleware('auth');
+Route::get('/export-Ativos-Excel/{data_ini}/{tip}', [ImpostoRendaController::class, 'exportAtivosExcel'])->name('imposto.exportAtivosExcel')->middleware('auth');
 
 /*User*/
 

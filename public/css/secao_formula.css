@@ -3,14 +3,13 @@
     margin-top: 150px;
   }
 
-  .secao_formula_2 .secao_formula_3{
+  .secao_formula_2{
     padding: 0;
     margin-bottom: 50px;
     margin-top: 100px;
   }
 
-  .secao_formula_2 .table-responsive,
-  .secao_formula_3 .table-responsive{
+  .secao_formula_2 .table-responsive{
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
     -ms-overflow-style: -ms-autohiding-scrollbar;
@@ -31,7 +30,9 @@
   }
 
   .secao_formula_2 #caixa_2, 
-  .secao_formula_3 #caixa_3  {
+  .secao_formula_2 #caixa_3{
+    display: flex;
+    flex-direction: column;
     text-align: center;
     width: 100%;
     background-color: rgb(196, 110, 104);
@@ -43,34 +44,30 @@
   
   .secao_formula .opcoes {
     display: flex;
-    gap: 10px;
+    justify-content: center;
+    text-align: center;
+    gap: 15px;
    
   }
 
-  .secao_formula_2 .table,
-  .secao_formula_3 .table{
+  .secao_formula_2 .table{
     border-collapse: collapse;
     width: 100%;
   }
 
-  .secao_formula_2 .table .buttons, 
-  .secao_formula_3 .table .buttons{
+  .secao_formula_2 .table .buttons{
     display: flex;
     gap: 10px;
   }
 
   .secao_formula_2 .btn-warning, 
-  .secao_formula_2 .btn-danger,
-  .secao_formula_3 .btn-warning, 
-  .secao_formula_3 .btn-danger{
+  .secao_formula_2 .btn-danger{
     padding: 4px;
     margin: 5px;
   }
   
   .secao_formula_2 .table th,
-  .secao_formula_2 .table td,
-  .secao_formula_3 .table th,
-  .secao_formula_3 .table td {
+  .secao_formula_2 .table td{
     border: 1px solid #dee2e6;
     padding: 4px;
     text-align: center;
@@ -82,31 +79,27 @@
  
 
   @media screen and (max-width: 768px) {
-    .secao_formula #caixa {
+    .secao_formula #caixa{
       padding: 15px;
       margin-top:80px;
       width: 99vw;
     }
 
     .secao_formula_2 #caixa_2, 
-    .secao_formula_3 #caixa_3 {
+    .secao_formula_2 #caixa_3{
       padding: 18px;
       margin-top:80px;
       width: 99vw;
     }
 
     .secao_formula_2 .table th,
-    .secao_formula_2 .table td,
-    .secao_formula_3 .table th,
-    .secao_formula_3 .table td {
+    .secao_formula_2 .table td{
       width: 100%;   
       box-sizing: border-box;
     }
 
     .secao_formula_2 .btn-warning,
-    .secao_formula_2 .btn-danger,
-    .secao_formula_3 .btn-warning,
-    .secao_formula_3 .btn-danger{
+    .secao_formula_2 .btn-danger{
       margin: 10px;
     }
 

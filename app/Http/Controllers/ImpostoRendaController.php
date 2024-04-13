@@ -94,12 +94,12 @@ class ImpostoRendaController extends Controller
 
         $tipo = $request->input('tipo');
         if ($baixar == 'Excel') {
-            return redirect()->route('imposto.exportAtivos', [
+            return redirect()->route('imposto.exportAtivosExcel', [
                 'data_ini' => $data,
                 'tip' => $tipo,
             ]);
         } else {
-            return redirect()->route('imposto.exportIrpdfPdf', [
+            return redirect()->route('imposto.exportIrPdf', [
                 'data_ini' => $data,
                 'tip' => $tipo,
             ]);
@@ -131,7 +131,7 @@ class ImpostoRendaController extends Controller
 
     /* PDF*/
 
-    public function exportIrpdfPdf($data_ini, $tip)
+    public function exportIrPdf($data_ini, $tip)
     {
         $user = Auth::user();
 
@@ -154,14 +154,14 @@ class ImpostoRendaController extends Controller
         $dadosAtivos = $this->calcularMovimentos($movimentosAcoes->groupBy('nome'));
         $dadosfiis = $this->calcularMovimentos($movimentosFiis->groupBy('nome'));
 
-        $pdf = PDF::loadView('PDF.irpdf', compact('dadosAtivos', 'dadosfiis'));
+        $pdf = PDF::loadView('PDF.irPdf', compact('dadosAtivos', 'dadosfiis'));
 
         return $pdf->stream('download.pdf');
     }
 
     /* excel*/
 
-    public function exportAtivos($data_ini, $tip)
+    public function exportAtivosExcel($data_ini, $tip)
     {
         $user = Auth::user();
 
