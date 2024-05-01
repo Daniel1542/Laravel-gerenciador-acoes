@@ -15,5 +15,7 @@ class DatabaseSeeder extends Seeder
     {
         $this->call(UsersSeeder::class);
         $this->call(MovimentoAtivosSeeder::class);
+        $this->call(FormulaBazinSeeder::class);
+        $this->call(FormulaGrahamSeeder::class);
     }
 }

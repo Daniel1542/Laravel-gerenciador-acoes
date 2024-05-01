@@ -4,17 +4,18 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use App\Models\MovimentoAtivos;
 use App\Models\FormulaBazin;
 use App\Models\FormulaGraham;
 
 class FormulasController extends Controller
 {
+    /*functions que retornam bazin e graham*/
+
     private function bazinIndex($dado)
     {
         $dados = [];
         foreach ($dado as $formula) {
-            $precoTeto = $formula['dpa'] / $formula['dividend_yield'];
+            $precoTeto = $formula['dpa'] / ($formula['dividend_yield'] / 100);
             $dados[] = [
                 'id' => $formula['id'],
                 'nome' => $formula['nome'],
@@ -116,31 +117,31 @@ class FormulasController extends Controller
     {
         $user = Auth::user();
 
-        $ativos = FormulaBazin::where('user_id', $user->id)
+        $formula = FormulaBazin::where('user_id', $user->id)
             ->findOrFail($id);
 
-        $ativos->delete();
+        $formula->delete();
 
-        return redirect()->route('movimento.index')->with('msg', 'Ativo na lista excluído com sucesso.');
+        return redirect()->route('formula.index')->with('msg', 'formula na lista excluída com sucesso.');
     }
     public function createGraham(Request $request)
     {
         $request->validate([
             'nome' => 'string|max:6|regex:/^[A-Z0-9]+$/',
-            'dpa' => 'numeric',
-            'dividend_yield' => 'numeric',
+            'lpa' => 'numeric',
+            'vpa' => 'numeric',
         ]);
 
         $user = Auth::user();
 
-        $ativos = new FormulaGraham();
+        $formula = new FormulaGraham();
 
-        $ativos-> user_id = $user->id;
-        $ativos-> nome = $request->nome;
-        $ativos-> dpa = $request->dpa;
-        $ativos-> dividend_yield = $request->dividend_yield;
+        $formula-> user_id = $user->id;
+        $formula-> nome = $request->nome;
+        $formula-> lpa = $request->lpa;
+        $formula-> vpa = $request->vpa;
 
-        $ativos->save();
+        $formula->save();
 
         return redirect()->route('formula.index')->with('msg', 'Cadastrado com sucesso.');
     }
@@ -149,40 +150,33 @@ class FormulasController extends Controller
     {
         $user = Auth::user();
 
-        $ativos  = FormulaGraham::where('user_id', $user->id)
+        $formula  = FormulaGraham::where('user_id', $user->id)
             ->findOrFail($id);
 
-        return view('crud.editarAtivo', compact('ativos'));
+        return view('crud.editarFormula', compact('formula'));
     }
     public function updateGraham(Request $request, string $id)
     {
         $request->validate([
             'nome' => 'string|max:6|regex:/^[A-Z0-9]+$/',
-            'dpa' => 'numeric',
-            'dividend_yield' => 'numeric',
+            'lpa' => 'numeric',
+            'vpa' => 'numeric',
         ]);
 
         $user = Auth::user();
 
-        $movimentos = FormulaGraham::where('user_id', $user->id)
+        $formula = FormulaGraham::where('user_id', $user->id)
             ->findOrFail($id);
 
-        $dadosAtualizados = $request->only([
-            'tipo',
-            'movimento',
-            'nome',
-            'corretagem',
-            'quantidade',
-            'valor',
-        ]);
+        $formula-> user_id = $user->id;
+        $formula-> nome = $request->nome;
+        $formula-> lpa = $request->lpa;
+        $formula-> vpa = $request->vpa;
 
-        $dadosAtualizados['valor_total'] = $request->corretagem + ($request->valor * $request->quantidade);
+        $formula->save();
 
-        $movimentos->update($dadosAtualizados);
-
-        return redirect()->route('movimento.index')->with('msg', 'Movimento atualizado com sucesso.');
+        return redirect()->route('formula.index')->with('msg', 'formula atualizada com sucesso.');
     }
-
     public function destroyGraham(string $id)
     {
         $user = Auth::user();
@@ -192,6 +186,6 @@ class FormulasController extends Controller
 
         $ativos->delete();
 
-        return redirect()->route('movimento.index')->with('msg', 'Ativo na lista excluído com sucesso.');
+        return redirect()->route('formula.index')->with('msg', 'formula na lista excluída com sucesso.');
     }
 }

@@ -32,6 +32,7 @@ Route::get('/opcoes-move', [MovimentoAtivosController::class, 'opcoesmove'])->na
 
 /*ativos*/
 
+Route::get('/ativos/show', [AtivosController::class, 'show'])->name('ativos.show')->middleware('auth');
 Route::get('/ativos/{id}/edit', [AtivosController::class, 'edit'])->name('ativos.edit')->middleware('auth');
 Route::delete('/ativos/{id}', [AtivosController::class, 'destroy'])->name('ativos.destroy')->middleware('auth');
 
@@ -45,6 +46,11 @@ Route::post('/criar-Bazin', [FormulasController::class, 'createBazin'])->name('f
 Route::get('/bazin/{id}/edit', [FormulasController::class, 'editBazin'])->name('formula.editBazin')->middleware('auth');
 Route::delete('/bazin/{id}/delete', [FormulasController::class, 'destroyBazin'])->name('formula.destroyBazin')->middleware('auth');
 Route::put('/formula/{id}', [FormulasController::class, 'updateBazin'])->name('formula.updateBazin')->middleware('auth');
+
+Route::post('/criar-Graham', [FormulasController::class, 'createGraham'])->name('formula.createGraham')->middleware('auth');
+Route::get('/Graham/{id}/edit', [FormulasController::class, 'editGraham'])->name('formula.editGraham')->middleware('auth');
+Route::delete('/Graham/{id}/delete', [FormulasController::class, 'destroyGraham'])->name('formula.destroyGraham')->middleware('auth');
+Route::put('/formula/{id}', [FormulasController::class, 'updateGraham'])->name('formula.updateGraham')->middleware('auth');
 
 
 /*PDF*/

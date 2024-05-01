@@ -13,5 +13,10 @@ class UsersSeeder extends Seeder
             'email' => 'admim@gmail.com',
             'password' => 'aaaa1111',
         ]);
+
+        User::create([
+            'email' => 'backup@gmail.com',
+            'password' => 'aaaa1111',
+        ]);
     }
 }

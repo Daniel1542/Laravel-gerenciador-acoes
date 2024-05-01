@@ -109,8 +109,6 @@ class AtivosController extends Controller
 
         $dadosAtivos = [];
 
-        $movimentosAcoesAgrupados = $ativos->groupBy('nome');
-
         foreach ($ativos as $ativo) {
             $dadosAtivos[] = [
                 'nome' => $ativo->nome,

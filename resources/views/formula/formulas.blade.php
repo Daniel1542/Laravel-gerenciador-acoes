@@ -11,15 +11,15 @@
         <h1 class="mt-4 mb-4">Fórmula de Bazin</h1>
         <div class="opcoes">
           <div class="col-md-3">
-            <label for="nome" class="form-label">Nome do ativo:</label>
-            <input type="text" class="form-control" id="nome" name="nome" required>
+            <label for="nome" class="form-label">Ticker:</label>
+            <input type="text" class="form-control" id="nome" name="nome" oninput="this.value = this.value.toUpperCase()" required>
           </div>
           <div class="col-md-3">
             <label for="dpa" class="form-label">DPA:</label>
             <input type="text" class="form-control" id="dpa" name="dpa" required>
           </div>
           <div class="col-md-3">
-            <label for="dividend_yield" class="form-label">Dividend yield:</label>
+            <label for="dividend_yield" class="form-label">Yield estimado:</label>
             <input type="text" class="form-control" id="dividend_yield" name="dividend_yield" required>
           </div>
         </div>
@@ -28,14 +28,14 @@
         </div>
       </div>
     </form>
-    <form action="{{ route('formula.createBazin') }}" method="POST" enctype="multipart/form-data">
+    <form action="{{ route('formula.createGraham') }}" method="POST" enctype="multipart/form-data">
       {{ csrf_field() }}
-      <div class="container" id="caixa">
+      <div class="container" id="caixa_1">
         <h1 class="mt-4 mb-4">Fórmula de Graham</h1>
         <div class="opcoes">
           <div class="col-md-3">
-            <label for="nome" class="form-label">Nome do ativo:</label>
-            <input type="text" class="form-control" id="nome" name="nome" required>
+            <label for="nome" class="form-label">Ticker:</label>
+            <input type="text" class="form-control" id="nome" name="nome" oninput="this.value = this.value.toUpperCase()" required>
           </div>
           <div class="col-md-3">
             <label for="lpa" class="form-label">LPA:</label>
@@ -73,13 +73,13 @@
               <td>{{ $bazin['nome'] }}</td>     
               <td>{{ $bazin['dpa'] }}</td>
               <td>{{ $bazin['dividend_yield'] }} %</td>
-              <td>R$ {{ $bazin['preco_teto'] }}</td>
+              <td>R$ {{number_format ($bazin['preco_teto'], 2) }}</td>
               <td class="buttons"> 
-                <form action="{{ route('formula.editBazin', ['id' => $bazin['id']]) }}" method="GET" style="display: inline;">
+                <form action="{{ route('formula.editBazin', ['id' => $bazin['id']]) }}" method="GET">
                   {{ csrf_field() }}
                   <button type="submit" class="btn btn-warning">Editar</button>
                 </form>
-                <form action="{{ route('formula.destroyBazin', ['id' => $bazin['id']]) }}" method="POST" style="display: inline;">
+                <form action="{{ route('formula.destroyBazin', ['id' => $bazin['id']]) }}" method="POST">
                   {{ csrf_field() }}
                   @method('DELETE')
                   <button type="submit" class="btn btn-danger" onclick="return confirm('Tem certeza que deseja excluir?')">Excluir</button>
@@ -112,13 +112,13 @@
               <td> {{ $graham['nome'] }}</td>    
               <td> {{ $graham['lpa'] }}</td>
               <td> {{ $graham['vpa'] }}</td>
-              <td>R$ {{ $graham['preco_justo'] }}</td>
+              <td>R$ {{number_format ($graham['preco_justo'], 2) }}</td>
               <td class="buttons">    
-                <form action="{{ route('formula.editBazin', ['id' => $graham['id']]) }}" method="GET" style="display: inline;">
+                <form action="{{ route('formula.editGraham', ['id' => $graham['id']]) }}" method="GET">
                   {{ csrf_field() }}
                   <button type="submit" class="btn btn-warning">Editar</button>
                 </form>
-                <form action="{{ route('formula.destroyBazin', ['id' => $graham['id']]) }}" method="POST" style="display: inline;">
+                <form action="{{ route('formula.destroyGraham', ['id' => $graham['id']]) }}" method="POST">
                   {{ csrf_field() }}
                   @method('DELETE')
                   <button type="submit" class="btn btn-danger" onclick="return confirm('Tem certeza que deseja excluir?')">Excluir</button>
@@ -131,7 +131,5 @@
     </div>
   </div>
 </section>
-
-<script src="js/formulas_opcoes.js"></script>
 
 @endsection
