@@ -38,9 +38,19 @@
 }
 .secao_ir .formulario2 {
   display: flex;
-  flex-direction: column;
+  justify-content: center;
+  flex-direction: row;
   padding: 10px;
-  gap: 10px;
+}
+
+.secao_ir #procura {
+  display: flex;
+  flex-direction: row;
+}
+
+.secao_ir #procura label {
+  margin-right: 20px;
+  flex-direction: row;
 }
 
 .secao_ir .btn-custom{

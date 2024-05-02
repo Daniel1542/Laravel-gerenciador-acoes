@@ -17,7 +17,6 @@ Route::resource('movimento', MovimentoAtivosController::class)->middleware('auth
 Route::resource('imposto', ImpostoRendaController::class)->middleware('auth');
 Route::resource('formula', FormulasController::class)->middleware('auth');
 
-
 /*dashboard*/
 
 Route::get('/dashboard', [DashboardController::class, 'dash'])->name('principal.dashboard')->middleware('auth');
@@ -51,7 +50,6 @@ Route::post('/criar-Graham', [FormulasController::class, 'createGraham'])->name(
 Route::get('/Graham/{id}/edit', [FormulasController::class, 'editGraham'])->name('formula.editGraham')->middleware('auth');
 Route::delete('/Graham/{id}/delete', [FormulasController::class, 'destroyGraham'])->name('formula.destroyGraham')->middleware('auth');
 Route::put('/formula/{id}', [FormulasController::class, 'updateGraham'])->name('formula.updateGraham')->middleware('auth');
-
 
 /*PDF*/
 

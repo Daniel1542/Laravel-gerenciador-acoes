@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="/css/app.css">
   <link rel="stylesheet" href="/css/secao_ativos.css">
+  <link rel="stylesheet" href="/css/modal_add_ativos.css">
   <link rel="stylesheet" href="/css/secao_dash.css">
   <link rel="stylesheet" href="/css/secao_ir.css">
   <link rel="stylesheet" href="/css/secao_movimento.css">
@@ -40,7 +41,7 @@
           Menu
         </button>
         <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-          <li><a class="dropdown-item" href="{{ route('ativos.create')}}">Ativos</a></li>
+          <button id="myBtn" class="dropdown-item">Compra e venda</button>
           <li><a class="dropdown-item" href="{{ route('lista.index')}}">Mostrar ativos</a></li>
           <li><a class="dropdown-item" href="{{ route('imposto.index')}}">Imposto de renda</a></li>
           <li><a class="dropdown-item" href="{{ route('movimento.index')}}">Movimentações</a></li>
@@ -95,6 +96,54 @@
       </div>
     @endif 
     @yield('content')
+    <div id="myModal" class="modal">
+      <div class="modal-content">
+        <div class="container" id="caixa">
+          <span class="close">&times;</span>
+          <h1 class="mb-2 text-center">Cadastrar</h1>
+          <form action="{{ route('ativos.store') }}" method="POST" enctype="multipart/form-data">
+            {{ csrf_field() }}
+            <div class="form-group">
+              <label for="tipo">Tipo de ativo:</label>
+              <select id="tipo" name="tipo" required>
+                <option value="fundo imobiliario">fundo imobiliario</option>
+                <option value="acao">acao</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="movimento">Tipo de Operação:</label>
+              <select id="movimento" name="movimento" required>
+                <option value="compra">compra</option>
+                <option value="venda">venda</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="nome">Ativo:</label>
+              <input type="text" id="nome" name="nome" oninput="this.value = this.value.toUpperCase()" required>
+            </div>
+            <div class="form-group">
+              <label for="data">Data:</label>
+              <input type="date" id="data" name="data" required>
+            </div>
+            <div class="form-group"> 
+              <label for="corretagem">Corretagem:</label>
+              <input type="number" id="corretagem" name="corretagem" required>
+            </div>
+            <div class="form-group"> 
+              <label for="quantidade">Quantidade:</label>
+              <input type="number" id="quantidade" name="quantidade" required>
+            </div>
+            <div class="form-group">
+              <label for="valor">Valor:</label>
+              <input type="number" step="0.01" id="valor" name="valor" required>
+            </div>
+            <div class="form-group">
+              <button type="submit" class="btn btn-primary">Cadastrar</button>
+            </div>  
+          </form>
+        </div>
+      </div>
+    </div>
   </main>
   <footer>
     <p>&copy; 2024 Daniel</p>
@@ -104,5 +153,7 @@
       <a href="#">Contato</a>
     </nav>
   </footer>
+  <script src="js/modal_add_ativos.js"></script>
+
 </body>
 </html>

@@ -20,7 +20,7 @@
           <label for="password">Senha:</label>
           <input type="password" id="password" name="password" required>
         </div>
-        <div class="form-group" style="margin-top: 15px;">
+        <div class="form-group mt-4">
           <input type="submit" id="botao" class="btn btn-danger btn-sm" value="Cadastrar">
         </div>
       </div>

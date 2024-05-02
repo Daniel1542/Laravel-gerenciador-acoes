@@ -1,0 +1,45 @@
+.modal-content{
+    padding: 0;
+}
+  
+.modal-content #caixa {
+    background-color: rgb(196, 110, 104);
+    padding: 50px;
+    margin-top: 250px;
+    border: 1px solid #d3a4a4;
+    border-radius: 5px;
+}
+
+.modal-content .form-group{
+    margin: 5px;
+    gap: 5px;
+}
+
+.modal-content .btn-primary{
+    margin-top: 15px;
+}
+
+@media screen and (max-width: 768px) {
+    
+    .modal-content{
+        width: 98vw;
+    }
+    
+    .modal-content .form-group{
+        margin: 10px;
+        gap: 10px;
+        text-align: center;
+    }
+
+    .modal-content select, .modal-content input{
+        text-align: center;
+        padding: 3px;
+    }
+
+    .modal-content #caixa {
+        width: 100%;
+        padding: 20px;
+        margin-bottom: 50px;
+    }
+
+}
