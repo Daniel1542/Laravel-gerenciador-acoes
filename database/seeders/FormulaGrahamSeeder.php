@@ -30,5 +30,19 @@ class FormulaGrahamSeeder extends Seeder
             'lpa' => '8',
             'vpa' => '40',
         ]);
+
+        FormulaGraham::create([
+            'user_id' => '1',
+            'nome' => 'ABCB4',
+            'lpa' => '5',
+            'vpa' => '38',
+        ]);
+
+        FormulaGraham::create([
+            'user_id' => '1',
+            'nome' => 'GOAU4',
+            'lpa' => '8.2',
+            'vpa' => '40.10',
+        ]);
     }
 }

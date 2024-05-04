@@ -1,7 +1,7 @@
 @extends('layouts.mainDashboard')
 @section('title', 'Lista de ativos')
 @section('content')
-
+{{-- Seção para mostrar ações --}}
 <section class="secao_ativos">
   <div class="container" id="caixa">
     <h1 class="text-center mb-4">Ações</h1>
@@ -33,6 +33,7 @@
     </div>
   </div>
 </section>
+{{-- Seção para mostrar fiis --}}
 <section class="secao_ativos2">
   <div class="container" id="caixa2">
     <h1 class="text-center mb-4">Fiis</h1>  

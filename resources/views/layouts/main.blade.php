@@ -19,21 +19,23 @@
   
 </head>
 <body class="corpo">
-  @if (session('msg'))
-    <div class="alert alert-danger">
-      {{ session('msg') }}
-    </div>
-  @endif
-  @if ($errors->any())
-  <div class="alert alert-danger mt-4">
+  <main>
+    @if (session('msg'))
+      <div class="alert alert-danger">
+        {{ session('msg') }}
+      </div>
+    @endif
+    @if ($errors->any())
+    <div class="alert alert-danger mt-4">
       <ul>
-          @foreach ($errors->all() as $error)
-              <li>{{ $error }}</li>
-          @endforeach
+        @foreach ($errors->all() as $error)
+          <li>{{ $error }}</li>
+        @endforeach
       </ul>
-  </div>
-  @endif
-  @yield('content')
+    </div>
+    @endif
+    @yield('content')
+  </main>
   <footer>
     <p>&copy; 2023 Daniel</p>
     <nav>

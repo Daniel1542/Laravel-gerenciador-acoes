@@ -57,7 +57,6 @@
     </div>
   </div>
 </section>
-
 {{-- Seção para mostrar ações --}}
 <section class="secao_movimento_1">
   <div class="container" id="caixa"> 
@@ -76,7 +75,7 @@
           </tr>
         </thead>
         <tbody>
-          {{-- Loop pelos dados de ações --}}
+          {{-- Loop dados de ações --}}
           @foreach($dadosAcoes as $acao)     
             <tr>
               <td> {{ $acao['nome'] }}</td>
@@ -103,7 +102,6 @@
     </div>
   </div>
 </section>
-
 {{-- Seção para mostrar fiis --}}
 <section class="secao_movimento_1">
   <div class="container" id="caixa2">
@@ -122,7 +120,7 @@
         </tr>
         </thead>
         <tbody>
-          {{-- Loop pelos dados de FIIs --}}
+          {{-- Loop dados de FIIs --}}
           @foreach($dadosFiis as $fii) 
             <tr>
               <td> {{ $fii['nome'] }}</td>

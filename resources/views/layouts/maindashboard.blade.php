@@ -23,25 +23,26 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
   <!-- Bootstrap JavaScript (jQuery e Popper.js) -->
   <link rel="stylesheet" href="/js/app.js">
-  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>  
-  <!-- Adicione este CDN ao seu arquivo de layout -->
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
 </head>
 <body class="corpo">
   <header>
+    {{-- logo do site no menu --}}
     <div class="dropdown">
       <a href="{{ route('principal.dashboard') }}">
         <img class="logo" src="logo/bear_and_bull.svg" alt="logo">
       </a>
     </div>
+    {{-- menu responsivo --}}
     <div class="col-lg-3">
       <div class="dropdown d-lg-none">
         <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
           Menu
         </button>
         <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-          <button id="myBtn" class="dropdown-item">Compra e venda</button>
+          <button id="mobileBtn" class="dropdown-item">Compra e venda</button>
           <li><a class="dropdown-item" href="{{ route('lista.index')}}">Mostrar ativos</a></li>
           <li><a class="dropdown-item" href="{{ route('imposto.index')}}">Imposto de renda</a></li>
           <li><a class="dropdown-item" href="{{ route('movimento.index')}}">Movimentações</a></li>
@@ -50,12 +51,13 @@
         </ul>    
       </div>
     </div>
+    {{-- Menu no pc --}}
     <div class="dropdown d-none d-lg-block" >
       <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
         Ativos
       </button>
       <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-        <li><a class="dropdown-item" href="{{ route('ativos.create')}}">Compra e venda</a></li>
+        <button id="desktopBtn" class="dropdown-item">Compra e venda</button>
         <li><a class="dropdown-item" href="{{ route('lista.index')}}">Mostrar</a></li>
         <li><a class="dropdown-item" href="{{ route('formula.index')}}">Fórmulas</a></li>
       </ul>    
@@ -90,14 +92,15 @@
       <div class="alert alert-danger mt-4"> 
         <ul>
           @foreach ($errors->all() as $error)
-              <li>{{ $error }}</li>
+            <li>{{ $error }}</li>
           @endforeach
         </ul>
       </div>
     @endif 
     @yield('content')
-    <div id="myModal" class="modal">
-      <div class="modal-content">
+    {{-- modal para cadastrar ativo --}}
+    <div id="modalAddAtivo" class="modal">
+      <div class="modal-content-add">
         <div class="container" id="caixa">
           <span class="close">&times;</span>
           <h1 class="mb-2 text-center">Cadastrar</h1>

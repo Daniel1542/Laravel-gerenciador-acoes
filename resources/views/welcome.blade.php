@@ -23,7 +23,7 @@
         <div class="form-group text-center">
           <a href="/cadastro">Cadastre-se</a>
         </div>        
-        <div class="form-group mt-4">
+        <div class="form-group mt-2">
           <input type="submit" id="botao" class="btn btn-danger btn-sm" value="Logar">
         </div>
       </div>

@@ -5,6 +5,7 @@
 <section class="secao_formula">
   <div class="container">
     <h1 class="mt-4 mb-4 text-center">Fórmulas</h1>
+    {{-- Formulário para cadastro de Bazin --}}
     <form action="{{ route('formula.createBazin') }}" method="POST" enctype="multipart/form-data">
       {{ csrf_field() }}
       <div class="container" id="caixa">
@@ -28,6 +29,7 @@
         </div>
       </div>
     </form>
+    {{-- Formulário para cadastro de Graham --}}
     <form action="{{ route('formula.createGraham') }}" method="POST" enctype="multipart/form-data">
       {{ csrf_field() }}
       <div class="container" id="caixa_1">
@@ -53,6 +55,7 @@
     </form>  
   </div>
 </section>
+{{-- Seção para tabela de Bazin --}}
 <section class="secao_formula_2">
   <div class="container" id="caixa_2">
     <h1 class="mt-2 mb-4">Bazin</h1>
@@ -92,6 +95,7 @@
     </div>
   </div>
 </section>
+{{-- Seção para tabela de Graham --}}
 <section class="secao_formula_2">
   <div class="container" id="caixa_3">
     <h1 class="mt-2 mb-4">Graham</h1>
