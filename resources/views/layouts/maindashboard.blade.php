@@ -10,7 +10,7 @@
   <link rel="stylesheet" href="/css/secao_ir.css">
   <link rel="stylesheet" href="/css/secao_movimento.css">
   <link rel="stylesheet" href="/css/secao_mostrar.css">
-  <link rel="stylesheet" href="/css/secao_add_ativos.css">
+  <link rel="stylesheet" href="/css/secao_edit_ativos.css">
   <link rel="stylesheet" href="/css/secao_formula.css">
 
   <!-- Font awesome -->

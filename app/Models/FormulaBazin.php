@@ -12,7 +12,7 @@ class FormulaBazin extends Model
     protected $table = 'formula_bazin';
     protected $fillable = [
         'user_id',
-        'nome',
+        'ticker',
         'dpa',
         'dividend_yield',
     ];

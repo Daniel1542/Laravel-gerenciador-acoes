@@ -1,9 +1,10 @@
 <?php
 
-namespace App\Http\Controllers\api;
+namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use App\Models\MovimentoAtivos;
 
 class AtivoController extends Controller
@@ -14,6 +15,7 @@ class AtivoController extends Controller
     public function index()
     {
         try {
+            $user = Auth::user();
             return MovimentoAtivos::all();
         } catch (\Exception $e) {
             return response()->json(['Erro ao mostrar movimento.' => $e->getMessage()], 500);
@@ -37,8 +39,11 @@ class AtivoController extends Controller
 
             ]);
 
+            $user = Auth::user();
+
             $ativos = new MovimentoAtivos();
 
+            $ativos-> user_id = $user->id;
             $ativos-> tipo = $request->tipo;
             $ativos-> movimento = $request->movimento;
             $ativos-> nome = $request->nome;
@@ -46,7 +51,7 @@ class AtivoController extends Controller
             $ativos-> corretagem = $request->corretagem;
             $ativos-> valor = $request->valor;
             $ativos-> data = $request->data;
-            $ativos-> valortotal = ($request->corretagem + ($request->valor * $request->quantidade));
+            $ativos-> valor_total = ($request->corretagem + ($request->valor * $request->quantidade));
 
             $ativos->save();
 
@@ -62,6 +67,8 @@ class AtivoController extends Controller
     public function show(string $id)
     {
         try {
+            $user = Auth::user();
+
             return MovimentoAtivos::findOrFail($id);
         } catch (\Exception $e) {
             return response()->json(['Erro ao mostar movimento.' => $e->getMessage()], 500);
@@ -74,6 +81,8 @@ class AtivoController extends Controller
     public function update(Request $request, string $id)
     {
         try {
+            $user = Auth::user();
+
             $movimento = MovimentoAtivos::findOrFail($id);
 
             $request->validate([
@@ -97,9 +106,9 @@ class AtivoController extends Controller
                 'valor',
             ]);
 
-            $dadosAtualizados['valortotal'] = $request->corretagem + ($request->valor * $request->quantidade);
+            $dadosAtualizados['valor_total'] = $request->corretagem + ($request->valor * $request->quantidade);
 
-            $movimento->update($dadosAtualizados);
+            $movimento->save($dadosAtualizados);
 
             return ('Movimento atualizado com sucesso.');
         } catch (\Exception $e) {
@@ -113,6 +122,8 @@ class AtivoController extends Controller
     public function destroy(string $id)
     {
         try {
+            $user = Auth::user();
+
             $Ativos = MovimentoAtivos::findOrFail($id);
             $Ativos-> delete();
         } catch (\Exception $e) {

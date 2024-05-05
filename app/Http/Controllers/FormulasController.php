@@ -18,7 +18,7 @@ class FormulasController extends Controller
             $precoTeto = $formula['dpa'] / ($formula['dividend_yield'] / 100);
             $dados[] = [
                 'id' => $formula['id'],
-                'nome' => $formula['nome'],
+                'ticker' => $formula['ticker'],
                 'dpa' => $formula['dpa'],
                 'dividend_yield' => $formula['dividend_yield'],
                 'preco_teto' => $precoTeto,
@@ -33,7 +33,7 @@ class FormulasController extends Controller
             $precoJusto = sqrt(22.5 * $formula['lpa'] * $formula['vpa']);
             $dados[] = [
                 'id' => $formula['id'],
-                'nome' => $formula['nome'],
+                'ticker' => $formula['ticker'],
                 'lpa' => $formula['lpa'],
                 'vpa' => $formula['vpa'],
                 'preco_justo' => $precoJusto,
@@ -46,10 +46,10 @@ class FormulasController extends Controller
     {
         $user = Auth::user();
 
-        $Bazin = FormulaBazin::orderBy('nome')
+        $Bazin = FormulaBazin::orderBy('ticker')
             ->where('user_id', $user->id)
             ->get();
-        $Graham = FormulaGraham::orderBy('nome')
+        $Graham = FormulaGraham::orderBy('ticker')
             ->where('user_id', $user->id)
             ->get();
 
@@ -62,7 +62,7 @@ class FormulasController extends Controller
     public function createBazin(Request $request)
     {
         $request->validate([
-            'nome' => 'string|max:6|regex:/^[A-Z0-9]+$/',
+            'ticker' => 'string|max:6|regex:/^[A-Z0-9]+$/',
             'dpa' => 'numeric',
             'dividend_yield' => 'numeric',
         ]);
@@ -72,7 +72,7 @@ class FormulasController extends Controller
         $formula = new FormulaBazin();
 
         $formula-> user_id = $user->id;
-        $formula-> nome = $request->nome;
+        $formula-> ticker = $request->ticker;
         $formula-> dpa = $request->dpa;
         $formula-> dividend_yield = $request->dividend_yield;
 
@@ -88,12 +88,12 @@ class FormulasController extends Controller
         $formula  = FormulaBazin::where('user_id', $user->id)
             ->findOrFail($id);
 
-        return view('formula.editarFormula', compact('formula'));
+        return view('formula.editarBazin', compact('formula'));
     }
     public function updateBazin(Request $request, string $id)
     {
         $request->validate([
-            'nome' => 'string|max:6|regex:/^[A-Z0-9]+$/',
+            'ticker' => 'string|max:6|regex:/^[A-Z0-9]+$/',
             'dpa' => 'numeric',
             'dividend_yield' => 'numeric',
         ]);
@@ -104,7 +104,7 @@ class FormulasController extends Controller
             ->findOrFail($id);
 
         $formula->user_id = $user->id;
-        $formula->nome = $request->nome;
+        $formula->ticker = $request->ticker;
         $formula->dpa = $request->dpa;
         $formula->dividend_yield = $request->dividend_yield;
 
@@ -127,7 +127,7 @@ class FormulasController extends Controller
     public function createGraham(Request $request)
     {
         $request->validate([
-            'nome' => 'string|max:6|regex:/^[A-Z0-9]+$/',
+            'ticker' => 'string|max:6|regex:/^[A-Z0-9]+$/',
             'lpa' => 'numeric',
             'vpa' => 'numeric',
         ]);
@@ -137,7 +137,7 @@ class FormulasController extends Controller
         $formula = new FormulaGraham();
 
         $formula-> user_id = $user->id;
-        $formula-> nome = $request->nome;
+        $formula-> ticker = $request->ticker;
         $formula-> lpa = $request->lpa;
         $formula-> vpa = $request->vpa;
 
@@ -153,12 +153,12 @@ class FormulasController extends Controller
         $formula  = FormulaGraham::where('user_id', $user->id)
             ->findOrFail($id);
 
-        return view('crud.editarFormula', compact('formula'));
+        return view('formula.editarGraham', compact('formula'));
     }
     public function updateGraham(Request $request, string $id)
     {
         $request->validate([
-            'nome' => 'string|max:6|regex:/^[A-Z0-9]+$/',
+            'ticker' => 'string|max:6|regex:/^[A-Z0-9]+$/',
             'lpa' => 'numeric',
             'vpa' => 'numeric',
         ]);
@@ -169,7 +169,7 @@ class FormulasController extends Controller
             ->findOrFail($id);
 
         $formula-> user_id = $user->id;
-        $formula-> nome = $request->nome;
+        $formula-> ticker = $request->ticker;
         $formula-> lpa = $request->lpa;
         $formula-> vpa = $request->vpa;
 

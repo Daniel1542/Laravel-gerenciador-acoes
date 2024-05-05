@@ -12,8 +12,8 @@
         <h1 class="mt-4 mb-4">Fórmula de Bazin</h1>
         <div class="opcoes">
           <div class="col-md-3">
-            <label for="nome" class="form-label">Ticker:</label>
-            <input type="text" class="form-control" id="nome" name="nome" oninput="this.value = this.value.toUpperCase()" required>
+            <label for="ticker" class="form-label">ticker:</label>
+            <input type="text" class="form-control" id="ticker" name="ticker" oninput="this.value = this.value.toUpperCase()" required>
           </div>
           <div class="col-md-3">
             <label for="dpa" class="form-label">DPA:</label>
@@ -36,8 +36,8 @@
         <h1 class="mt-4 mb-4">Fórmula de Graham</h1>
         <div class="opcoes">
           <div class="col-md-3">
-            <label for="nome" class="form-label">Ticker:</label>
-            <input type="text" class="form-control" id="nome" name="nome" oninput="this.value = this.value.toUpperCase()" required>
+            <label for="ticker" class="form-label">ticker:</label>
+            <input type="text" class="form-control" id="ticker" name="ticker" oninput="this.value = this.value.toUpperCase()" required>
           </div>
           <div class="col-md-3">
             <label for="lpa" class="form-label">LPA:</label>
@@ -63,7 +63,7 @@
       <table class="table">
         <thead>
           <tr>   
-            <th>Nome:</th>
+            <th>Ticker:</th>
             <th>DPA:</th>   
             <th>Dividend yield:</th> 
             <th>Preço teto:</th> 
@@ -73,7 +73,7 @@
         <tbody>
           @foreach($dadosBazin as $bazin)     
             <tr>
-              <td>{{ $bazin['nome'] }}</td>     
+              <td>{{ $bazin['ticker'] }}</td>     
               <td>{{ $bazin['dpa'] }}</td>
               <td>{{ $bazin['dividend_yield'] }} %</td>
               <td>R$ {{number_format ($bazin['preco_teto'], 2) }}</td>
@@ -103,9 +103,9 @@
       <table class="table">
         <thead>
           <tr>
-            <th>Nome:</th>
-            <th>DPA:</th>   
-            <th>Dividend yield:</th> 
+            <th>Ticker:</th>
+            <th>LPA:</th>   
+            <th>VPA:</th> 
             <th>Preço justo:</th> 
             <th>Opções:</th>                  
           </tr>
@@ -113,7 +113,7 @@
         <tbody>
           @foreach($dadosGraham as $graham) 
             <tr>
-              <td> {{ $graham['nome'] }}</td>    
+              <td> {{ $graham['ticker'] }}</td>    
               <td> {{ $graham['lpa'] }}</td>
               <td> {{ $graham['vpa'] }}</td>
               <td>R$ {{number_format ($graham['preco_justo'], 2) }}</td>

@@ -44,12 +44,12 @@ Route::get('/buscar-ativos', [AtivosController::class, 'buscarAtivos'])->name('a
 Route::post('/criar-Bazin', [FormulasController::class, 'createBazin'])->name('formula.createBazin')->middleware('auth');
 Route::get('/bazin/{id}/edit', [FormulasController::class, 'editBazin'])->name('formula.editBazin')->middleware('auth');
 Route::delete('/bazin/{id}/delete', [FormulasController::class, 'destroyBazin'])->name('formula.destroyBazin')->middleware('auth');
-Route::put('/formula/{id}', [FormulasController::class, 'updateBazin'])->name('formula.updateBazin')->middleware('auth');
+Route::put('/bazin/{id}', [FormulasController::class, 'updateBazin'])->name('formula.updateBazin')->middleware('auth');
 
 Route::post('/criar-Graham', [FormulasController::class, 'createGraham'])->name('formula.createGraham')->middleware('auth');
 Route::get('/Graham/{id}/edit', [FormulasController::class, 'editGraham'])->name('formula.editGraham')->middleware('auth');
 Route::delete('/Graham/{id}/delete', [FormulasController::class, 'destroyGraham'])->name('formula.destroyGraham')->middleware('auth');
-Route::put('/formula/{id}', [FormulasController::class, 'updateGraham'])->name('formula.updateGraham')->middleware('auth');
+Route::put('/Graham/{id}', [FormulasController::class, 'updateGraham'])->name('formula.updateGraham')->middleware('auth');
 
 /*PDF*/
 

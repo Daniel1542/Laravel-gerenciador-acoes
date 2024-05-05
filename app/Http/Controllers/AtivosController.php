@@ -29,7 +29,7 @@ class AtivosController extends Controller
 
         $ativos = new MovimentoAtivos();
 
-        $ativos->user_id = $user->id;
+        $ativos-> user_id = $user->id;
         $ativos-> tipo = $request->tipo;
         $ativos-> movimento = $request->movimento;
         $ativos-> nome = $request->nome;

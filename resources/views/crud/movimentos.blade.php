@@ -85,11 +85,11 @@
               <td>R$ {{ number_format($acao['corretagem'], 2) }}</td>
               <td> {{ $acao['data'] }}</td>     
               <td class="buttons">
-                <form action="{{ route('ativos.edit', ['id' => $acao['id']]) }}" method="GET" style="display: inline;">
+                <form action="{{ route('ativos.edit', ['id' => $acao['id']]) }}" method="GET">
                   {{ csrf_field() }}
                   <button type="submit" class="btn btn-warning">Editar</button>
                 </form>
-                <form action="{{ route('ativos.destroy', ['id' => $acao['id']]) }}" method="POST" style="display: inline;">
+                <form action="{{ route('ativos.destroy', ['id' => $acao['id']]) }}" method="POST">
                   {{ csrf_field() }}
                   @method('DELETE')
                   <button type="submit" class="btn btn-danger" onclick="return confirm('Tem certeza que deseja excluir?')">Excluir</button>
@@ -130,11 +130,11 @@
               <td>R$ {{ number_format($fii['corretagem'], 2) }}</td>
               <td> {{ $fii['data'] }}</td>           
               <td class="buttons">       
-                <form action="{{ route('ativos.edit', ['id' => $fii['id']]) }}" method="GET" style="display: inline;">
+                <form action="{{ route('ativos.edit', ['id' => $fii['id']]) }}" method="GET">
                   {{ csrf_field() }}
                   <button type="submit" class="btn btn-warning">Editar</button>
                 </form>
-                <form action="{{ route('ativos.destroy', ['id' => $fii['id']]) }}" method="POST" style="display: inline;">
+                <form action="{{ route('ativos.destroy', ['id' => $fii['id']]) }}" method="POST">
                   {{ csrf_field() }}
                   @method('DELETE')
                   <button type="submit" class="btn btn-danger" onclick="return confirm('Tem certeza que deseja excluir?')">Excluir</button>
