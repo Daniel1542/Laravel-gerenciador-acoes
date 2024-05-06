@@ -37,7 +37,7 @@ class AtivosController extends Controller
         $ativos-> corretagem = $request->corretagem;
         $ativos-> valor = $request->valor;
         $ativos-> data = $request->data;
-        $ativos-> valor_total = ($request->corretagem + ($request->valor * $request->quantidade));
+        $ativos-> valor_total = $request->corretagem + ($request->valor * $request->quantidade);
 
         $ativos->save();
 
