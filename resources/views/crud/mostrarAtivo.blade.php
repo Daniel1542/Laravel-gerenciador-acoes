@@ -13,23 +13,25 @@
       <table class="table">
         <thead>
           <tr>   
-            <th>Ação:</th>
+            <th>Nome:</th>
             <th>Movimento</th>   
             <th>Quantidade: </th>
             <th>Valor: </th>       
             <th>Corretagem: </th>
-            <th>Data: </th>        
+            <th>Valor total: </th>    
+            <th>Data: </th>          
           </tr>
         </thead>
         <tbody>
-          @foreach($dadosAtivos as $acao)
+          @foreach($dadosAtivos as $ativos)
             <tr>
-              <td> {{ $acao['nome'] }}</td>
-              <td> {{ $acao['movimento'] }}</td> 
-              <td> {{ $acao['quantidade']}}</td>         
-              <td>R$ {{ number_format($acao['valor'], 2) }}</td>
-              <td>R$ {{ number_format($acao['corretagem'], 2) }}</td>
-              <td> {{ $acao['data']}}</td>                     
+              <td> {{ $ativos['nome'] }}</td>
+              <td> {{ $ativos['movimento'] }}</td> 
+              <td> {{ $ativos['quantidade']}}</td>         
+              <td>R$ {{ number_format($ativos['valor'], 2) }}</td>
+              <td>R$ {{ number_format($ativos['corretagem'], 2) }}</td>
+              <td>R$ {{ number_format($ativos['valorFinal'], 2) }}</td>
+              <td> {{ $ativos['data']}}</td>                     
             </tr> 
           @endforeach    
         </tbody>         

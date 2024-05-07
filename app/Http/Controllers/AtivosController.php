@@ -9,10 +9,6 @@ use Carbon\Carbon;
 
 class AtivosController extends Controller
 {
-    public function create()
-    {
-        return view('crud.addAtivo');
-    }
     public function store(Request $request)
     {
         $request->validate([
@@ -86,7 +82,6 @@ class AtivosController extends Controller
 
         return redirect()->route('movimento.index')->with('msg', 'Movimento atualizado com sucesso.');
     }
-
     public function destroy(string $id)
     {
         $user = Auth::user();

@@ -8,7 +8,7 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
 </p>
 
-## Gerenciador de ações e fundo imobiliários
+## Gerenciador de ações e fundos imobiliários.
 
 Este projeto é um site para auxiliar na declaração de imposto de renda de ações e fundos imobiliários.
 
@@ -23,6 +23,8 @@ Este projeto é um site para auxiliar na declaração de imposto de renda de aç
 ![Exemplo de Screenshot](imagens/login.png)
 
 ![Exemplo de Screenshot](imagens/movimento.png)
+
+### Diagramas
 
 ![Exemplo de Screenshot](imagens/Diagrama.png)
 
