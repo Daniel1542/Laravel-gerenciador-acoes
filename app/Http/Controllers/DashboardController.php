@@ -85,8 +85,6 @@ class DashboardController extends Controller
         return view('principal.dashboard', compact('acoesCount', 'fiisCount', 'acoesPercent', 'fiisPercent'));
     }
 
-
-
     /*graficos*/
 
     /*acoes*/

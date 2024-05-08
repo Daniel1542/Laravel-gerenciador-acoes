@@ -70,6 +70,7 @@
             <th>Quantidade:</th>
             <th>Valor investido:</th>       
             <th>Corretagem:</th>
+            <th>Total:</th>
             <th>Data:</th>   
             <th>Opções:</th>         
           </tr>
@@ -83,6 +84,7 @@
               <td> {{ $acao['quantidade'] }}</td>         
               <td>R$ {{ number_format($acao['valor'], 2) }}</td>
               <td>R$ {{ number_format($acao['corretagem'], 2) }}</td>
+              <td>R$ {{ number_format($acao['valor_total'], 2) }}</td>
               <td> {{ $acao['data'] }}</td>     
               <td class="buttons">
                 <form action="{{ route('ativos.edit', ['id' => $acao['id']]) }}" method="GET">
@@ -115,6 +117,7 @@
           <th>Quantidade:</th>
           <th>Valor investido:</th>       
           <th>Corretagem:</th>
+          <th>Total:</th>
           <th>Data:</th>   
           <th>Opções:</th>     
         </tr>
@@ -128,6 +131,7 @@
               <td> {{ $fii['quantidade'] }}</td>  
               <td>R$ {{ number_format($fii['valor'], 2) }}</td>
               <td>R$ {{ number_format($fii['corretagem'], 2) }}</td>
+              <td>R$ {{ number_format($fii['valor_total'], 2) }}</td>
               <td> {{ $fii['data'] }}</td>           
               <td class="buttons">       
                 <form action="{{ route('ativos.edit', ['id' => $fii['id']]) }}" method="GET">

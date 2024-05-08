@@ -12,21 +12,28 @@ use Carbon\Carbon;
 
 class MovimentoAtivosController extends Controller
 {
-    private function MovimentosIndex($ativos)
+     /**
+     * função para index e pdf
+     */
+    private function pegarMovimentos($movimentos)
     {
         $dados = [];
-        foreach ($ativos as $movimentoAtivo) {
+
+        foreach ($movimentos as $movimento) {
             $dados[] = [
-                'id' => $movimentoAtivo['id'],
-                'nome' => $movimentoAtivo['nome'],
-                'quantidade' => $movimentoAtivo['quantidade'],
-                'valor' => $movimentoAtivo['valor'],
-                'movimento' => $movimentoAtivo['movimento'],
-                'corretagem' => $movimentoAtivo['corretagem'],
-                'data' => Carbon::parse($movimentoAtivo['data'])->format('d/m/Y'),
+                'id' => $movimento->id,
+                'nome' => $movimento->nome,
+                'movimento' => $movimento->movimento,
+                'quantidade' => $movimento->quantidade,
+                'valor' => number_format(floatval($movimento->valor), 2, '.', ''),
+                'corretagem' => number_format(floatval($movimento->corretagem), 2, '.', ''),
+                'valor_total' => number_format(floatval($movimento->valor_total), 2, '.', ''),
+                'data' => Carbon::parse($movimento->data)->format('d/m/Y'),
             ];
         }
+
         return $dados;
+
     }
 
     public function index()
@@ -42,8 +49,8 @@ class MovimentoAtivosController extends Controller
             ->where('user_id', $user->id)
             ->get();
 
-        $dadosAcoes = $this->MovimentosIndex($Acoes->toArray());
-        $dadosFiis = $this->MovimentosIndex($Fiis->toArray());
+        $dadosAcoes = $this->pegarMovimentos($Acoes);
+        $dadosFiis = $this->pegarMovimentos($Fiis);
 
         return view('crud.movimentos', compact('dadosAcoes', 'dadosFiis'));
     }
@@ -66,8 +73,7 @@ class MovimentoAtivosController extends Controller
         } else {
             return redirect()->route('movimento.exportMovimentoPdf', [
                 'data_ini' => $data_inicio,
-                'data_fi' => $data_fim,
-                'tip' => $tipo,
+                'data_fi' => $data_fim,            
             ]);
         }
     }
@@ -123,20 +129,19 @@ class MovimentoAtivosController extends Controller
     /**
     * gerar pdf
     */
-    public function exportMovimentPdf($data_ini, $data_fi, $tip)
+    
+    public function exportMovimentoPdf($data_ini, $data_fi)
     {
+        $user = Auth::user();
+
         $data_inicio = $data_ini;
         $data_fim = $data_fi;
-        $tipo = $tip;
-
-        $user = Auth::user();
 
         $Acoes = MovimentoAtivos::where('tipo', 'acao')
             ->whereBetween('data', [$data_inicio, $data_fim])
             ->orderBy('data')
             ->where('user_id', $user->id)
             ->get();
-
         $dadosAcoes = [];
 
         $Fiis = MovimentoAtivos::where('tipo', 'fundo imobiliario')
@@ -144,34 +149,10 @@ class MovimentoAtivosController extends Controller
             ->orderBy('data')
             ->where('user_id', $user->id)
             ->get();
-
         $dadosFiis = [];
 
-        foreach ($Acoes as $movimentoacao) {
-            $dadosAcoes[] = [
-                'id' => $movimentoacao->id,
-                'nome' => $movimentoacao->nome,
-                'movimento' => $movimentoacao->movimento,
-                'quantidade' => $movimentoacao->quantidade,
-                'valor' => number_format(floatval($movimentoacao->valor), 2, '.', ''),
-                'corretagem' => number_format(floatval($movimentoacao->corretagem), 2, '.', ''),
-                'valor_total' => number_format(floatval($movimentoacao->valor_total), 2, '.', ''),
-                'data' => Carbon::parse($movimentoacao->data)->format('d/m/Y'),
-            ];
-        }
-
-        foreach ($Fiis as $movimentofii) {
-            $dadosFiis[] = [
-                'id' => $movimentofii->id,
-                'nome' => $movimentofii->nome,
-                'movimento' => $movimentofii->movimento,
-                'quantidade' => $movimentofii->quantidade,
-                'valor' => number_format(floatval($movimentofii->valor), 2, '.', ''),
-                'corretagem' => number_format(floatval($movimentofii->corretagem), 2, '.', ''),
-                'valor_total' => number_format(floatval($movimentofii->valor_total), 2, '.', ''),
-                'data' => Carbon::parse($movimentofii->data)->format('d/m/Y'),
-            ];
-        }
+        $dadosAcoes = $this->pegarMovimentos($Acoes);
+        $dadosFiis = $this->pegarMovimentos($Fiis);
 
         $pdf = PDF::loadView('PDF.movimentosPdf', compact('dadosAcoes', 'dadosFiis'));
 

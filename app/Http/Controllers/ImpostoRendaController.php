@@ -101,7 +101,6 @@ class ImpostoRendaController extends Controller
         } else {
             return redirect()->route('imposto.exportIrPdf', [
                 'data_ini' => $data,
-                'tip' => $tipo,
             ]);
         }
     }
@@ -131,12 +130,12 @@ class ImpostoRendaController extends Controller
 
     /* PDF*/
 
-    public function exportIrPdf($data_ini, $tip)
+    public function exportIrPdf($data_ini)
     {
         $user = Auth::user();
 
         $data_inicio = $data_ini;
-        $tipo = $tip;
+        
         $movimentosAcoes = MovimentoAtivos::where('tipo', 'acao')
             ->whereIn('movimento', ['compra', 'venda'])
             ->whereYear('data', $data_inicio)

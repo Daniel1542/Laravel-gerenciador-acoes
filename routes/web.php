@@ -83,10 +83,10 @@ Route::put('/Graham/{id}', [FormulasController::class, 'updateGraham'])
 
 /*PDF*/
 
-Route::get('/export-Movimento-Pdf/{data_ini}/{data_fi}/{tip}', [MovimentoAtivosController::class, 'exportMovimentoPdf'])
+Route::get('/export-Movimento-Pdf/{data_ini}/{data_fi}', [MovimentoAtivosController::class, 'exportMovimentoPdf'])
 ->name('movimento.exportMovimentoPdf')->middleware('auth');
 
-Route::get('/export-Ir-Pdf/{data_ini}/{tip}', [ImpostoRendaController::class, 'exportIrPdf'])
+Route::get('/export-Ir-Pdf/{data_ini}', [ImpostoRendaController::class, 'exportIrPdf'])
 ->name('imposto.exportIrPdf')->middleware('auth');
 
 /*Excel*/
