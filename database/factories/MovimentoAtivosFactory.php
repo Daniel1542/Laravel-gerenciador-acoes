@@ -35,7 +35,8 @@ class MovimentoAtivosFactory extends Factory
             'valor' => $this->faker->randomFloat(2, 1, 1000),
             'data' => $this->faker->dateTimeBetween('-20 year', 'now')->format('Y-m-d'),
             'valor_total' => function (array $attributes) {
-                return $attributes['corretagem'] + ($attributes['valor'] * $attributes['quantidade']);
+                $valorTotal = $attributes['corretagem'] + ($attributes['valor'] * $attributes['quantidade']);
+                return number_format($valorTotal, 2, '.', '');
             },
         ];
     }

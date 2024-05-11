@@ -1,9 +1,9 @@
 <?php
 
-use App\Http\Controllers\Api\AtivoController;
-use App\Http\Controllers\Api\LoginController;
+use App\Http\Controllers\Api\ApiAtivoController;
+use App\Http\Controllers\Api\ApiLoginController;
 use Illuminate\Support\Facades\Route;
 
-Route::apiResource('MovimentoAtivos', AtivoController::class);
+Route::apiResource('api-ativo', ApiAtivoController::class);
 
-Route::post('/login', [LoginController::class, 'login']);
+Route::post('/login', [ApiLoginController::class, 'login'])->name('api-login');

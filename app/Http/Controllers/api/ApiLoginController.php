@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class LoginController extends Controller
+class ApiLoginController extends Controller
 {
     public function login(Request $request)
     {
@@ -16,7 +16,7 @@ class LoginController extends Controller
         ]);
 
         if (Auth::attempt($credentials)) {
-            return (new AtivoController())->index();
+            return (new ApiAtivoController())->index();
         } else {
             return response()->json(['message' => 'Erro ao autenticar usuário.'], 401);
         }

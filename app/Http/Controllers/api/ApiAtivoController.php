@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\MovimentoAtivos;
 
-class AtivoController extends Controller
+class ApiAtivoController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -108,7 +108,7 @@ class AtivoController extends Controller
 
             $dadosAtualizados['valor_total'] = $request->corretagem + ($request->valor * $request->quantidade);
 
-            $movimento->save($dadosAtualizados);
+            $movimento->update($dadosAtualizados);
 
             return ('Movimento atualizado com sucesso.');
         } catch (\Exception $e) {
