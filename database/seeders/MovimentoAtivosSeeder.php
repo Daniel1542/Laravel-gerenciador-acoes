@@ -272,5 +272,8 @@ class MovimentoAtivosSeeder extends Seeder
             'valor' => '13',
             'valor_total' => '235.5',
         ]);
+
+        MovimentoAtivos::factory()->count(10)->create(['user_id' => 1]);
+        MovimentoAtivos::factory()->count(2)->create(['user_id' => 2]);
     }
 }

@@ -43,5 +43,6 @@ class FormulaBazinSeeder extends Seeder
             'dpa' => '6.5',
             'dividend_yield' => '9',
         ]);
+        FormulaBazin::factory()->count(5)->create(['user_id' => 1]);
     }
 }

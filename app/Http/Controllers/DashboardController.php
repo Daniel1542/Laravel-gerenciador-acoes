@@ -21,13 +21,14 @@ class DashboardController extends Controller
             $valorCompra = $compras->sum('valor_total');
             $valorVenda = $vendas->sum('valor_total');
 
-            $valorCompleto =  $valorCompra - $valorVenda;
-
-            $dados[] = [
-                'nome' => $nome,
-                'valorTotal'  =>  $valorCompleto,
-            ];
-            $labels[] = $nome;
+            if ($valorCompra > $valorVenda) {
+                $valorCompleto = $valorCompra - $valorVenda;
+                $dados[] = [
+                    'nome' => $nome,
+                    'valorTotal' => $valorCompleto,
+                ];
+                $labels[] = $nome;
+            }
         }
 
         $data = [
@@ -119,7 +120,7 @@ class DashboardController extends Controller
         return response()->json($dadosAtivos);
     }
 
-    /*total*/
+    /*total de ativos*/
 
     public function graficoTotal()
     {

@@ -13,7 +13,7 @@ class DashboardControllerTest extends TestCase
     use RefreshDatabase;
 
     /** @test */
-    public function ReturnsCorrectValuesForDashboard()
+    public function returnsCorrectValuesForDashboard()
     {
         $user = User::factory()->create();
 
@@ -40,7 +40,7 @@ class DashboardControllerTest extends TestCase
             'tipo' => 'fundo imobiliario',
             'nome' => 'GGRA11',
         ]);
-       
+
         // Chamar o método dash
         $response = $this->get(route('principal.dashboard'));
 
@@ -58,7 +58,7 @@ class DashboardControllerTest extends TestCase
             'fiisPercent' => 50,
         ]);
     }
-    
+
     public function testReturnsJsonResponseWithAtivosGrafico()
     {
         $user = User::factory()->create();
@@ -104,5 +104,4 @@ class DashboardControllerTest extends TestCase
             'labels' => ['XYZ', 'ABC'],
         ]);
     }
-       
 }

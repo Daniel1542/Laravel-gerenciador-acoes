@@ -28,8 +28,8 @@ class FormulaGrahamFactory extends Factory
         return [
             'user_id' => User::factory(), // Cria um usuário automaticamente associado ao ativo
             'ticker' => $this->faker->boolean ? strtoupper($this->faker->bothify('????##')) : strtoupper($this->faker->bothify('????#')),
-            'lpa' => $this->faker->numberFloat(2, 0, 50),
-            'vpa' => $this->faker->randomFloat(2, 0, 50),
+            'lpa' => $this->faker->randomFloat(2, 0, 20),
+            'vpa' => $this->faker->randomFloat(2, 0, 20),
         ];
     }
 }

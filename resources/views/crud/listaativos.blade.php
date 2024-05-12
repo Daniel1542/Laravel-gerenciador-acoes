@@ -49,7 +49,7 @@
           </tr>
         </thead>
         <tbody>
-          @foreach($dadosfiis as $fii)    
+          @foreach($dadosFiis as $fii)    
             @if ($fii['quantidadeTotal'] > 0)      
               <tr>
                 <td> {{ $fii['nome'] }}</td>           

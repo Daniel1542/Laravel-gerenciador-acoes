@@ -122,7 +122,10 @@ class ApiAtivoControllerTest extends TestCase
         $this->assertEquals($dadosAtualizados['corretagem'], $movimentoAtivo->corretagem);
         $this->assertEquals($dadosAtualizados['quantidade'], $movimentoAtivo->quantidade);
         $this->assertEquals($dadosAtualizados['valor'], $movimentoAtivo->valor);
-        $this->assertEquals($dadosAtualizados['corretagem'] + ($dadosAtualizados['valor'] * $dadosAtualizados['quantidade']), $movimentoAtivo->valor_total);
+        $this->assertEquals(
+            $dadosAtualizados['corretagem'] + ($dadosAtualizados['valor'] * $dadosAtualizados['quantidade']),
+            $movimentoAtivo->valor_total
+        );
     }
 
     public function testDestroy()
@@ -145,6 +148,4 @@ class ApiAtivoControllerTest extends TestCase
             'id' => $movimentoAtivo->id
         ]);
     }
-
-
 }

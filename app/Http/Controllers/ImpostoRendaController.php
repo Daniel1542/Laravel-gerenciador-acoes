@@ -135,7 +135,7 @@ class ImpostoRendaController extends Controller
         $user = Auth::user();
 
         $data_inicio = $data_ini;
-        
+
         $movimentosAcoes = MovimentoAtivos::where('tipo', 'acao')
             ->whereIn('movimento', ['compra', 'venda'])
             ->whereYear('data', $data_inicio)

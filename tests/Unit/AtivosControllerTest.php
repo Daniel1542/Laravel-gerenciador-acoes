@@ -105,7 +105,10 @@ class AtivosControllerTest extends TestCase
         $this->assertEquals($data['nome'], $movimentoAtualizado->nome);
         $this->assertEquals($data['data'], $movimentoAtualizado->data);
         $this->assertEquals($data['corretagem'], $movimentoAtualizado->corretagem);
-        $this->assertEquals($data['corretagem'] + ($data['valor'] * $data['quantidade']), $movimentoAtualizado->valor_total);
+        $this->assertEquals(
+            $data['corretagem'] + ($data['valor'] * $data['quantidade']),
+            $movimentoAtualizado->valor_total
+        );
         $this->assertEquals($data['quantidade'], $movimentoAtualizado->quantidade);
         $this->assertEquals($data['valor'], $movimentoAtualizado->valor);
     }

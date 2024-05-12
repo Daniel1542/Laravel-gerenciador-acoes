@@ -33,7 +33,6 @@ class MovimentoAtivosController extends Controller
         }
 
         return $dados;
-
     }
 
     public function index()
@@ -73,7 +72,7 @@ class MovimentoAtivosController extends Controller
         } else {
             return redirect()->route('movimento.exportMovimentoPdf', [
                 'data_ini' => $data_inicio,
-                'data_fi' => $data_fim,            
+                'data_fi' => $data_fim,
             ]);
         }
     }
@@ -101,7 +100,8 @@ class MovimentoAtivosController extends Controller
             $nome = $movimento->nome;
             $tipo = $movimento->tipo;
             $move = $movimento->movimento;
-            $dataTransacao = Carbon::parse($movimento->data)->format('d/m/Y');
+            $dataTransacao = Carbon::parse($movimento->data)
+                ->format('d/m/Y');
             $corretagem = $movimento->corretagem;
             $quantidadeTotal = $movimento->quantidade;
             $valor = $movimento->valor;
@@ -112,24 +112,33 @@ class MovimentoAtivosController extends Controller
                 'tipo' => $tipo,
                 'movimento' => $move,
                 'data' =>  $dataTransacao,
-                'corretagem' =>  $corretagem > 0 ? 'R$ ' . number_format(($corretagem), 2, ',', '.') : 'R$ 0,00',
+                'corretagem' =>  $corretagem > 0 ? 'R$ ' . number_format(($corretagem), 2, ',', '.') :
+                    'R$ 0,00',
                 'quantidade' =>  $quantidadeTotal > 0 ? $quantidadeTotal : '0',
-                'valor' => $valor > 0 ?  'R$ ' . number_format(($valor), 2, ',', '.') : 'R$ 0,00',
-                'valorFinal' => $valorFinal > 0 ? 'R$ ' . number_format(($valorFinal), 2, ',', '.') : 'R$ 0,00',
+                'valor' => $valor > 0 ?  'R$ ' . number_format(($valor), 2, ',', '.') :
+                    'R$ 0,00',
+                'valorFinal' => $valorFinal > 0 ? 'R$ ' . number_format(($valorFinal), 2, ',', '.') :
+                    'R$ 0,00',
             ];
         }
 
         if ($tipo == "fundo imobiliario") {
-            return Excel::download(new MovimentoAtivosExport($dadosAtivos), 'movimentos fundos.xlsx');
+            return Excel::download(
+                new MovimentoAtivosExport($dadosAtivos),
+                'movimentos fundos.xlsx'
+            );
         } else {
-            return Excel::download(new MovimentoAtivosExport($dadosAtivos), 'movimentos ações.xlsx');
+            return Excel::download(
+                new MovimentoAtivosExport($dadosAtivos),
+                'movimentos ações.xlsx'
+            );
         }
     }
 
     /**
     * gerar pdf
     */
-    
+
     public function exportMovimentoPdf($data_ini, $data_fi)
     {
         $user = Auth::user();
