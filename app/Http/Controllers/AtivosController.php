@@ -106,6 +106,7 @@ class AtivosController extends Controller
 
         foreach ($ativos as $ativo) {
             $dadosAtivos[] = [
+                'id' => $ativo->id,
                 'nome' => $ativo->nome,
                 'tipo' => $ativo->tipo,
                 'movimento' => $ativo->movimento,

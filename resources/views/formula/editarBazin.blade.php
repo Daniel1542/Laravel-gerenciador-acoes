@@ -1,8 +1,8 @@
-@extends('layouts.mainDashboard')
+@extends('layouts.main')
 @section('title', 'Editar')
 @section('content')
 
-<section class="secao_formula">
+<section class="secao_edit_formula">
     <div class="container">
         <h1 class="mt-4 mb-4 text-center">Fórmulas</h1>
         {{-- Formulário para editar de Bazin --}}

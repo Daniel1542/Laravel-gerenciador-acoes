@@ -5,7 +5,8 @@
   
 .secao_edit_ativos #caixa {
     background-color: rgb(196, 110, 104);
-    padding: 50px;
+    padding: 35px;
+    min-width: 400px;
     border: 1px solid #d3a4a4;
     border-radius: 5px;
 }
@@ -15,15 +16,15 @@
     gap: 5px;
 }
 
-.secao_edit_ativos .btn-primary{
-    margin-top: 15px;
+.secao_edit_ativos .buttons{
+    margin: 5px;
+}
+
+.secao_edit_ativos .buttons  .btn-primary{
+    width: 100%;
 }
 
 @media screen and (max-width: 768px) {
-    
-    .secao_edit_ativos{
-        width: 98vw;
-    }
     
     .secao_edit_ativos .form-group{
         margin: 10px;
@@ -37,8 +38,7 @@
     }
 
     .secao_edit_ativos #caixa {
-        width: 100%;
-        padding: 20px;
+        padding: 15px;
         margin-bottom: 50px;
     }
 

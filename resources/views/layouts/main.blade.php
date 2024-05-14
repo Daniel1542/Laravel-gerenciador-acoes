@@ -5,6 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="/css/app.css">
   <link rel="stylesheet" href="/css/secao_login.css">
+  <link rel="stylesheet" href="/css/secao_edit_ativos.css">
+  <link rel="stylesheet" href="/css/secao_mostrar_ativo.css">
+  <link rel="stylesheet" href="/css/secao_edit_formula.css">
 
   <!-- Font awesome -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.2/css/fontawesome.min.css" integrity="sha384-BY+fdrpOd3gfeRvTSMT+VUZmA728cfF9Z2G42xpaRkUGu2i3DyzpTURDo5A6CaLK" crossorigin="anonymous">
@@ -12,10 +15,12 @@
   <link href="https://fonts.googleapis.com/css2?family=Roboto" rel="stylesheet">
   <title>@yield('title')</title>
   <!-- bootstrap -->
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
   <!-- Bootstrap JavaScript (jQuery e Popper.js) -->
   <link rel="stylesheet" href="/js/app.js">
   <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   
 </head>
 <body class="corpo">

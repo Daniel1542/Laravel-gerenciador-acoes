@@ -9,8 +9,6 @@
   <link rel="stylesheet" href="/css/secao_dash.css">
   <link rel="stylesheet" href="/css/secao_ir.css">
   <link rel="stylesheet" href="/css/secao_movimento.css">
-  <link rel="stylesheet" href="/css/secao_mostrar.css">
-  <link rel="stylesheet" href="/css/secao_edit_ativos.css">
   <link rel="stylesheet" href="/css/secao_formula.css">
 
   <!-- Font awesome -->
@@ -38,7 +36,7 @@
     {{-- menu responsivo --}}
     <div class="col-lg-3">
       <div class="dropdown d-lg-none">
-        <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+        <button class="btn btn-secondary dropdown-toggle me-4" type="button" data-bs-toggle="dropdown" aria-expanded="false">
           Menu
         </button>
         <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
@@ -72,10 +70,10 @@
     </div>
     <div class="dropdown d-none d-lg-block">
       <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-        movimentações
+        Movimentações
       </button>
       <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-        <li><a class="dropdown-item" href="{{ route('movimento.index')}}">Movimentações</a></li>
+        <li><a class="dropdown-item" href="{{ route('movimento.index')}}">Movimentos dos ativos</a></li>
       </ul>    
     </div>
     <div class="d-none d-lg-block">
