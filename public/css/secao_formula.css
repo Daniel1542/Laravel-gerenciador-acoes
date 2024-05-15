@@ -8,7 +8,6 @@
     margin-bottom: 20px;
   }
 
-  .secao_formula #caixa,
   .secao_formula #caixa_1 {
     display: flex;
     justify-content: center;
@@ -16,7 +15,7 @@
     align-items: center;
     padding: 20px;
     gap: 15px;
-    width: 100%;
+    max-width: 400px;
     background-color: rgb(196, 110, 104);
     margin-top: 30px;
     border: 1px solid #d3a4a4;
@@ -31,7 +30,7 @@
     display: flex;
     flex-direction: column;
     text-align: center;
-    width: 100%;
+    min-width: 600px;
     background-color: rgb(196, 110, 104);
     padding: 40px;
     margin-top: 100px;
@@ -39,11 +38,12 @@
     border: 1px solid #d3a4a4;
     border-radius: 5px;
   }
+
   .secao_formula_2 #caixa_3{
     display: flex;
     flex-direction: column;
     text-align: center;
-    width: 100%;
+    min-width: 600px;
     background-color: rgb(196, 110, 104);
     padding: 40px;
     border: 1px solid #d3a4a4;
@@ -52,10 +52,18 @@
   
   .secao_formula .opcoes {
     display: flex;
-    justify-content: center;
-    text-align: center;
-    gap: 15px;
-   
+    justify-content: space-between;
+    gap: 20px;
+  }
+
+  .secao_formula .opcoes_formulas {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .secao_formula .btn-custom {
+    background-color: rgb(98, 245, 106);
   }
 
   .secao_formula_2 .table{

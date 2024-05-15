@@ -1,4 +1,4 @@
-.modal-content-add{ 
+.modal-content-add-ativo{ 
     margin-top: 150px;
     margin-bottom: 200px;
     width: 100%;
@@ -7,7 +7,7 @@
     z-index: 1;
 }
   
-.modal-content-add #caixa {
+.modal-content-add-ativo #caixa {
     width: 33vw;
     background-color: rgb(196, 110, 104);
     padding: 100px;
@@ -15,29 +15,29 @@
     border-radius: 5px;
 }
 
-.modal-content-add .form-group{
+.modal-content-add-ativo .form-group{
     margin: 5px;
     gap: 5px;
 }
 
-.modal-content-add .btn-primary{
+.modal-content-add-ativo .btn-primary{
     margin-top: 15px;
 }
 
 @media screen and (max-width: 768px) {
     
-    .modal-content-add .form-group{
+    .modal-content-add-ativo .form-group{
         margin: 10px;
         gap: 10px;
         text-align: center;
     }
 
-    .modal-content-add select, .modal-content-add input{
+    .modal-content-add-ativo select, .modal-content-add-ativo input{
         text-align: center;
         padding: 3px;
     }
 
-    .modal-content-add #caixa {
+    .modal-content-add-ativo #caixa {
         width: 98vw;
         padding: 30px;
         margin-bottom: 50px;

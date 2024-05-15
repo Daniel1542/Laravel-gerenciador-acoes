@@ -5,54 +5,43 @@
 <section class="secao_formula">
   <div class="container">
     <h1 class="mt-4 mb-4 text-center">Fórmulas</h1>
-    {{-- Formulário para cadastro de Bazin --}}
-    <form action="{{ route('formula.createBazin') }}" method="POST" enctype="multipart/form-data">
-      {{ csrf_field() }}
-      <div class="container" id="caixa">
-        <h1 class="mt-4 mb-4">Fórmula de Bazin</h1>
-        <div class="opcoes">
-          <div class="col-md-3">
-            <label for="ticker" class="form-label">ticker:</label>
-            <input type="text" class="form-control" id="ticker" name="ticker" oninput="this.value = this.value.toUpperCase()" required>
-          </div>
-          <div class="col-md-3">
-            <label for="dpa" class="form-label">DPA:</label>
-            <input type="text" class="form-control" id="dpa" name="dpa" required>
-          </div>
-          <div class="col-md-3">
-            <label for="dividend_yield" class="form-label">Yield estimado:</label>
-            <input type="text" class="form-control" id="dividend_yield" name="dividend_yield" required>
-          </div>
-        </div>
-        <div>
-          <button type="submit" class="btn btn-custom">Salvar</button>
-        </div>
+    {{-- botões para cadastro de fórmulas --}}
+    <div class="opcoes">
+      <div class="opcoes_formulas">
+        <label for="Bazin">Formula de Bazin</label>
+        <button id="bazinBtn" class="btn btn-custom">Adicionar</button>
       </div>
-    </form>
+      <div class="opcoes_formulas">
+        <label for="Graham">Formula de Graham</label>
+        <button id="GrahamBtn" class="btn btn-custom">Adicionar</button>
+      </div>
+    </div> 
     {{-- Formulário para cadastro de Graham --}}
-    <form action="{{ route('formula.createGraham') }}" method="POST" enctype="multipart/form-data">
-      {{ csrf_field() }}
-      <div class="container" id="caixa_1">
-        <h1 class="mt-4 mb-4">Fórmula de Graham</h1>
-        <div class="opcoes">
-          <div class="col-md-3">
-            <label for="ticker" class="form-label">ticker:</label>
-            <input type="text" class="form-control" id="ticker" name="ticker" oninput="this.value = this.value.toUpperCase()" required>
+    <div class="form_graham">
+      <form action="{{ route('formula.createGraham') }}" method="POST" enctype="multipart/form-data">
+        {{ csrf_field() }}
+        <div class="container" id="caixa_1">
+          <h1 class="mt-4 mb-4">Fórmula de Graham</h1>
+          <div class="opcoes">
+            <div class="col-md-3">
+              <label for="ticker" class="form-label">ticker:</label>
+              <input type="text" class="form-control" id="ticker" name="ticker" oninput="this.value = this.value.toUpperCase()" required>
+            </div>
+            <div class="col-md-3">
+              <label for="lpa" class="form-label">LPA:</label>
+              <input type="text" class="form-control" id="lpa" name="lpa" required>
+            </div>
+            <div class="col-md-3">
+              <label for="vpa" class="form-label">VPA:</label>
+              <input type="text" class="form-control" id="vpa" name="vpa" required>
+            </div>
           </div>
-          <div class="col-md-3">
-            <label for="lpa" class="form-label">LPA:</label>
-            <input type="text" class="form-control" id="lpa" name="lpa" required>
-          </div>
-          <div class="col-md-3">
-            <label for="vpa" class="form-label">VPA:</label>
-            <input type="text" class="form-control" id="vpa" name="vpa" required>
+          <div>
+            <button type="submit" class="btn btn-custom">Salvar</button>
           </div>
         </div>
-        <div>
-          <button type="submit" class="btn btn-custom">Salvar</button>
-        </div>
-      </div>
-    </form>  
+      </form>  
+    </div>
   </div>
 </section>
 {{-- Seção para tabela de Bazin --}}

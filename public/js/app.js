@@ -1,6 +1,3 @@
 import './bootstrap';
 
 require('bootstrap');
-
-
-

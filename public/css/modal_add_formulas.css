@@ -1,0 +1,44 @@
+.modal-content-add-formula{
+    padding: 0;
+    margin-top: 150px;
+  }
+
+  .modal-content-add-formula #caixa {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    gap: 15px;
+    background-color: rgb(196, 110, 104);
+    margin-top: 30px;
+    border: 1px solid #d3a4a4;
+    border-radius: 5px;
+  }
+  
+  .modal-content-add-formula .btn-custom {
+    background-color: rgb(98, 245, 106);
+  }
+  
+  .modal-content-add-formula .opcoes {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+  }
+  .modal-content-add-formula .button {
+    display: flex;
+    margin-top: 20px;
+    justify-content: center;
+  }
+
+  .modal-content-add-formula .btn-custom {
+    background-color: rgb(98, 245, 106);
+  }
+ 
+  @media screen and (max-width: 768px) {
+    .modal-content-add-formula #caixa{
+      padding: 10px;
+      margin-top:20px;
+    }
+
+  }
