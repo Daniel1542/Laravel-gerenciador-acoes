@@ -146,34 +146,6 @@
         </div>
       </div>
     </div>
-    {{-- modal para cadastrar bazin --}}
-    <div id="modalAddBazin" class="modal">
-      <div class="modal-content-add-formula">
-        <div class="container" id="caixa">
-          <h1 class="mt-4 mb-4">Fórmula de Bazin</h1>
-          <form action="{{ route('formula.createBazin') }}" method="POST" enctype="multipart/form-data">
-            {{ csrf_field() }}
-            <div class="opcoes">
-              <div class="col-md-3">
-                <label for="ticker" class="form-label">ticker:</label>
-                <input type="text" class="form-control" id="ticker" name="ticker" oninput="this.value = this.value.toUpperCase()" required>
-              </div>
-              <div class="col-md-3">
-                <label for="dpa" class="form-label">DPA:</label>
-                <input type="text" class="form-control" id="dpa" name="dpa" required>
-              </div>
-              <div class="col-md-3">
-                <label for="dividend_yield" class="form-label">Yield estimado:</label>
-                <input type="text" class="form-control" id="dividend_yield" name="dividend_yield" required>
-              </div>
-            </div>
-            <div class="button">
-              <button type="submit" class="btn btn-custom">Salvar</button>
-            </div>
-          </form>
-        </div>
-      </div>
-    </div>
   </main>
   <footer>
     <p>&copy; 2024 Daniel</p>
@@ -183,8 +155,7 @@
       <a href="#">Contato</a>
     </nav>
   </footer>
-  <script src="js/modal_add_bazin.js"></script>
-  <script src="js/modal_add_graham.js"></script>
+  
   <script src="js/modal_add_ativos.js"></script>
 
 </body>

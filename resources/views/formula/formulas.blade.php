@@ -3,7 +3,7 @@
 @section('content')
 
 <section class="secao_formula">
-  <div class="container">
+  <div class="container" id="container_formulas">
     <h1 class="mt-4 mb-4 text-center">Fórmulas</h1>
     {{-- botões para cadastro de fórmulas --}}
     <div class="opcoes">
@@ -13,34 +13,66 @@
       </div>
       <div class="opcoes_formulas">
         <label for="Graham">Formula de Graham</label>
-        <button id="GrahamBtn" class="btn btn-custom">Adicionar</button>
+        <button id="grahamBtn" class="btn btn-custom">Adicionar</button>
       </div>
     </div> 
-    {{-- Formulário para cadastro de Graham --}}
-    <div class="form_graham">
-      <form action="{{ route('formula.createGraham') }}" method="POST" enctype="multipart/form-data">
-        {{ csrf_field() }}
-        <div class="container" id="caixa_1">
-          <h1 class="mt-4 mb-4">Fórmula de Graham</h1>
-          <div class="opcoes">
-            <div class="col-md-3">
-              <label for="ticker" class="form-label">ticker:</label>
-              <input type="text" class="form-control" id="ticker" name="ticker" oninput="this.value = this.value.toUpperCase()" required>
+    {{-- modal para cadastrar bazin --}}
+    <div id="modalAddBazin" class="modal">
+      <div class="modal-content-add-formula">
+        <div class="container" id="caixa">
+          <span class="close">&times;</span>
+          <h1 class="mt-4 mb-4 text-center">Fórmula de Bazin</h1>
+          <form action="{{ route('formula.createBazin') }}" method="POST" enctype="multipart/form-data">
+            {{ csrf_field() }}
+            <div class="opcoes">
+              <div class="col-md-3">
+                <label for="ticker" class="form-label">Ticker:</label>
+                <input type="text" class="form-control" id="ticker" name="ticker" oninput="this.value = this.value.toUpperCase()" required>
+              </div>
+              <div class="col-md-3">
+                <label for="dpa" class="form-label">DPA:</label>
+                <input type="text" class="form-control" id="dpa" name="dpa" required>
+              </div>
+              <div class="col-md-3">
+                <label for="dividend_yield" class="form-label">Yield estimado:</label>
+                <input type="text" class="form-control" id="dividend_yield" name="dividend_yield" required>
+              </div>
             </div>
-            <div class="col-md-3">
-              <label for="lpa" class="form-label">LPA:</label>
-              <input type="text" class="form-control" id="lpa" name="lpa" required>
+            <div class="button">
+              <button type="submit" class="btn btn-custom">Salvar</button>
             </div>
-            <div class="col-md-3">
-              <label for="vpa" class="form-label">VPA:</label>
-              <input type="text" class="form-control" id="vpa" name="vpa" required>
-            </div>
-          </div>
-          <div>
-            <button type="submit" class="btn btn-custom">Salvar</button>
-          </div>
+          </form>
         </div>
-      </form>  
+      </div>
+    </div>
+    {{-- Formulário para cadastro de Graham --}}
+    <div id="modalAddGraham" class="modal">
+      <div class="modal-content-add-formula">   
+        <div class="container" id="caixa_1">
+          <span class="close">&times;</span>
+          <h1 class="mt-4 mb-4">Fórmula de Graham</h1>
+          <form action="{{ route('formula.createGraham') }}" method="POST" enctype="multipart/form-data">
+            {{ csrf_field() }}
+            <div class="opcoes">
+              <div class="col-md-3">
+                <label for="ticker" class="form-label">Ticker:</label>
+                <input type="text" class="form-control" id="ticker" name="ticker" oninput="this.value = this.value.toUpperCase()" required>
+              </div>
+              <div class="col-md-3">
+                <label for="lpa" class="form-label">LPA:</label>
+                <input type="text" class="form-control" id="lpa" name="lpa" required>
+              </div>
+              <div class="col-md-3">
+                <label for="vpa" class="form-label">VPA:</label>
+                <input type="text" class="form-control" id="vpa" name="vpa" required>
+              </div>
+            </div>
+            <div class="button">
+              <button type="submit" class="btn btn-custom">Salvar</button>
+            </div>        
+          </form> 
+        </div> 
+      </div>
     </div>
   </div>
 </section>
@@ -124,5 +156,8 @@
     </div>
   </div>
 </section>
+
+<script src="js/modal_add_bazin.js"></script>
+<script src="js/modal_add_graham.js"></script>
 
 @endsection
