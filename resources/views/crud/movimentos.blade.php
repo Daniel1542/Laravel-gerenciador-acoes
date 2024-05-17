@@ -60,7 +60,10 @@
 {{-- Seção para mostrar ações --}}
 <section class="secao_movimento_1">
   <div class="container" id="caixa"> 
-    <h1 class="mt-2 mb-4 text-center">Ações</h1>
+    <div class="text-center mb-4 mt-2">
+      <h1>Ações</h1>
+      <button id="desktopBtn" class="btn btn-primary mt-2">Compra e venda</button>
+    </div>
     <div class="table-responsive">
       <table class="table">
         <thead>
@@ -107,7 +110,10 @@
 {{-- Seção para mostrar fiis --}}
 <section class="secao_movimento_1">
   <div class="container" id="caixa2">
-    <h1 class="mt-2 mb-4 text-center">Fiis</h1>
+    <div class="text-center mb-4 mt-2">
+      <h1>Fiis</h1>
+      <button id="desktopBtn" class="btn btn-primary mt-2">Compra e venda</button>
+    </div>
     <div class="table-responsive">
       <table class="table">
         <thead>

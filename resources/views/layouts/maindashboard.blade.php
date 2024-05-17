@@ -41,7 +41,6 @@
           Menu
         </button>
         <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-          <button id="mobileBtn" class="dropdown-item">Compra e venda</button>
           <li><a class="dropdown-item" href="{{ route('lista.index')}}">Mostrar ativos</a></li>
           <li><a class="dropdown-item" href="{{ route('imposto.index')}}">Imposto de renda</a></li>
           <li><a class="dropdown-item" href="{{ route('movimento.index')}}">Movimentações</a></li>
@@ -53,11 +52,10 @@
     {{-- Menu no pc --}}
     <div class="dropdown d-none d-lg-block" >
       <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-        Ativos
+        Mostrar
       </button>
       <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-        <button id="desktopBtn" class="dropdown-item">Compra e venda</button>
-        <li><a class="dropdown-item" href="{{ route('lista.index')}}">Mostrar</a></li>
+        <li><a class="dropdown-item" href="{{ route('lista.index')}}">Ativos</a></li>
         <li><a class="dropdown-item" href="{{ route('formula.index')}}">Fórmulas</a></li>
       </ul>    
     </div>
