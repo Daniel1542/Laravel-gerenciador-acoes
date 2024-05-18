@@ -29,6 +29,11 @@
       </div>
     </form>
   </div>
+  <!-- 
+  <div id="app">
+    O componente Vue será montado aqui 
+    <Home />
+  </div> -->
 </section> 
 
 @endsection

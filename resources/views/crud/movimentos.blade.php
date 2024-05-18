@@ -56,13 +56,62 @@
       </form>
     </div>
   </div>
+  {{-- modal para cadastrar ativo --}}
+  <div id="modalAddAtivo" class="modal">
+    <div class="modal-content-add-ativo">
+      <div class="container" id="caixa">
+        <span class="close">&times;</span>
+        <h1 class="mb-2 text-center">Cadastrar</h1>
+        <form action="{{ route('ativos.store') }}" method="POST" enctype="multipart/form-data">
+          {{ csrf_field() }}
+          <div class="form-group">
+            <label for="tipo">Tipo de ativo:</label>
+            <select id="tipo" name="tipo" required>
+              <option value="fundo imobiliario">fundo imobiliario</option>
+              <option value="acao">acao</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="movimento">Tipo de Operação:</label>
+            <select id="movimento" name="movimento" required>
+              <option value="compra">compra</option>
+              <option value="venda">venda</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="nome">Ativo:</label>
+            <input type="text" id="nome" name="nome" oninput="this.value = this.value.toUpperCase()" required>
+          </div>
+          <div class="form-group">
+            <label for="data">Data:</label>
+            <input type="date" id="data" name="data" required>
+          </div>
+          <div class="form-group"> 
+            <label for="corretagem">Corretagem:</label>
+            <input type="number" id="corretagem" name="corretagem" required>
+          </div>
+          <div class="form-group"> 
+            <label for="quantidade">Quantidade:</label>
+            <input type="number" id="quantidade" name="quantidade" required>
+          </div>
+          <div class="form-group">
+            <label for="valor">Valor:</label>
+            <input type="number" step="0.01" id="valor" name="valor" required>
+          </div>
+          <div class="form-group">
+            <button type="submit" class="btn btn-primary">Cadastrar</button>
+          </div>  
+        </form>
+      </div>
+    </div>
+  </div>
 </section>
 {{-- Seção para mostrar ações --}}
 <section class="secao_movimento_1">
   <div class="container" id="caixa"> 
     <div class="text-center mb-4 mt-2">
       <h1>Ações</h1>
-      <button id="desktopBtn" class="btn btn-primary mt-2">Compra e venda</button>
+      <button id="addAtivoBtn" class="btn btn-primary mt-2">Compra e venda</button>
     </div>
     <div class="table-responsive">
       <table class="table">
@@ -112,7 +161,7 @@
   <div class="container" id="caixa2">
     <div class="text-center mb-4 mt-2">
       <h1>Fiis</h1>
-      <button id="desktopBtn" class="btn btn-primary mt-2">Compra e venda</button>
+      <button id="addAtivoBtn2" class="btn btn-primary mt-2">Compra e venda</button>
     </div>
     <div class="table-responsive">
       <table class="table">
@@ -159,5 +208,7 @@
 </section>
 
 <script src="js/movimento_buscar_ativo.js"></script>
+<script src="js/modal_add_ativos.js"></script>
+
 
 @endsection

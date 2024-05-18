@@ -9,6 +9,8 @@
   <link rel="stylesheet" href="/css/secao_mostrar_ativo.css">
   <link rel="stylesheet" href="/css/secao_edit_formula.css">
 
+  @vite(['resources/sass/app.scss', 'resources/js/app.js'])
+
   <!-- Font awesome -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.2/css/fontawesome.min.css" integrity="sha384-BY+fdrpOd3gfeRvTSMT+VUZmA728cfF9Z2G42xpaRkUGu2i3DyzpTURDo5A6CaLK" crossorigin="anonymous">
   <!-- Fonts -->
