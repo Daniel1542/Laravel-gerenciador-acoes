@@ -30,12 +30,16 @@
                 <input type="text" class="form-control" id="ticker" name="ticker" oninput="this.value = this.value.toUpperCase()" required>
               </div>
               <div class="col-md-3">
-                <label for="dpa" class="form-label">DPA:</label>
-                <input type="text" class="form-control" id="dpa" name="dpa" required>
+                <label for="lpa" class="form-label">LPA:</label>
+                <input type="text" class="form-control" id="lpa" name="lpa" required>
               </div>
               <div class="col-md-3">
-                <label for="dividend_yield" class="form-label">Yield estimado:</label>
-                <input type="text" class="form-control" id="dividend_yield" name="dividend_yield" required>
+                <label for="payout" class="form-label">Payout:</label>
+                <input type="text" class="form-control" id="payout" name="payout" required>
+              </div>
+              <div class="col-md-3">
+                <label for="yield_projetado" class="form-label">Yield projetado:</label>
+                <input type="text" class="form-control" id="yield_projetado" name="yield_projetado" required>
               </div>
             </div>
             <div class="button">
@@ -45,12 +49,12 @@
         </div>
       </div>
     </div>
-    {{-- Formulário para cadastro de Graham --}}
+    {{-- Modal para cadastro de Graham --}}
     <div id="modalAddGraham" class="modal">
       <div class="modal-content-add-formula">   
         <div class="container" id="caixa_1">
           <span class="close">&times;</span>
-          <h1 class="mt-4 mb-4">Fórmula de Graham</h1>
+          <h1 class="mt-4 mb-4 text-center">Fórmula de Graham</h1>
           <form action="{{ route('formula.createGraham') }}" method="POST" enctype="multipart/form-data">
             {{ csrf_field() }}
             <div class="opcoes">
@@ -85,8 +89,10 @@
         <thead>
           <tr>   
             <th>Ticker:</th>
-            <th>DPA:</th>   
-            <th>Dividend yield:</th> 
+            <th>LPA projetado:</th>   
+            <th>Payout projetado:</th>   
+            <th>DPA projetado:</th>   
+            <th>Yield projetado:</th> 
             <th>Preço teto:</th> 
             <th>Opções:</th>             
           </tr>
@@ -95,8 +101,10 @@
           @foreach($dadosBazin as $bazin)     
             <tr>
               <td>{{ $bazin['ticker'] }}</td>     
-              <td>{{ $bazin['dpa'] }}</td>
-              <td>{{ $bazin['dividend_yield'] }} %</td>
+              <td>{{ $bazin['lpa'] }}</td>
+              <td>{{ $bazin['payout'] }} %</td>
+              <td>{{number_format ($bazin['dpa'], 2) }}</td>
+              <td>{{ $bazin['yield_projetado'] }} %</td>
               <td>R$ {{number_format ($bazin['preco_teto'], 2) }}</td>
               <td class="buttons"> 
                 <form action="{{ route('formula.editBazin', ['id' => $bazin['id']]) }}" method="GET">

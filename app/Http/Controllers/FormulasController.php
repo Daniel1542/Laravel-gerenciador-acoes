@@ -15,12 +15,16 @@ class FormulasController extends Controller
     {
         $dados = [];
         foreach ($dado as $formula) {
-            $precoTeto = $formula['dpa'] / ($formula['dividend_yield'] / 100);
+            $precoTeto = $formula['lpa'] * $formula['payout'] / ($formula['yield_projetado'] / 100);
+            $dividendoAcao = $formula['lpa'] * $formula['payout'] / 100;
+
             $dados[] = [
                 'id' => $formula['id'],
                 'ticker' => $formula['ticker'],
-                'dpa' => $formula['dpa'],
-                'dividend_yield' => $formula['dividend_yield'],
+                'lpa' => $formula['lpa'],
+                'dpa' => $dividendoAcao,
+                'payout' => $formula['payout'],
+                'yield_projetado' => $formula['yield_projetado'],
                 'preco_teto' => $precoTeto,
             ];
         }
@@ -63,8 +67,9 @@ class FormulasController extends Controller
     {
         $request->validate([
             'ticker' => 'string|max:6|regex:/^[A-Z0-9]+$/',
-            'dpa' => 'numeric',
-            'dividend_yield' => 'numeric',
+            'lpa' => 'numeric',
+            'payout' => 'numeric',
+            'yield_projetado' => 'numeric',
         ]);
 
         $user = Auth::user();
@@ -73,8 +78,9 @@ class FormulasController extends Controller
 
         $formula-> user_id = $user->id;
         $formula-> ticker = $request->ticker;
-        $formula-> dpa = $request->dpa;
-        $formula-> dividend_yield = $request->dividend_yield;
+        $formula-> lpa = $request->lpa;
+        $formula-> payout = $request->payout;
+        $formula-> yield_projetado = $request->yield_projetado;
 
         $formula->save();
 
@@ -94,8 +100,9 @@ class FormulasController extends Controller
     {
         $request->validate([
             'ticker' => 'string|max:6|regex:/^[A-Z0-9]+$/',
-            'dpa' => 'numeric',
-            'dividend_yield' => 'numeric',
+            'lpa' => 'numeric',
+            'payout' => 'numeric',
+            'yield_projetado' => 'numeric',
         ]);
 
         $user = Auth::user();
@@ -105,8 +112,9 @@ class FormulasController extends Controller
 
         $formula->user_id = $user->id;
         $formula->ticker = $request->ticker;
-        $formula->dpa = $request->dpa;
-        $formula->dividend_yield = $request->dividend_yield;
+        $formula->lpa = $request->lpa;
+        $formula->payout = $request->payout;
+        $formula->yield_projetado = $request->yield_projetado;
 
         $formula->save();
 

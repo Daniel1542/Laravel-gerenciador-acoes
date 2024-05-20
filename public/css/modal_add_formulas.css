@@ -5,7 +5,7 @@
 
   .modal-content-add-formula #caixa,
   .modal-content-add-formula #caixa_1{
-    width: 38vw;
+    width: 40vw;
     padding: 20px;
     background-color: rgb(196, 110, 104);
     border: 1px solid #d3a4a4;
@@ -14,8 +14,14 @@
   
   .modal-content-add-formula .opcoes {
     display: flex;
-    justify-content: space-between;
-    gap: 20px;
+    align-items: center;
+    text-align: center;
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .modal-content-add-formula .form-control{
+    text-align: center;
   }
 
   .modal-content-add-formula .button {

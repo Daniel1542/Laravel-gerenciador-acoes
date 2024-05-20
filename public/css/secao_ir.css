@@ -1,30 +1,31 @@
 
 .secao_ir{
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  align-items: center;
+  margin-top: 150px;
+  margin-bottom: 20px;
   padding: 0;
 }
+
+/*seções das ações e fiis*/
 
 .secao_ir2 .secao_ir3{
   padding: 0;
   margin-bottom: 100px;
-  margin-top: 10px;
 }
+
+/*seção de baixar e buscar*/
 
 .secao_ir .container-total{
-  display: flex;
-  flex-direction: column;
-  text-align: center;
-  margin-bottom: 20px;
-  margin-top: 150px;
+  min-width: 550px;
 }
 
-.secao_ir .container{
-  margin-top: 10px;
-  padding: 0;
-}
 .secao_ir .container2{
   display: flex;
   flex-direction: column;
-  margin-top: 10px;
+  margin-top: 30px;
   padding: 0;
 }
 
@@ -34,18 +35,25 @@
   border: 1px solid #f1eedc;
   border-radius: 4px;
   padding: 20px;
-  gap: 10px;
+  gap: 15px;
 }
+
+.secao_ir .form-select{
+  text-align: center;
+}
+
 .secao_ir .formulario2 {
   display: flex;
-  justify-content: center;
   flex-direction: row;
-  padding: 10px;
+  padding: 15px;
 }
+
+/*procurar por ano*/
 
 .secao_ir #procura {
   display: flex;
   flex-direction: row;
+  max-width: 200px;
 }
 
 .secao_ir #procura label {
@@ -57,20 +65,26 @@
   background-color: rgb(233, 255, 198);
 }
 
+/*seções das ações e fiis*/
+
 .secao_ir2 #caixa, 
 .secao_ir3 #caixa2 {
   display: flex;
   flex-direction: column;
   background-color: rgb(196, 110, 104);
   padding: 50px;
+  min-width: 600px;
   margin-top: 15px;
   border: 1px solid #d3a4a4;
   border-radius: 5px;
 }
+
 .secao_ir2 .div_container,
 .secao_ir3 .div_container{
   overflow-x: auto;
 }
+
+/*tables das seções das ações e fiis*/
 
 .secao_ir2 .table, 
 .secao_ir3 .table{
@@ -97,7 +111,6 @@
   background-color: rgb(255, 255, 255);
 }
 
-
 .secao_ir2 .tbody tr td,
 .secao_ir3 .tbody tr td {
   background-color: rgb(255, 255, 255);
@@ -110,28 +123,26 @@
 
   .secao_ir2 #caixa{
     padding: 10px;
+    min-width: 300px;
     width: 98vw;
     margin-top: 20px;
   }
 
   .secao_ir3 #caixa2 {
     padding: 10px;
+    min-width: 300px;
     width: 98vw;
     margin-top: 50px;
   }
 
   .secao_ir .container-total{
-    justify-content: center;
-    gap: 15px;
-    margin-bottom: 50px;
-    margin-top: 130px;
-  }
-  .secao_ir .container {
-    padding: 5px;
+    min-width: 300px;
   }
 
   .secao_ir .formulario {
-    padding: 10px;
+    max-height: 400px;
+    padding: 50px;
+    gap: 10px;
   }
 
   .secao_ir2 thead tr th,

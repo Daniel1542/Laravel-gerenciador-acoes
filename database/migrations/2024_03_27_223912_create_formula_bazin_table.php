@@ -15,8 +15,9 @@ return new class extends Migration
             $table->id();
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->string('ticker');
-            $table->float('dpa');
-            $table->float('dividend_yield');
+            $table->float('lpa');
+            $table->float('payout');
+            $table->float('yield_projetado');
             $table->timestamps();
         });
     }

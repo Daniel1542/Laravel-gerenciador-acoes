@@ -1,5 +1,5 @@
 @extends('layouts.main')
-@section('title', 'Editar')
+@section('title', 'Editar Graham')
 @section('content')
 
 <section class="secao_edit_formula">

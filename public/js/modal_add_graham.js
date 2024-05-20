@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', function() {
     // Selecione os botões para abrir o modal
-    var mobileBtn = document.getElementById('grahamBtn');
+    var grahamBtn = document.getElementById('grahamBtn');
   
     // Selecione o modal
     var modal = document.getElementById('modalAddGraham');
@@ -18,11 +18,8 @@ document.addEventListener('DOMContentLoaded', function() {
       modal.style.display = 'none'; // Esconde o modal
     }
   
-    // Quando o usuário clicar no botão mobile, abra o modal
-    mobileBtn.addEventListener('click', openModal);
-  
-    // Quando o usuário clicar no botão desktop, abra o modal
-    desktopBtn.addEventListener('click', openModal);
+    // Quando o usuário clicar no botão, abra o modal
+    grahamBtn.addEventListener('click', openModal);
   
     // Quando o usuário clicar no span (x), feche o modal
     spanCloseModal.addEventListener('click', closeModal);

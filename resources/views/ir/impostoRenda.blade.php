@@ -5,11 +5,12 @@
 <section class="secao_ir">
   <div class="container-total">
     <h1>Imposto de renda</h1>
-    <div class="container">
+    <div class="container mt-3">
+      {{-- Formulário para baixar IR --}}
       <form action="{{ route('imposto.opcoes') }}" method="GET">
         {{ csrf_field() }}
         <div class="formulario">
-          <div class="row mb-4 justify-content-center">
+          <div class="row mb-4">
             <div class="col-md-4">
               <label for="data" class="form-label">Data:</label>
               <select class="form-select" id="data" name="data" required>
@@ -45,10 +46,10 @@
       </form>
     </div>
     <div class="container2">
+      {{-- Formulário para procurar IR por ano --}}
       <form action="{{ route('imposto.index') }}" method="GET">
         {{ csrf_field() }}
-        <div class="formulario2">
-          <div class="container justify-content-center">
+          <div id="formulario2" class="container justify-content-center">
             <div class="col-md-5 mx-auto" id="procura">
               <label for="data" class="form-label">Procurar por ano:</label>
               <select class="form-select" id="data" name="data" required>
@@ -70,8 +71,7 @@
                 <th id="anoSelecionado"></th>         
               </tr>
             </div>
-          </div>
-        </div>           
+          </div>          
       </form>
     </div>
   </div>
@@ -123,7 +123,7 @@
     </div>  
   </div>
 </section>
-<section class="secao_ir3">
+<section class="secao_ir3 mt-4">
   <div class="container" id="caixa2">
     <div class="row justify-content-center">
       <div class="col-md-6 text-center">

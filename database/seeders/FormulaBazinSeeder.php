@@ -12,36 +12,41 @@ class FormulaBazinSeeder extends Seeder
         FormulaBazin::create([
             'user_id' => '1',
             'ticker' => 'VALE3',
-            'dpa' => '6.82',
-            'dividend_yield' => '8',
+            'lpa' => '6.82',
+            'payout' => '80',
+            'yield_projetado' => '8',
         ]);
 
         FormulaBazin::create([
             'user_id' => '1',
             'ticker' => 'RANI3',
-            'dpa' => '5',
-            'dividend_yield' => '6',
+            'lpa' => '5',
+            'payout' => '70',
+            'yield_projetado' => '6',
         ]);
 
         FormulaBazin::create([
             'user_id' => '2',
             'ticker' => 'VALE3',
-            'dpa' => '6',
-            'dividend_yield' => '9',
+            'lpa' => '6',
+            'payout' => '60',
+            'yield_projetado' => '9',
         ]);
 
         FormulaBazin::create([
             'user_id' => '1',
             'ticker' => 'ABCB4',
-            'dpa' => '5',
-            'dividend_yield' => '10',
+            'lpa' => '5',
+            'payout' => '90',
+            'yield_projetado' => '10',
         ]);
 
         FormulaBazin::create([
             'user_id' => '1',
             'ticker' => 'PETR4',
-            'dpa' => '6.5',
-            'dividend_yield' => '9',
+            'lpa' => '6.5',
+            'payout' => '50',
+            'yield_projetado' => '9',
         ]);
         FormulaBazin::factory()->count(5)->create(['user_id' => 1]);
     }

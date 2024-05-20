@@ -28,8 +28,9 @@ class FormulaBazinFactory extends Factory
         return [
             'user_id' => User::factory(), // Cria um usuário automaticamente associado ao ativo
             'ticker' => $this->faker->boolean ? strtoupper($this->faker->bothify('????##')) : strtoupper($this->faker->bothify('????#')),
-            'dividend_yield' => $this->faker->numberBetween(1, 12),
-            'dpa' => $this->faker->randomFloat(2, 0, 12),
+            'lpa' => $this->faker->randomFloat(2, 0, 12),
+            'payout' => $this->faker->randomFloat(2, 0, 100),
+            'yield_projetado' => $this->faker->numberBetween(1, 15),              
         ];
     }
 }

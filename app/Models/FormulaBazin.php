@@ -13,8 +13,9 @@ class FormulaBazin extends Model
     protected $fillable = [
         'user_id',
         'ticker',
-        'dpa',
-        'dividend_yield',
+        'lpa',
+        'payout',
+        'yield_projetado',
     ];
 
     public function formulaBazin()

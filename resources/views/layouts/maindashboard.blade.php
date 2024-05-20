@@ -57,6 +57,7 @@
       <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
         <li><a class="dropdown-item" href="{{ route('lista.index')}}">Ativos</a></li>
         <li><a class="dropdown-item" href="{{ route('formula.index')}}">Fórmulas</a></li>
+        <li><a class="dropdown-item" href="{{ route('movimento.index')}}">Movimentações</a></li>
       </ul>    
     </div>
     <div class="dropdown d-none d-lg-block">
@@ -65,14 +66,6 @@
       </button>
       <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
         <li><a class="dropdown-item" href="{{ route('imposto.index')}}">Mostrar</a></li>
-      </ul>    
-    </div>
-    <div class="dropdown d-none d-lg-block">
-      <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-        Movimentações
-      </button>
-      <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-        <li><a class="dropdown-item" href="{{ route('movimento.index')}}">Movimentos dos ativos</a></li>
       </ul>    
     </div>
     <div class="d-none d-lg-block">
@@ -99,7 +92,7 @@
   <footer>
     <p>&copy; 2024 Daniel</p>
     <nav>
-      <a href="#">Página Inicial</a>
+      <a href="{{ route('principal.dashboard')}}">Página Inicial</a>
       <a href="#">Sobre Nós</a>
       <a href="#">Contato</a>
     </nav>
