@@ -166,16 +166,16 @@
     <div class="table-responsive">
       <table class="table">
         <thead>
-        <tr>
-          <th>Fii:</th>
-          <th>Movimento:</th>   
-          <th>Quantidade:</th>
-          <th>Valor investido:</th>       
-          <th>Corretagem:</th>
-          <th>Total:</th>
-          <th>Data:</th>   
-          <th>Opções:</th>     
-        </tr>
+          <tr>
+            <th>Fii:</th>
+            <th>Movimento:</th>   
+            <th>Quantidade:</th>
+            <th>Valor investido:</th>       
+            <th>Corretagem:</th>
+            <th>Total:</th>
+            <th>Data:</th>   
+            <th>Opções:</th>     
+          </tr>
         </thead>
         <tbody>
           {{-- Loop dados de FIIs --}}

@@ -4,13 +4,13 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="/css/app.css">
-  <link rel="stylesheet" href="/css/secao_ativos.css">
+  <link rel="stylesheet" href="/css/ativos.css">
   <link rel="stylesheet" href="/css/modal_add_ativos.css">
-  <link rel="stylesheet" href="/css/secao_dash.css">
-  <link rel="stylesheet" href="/css/secao_ir.css">
-  <link rel="stylesheet" href="/css/secao_movimento.css">
-  <link rel="stylesheet" href="/css/secao_formula.css">
   <link rel="stylesheet" href="/css/modal_add_formulas.css">
+  <link rel="stylesheet" href="/css/dash.css">
+  <link rel="stylesheet" href="/css/imposto_renda.css">
+  <link rel="stylesheet" href="/css/movimento.css">
+  <link rel="stylesheet" href="/css/formula.css">
 
   <!-- Font awesome -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.2/css/fontawesome.min.css" integrity="sha384-BY+fdrpOd3gfeRvTSMT+VUZmA728cfF9Z2G42xpaRkUGu2i3DyzpTURDo5A6CaLK" crossorigin="anonymous">

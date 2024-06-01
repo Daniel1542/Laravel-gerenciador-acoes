@@ -12,17 +12,15 @@
 
 Este projeto é um site para auxiliar na declaração de imposto de renda de ações e fundos imobiliários.
 
-![Exemplo de Screenshot](storage/imagens/cadastro.png)
+![Exemplo de Screenshot](storage/imagens/login.png)
 
 ![Exemplo de Screenshot](storage/imagens/dashboard.png)
 
-![Exemplo de Screenshot](storage/imagens/ir.png)
+![Exemplo de Screenshot](storage/imagens/dash.png)
 
-![Exemplo de Screenshot](storage/imagens/ir2.png)
+![Exemplo de Screenshot](storage/imagens/formulas.png)
 
-![Exemplo de Screenshot](storage/imagens/login.png)
-
-![Exemplo de Screenshot](storage/imagens/movimento.png)
+![Exemplo de Screenshot](storage/imagens/movimentos.png)
 
 ### Diagramas
 

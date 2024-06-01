@@ -47,6 +47,7 @@
     background-color: rgb(196, 110, 104);
     padding: 20px;
     margin-top: 30px;
+    max-height: 1000px;
     border: 1px solid #d3a4a4;
     border-radius: 5px;
   }
@@ -64,20 +65,33 @@
 
   .secao_movimento_1 .table .buttons{
     display: flex;
+    justify-content: center;
+    padding: 4px;
     gap: 5px;
   }
 
   .secao_movimento_1 .btn-warning, 
   .secao_movimento_1 .btn-danger{
     padding: 4px;
-    margin: 4px;
+    margin: 10px;
   }
 
   .secao_movimento_1 .table th,
   .secao_movimento_1 .table td {
-    border: 1px solid #dee2e6;
+    width: 100%;   
+    border: 1px solid rgb(255, 255, 255);
     padding: 4px;
     box-sizing: border-box;
+  }
+  
+  .secao_movimento_1 .table-responsive tbody td:nth-child(odd),
+  .secao_movimento_1 .table-responsive thead th:nth-child(odd){
+    background-color: rgb(230, 216, 215); 
+  }
+
+  .secao_movimento_1 .table-responsive tbody td:nth-child(even),
+  .secao_movimento_1 .table-responsive thead th:nth-child(even){
+    background-color: rgb(240, 230, 229);
   }
 
   /*ajax de busca*/
@@ -122,18 +136,8 @@
     .secao_movimento_1 #caixa2 {
       padding: 10px;
       margin-top:60px;
+      max-height: 500px;
       width: 99vw;
-    }
-
-    .secao_movimento_1 .table th,
-    .secao_movimento_1 .table td {
-      width: 100%;   
-      box-sizing: border-box;
-    }
-
-    .secao_movimento_1 .btn-warning, 
-    .secao_movimento_1 .btn-danger{
-      margin: 4px;
     }
 
   }

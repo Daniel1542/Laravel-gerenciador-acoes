@@ -11,6 +11,10 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
+    border: 2px solid rgb(202, 201, 132);
+    border-radius: 10px;
+    padding: 15px;
+    gap: 10px;
     max-width: 400px;
   }
 
@@ -20,6 +24,7 @@
     flex-direction: column;
     text-align: center;
     min-width: 700px;
+    max-height: 1000px;
     margin-top: 100px;
     background-color: rgb(196, 110, 104);
     padding: 20px;
@@ -29,14 +34,14 @@
   
   .secao_formula .opcoes {
     display: flex;
-    justify-content: space-between;
-    gap: 20px;
+    justify-content: center;
+    gap: 35px;
   }
 
   .secao_formula .opcoes_formulas {
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 15px;
   }
 
   .secao_formula .btn-custom {
@@ -80,6 +85,7 @@
     .secao_formula_2 #caixa_3{
       padding: 5px;
       min-width: 40px;
+      max-height: 500px;
       width: 98vw;
     }
 
