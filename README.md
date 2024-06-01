@@ -12,23 +12,23 @@
 
 Este projeto é um site para auxiliar na declaração de imposto de renda de ações e fundos imobiliários.
 
-![Exemplo de Screenshot](imagens/cadastro.png)
+![Exemplo de Screenshot](storage/imagens/cadastro.png)
 
-![Exemplo de Screenshot](imagens/dashboard.png)
+![Exemplo de Screenshot](storage/imagens/dashboard.png)
 
-![Exemplo de Screenshot](imagens/ir.png)
+![Exemplo de Screenshot](storage/imagens/ir.png)
 
-![Exemplo de Screenshot](imagens/ir2.png)
+![Exemplo de Screenshot](storage/imagens/ir2.png)
 
-![Exemplo de Screenshot](imagens/login.png)
+![Exemplo de Screenshot](storage/imagens/login.png)
 
-![Exemplo de Screenshot](imagens/movimento.png)
+![Exemplo de Screenshot](storage/imagens/movimento.png)
 
 ### Diagramas
 
-![Exemplo de Screenshot](imagens/Diagrama.png)
+![Exemplo de Screenshot](storage/imagens/Diagrama.png)
 
-![Exemplo de Screenshot](imagens/drawSQL.png)
+![Exemplo de Screenshot](storage/imagens/drawSQL.png)
 
 ### Recursos Principais
 
@@ -38,11 +38,11 @@ Este projeto é um site para auxiliar na declaração de imposto de renda de aç
 - CSS
 - PHP
 - Javascript
+- Jquery
 - Banco de dados SQL
 - Api rest
 - Code Sniffer
 - PhpUnit
-- Laragon
 - Opção de baixar dados em formato Excel e PDF
 
 ### Instalação
@@ -52,7 +52,7 @@ Este projeto é um site para auxiliar na declaração de imposto de renda de aç
 3. Crie um arquivo `.env`.
 4. Copie o arquivo `.env.example` para `.env` e ajuste as configurações, como a conexão com o banco de dados.
 5. Execute `php artisan key:generate`.
-6. Execute o Laragon para iniciar o banco de dados.
+6. Inicie o banco de dados.
 7. Execute `php artisan migrate --seed` para criar as tabelas no banco de dados com as migrações e sementes.
 
 ### Uso

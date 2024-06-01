@@ -29,8 +29,8 @@
 <body class="corpo">
   <header>
     {{-- logo do site no menu --}}
-    <div class="dropdown">
-      <a href="{{ route('principal.dashboard') }}">
+    <div>
+      <a id="logo" href="{{ route('principal.dashboard') }}">
         <img class="logo" src="logo/bear_and_bull.svg" alt="logo">
       </a>
     </div>

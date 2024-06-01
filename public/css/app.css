@@ -5,19 +5,19 @@
 }
 
 /*main*/
-.msm{
+.corpo .msm{
   margin-top: 200px;
   display: flex;
   align-items: center;
-  background-color: #2de627;
+  background-color: rgb(160, 231, 46);
   width: 100%;
 }
 
-.alert {
+.corpo .alert {
   margin-top: 200px;
 }
 
-.form-group{
+.corpo .form-group{
   display: flex;
   gap: 2px;
   flex-direction: column;
@@ -27,24 +27,29 @@
   display: flex;
   align-items: center;
   flex-direction: column;
-  background-color: #7ec8e6;
+  background-color: rgb(212, 234, 235);
   padding: 0;
 }
-main{
+.corpo main{
   display: flex;
   flex-direction: column;
-}
+ }
 
-ul {
+.corpo ul {
   list-style-type: none;
 }
 
-a{
-  color: rgb(196, 110, 104);
+.corpo header a{
   text-decoration: none;
 }
 
-header{
+.corpo header a:hover{
+  color: rgb(255, 255, 255);
+  background-color: rgb(231, 207, 207);
+  text-decoration: none;
+}
+
+.corpo header{
   display: flex;
   justify-content: center;
   z-index: 1000;
@@ -54,71 +59,77 @@ header{
   height: 100px;
   padding: 15px;
   gap: 15px;
-  background-color: #ebe1b7;
+  background-color: rgb(204, 218, 181);
 }
 
 /* Estilos para o menu suspenso */
 
-.dropdown {
+.corpo #logo{
+  background-color: rgb(204, 218, 181);
+}
+
+.corpo .logo{
+  width: 120px;
+}
+
+.corpo .dropdown {
   margin: 10px 0;
   display: inline-block;
 }
 
-.dropdown-menu {
+.corpo .dropdown-menu {
   display: none;
   position: absolute;
-  box-shadow: 0px 0px 10px #000000;
+  box-shadow: 0px 0px 10px rgb(0, 0, 0);
   z-index: 1;
 }
 
-.dropdown:hover .dropdown-menu {
+.corpo .dropdown:hover .dropdown-menu {
   display: block;
 }
 
-.btn-secondary {
-  background-color: #6c757d;
+.corpo .btn-secondary {
+  background-color: rgb(42, 136, 141);
   border: none;
   padding: 10px;
   cursor: pointer;
   transition: background-color 0.3s ease;
 }
 
-.btn-secondary:hover {
-  background-color: #495057; 
+.corpo .btn-secondary:hover {
+  background-color: rgb(116, 103, 103); 
 }
 
-.logo{
-  width: 120px;
-}
+
 
 /*footer*/
 
-footer{
+.corpo footer{
   text-align: center;
   padding: 10px;
   margin-top: 100px;
-  background-color: #ebe1b7;
+  background-color: rgb(204, 218, 181);
   width: 100%;
   bottom: 0;
 }
 
-footer a {
-  color: #000000;
+.corpo footer a {
+  color: rgb(0, 0, 0);
   text-decoration: none;
   margin: 0 5px;
 }
 
-footer a:hover {
+.corpo footer a:hover {
   text-decoration: underline;
 }
 
 @media screen and (max-width: 768px) {
 
-  header{
+  .corpo header{
     justify-content: space-around;
   }
 
-  footer{
+  .corpo footer{
     margin-top: 80px;
   }
 
