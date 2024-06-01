@@ -10,6 +10,11 @@ class FormulaBazin extends Model
     use HasFactory;
 
     protected $table = 'formula_bazin';
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array<int, string>
+     */
     protected $fillable = [
         'user_id',
         'ticker',
@@ -18,8 +23,23 @@ class FormulaBazin extends Model
         'yield_projetado',
     ];
 
-    public function formulaBazin()
+    /**
+     * The attributes that should be cast to native types.
+     *
+     * @var array<string, string>
+     */
+    protected $casts = [
+        'lpa' => 'float',
+        'payout' => 'float',
+        'yield_projetado' => 'float',
+    ];
+
+    /**
+     * Get the user that owns the Formula Bazin.
+     */
+
+    public function user()
     {
-        return $this->hasMany(FormulaBazin::class);
+        return $this->belongsTo(User::class);
     }
 }

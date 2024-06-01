@@ -45,8 +45,27 @@ class User extends Authenticatable
         'password' => 'hashed',
     ];
 
-    public function user()
+    /**
+     * Get the formula bazin records associated with the user.
+     */
+    public function movimentoAtivos()
     {
-        return $this->belongsTo(User::class);
+        return $this->hasMany(MovimentoAtivos::class);
+    }
+
+     /**
+     * Get the formula bazin records associated with the user.
+     */
+    public function formulaBazins()
+    {
+        return $this->hasMany(FormulaBazin::class);
+    }
+
+    /**
+     * Get the formula graham records associated with the user.
+     */
+    public function formulaGrahams()
+    {
+        return $this->hasMany(FormulaGraham::class);
     }
 }

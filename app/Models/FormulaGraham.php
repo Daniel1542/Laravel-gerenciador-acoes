@@ -10,6 +10,11 @@ class FormulaGraham extends Model
     use HasFactory;
 
     protected $table = 'formula_graham';
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array<int, string>
+     */
     protected $fillable = [
         'user_id',
         'ticker',
@@ -17,8 +22,23 @@ class FormulaGraham extends Model
         'vpa',
     ];
 
-    public function formulaGraham()
+    /**
+     *
+     * The attributes that should be cast to native types.
+     *
+     * @var array<string, string>
+     */
+    protected $casts = [
+        'lpa' => 'float',
+        'vpa' => 'float',
+    ];
+
+    /**
+     * Get the user that owns the Formula Graham.
+     */
+
+    public function user()
     {
-        return $this->hasMany(FormulaGraham::class);
+        return $this->belongsTo(User::class);
     }
 }

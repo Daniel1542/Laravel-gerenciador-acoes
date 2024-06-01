@@ -48,6 +48,6 @@ class FormulaBazinSeeder extends Seeder
             'payout' => '50',
             'yield_projetado' => '9',
         ]);
-        FormulaBazin::factory()->count(5)->create(['user_id' => 1]);
+        FormulaBazin::factory()->count(15)->create(['user_id' => 1]);
     }
 }

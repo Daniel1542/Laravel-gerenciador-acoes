@@ -10,6 +10,11 @@ class MovimentoAtivos extends Model
     use HasFactory;
 
     protected $table = 'movimento_ativos';
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array<int, string>
+     */
     protected $fillable = [
         'user_id',
         'tipo',
@@ -22,9 +27,25 @@ class MovimentoAtivos extends Model
         'valor_total',
     ];
     protected $dates = ['data'];
+     /**
+     * The attributes that should be cast to native types.
+     *
+     * @var array<string, string>
+     */
+    protected $casts = [
+        'data' => 'date',
+        'corretagem' => 'float',
+        'quantidade' => 'integer',
+        'valor' => 'float',
+        'valor_total' => 'float',
+    ];
 
-    public function movimentoAtivos()
+    /**
+     * Get the user that owns the movimento ativo.
+     */
+
+    public function user()
     {
-        return $this->hasMany(MovimentoAtivos::class);
+        return $this->belongsTo(User::class);
     }
 }

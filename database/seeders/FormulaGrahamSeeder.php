@@ -43,6 +43,6 @@ class FormulaGrahamSeeder extends Seeder
             'lpa' => '8.2',
             'vpa' => '40.10',
         ]);
-        FormulaGraham::factory()->count(6)->create(['user_id' => 1]);
+        FormulaGraham::factory()->count(15)->create(['user_id' => 1]);
     }
 }
