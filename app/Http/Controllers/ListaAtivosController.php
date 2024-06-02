@@ -3,10 +3,19 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\Auth;
+use App\Services\YahooFinanceService;
 use App\Models\MovimentoAtivos;
 
 class ListaAtivosController extends Controller
 {
+    protected $yahooFinanceService;
+
+    public function __construct(YahooFinanceService $yahooFinanceService)
+    {
+        $this->yahooFinanceService = $yahooFinanceService;
+    }
+
+    
     /*Função para mostrar os dados de todos os ativos.*/
     private function mostrarTudo($movimento)
     {
@@ -14,6 +23,7 @@ class ListaAtivosController extends Controller
 
         // Calcula o valor total de todos os ativos
         $valorTotalAtivo = $this->valorTodosAtivos($movimento);
+        $precosAtuais = $this->getStockPrices($movimento);
 
         foreach ($movimento as $nome => $movimentos) {
             $compras = $movimentos->where('movimento', 'compra');
@@ -30,6 +40,8 @@ class ListaAtivosController extends Controller
             $valorCompleto =  $valorCompra - $valorVenda;
 
             $quantidadeTotal = $quantidadeCompra - $quantidadeVenda;
+
+            $precoAtual = $precosAtuais[$nome] ?? 0;
 
             // Calcula o preço médio do ativo
             if ($quantidadeCompra > 0 && $valorCompra > 0) {
@@ -49,14 +61,36 @@ class ListaAtivosController extends Controller
                 'nome' => $nome,
                 'quantidadeTotal' => $quantidadeTotal,
                 'precoMedio' => $precoMedio,
+                'precoAtual' => $precoAtual,
                 'valorTotal' => $valorCompleto,
                 'porcentagem' => $porcentagem,
             ];
         }
         return $dados;
     }
+    
+    private function getStockPrices($movimento)
+    {
+        $precosAtuais = [];
+    
+        foreach ($movimento as $nome => $movimentos) {
+            if ($movimentos->isNotEmpty()) { // Verifica se a coleção não está vazia
+                $symbol = $movimentos->first()->nome;  // Símbolo da ação
+    
+                // Obter o preço da ação usando o serviço YahooFinanceService
+                $preco = $this->yahooFinanceService->getStockPrice($symbol);
+    
+                $precosAtuais[] = [
+                    'nome' => $symbol,
+                    'precoAtual' => $preco
+                ];
+            }
+        }
+    
+        return $precosAtuais;
+    }
+    
     /*Função para calcular o valor total de todos os ativos.*/
-
     private function valorTodosAtivos($movimento)
     {
         $dado = [];

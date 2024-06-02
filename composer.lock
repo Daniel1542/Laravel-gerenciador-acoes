@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "a1779fa28ef8feda960e9407d0aea5e1",
+    "content-hash": "3b81d777381f384eb90b9c9f0d39eea2",
     "packages": [
         {
             "name": "barryvdh/laravel-dompdf",
@@ -4116,6 +4116,61 @@
                 "source": "https://github.com/MyIntervals/PHP-CSS-Parser/tree/8.5.0"
             },
             "time": "2024-02-01T00:40:08+00:00"
+        },
+        {
+            "name": "scheb/yahoo-finance-api",
+            "version": "v4.10.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/scheb/yahoo-finance-api.git",
+                "reference": "b22c2d15acaae4ebf984069a92a19e066c1dd66a"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/scheb/yahoo-finance-api/zipball/b22c2d15acaae4ebf984069a92a19e066c1dd66a",
+                "reference": "b22c2d15acaae4ebf984069a92a19e066c1dd66a",
+                "shasum": ""
+            },
+            "require": {
+                "ext-json": "*",
+                "guzzlehttp/guzzle": "^6.0|^7.0",
+                "php": ">=7.1.3"
+            },
+            "require-dev": {
+                "escapestudios/symfony2-coding-standard": "^3.9",
+                "phpunit/phpunit": "^7.5 || ^8 || ^9",
+                "squizlabs/php_codesniffer": "^3.5",
+                "vimeo/psalm": "^3.11|^4.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Scheb\\YahooFinanceApi\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Christian Scheb",
+                    "email": "me@christianscheb.de"
+                }
+            ],
+            "description": "PHP library for accessing Yahoo Finance data",
+            "homepage": "https://github.com/scheb/yahoo-finance-api",
+            "keywords": [
+                "api",
+                "finance",
+                "stock",
+                "yahoo"
+            ],
+            "support": {
+                "issues": "https://github.com/scheb/yahoo-finance-api/issues",
+                "source": "https://github.com/scheb/yahoo-finance-api/tree/v4.10.0"
+            },
+            "time": "2024-04-02T17:17:35+00:00"
         },
         {
             "name": "symfony/console",
