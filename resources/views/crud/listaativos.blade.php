@@ -12,7 +12,6 @@
             <th>Ação:</th>
             <th>Quantidade:</th>
             <th>Preço Médio:</th>     
-            <th>Preço Médio:</th>   
             <th>Total:</th>
             <th>Porcentagem:</th>                 
           </tr>
@@ -23,8 +22,7 @@
               <tr>
                 <td> {{ $acao['nome'] }}</td>
                 <td> {{ $acao['quantidadeTotal'] }}</td> 
-                <td> R$ {{ number_format($acao['precoMedio'], 2) }}</td>
-                <td> R$ {{ number_format($acao['precoAtual'], 2) }}</td>
+                <td> R$ {{ number_format($acao['precoMedio'], 2) }}</td>    
                 <td> R$ {{ number_format ($acao['valorTotal'], 2) }}</td>
                 <td> {{ number_format ($acao['porcentagem'], 2) }} %</td>     
               </tr> 
