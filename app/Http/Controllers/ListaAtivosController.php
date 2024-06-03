@@ -9,7 +9,6 @@ use App\Models\MovimentoAtivos;
 
 class ListaAtivosController extends Controller
 {
-    
     /*Função para mostrar os dados de todos os ativos.*/
     private function mostrarTudo($movimento)
     {
@@ -61,7 +60,7 @@ class ListaAtivosController extends Controller
         }
         return $dados;
     }
-    
+
     /*Função para calcular o valor total de todos os ativos.*/
     private function valorTodosAtivos($movimento)
     {

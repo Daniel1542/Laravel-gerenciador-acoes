@@ -27,23 +27,23 @@ class FormulaBazinFactory extends Factory
     {
         $tickers = [
             'PETR4',
-            'VALE3', 
-            'ITUB4', 
-            'BBDC4', 
-            'BBAS3', 
-            'ABEV3', 
-            'WEGE3', 
-            'JBSS3', 
-            'RENT3', 
+            'VALE3',
+            'ITUB4',
+            'BBDC4',
+            'BBAS3',
+            'ABEV3',
+            'WEGE3',
+            'JBSS3',
+            'RENT3',
             'CSAN3'
         ];
-        
+
         return [
             'user_id' => User::factory(), // Cria um usuário automaticamente associado ao ativo
             'ticker' => $this->faker->randomElement($tickers),
             'lpa' => $this->faker->randomFloat(2, 0, 10),
             'payout' => $this->faker->randomFloat(2, 25, 100),
-            'yield_projetado' => $this->faker->numberBetween(6, 15),              
+            'yield_projetado' => $this->faker->numberBetween(6, 15),
         ];
     }
 }

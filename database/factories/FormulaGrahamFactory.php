@@ -27,17 +27,17 @@ class FormulaGrahamFactory extends Factory
     {
         $tickers = [
             'PETR4',
-            'VALE3', 
-            'ITUB4', 
-            'BBDC4', 
-            'BBAS3', 
-            'ABEV3', 
-            'WEGE3', 
-            'JBSS3', 
-            'RENT3', 
+            'VALE3',
+            'ITUB4',
+            'BBDC4',
+            'BBAS3',
+            'ABEV3',
+            'WEGE3',
+            'JBSS3',
+            'RENT3',
             'CSAN3'
         ];
-        
+
         return [
             'user_id' => User::factory(), // Cria um usuário automaticamente associado ao ativo
             'ticker' => $this->faker->randomElement($tickers),
