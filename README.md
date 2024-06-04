@@ -12,22 +12,6 @@
 
 Este projeto é um site para auxiliar na declaração de imposto de renda de ações e fundos imobiliários.
 
-![Exemplo de Screenshot](storage/imagens/login.png)
-
-![Exemplo de Screenshot](storage/imagens/dashboard.png)
-
-![Exemplo de Screenshot](storage/imagens/dash.png)
-
-![Exemplo de Screenshot](storage/imagens/formulas.png)
-
-![Exemplo de Screenshot](storage/imagens/movimentos.png)
-
-### Diagramas
-
-![Exemplo de Screenshot](storage/imagens/Diagrama.png)
-
-![Exemplo de Screenshot](storage/imagens/drawSQL.png)
-
 ### Recursos Principais
 
 - Framework Laravel
@@ -59,6 +43,24 @@ Este projeto é um site para auxiliar na declaração de imposto de renda de aç
 - Execute `php artisan serve` para iniciar o servidor local.
 - Acesse o aplicativo em http://localhost:8000.
 - Faça a conexão com a api pelo postman se quiser testar a api rest.
+
+### Screenshot
+
+![Screenshot login](storage/imagens/login.png)
+
+![Screenshot dashboard](storage/imagens/dashboard.png)
+
+![Screenshot dash](storage/imagens/dash.png)
+
+![Screenshot formulas](storage/imagens/formulas.png)
+
+![Screenshot movimentações](storage/imagens/movimentos.png)
+
+### Diagramas
+
+![Screenshot Diagrama](storage/imagens/Diagrama.png)
+
+![Screenshot Diagrama banco de dados](storage/imagens/drawSQL.png)
 
 ## Contribuição
 
