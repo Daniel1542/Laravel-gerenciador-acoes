@@ -41,6 +41,7 @@ Este projeto é um site para auxiliar na declaração de imposto de renda de aç
 - Api rest
 - Code Sniffer
 - PhpUnit
+- Vue.js
 - Opção de baixar dados em formato Excel e PDF
 
 ### Instalação
