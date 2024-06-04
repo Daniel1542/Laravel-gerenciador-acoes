@@ -5,17 +5,10 @@
 <section class="secao_formula">
   <div class="container" id="container_formulas">
     <h1 class="mt-4 mb-4 text-center">Fórmulas</h1>
-    {{-- botões para cadastro de fórmulas --}}
-    <div class="opcoes">
-      <div class="opcoes_formulas">
-        <label for="Bazin">Formula de Bazin</label>
-        <button id="bazinBtn" class="btn btn-custom">Adicionar</button>
-      </div>
-      <div class="opcoes_formulas">
-        <label for="Graham">Formula de Graham</label>
-        <button id="grahamBtn" class="btn btn-custom">Adicionar</button>
-      </div>
-    </div> 
+    {{--Vue de botões para cadastro de fórmulas --}}
+    <div id="app">
+      <Botoes></Botoes>
+    </div>
     {{-- modal para cadastrar bazin --}}
     <div id="modalAddBazin" class="modal">
       <div class="modal-content-add-formula">

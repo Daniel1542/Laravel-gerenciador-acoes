@@ -1,4 +1,4 @@
- <!-- Cards dashboard-->
+ <!-- graficos pizza dashboard-->
 <template>
    <div id="caixa2">
         <h1 class="text-center">Valor investido por ativo</h1>

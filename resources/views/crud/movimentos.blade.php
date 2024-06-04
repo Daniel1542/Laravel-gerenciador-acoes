@@ -10,6 +10,7 @@
       {{-- Formulário para buscar ativo --}}
       <form action="{{ route('ativos.show')}}" method="GET">
         {{ csrf_field() }}
+        {{-- Vue de formulário para buscar ativo --}}
         <div id="app">
           <Buscar></Buscar>
         </div>

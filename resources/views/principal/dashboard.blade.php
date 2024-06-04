@@ -43,6 +43,7 @@
     </div>
 </section>
 <section class="secao_dash2">
+    {{-- Vue de graficos de pizza --}}
     <div id="app">
         <Dash></Dash>
     </div>
