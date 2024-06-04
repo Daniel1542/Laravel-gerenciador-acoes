@@ -33,8 +33,6 @@ class ListaAtivosController extends Controller
 
             $quantidadeTotal = $quantidadeCompra - $quantidadeVenda;
 
-            $precoAtual = $precosAtuais[$nome] ?? 0;
-
             // Calcula o preço médio do ativo
             if ($quantidadeCompra > 0 && $valorCompra > 0) {
                 $precoMedio = $valorCompra / $quantidadeCompra;
@@ -53,7 +51,6 @@ class ListaAtivosController extends Controller
                 'nome' => $nome,
                 'quantidadeTotal' => $quantidadeTotal,
                 'precoMedio' => $precoMedio,
-                'precoAtual' => $precoAtual,
                 'valorTotal' => $valorCompleto,
                 'porcentagem' => $porcentagem,
             ];

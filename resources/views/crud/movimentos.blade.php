@@ -10,13 +10,8 @@
       {{-- Formulário para buscar ativo --}}
       <form action="{{ route('ativos.show')}}" method="GET">
         {{ csrf_field() }}
-        <div class="formulario1">
-          <label for="Nome">Nome:</label>
-          <div class="autocomplete">
-            <input type="text" id="Nome" name="Nome" autocomplete="off">
-            <ul id="suggestions"></ul>
-          </div>
-          <button class="btn btn-primary" type="submit">Buscar</button>
+        <div id="app">
+          <Buscar></Buscar>
         </div>
       </form>
     </div> 

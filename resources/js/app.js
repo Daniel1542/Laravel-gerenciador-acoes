@@ -1,9 +1,10 @@
 import './bootstrap';
 import { createApp } from 'vue';
+import BuscarAtivo from './components/BuscarAtivo.vue';
+import DashCards from './components/DashCards.vue';
 
 const app = createApp({});
-
-import Home from './components/Home.vue';
-app.component('Home', Home);
-
+app.component('Buscar', BuscarAtivo);
+app.component('Dash', DashCards);
 app.mount('#app');
+
