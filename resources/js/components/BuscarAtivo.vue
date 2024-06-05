@@ -1,4 +1,4 @@
- <!-- Formulário para buscar ativo -->
+ <!-- Formulário para buscar ativo no blade movimentos -->
 <template>
   <div class="formulario1">
     <label for="Nome">Nome:</label>

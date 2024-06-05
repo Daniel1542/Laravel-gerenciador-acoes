@@ -12,7 +12,7 @@
   <link rel="stylesheet" href="/css/movimento.css">
   <link rel="stylesheet" href="/css/formula.css">
 
-  @vite(['resources/js/app.js'])
+  @vite(['resources/js/app.js'],['resources/js/bladeFormula.js'])
 
   <!-- Font awesome -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.2/css/fontawesome.min.css" integrity="sha384-BY+fdrpOd3gfeRvTSMT+VUZmA728cfF9Z2G42xpaRkUGu2i3DyzpTURDo5A6CaLK" crossorigin="anonymous">
@@ -100,7 +100,5 @@
     </nav>
   </footer>
   
-  <script src="js/modal_add_ativos.js"></script>
-
 </body>
 </html>

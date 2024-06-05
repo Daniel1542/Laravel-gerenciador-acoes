@@ -91,27 +91,11 @@
           </tr>
         </thead>
         <tbody>
-          @foreach($dadosBazin as $bazin)     
-            <tr>
-              <td>{{ $bazin['ticker'] }}</td>     
-              <td>{{ $bazin['lpa'] }}</td>
-              <td>{{ $bazin['payout'] }} %</td>
-              <td>{{number_format ($bazin['dpa'], 2) }}</td>
-              <td>{{ $bazin['yield_projetado'] }} %</td>
-              <td>R$ {{number_format ($bazin['preco_teto'], 2) }}</td>
-              <td class="buttons"> 
-                <form action="{{ route('formula.editBazin', ['id' => $bazin['id']]) }}" method="GET">
-                  {{ csrf_field() }}
-                  <button type="submit" class="btn btn-warning">Editar</button>
-                </form>
-                <form action="{{ route('formula.destroyBazin', ['id' => $bazin['id']]) }}" method="POST">
-                  {{ csrf_field() }}
-                  @method('DELETE')
-                  <button type="submit" class="btn btn-danger" onclick="return confirm('Tem certeza que deseja excluir?')">Excluir</button>
-                </form>              
-              </td>                        
-            </tr> 
-          @endforeach    
+          <div id="app2" data-dados-bazin="{{ json_encode($dadosBazin) }}">
+            <template v-for="bazin in dadosBazin">
+              <TableRow v-for="bazin in dadosBazin" :row="bazin" :key="bazin.id"></TableRow>
+            </template>
+          </div>
         </tbody>    
       </table>
     </div>
@@ -162,3 +146,4 @@
 <script src="js/modal_add_graham.js"></script>
 
 @endsection
+
