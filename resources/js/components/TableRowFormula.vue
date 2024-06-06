@@ -8,10 +8,12 @@
       <td>{{ row.yield_projetado }} %</td>
       <td>R$ {{ formattedPrecoTeto }}</td>
       <td class="buttons">
-        <form :action="`/formula/editBazin/${row.id}`" method="GET">
+        <form :action="`/bazin/${row.id}/edit`" method="GET">
+          <input type="hidden" name="_token" :value="csrfToken" />
           <button type="submit" class="btn btn-warning">Editar</button>
         </form>
-        <form :action="`/formula/destroyBazin/${row.id}`" method="POST">
+        <form :action="`/bazin/${row.id}/delete`" method="POST">
+          <input type="hidden" name="_token" :value="csrfToken" />
           <input type="hidden" name="_method" value="DELETE">
           <button type="submit" class="btn btn-danger" @click.prevent="confirmDelete">Excluir</button>
         </form>
@@ -20,28 +22,51 @@
 </template>
   
 <script>
-export default {
-    props: {
-    row: {
-        type: Object,
-        required: true
-    }
-    },
-    computed: {
-    formattedDpa() {
-        return Number(this.row.dpa).toFixed(2);
-    },
-    formattedPrecoTeto() {
-        return Number(this.row.preco_teto).toFixed(2);
-    }
-    },
-    methods: {
-    confirmDelete(event) {
-        if (confirm('Tem certeza que deseja excluir?')) {
-        event.target.form.submit();
+  import 'whatwg-fetch';
+  export default {
+      props: {
+        row: {
+            type: Object,
+            required: true
         }
-    }
-    }
-}
+      },
+      data() {
+        return {
+          csrfToken: document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+        };
+      },
+      computed: {
+        formattedDpa() {
+            return Number(this.row.dpa).toFixed(2);
+        },
+        formattedPrecoTeto() {
+            return Number(this.row.preco_teto).toFixed(2);
+        }
+      },
+      methods: {
+        confirmDelete(event) {
+            if (confirm('Tem certeza que deseja excluir?')) {
+              const form = event.target.closest('form');
+              fetch(form.action, {
+                  method: 'POST',
+                  headers: {
+                        'X-CSRF-Token': this.csrfToken,
+                        'X-Requested-With': 'XMLHttpRequest',
+                      },
+                      body: new FormData(form)
+                  }).then(response => {
+                      if (response.ok) {
+                          return response.json();
+                      }
+                      throw new Error('Erro ao deletar item');
+                  }).then(data => {
+                      console.log('Item deletado com sucesso:', data);
+                      // Atualizar a lista ou remover a linha da tabela
+                  }).catch(error => {
+                      console.error('Erro ao deletar item:', error);
+                  });
+            }
+        }
+      }
+  }
 </script>
-  

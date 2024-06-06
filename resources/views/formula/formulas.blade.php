@@ -90,13 +90,12 @@
             <th>Opções:</th>             
           </tr>
         </thead>
-        <tbody>
-          <div id="app2" data-dados-bazin="{{ json_encode($dadosBazin) }}">
-            <template v-for="bazin in dadosBazin">
-              <TableRow v-for="bazin in dadosBazin" :row="bazin" :key="bazin.id"></TableRow>
-            </template>
-          </div>
-        </tbody>    
+        {{-- Vue para tabela de Bazin --}}
+        <tbody id="app2" data-dados-bazin="{{ json_encode($dadosBazin) }}">
+          <template v-for="bazin in dadosBazin">
+            <TableRow :row="bazin" :key="bazin.id"></TableRow>
+          </template>
+        </tbody>        
       </table>
     </div>
   </div>
@@ -146,4 +145,3 @@
 <script src="js/modal_add_graham.js"></script>
 
 @endsection
-

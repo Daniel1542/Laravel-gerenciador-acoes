@@ -128,9 +128,13 @@ class FormulasController extends Controller
         $formula = FormulaBazin::where('user_id', $user->id)
             ->findOrFail($id);
 
-        $formula->delete();
+        if ($formula) {
+            $formula->delete();
+            return redirect()->route('formula.index')->with('msg', 'formula na lista excluída com sucesso.');
+        } else {
+            return response()->json(['message' => 'Item não encontrado'], 404);
+        }
 
-        return redirect()->route('formula.index')->with('msg', 'formula na lista excluída com sucesso.');
     }
     public function createGraham(Request $request)
     {
