@@ -12,17 +12,16 @@
           <input type="hidden" name="_token" :value="csrfToken" />
           <button type="submit" class="btn btn-warning">Editar</button>
         </form>
-        <form :action="`/bazin/${row.id}/delete`" method="POST">
+        <form :action="`/bazin/${row.id}/delete`" method="POST" @submit.prevent="confirmDelete">
           <input type="hidden" name="_token" :value="csrfToken" />
           <input type="hidden" name="_method" value="DELETE">
-          <button type="submit" class="btn btn-danger" @click.prevent="confirmDelete">Excluir</button>
+          <button type="submit" class="btn btn-danger">Excluir</button>
         </form>
       </td>
     </tr>
 </template>
   
 <script>
-  import 'whatwg-fetch';
   export default {
       props: {
         row: {
@@ -46,25 +45,7 @@
       methods: {
         confirmDelete(event) {
             if (confirm('Tem certeza que deseja excluir?')) {
-              const form = event.target.closest('form');
-              fetch(form.action, {
-                  method: 'POST',
-                  headers: {
-                        'X-CSRF-Token': this.csrfToken,
-                        'X-Requested-With': 'XMLHttpRequest',
-                      },
-                      body: new FormData(form)
-                  }).then(response => {
-                      if (response.ok) {
-                          return response.json();
-                      }
-                      throw new Error('Erro ao deletar item');
-                  }).then(data => {
-                      console.log('Item deletado com sucesso:', data);
-                      // Atualizar a lista ou remover a linha da tabela
-                  }).catch(error => {
-                      console.error('Erro ao deletar item:', error);
-                  });
+              event.target.closest('form').submit();
             }
         }
       }

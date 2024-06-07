@@ -1,9 +1,9 @@
 import './bootstrap';
 import { createApp } from 'vue';
-import TableRowFormula from './components/TableRowFormula.vue';
+import TableRowFormulaBazin from './components/TableRowFormulaBazin.vue';
 
-function initBladeFormula() {
-  console.log('Inicializando o bladeFormula...');
+function initBladeFormulaBazin() {
+  console.log('Inicializando o bladeFormulaBazin...');
 }
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -18,8 +18,8 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
   
-    app.component('Tablerow', TableRowFormula);
+    app.component('Tablebazin', TableRowFormulaBazin);
     app.mount('#app2');
 });
 
-export default initBladeFormula;
+export default initBladeFormulaBazin;

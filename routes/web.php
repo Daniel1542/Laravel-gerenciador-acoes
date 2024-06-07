@@ -72,13 +72,13 @@ Route::put('/bazin/{id}', [FormulasController::class, 'updateBazin'])
 Route::post('/criar-Graham', [FormulasController::class, 'createGraham'])
 ->name('formula.createGraham')->middleware('auth');
 
-Route::get('/Graham/{id}/edit', [FormulasController::class, 'editGraham'])
+Route::get('/graham/{id}/edit', [FormulasController::class, 'editGraham'])
 ->name('formula.editGraham')->middleware('auth');
 
-Route::delete('/Graham/{id}/delete', [FormulasController::class, 'destroyGraham'])
+Route::delete('/graham/{id}/delete', [FormulasController::class, 'destroyGraham'])
 ->name('formula.destroyGraham')->middleware('auth');
 
-Route::put('/Graham/{id}', [FormulasController::class, 'updateGraham'])
+Route::put('/graham/{id}', [FormulasController::class, 'updateGraham'])
 ->name('formula.updateGraham')->middleware('auth');
 
 /*PDF*/

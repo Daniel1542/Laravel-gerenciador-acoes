@@ -5,10 +5,17 @@
 <section class="secao_formula">
   <div class="container" id="container_formulas">
     <h1 class="mt-4 mb-4 text-center">Fórmulas</h1>
-    {{--Vue de botões para cadastro de fórmulas --}}
-    <div id="app">
-      <Botoes></Botoes>
-    </div>
+    {{--botões para cadastro de fórmulas --}}
+    <div class="opcoes">
+      <div class="opcoes_formulas">
+        <label for="Bazin">Formula de Bazin</label>
+        <button id="bazinBtn" class="btn btn-custom">Adicionar</button>
+      </div>
+      <div class="opcoes_formulas">
+        <label for="Graham">Formula de Graham</label>
+        <button id="grahamBtn" class="btn btn-custom">Adicionar</button>
+      </div>
+    </div> 
     {{-- modal para cadastrar bazin --}}
     <div id="modalAddBazin" class="modal">
       <div class="modal-content-add-formula">
@@ -93,7 +100,7 @@
         {{-- Vue para tabela de Bazin --}}
         <tbody id="app2" data-dados-bazin="{{ json_encode($dadosBazin) }}">
           <template v-for="bazin in dadosBazin">
-            <TableRow :row="bazin" :key="bazin.id"></TableRow>
+            <Tablebazin :row="bazin" :key="bazin.id"></Tablebazin>
           </template>
         </tbody>        
       </table>
@@ -116,25 +123,12 @@
           </tr>
         </thead>
         <tbody>
-          @foreach($dadosGraham as $graham) 
-            <tr>
-              <td> {{ $graham['ticker'] }}</td>    
-              <td> {{ $graham['lpa'] }}</td>
-              <td> {{ $graham['vpa'] }}</td>
-              <td>R$ {{number_format ($graham['preco_justo'], 2) }}</td>
-              <td class="buttons">    
-                <form action="{{ route('formula.editGraham', ['id' => $graham['id']]) }}" method="GET">
-                  {{ csrf_field() }}
-                  <button type="submit" class="btn btn-warning">Editar</button>
-                </form>
-                <form action="{{ route('formula.destroyGraham', ['id' => $graham['id']]) }}" method="POST">
-                  {{ csrf_field() }}
-                  @method('DELETE')
-                  <button type="submit" class="btn btn-danger" onclick="return confirm('Tem certeza que deseja excluir?')">Excluir</button>
-                </form>              
-              </td>                 
-            </tr> 
-          @endforeach  
+          {{-- Vue para tabela de Graham --}}
+          <tbody id="app3" data-dados-graham="{{ json_encode($dadosGraham) }}">
+            <template v-for="graham in dadosGraham">
+              <Tablegraham :row="graham" :key="graham.id"></Tablegraham>
+            </template>
+          </tbody>    
         </tbody>    
       </table>
     </div>
