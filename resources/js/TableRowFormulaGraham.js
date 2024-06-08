@@ -2,8 +2,8 @@ import './bootstrap';
 import { createApp } from 'vue';
 import TableRowFormulaGraham from './components/TableRowFormulaGraham.vue';
 
-function initBladeFormulaGraham() {
-  console.log('Inicializando o bladeFormulaGraham...');
+function initFormulaGraham() {
+  console.log('Inicializando o Vue FormulaGraham...');
 }
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -22,4 +22,4 @@ document.addEventListener('DOMContentLoaded', () => {
     app.mount('#app3');
 });
 
-export default initBladeFormulaGraham;
+export default initFormulaGraham;

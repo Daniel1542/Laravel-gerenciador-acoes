@@ -2,8 +2,8 @@ import './bootstrap';
 import { createApp } from 'vue';
 import TableRowFormulaBazin from './components/TableRowFormulaBazin.vue';
 
-function initBladeFormulaBazin() {
-  console.log('Inicializando o bladeFormulaBazin...');
+function initFormulaBazin() {
+  console.log('Inicializando o  Vue FormulaBazin...');
 }
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -22,4 +22,4 @@ document.addEventListener('DOMContentLoaded', () => {
     app.mount('#app2');
 });
 
-export default initBladeFormulaBazin;
+export default initFormulaBazin;

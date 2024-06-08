@@ -1,15 +1,12 @@
 import './bootstrap';
 import { createApp } from 'vue';
-import BuscarAtivo from './components/BuscarAtivo.vue';
-import DashGrafico from './components/DashGrafico.vue';
-import initBladeFormulaBazin from './bladeFormulaBazin.js';
-import initBladeFormulaGraham from './bladeFormulaGraham.js';
+import initFormulaBazin from './TableRowFormulaBazin.js';
+import initFormulaGraham from './TableRowFormulaGraham.js';
+import initDashGrafico from './DashGrafico.js';
+import initBuscaAtivo from './BuscaAtivo.js';
 
 
-initBladeFormulaBazin();
-initBladeFormulaGraham();
-
-const app = createApp({});
-app.component('Buscar', BuscarAtivo);
-app.component('Dash', DashGrafico);
-app.mount('#app');
+initFormulaBazin();
+initFormulaGraham();
+initDashGrafico();
+initBuscaAtivo();

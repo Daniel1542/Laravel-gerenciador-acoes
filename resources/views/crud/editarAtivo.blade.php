@@ -29,7 +29,7 @@
         </div>
         <div class="form-group">
           <label for="data">Data:</label>
-          <input type="date" id="data" name="data" value="{{ $ativos->data }}" required>
+          <input type="date" id="data" name="data" value="{{ \Carbon\Carbon::parse($ativos->data)->format('Y-m-d') }}" required>
         </div>
         <div class="form-group"> 
           <label for="corretagem">Corretagem:</label>

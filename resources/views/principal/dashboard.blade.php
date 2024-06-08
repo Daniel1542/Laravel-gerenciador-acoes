@@ -45,10 +45,8 @@
 <section class="secao_dash2">
     {{-- Vue de graficos de pizza --}}
     <div id="app">
-        <Dash></Dash>
+        <Dashgraficos></Dashgraficos>
     </div>
 </section>
-
-<script src="js/dash_graficos.js"></script>
   
 @endsection

@@ -6,15 +6,9 @@
 <section class="secao_movimento">
   <div class="container text-center">
     <h1 class="mt-4 mb-4">Buscar ativo</h1>
-    <div class="container mb-4">     
-      {{-- Formulário para buscar ativo --}}
-      <form action="{{ route('ativos.show')}}" method="GET">
-        {{ csrf_field() }}
-        {{-- Vue de formulário para buscar ativo --}}
-        <div id="app">
-          <Buscar></Buscar>
-        </div>
-      </form>
+    <div id="busca_ativo" class="container mb-4">     
+      {{-- Vue de formulário para buscar ativo --}}
+      <Buscaativo></Buscaativo>
     </div> 
     <div class="container mt-4">
       {{-- Formulário para baixar opções de movimento --}}
@@ -203,8 +197,6 @@
   </div>
 </section>
 
-<script src="js/movimento_buscar_ativo.js"></script>
 <script src="js/modal_add_ativos.js"></script>
-
 
 @endsection
