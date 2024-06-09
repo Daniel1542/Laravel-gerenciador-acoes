@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Mail\Manda;
+use Illuminate\Support\Facades\Mail;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\AtivosController;
@@ -96,6 +98,13 @@ Route::get('/export-Excel/{data_ini}/{data_fi}/{tip}', [MovimentoAtivosControlle
 
 Route::get('/export-Ativos-Excel/{data_ini}/{tip}', [ImpostoRendaController::class, 'exportAtivosExcel'])
 ->name('imposto.exportAtivosExcel')->middleware('auth');
+
+/*email*/
+
+Route::get('/email', function(){
+    Mail::to('queirozdaniel1999@gmail.com')->send(new Manda);
+    return view('welcome');
+});
 
 /*User*/
 

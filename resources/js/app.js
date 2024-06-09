@@ -1,5 +1,4 @@
 import './bootstrap';
-import { createApp } from 'vue';
 import initFormulaBazin from './TableRowFormulaBazin.js';
 import initFormulaGraham from './TableRowFormulaGraham.js';
 import initDashGrafico from './DashGrafico.js';

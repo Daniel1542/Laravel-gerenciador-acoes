@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Jobs\ProcessFormulaBazin;
 use App\Models\FormulaBazin;
 use App\Models\FormulaGraham;
 
@@ -65,24 +66,16 @@ class FormulasController extends Controller
 
     public function createBazin(Request $request)
     {
-        $request->validate([
+        $validatedData = $request->validate([
             'ticker' => 'string|max:6|regex:/^[A-Z0-9]+$/',
             'lpa' => 'numeric',
             'payout' => 'numeric',
             'yield_projetado' => 'numeric',
         ]);
 
-        $user = Auth::user();
+        // Disparar a job
+        ProcessFormulaBazin::dispatch($validatedData);
 
-        $formula = new FormulaBazin();
-
-        $formula-> user_id = $user->id;
-        $formula-> ticker = $request->ticker;
-        $formula-> lpa = $request->lpa;
-        $formula-> payout = $request->payout;
-        $formula-> yield_projetado = $request->yield_projetado;
-
-        $formula->save();
 
         return redirect()->route('formula.index')->with('msg', 'Cadastrado com sucesso.');
     }
