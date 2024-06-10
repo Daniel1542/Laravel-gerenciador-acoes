@@ -101,8 +101,8 @@ Route::get('/export-Ativos-Excel/{data_ini}/{tip}', [ImpostoRendaController::cla
 
 /*email*/
 
-Route::get('/email', function(){
-    Mail::to('admim@gmail.com')->send(new Manda);
+Route::get('/email', function () {
+    Mail::to('admim@gmail.com')->send(new Manda());
     return view('welcome');
 });
 

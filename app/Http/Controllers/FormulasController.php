@@ -127,7 +127,6 @@ class FormulasController extends Controller
         } else {
             return response()->json(['message' => 'Item não encontrado'], 404);
         }
-
     }
     public function createGraham(Request $request)
     {

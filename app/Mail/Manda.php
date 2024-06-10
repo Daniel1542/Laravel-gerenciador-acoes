@@ -11,14 +11,14 @@ use Illuminate\Queue\SerializesModels;
 
 class Manda extends Mailable
 {
-    use Queueable, SerializesModels;
+    use Queueable;
+    use SerializesModels;
 
     /**
      * Create a new message instance.
      */
     public function __construct()
     {
-        
     }
 
     /**
