@@ -59,7 +59,7 @@ Route::get('/buscar-ativos', [AtivosController::class, 'buscarAtivos'])
 
 /*formulas*/
 
-Route::post('/criar-Bazin', [FormulasController::class, 'createBazin'])
+Route::post('/criar-bazin', [FormulasController::class, 'createBazin'])
 ->name('formula.createBazin')->middleware('auth');
 
 Route::get('/bazin/{id}/edit', [FormulasController::class, 'editBazin'])
@@ -71,7 +71,7 @@ Route::delete('/bazin/{id}/delete', [FormulasController::class, 'destroyBazin'])
 Route::put('/bazin/{id}', [FormulasController::class, 'updateBazin'])
 ->name('formula.updateBazin')->middleware('auth');
 
-Route::post('/criar-Graham', [FormulasController::class, 'createGraham'])
+Route::post('/criar-graham', [FormulasController::class, 'createGraham'])
 ->name('formula.createGraham')->middleware('auth');
 
 Route::get('/graham/{id}/edit', [FormulasController::class, 'editGraham'])

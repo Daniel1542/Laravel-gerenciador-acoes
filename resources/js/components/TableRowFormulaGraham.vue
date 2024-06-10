@@ -20,30 +20,30 @@
 </template>
   
 <script>
-  export default {
-      props: {
-        row: {
-            type: Object,
-            required: true
+export default {
+  props: {
+    row: {
+        type: Object,
+        required: true
+    }
+  },
+  data() {
+    return {
+      csrfToken: document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+    };
+  },
+  computed: {
+    
+    formattedPrecoJusto() {
+        return Number(this.row.preco_justo).toFixed(2);
+    }
+  },
+  methods: {
+    confirmDelete(event) {
+        if (confirm('Tem certeza que deseja excluir?')) {
+          event.target.closest('form').submit();
         }
-      },
-      data() {
-        return {
-          csrfToken: document.querySelector('meta[name="csrf-token"]').getAttribute('content')
-        };
-      },
-      computed: {
-        
-        formattedPrecoJusto() {
-            return Number(this.row.preco_justo).toFixed(2);
-        }
-      },
-      methods: {
-        confirmDelete(event) {
-            if (confirm('Tem certeza que deseja excluir?')) {
-              event.target.closest('form').submit();
-            }
-        }
-      }
+    }
   }
+}
 </script>

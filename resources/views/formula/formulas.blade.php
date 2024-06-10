@@ -16,67 +16,13 @@
         <button id="grahamBtn" class="btn btn-custom">Adicionar</button>
       </div>
     </div> 
-    {{-- modal para cadastrar bazin --}}
+    {{-- Vue modal para cadastrar bazin --}}
     <div id="modalAddBazin" class="modal">
-      <div class="modal-content-add-formula">
-        <div class="container" id="caixa">
-          <span class="close">&times;</span>
-          <h1 class="mt-4 mb-4 text-center">Fórmula de Bazin</h1>
-          <form action="{{ route('formula.createBazin') }}" method="POST" enctype="multipart/form-data">
-            {{ csrf_field() }}
-            <div class="opcoes">
-              <div class="col-md-3">
-                <label for="ticker" class="form-label">Ticker:</label>
-                <input type="text" class="form-control" id="ticker" name="ticker" oninput="this.value = this.value.toUpperCase()" required>
-              </div>
-              <div class="col-md-3">
-                <label for="lpa" class="form-label">LPA:</label>
-                <input type="text" class="form-control" id="lpa" name="lpa" required>
-              </div>
-              <div class="col-md-3">
-                <label for="payout" class="form-label">Payout:</label>
-                <input type="text" class="form-control" id="payout" name="payout" required>
-              </div>
-              <div class="col-md-3">
-                <label for="yield_projetado" class="form-label">Yield projetado:</label>
-                <input type="text" class="form-control" id="yield_projetado" name="yield_projetado" required>
-              </div>
-            </div>
-            <div class="button">
-              <button type="submit" class="btn btn-custom">Salvar</button>
-            </div>
-          </form>
-        </div>
-      </div>
+      <Modalbazin></Modalbazin>
     </div>
-    {{-- Modal para cadastro de Graham --}}
+    {{-- Vue Modal para cadastro de Graham --}}
     <div id="modalAddGraham" class="modal">
-      <div class="modal-content-add-formula">   
-        <div class="container" id="caixa_1">
-          <span class="close">&times;</span>
-          <h1 class="mt-4 mb-4 text-center">Fórmula de Graham</h1>
-          <form action="{{ route('formula.createGraham') }}" method="POST" enctype="multipart/form-data">
-            {{ csrf_field() }}
-            <div class="opcoes">
-              <div class="col-md-3">
-                <label for="ticker" class="form-label">Ticker:</label>
-                <input type="text" class="form-control" id="ticker" name="ticker" oninput="this.value = this.value.toUpperCase()" required>
-              </div>
-              <div class="col-md-3">
-                <label for="lpa" class="form-label">LPA:</label>
-                <input type="text" class="form-control" id="lpa" name="lpa" required>
-              </div>
-              <div class="col-md-3">
-                <label for="vpa" class="form-label">VPA:</label>
-                <input type="text" class="form-control" id="vpa" name="vpa" required>
-              </div>
-            </div>
-            <div class="button">
-              <button type="submit" class="btn btn-custom">Salvar</button>
-            </div>        
-          </form> 
-        </div> 
-      </div>
+      <ModalGraham></ModalGraham>
     </div>
   </div>
 </section>

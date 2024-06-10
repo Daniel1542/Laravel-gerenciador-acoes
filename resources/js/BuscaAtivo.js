@@ -1,15 +1,15 @@
 import './bootstrap';
 import { createApp } from 'vue';
-import BuscarAtivo from './components/BuscaAtivo.vue';
+import BuscaAtivo from './components/BuscaAtivo.vue';
 
 function initBuscaAtivo() {
-  console.log('Inicializando o Vue BuscarAtivo...');
+  console.log('Inicializando o Vue BuscaAtivo...');
 }
 
 document.addEventListener('DOMContentLoaded', () => {
     const appElement = document.getElementById('busca_ativo');
     const app = createApp({});
-    app.component('Buscaativo', BuscarAtivo);
+    app.component('Buscaativo', BuscaAtivo);
     app.mount('#busca_ativo');
     
 });
