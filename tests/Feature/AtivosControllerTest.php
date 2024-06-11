@@ -6,6 +6,7 @@ use Tests\TestCase;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use App\Models\User;
 use App\Models\MovimentoAtivos;
+use Carbon\Carbon;
 
 class AtivosControllerTest extends TestCase
 {
@@ -42,7 +43,7 @@ class AtivosControllerTest extends TestCase
             'corretagem' => 5.5,
             'valor' => 100,
             'valor_total' => 5.5 + (100 * 10),
-            'data' => '2024-04-30',
+            'data' => '2024-04-30 00:00:00',
         ]);
     }
 
@@ -81,7 +82,7 @@ class AtivosControllerTest extends TestCase
             'tipo' => 'fundo imobiliario',
             'movimento' => 'compra',
             'nome' => 'XYZT11',
-            'data' => now()->subDay(),
+            'data' => Carbon::create(2024, 6, 10),
             'corretagem' => 10.0,
             'quantidade' => 30,
             'valor' => 50.0,
@@ -98,6 +99,7 @@ class AtivosControllerTest extends TestCase
 
         // Recarregando o movimento atualizado do banco de dados
         $movimentoAtualizado = $movimento->fresh();
+
 
         // Verificando se os dados foram atualizados corretamente
         $this->assertEquals($data['tipo'], $movimentoAtualizado->tipo);
