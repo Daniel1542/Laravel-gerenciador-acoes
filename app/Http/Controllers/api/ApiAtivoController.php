@@ -12,11 +12,12 @@ class ApiAtivoController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
         try {
-            $user = Auth::user();
-            return MovimentoAtivos::all();
+            $user = $request->user();
+            return response()->json(MovimentoAtivos::where('user_id', $user->id)->get());
+            
         } catch (\Exception $e) {
             return response()->json(['Erro ao mostrar movimento.' => $e->getMessage()], 500);
         }

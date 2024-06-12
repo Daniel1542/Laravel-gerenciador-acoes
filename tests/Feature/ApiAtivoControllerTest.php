@@ -2,32 +2,63 @@
 
 namespace Tests\Feature;
 
-use Illuminate\Foundation\Testing\RefreshDatabase;
-use Tests\TestCase;
 use App\Models\User;
 use App\Models\MovimentoAtivos;
+use Illuminate\Foundation\Testing\RefreshDatabase;
+use Tests\TestCase;
+
 
 class ApiAtivoControllerTest extends TestCase
 {
     use RefreshDatabase;
 
-    public function testIndex()
+    /**
+     * Testa o método index para um usuário autenticado.
+     */
+    public function testIndexReturnsUserMovimentos()
     {
-        $user = User::factory()->create();
-        $this->actingAs($user);
+        $user = User::factory()->create(['password' => bcrypt('password123')]);
 
-        // Cria alguns registros de movimento de ativos
-        $ativos = MovimentoAtivos::factory()->count(5)->create();
+        // Faz a requisição de login para obter o token
+        $response = $this->postJson('/api/login', [
+            'email' => $user->email,
+            'password' => 'password123',
+        ]);
 
-        // Chama o método index()
-        $response = $this->get('/api/api-ativo');
-
-        // Verifica se a resposta foi bem-sucedida
         $response->assertStatus(200);
+        $token = $response->json('token');
+
+
+        MovimentoAtivos::factory()->count(3)->create(['user_id' => $user->id]);
+
+        // Faz a requisição para o endpoint index com o token de autenticação
+        $response = $this->withHeaders(['Authorization' => 'Bearer ' . $token])
+                         ->getJson('/api/ativos');
+
+        // Verifica se a resposta está correta
+        $response->assertStatus(200);
+        $response->assertJsonCount(3);
 
         // Verifica se os dados retornados são os esperados
-        $response->assertJson($ativos->toArray());
+        $response->assertJsonStructure([
+            '*' => [
+                'id', 'user_id', 'tipo', 'movimento', 'nome', 'data', 'corretagem', 'quantidade', 'valor', 'valor_total', 'created_at', 'updated_at'
+            ]
+        ]);
     }
+
+    /**
+     * Testa o método index para um usuário não autenticado.
+     */
+    public function testIndexReturnsUnauthenticated()
+    {
+        // Faz a requisição para o endpoint index sem autenticação
+        $response = $this->getJson('/api/ativos');
+
+        // Verifica se a resposta está correta
+        $response->assertStatus(401);
+    }
+
     public function testStoreAtivos()
     {
         $user = User::factory()->create();

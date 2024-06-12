@@ -10,15 +10,22 @@ class ApiLoginController extends Controller
 {
     public function login(Request $request)
     {
-        $credentials  = $request->validate([
-        'email' => 'required|email',
-        'password' => 'required|string|min:6|regex:/^(?=.*[a-zA-Z])(?=.*\d)/',
-        ]);
-
+        $credentials = $request->only('email', 'password');
+        
         if (Auth::attempt($credentials)) {
-            return (new ApiAtivoController())->index();
+            $user = Auth::user();
+            $token = $user->createToken('invoice')->plainTextToken;
+            
+            return response()->json([
+                'message' => 'Ok',
+                'token' => $token,
+            ], 200);
         } else {
-            return response()->json(['message' => 'Erro ao autenticar usuário.'], 401);
+            return response()->json( 'Erro ao autenticar usuário', 403);
         }
+    }
+    public function teste()
+    {  
+        return response()->json('Ok', 200);
     }
 }
