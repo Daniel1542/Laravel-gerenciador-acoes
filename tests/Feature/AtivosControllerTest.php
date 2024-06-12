@@ -12,8 +12,7 @@ class AtivosControllerTest extends TestCase
 {
     use RefreshDatabase;
 
-    /** @test */
-    public function itStoresNewMovimentoAtivos()
+    public function testItStoresNewMovimentoAtivos()
     {
         // Criar um usuário para autenticação
         $user = User::factory()->create();
