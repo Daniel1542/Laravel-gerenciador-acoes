@@ -83,6 +83,11 @@ Route::delete('/graham/{id}/delete', [FormulasController::class, 'destroyGraham'
 Route::put('/graham/{id}', [FormulasController::class, 'updateGraham'])
 ->name('formula.updateGraham')->middleware('auth');
 
+/*Excel formula*/
+
+Route::get('/excel-planilha', [FormulasController::class, 'opcoesFormula'])
+->name('formula.opcoesFormula')->middleware('auth');
+
 /*PDF*/
 
 Route::get('/export-Movimento-Pdf/{data_ini}/{data_fi}', [MovimentoAtivosController::class, 'exportMovimentoPdf'])
@@ -91,10 +96,12 @@ Route::get('/export-Movimento-Pdf/{data_ini}/{data_fi}', [MovimentoAtivosControl
 Route::get('/export-Ir-Pdf/{data_ini}', [ImpostoRendaController::class, 'exportIrPdf'])
 ->name('imposto.exportIrPdf')->middleware('auth');
 
-/*Excel*/
+/*Excel movimentos*/
 
 Route::get('/export-Excel/{data_ini}/{data_fi}/{tip}', [MovimentoAtivosController::class, 'exportMovimentoExcel'])
 ->name('movimento.exportMovimentoExcel')->middleware('auth');
+
+/*Excel imposto*/
 
 Route::get('/export-Ativos-Excel/{data_ini}/{tip}', [ImpostoRendaController::class, 'exportAtivosExcel'])
 ->name('imposto.exportAtivosExcel')->middleware('auth');

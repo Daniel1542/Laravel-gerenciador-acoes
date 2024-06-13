@@ -64,6 +64,20 @@ class FormulasController extends Controller
         return view('formula.formulas', compact('dadosBazin', 'dadosGraham'));
     }
 
+    /*Opção de baixar excel*/
+
+    public function opcoesFormula(Request $request)
+    {
+        $planilha  = $request->input('planilha');
+        if ($planilha == 'bazin') {
+            $filePath = storage_path('planilhas/preco_teto.xlsx');
+            return response()->download($filePath, 'preco_teto.xlsx');
+        } else {
+            $filePath = storage_path('planilhas/bejamim_graham.xlsx');
+            return response()->download($filePath, 'bejamim_graham.xlsx');
+        }
+    }
+
     public function createBazin(Request $request)
     {
         $validatedData = $request->validate([

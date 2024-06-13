@@ -4,7 +4,7 @@
 
 <section class="secao_formula">
   <div class="container" id="container_formulas">
-    <h1 class="mt-4 mb-4 text-center">Fórmulas</h1>
+    <h1 class="mt-4 mb-2 text-center">Fórmulas</h1>
     {{--botões para cadastro de fórmulas --}}
     <div class="opcoes">
       <div class="opcoes_formulas">
@@ -15,6 +15,22 @@
         <label for="Graham">Formula de Graham</label>
         <button id="grahamBtn" class="btn btn-custom">Adicionar</button>
       </div>
+    </div> 
+    {{--botões para baixar planilhas de fórmulas --}}
+    <div class="opcoes mt-4 mb-4">
+      <form action="{{ route('formula.opcoesFormula') }}" method="GET">
+        {{ csrf_field() }}
+        <div class="opcoes">
+          <div class="opcoes_formulas">
+            <label for="Bazin">Planilha de Bazin</label>
+            <button id="bazinBtn" name="planilha" value="bazin" class="btn btn-custom">Baixar</button>
+          </div>
+          <div class="opcoes_formulas">
+            <label for="Graham">Planilha de Graham</label>
+            <button id="grahamBtn" name="planilha" value="graham" class="btn btn-custom">Baixar</button>
+          </div>     
+        </div>
+      </form>
     </div> 
     {{-- Vue modal para cadastrar bazin --}}
     <div id="modalAddBazin" class="modal">
