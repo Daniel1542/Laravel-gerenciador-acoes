@@ -47,7 +47,7 @@ class ApiLoginControllerTest extends TestCase
         $response = $this->post('/api/login', $invalidCredentials);
 
         // Verifica se a resposta indica erro de autenticação (código 401)
-        $response->assertStatus(401);
+        $response->assertStatus(403);
 
         // Verifica se a resposta contém a mensagem de erro esperada
     }

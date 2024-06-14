@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 use App\Models\MovimentoAtivos;
 
 class ApiAtivoController extends Controller
@@ -71,7 +70,9 @@ class ApiAtivoController extends Controller
         try {
             $user = $request->user();
 
-            return response()->json(MovimentoAtivos::where('user_id', $user->id)->findOrFail($id));
+            $ativo = MovimentoAtivos::where('user_id', $user->id)->findOrFail($id);
+
+            return response()->json($ativo);
 
         } catch (\Exception $e) {
             return response()->json(['Movimento não encontrado' => $e->getMessage()], 500);
@@ -83,37 +84,32 @@ class ApiAtivoController extends Controller
      */
     public function update(Request $request, string $id)
     {
+        $request->validate([
+            'tipo' => 'required|in:fundo imobiliario,acao',
+            'movimento' => 'required|in:compra,venda',
+            'nome' => 'required|string|max:6|regex:/^[A-Z0-9]+$/',
+            'data' => 'required|date|before_or_equal:now',
+            'corretagem' => 'required|numeric|gt:-1',
+            'quantidade' => 'required|numeric|gt:0',
+            'valor' => 'required|numeric|gt:0',
+        ]);
         try {
+
             $user = $request->user();
+            $ativos  = MovimentoAtivos::where('user_id', $user->id)->findOrFail($id);
 
-            $movimento = MovimentoAtivos::where('user_id', $user->id)->findOrFail($id);
-
-            $request->validate([
-                'tipo' => 'required|in:fundo imobiliario,acao',
-                'movimento' => 'required|in:compra,venda',
-                'nome' => 'required|string|max:6|regex:/^[A-Z0-9]+$/',
-                'data' => 'required|date|before_or_equal:now',
-                'corretagem' => 'required|numeric|gt:-1',
-                'quantidade' => 'required|numeric|gt:0',
-                'valor' => 'required|numeric|gt:0',
-
+            $ativos->update([
+                'tipo' => $request->tipo,
+                'movimento' => $request->movimento,
+                'nome' => $request->nome,
+                'data' => $request->data,
+                'corretagem' => $request->corretagem,
+                'quantidade' => $request->quantidade,
+                'valor' => $request->valor,
+                'valor_total' => $request->corretagem + ($request->valor * $request->quantidade),
             ]);
 
-            $dadosAtualizados = $request->only([
-                'tipo',
-                'movimento',
-                'nome',
-                'data',
-                'corretagem',
-                'quantidade',
-                'valor',
-            ]);
-
-            $dadosAtualizados['valor_total'] = $request->corretagem + ($request->valor * $request->quantidade);
-
-            $movimento->update($dadosAtualizados);
-
-            return ('Movimento atualizado com sucesso');
+            return response()->json('Movimento atualizado com sucesso', 200);
         } catch (\Exception $e) {
             return response()->json(['Erro ao atualizar o movimento' => $e->getMessage()], 500);
         }
@@ -129,7 +125,7 @@ class ApiAtivoController extends Controller
 
             $Ativos = MovimentoAtivos::where('user_id', $user->id)->findOrFail($id);
             $Ativos-> delete();
-            return response()->json('Deletado' , 500);
+            return response()->json('Deletado' , 200);
         } catch (\Exception $e) {
             return response()->json(['Erro ao deletar movimento' => $e->getMessage()], 500);
         }
