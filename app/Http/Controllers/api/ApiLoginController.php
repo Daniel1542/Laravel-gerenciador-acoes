@@ -14,7 +14,7 @@ class ApiLoginController extends Controller
         
         if (Auth::attempt($credentials)) {
             $user = Auth::user();
-            $token = $user->createToken('invoice')->plainTextToken;
+            $token = $user->createToken('api_token')->plainTextToken;
             
             return response()->json([
                 'message' => 'Ok',
@@ -23,9 +23,5 @@ class ApiLoginController extends Controller
         } else {
             return response()->json( 'Erro ao autenticar usuário', 403);
         }
-    }
-    public function teste()
-    {  
-        return response()->json('Ok', 200);
     }
 }

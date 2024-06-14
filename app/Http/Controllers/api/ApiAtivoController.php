@@ -19,7 +19,7 @@ class ApiAtivoController extends Controller
             return response()->json(MovimentoAtivos::where('user_id', $user->id)->get());
             
         } catch (\Exception $e) {
-            return response()->json(['Erro ao mostrar movimento.' => $e->getMessage()], 500);
+            return response()->json(['Erro ao mostrar movimentos' => $e->getMessage()], 500);
         }
     }
 
@@ -28,19 +28,20 @@ class ApiAtivoController extends Controller
      */
     public function store(Request $request)
     {
+       
+        $request->validate([
+            'tipo' => 'required|in:fundo imobiliario,acao',
+            'movimento' => 'required|in:compra,venda',
+            'nome' => 'required|string|max:6|regex:/^[A-Z0-9]+$/',
+            'data' => 'required|date|before_or_equal:now',
+            'corretagem' => 'required|numeric|gt:-1',
+            'quantidade' => 'required|numeric|gt:0',
+            'valor' => 'required|numeric|gt:0',
+        ]);
+
         try {
-            $request->validate([
-                'tipo' => 'required|in:fundo imobiliario,acao',
-                'movimento' => 'required|in:compra,venda',
-                'nome' => 'required|string|max:6|regex:/^[a-z0-9]+$/',
-                'data' => 'required|date|before_or_equal:' . now()->toDateString(),
-                'corretagem' => 'required|numeric|gt:-1',
-                'quantidade' => 'required|numeric|gt:0',
-                'valor' => 'required|numeric|gt:0',
 
-            ]);
-
-            $user = Auth::user();
+            $user = $request->user();
 
             $ativos = new MovimentoAtivos();
 
@@ -56,7 +57,7 @@ class ApiAtivoController extends Controller
 
             $ativos->save();
 
-            return ( 'Cadastrado com sucesso.');
+            return response()->json(['message' => 'Cadastrado com sucesso'], 201);
         } catch (\Exception $e) {
             return response()->json(['Erro ao cadastrar movimento.' => $e->getMessage()], 500);
         }
@@ -65,14 +66,15 @@ class ApiAtivoController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(Request $request, string $id)
     {
         try {
-            $user = Auth::user();
+            $user = $request->user();
 
-            return MovimentoAtivos::findOrFail($id);
+            return response()->json(MovimentoAtivos::where('user_id', $user->id)->findOrFail($id));
+
         } catch (\Exception $e) {
-            return response()->json(['Erro ao mostar movimento.' => $e->getMessage()], 500);
+            return response()->json(['Movimento não encontrado' => $e->getMessage()], 500);
         }
     }
 
@@ -82,14 +84,14 @@ class ApiAtivoController extends Controller
     public function update(Request $request, string $id)
     {
         try {
-            $user = Auth::user();
+            $user = $request->user();
 
-            $movimento = MovimentoAtivos::findOrFail($id);
+            $movimento = MovimentoAtivos::where('user_id', $user->id)->findOrFail($id);
 
             $request->validate([
                 'tipo' => 'required|in:fundo imobiliario,acao',
                 'movimento' => 'required|in:compra,venda',
-                'nome' => 'required|string|max:6|regex:/^[a-z0-9]+$/',
+                'nome' => 'required|string|max:6|regex:/^[A-Z0-9]+$/',
                 'data' => 'required|date|before_or_equal:now',
                 'corretagem' => 'required|numeric|gt:-1',
                 'quantidade' => 'required|numeric|gt:0',
@@ -111,24 +113,25 @@ class ApiAtivoController extends Controller
 
             $movimento->update($dadosAtualizados);
 
-            return ('Movimento atualizado com sucesso.');
+            return ('Movimento atualizado com sucesso');
         } catch (\Exception $e) {
-            return response()->json(['Erro ao atualizar o movimento.' => $e->getMessage()], 500);
+            return response()->json(['Erro ao atualizar o movimento' => $e->getMessage()], 500);
         }
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Request $request, string $id)
     {
         try {
-            $user = Auth::user();
+            $user = $request->user();
 
-            $Ativos = MovimentoAtivos::findOrFail($id);
+            $Ativos = MovimentoAtivos::where('user_id', $user->id)->findOrFail($id);
             $Ativos-> delete();
+            return response()->json('Deletado' , 500);
         } catch (\Exception $e) {
-            return response()->json(['Erro ao deletar movimento.' => $e->getMessage()], 500);
+            return response()->json(['Erro ao deletar movimento' => $e->getMessage()], 500);
         }
     }
 }

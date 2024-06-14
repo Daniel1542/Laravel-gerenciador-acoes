@@ -2,9 +2,11 @@
 
 namespace Tests\Feature;
 
-use Tests\TestCase;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use App\Models\User;
+use Tests\TestCase;
+use Laravel\Sanctum\Sanctum;
+
 
 class ApiLoginControllerTest extends TestCase
 {

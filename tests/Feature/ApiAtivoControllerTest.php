@@ -17,7 +17,8 @@ class ApiAtivoControllerTest extends TestCase
      */
     public function testIndexReturnsUserMovimentos()
     {
-        $user = User::factory()->create(['password' => bcrypt('password123')]);
+        $user = User::factory()->create([
+            'password' => bcrypt('password123')]);
 
         // Faz a requisição de login para obter o token
         $response = $this->postJson('/api/login', [
@@ -33,7 +34,7 @@ class ApiAtivoControllerTest extends TestCase
 
         // Faz a requisição para o endpoint index com o token de autenticação
         $response = $this->withHeaders(['Authorization' => 'Bearer ' . $token])
-                         ->getJson('/api/ativos');
+                         ->getJson('/api/api-ativos');
 
         // Verifica se a resposta está correta
         $response->assertStatus(200);
@@ -42,7 +43,18 @@ class ApiAtivoControllerTest extends TestCase
         // Verifica se os dados retornados são os esperados
         $response->assertJsonStructure([
             '*' => [
-                'id', 'user_id', 'tipo', 'movimento', 'nome', 'data', 'corretagem', 'quantidade', 'valor', 'valor_total', 'created_at', 'updated_at'
+                'id', 
+                'user_id', 
+                'tipo', 
+                'movimento', 
+                'nome', 
+                'data', 
+                'corretagem', 
+                'quantidade', 
+                'valor', 
+                'valor_total', 
+                'created_at', 
+                'updated_at'
             ]
         ]);
     }
@@ -53,46 +65,63 @@ class ApiAtivoControllerTest extends TestCase
     public function testIndexReturnsUnauthenticated()
     {
         // Faz a requisição para o endpoint index sem autenticação
-        $response = $this->getJson('/api/ativos');
+        $response = $this->getJson('/api/api-ativos');
 
         // Verifica se a resposta está correta
         $response->assertStatus(401);
     }
 
+    /**
+     * Testa o método store para um usuário autenticado.
+     */
     public function testStoreAtivos()
     {
-        $user = User::factory()->create();
-        $this->actingAs($user);
+        $user = User::factory()->create(['password' => bcrypt('password123')]);
+
+        // Faz a requisição de login para obter o token
+        $response = $this->postJson('/api/login', [
+            'email' => $user->email,
+            'password' => 'password123',
+        ]);
+
+        $response->assertStatus(200);
+        $token = $response->json('token');
 
         // Dados de movimento de ativo válidos
         $dados = [
-            'tipo' => 'fundo imobiliario',
+            'tipo' => 'acao',
             'movimento' => 'compra',
-            'nome' => 'abc123',
-            'data' => now()->toDateString(),
-            'corretagem' => 10.50,
-            'quantidade' => 100,
-            'valor' => 50.75,
+            'nome' => 'ABCB4',
+            'data' => '2024-06-10',
+            'corretagem' => 5.5,
+            'quantidade' => 10,
+            'valor' => 100,
         ];
 
-        // Envia uma solicitação HTTP POST para o método store()
-        $response = $this->post('/api/api-ativo', $dados);
+        $response = $this->withHeader('Authorization', 'Bearer ' . $token)
+                         ->postJson('/api/api-ativos', $dados);
 
         // Verifica se o movimento foi cadastrado com sucesso
-        $response->assertStatus(200)->assertSee('Cadastrado com sucesso.');
+        $response->assertStatus(201);
+        $response->assertJson(['message' => 'Cadastrado com sucesso']);
 
         // Verifica se o movimento foi realmente salvo no banco de dados
         $this->assertDatabaseHas('movimento_ativos', [
-            'tipo' => $dados['tipo'],
-            'movimento' => $dados['movimento'],
-            'nome' => $dados['nome'],
-            'corretagem' => $dados['corretagem'],
-            'quantidade' => $dados['quantidade'],
-            'valor' => $dados['valor'],
-            'data' => $dados['data'],
-            'valor_total' => round($dados['corretagem'] + ($dados['valor'] * $dados['quantidade']), 2),
+            'user_id' => $user->id,
+            'tipo' => 'acao',
+            'movimento' => 'compra',
+            'nome' => 'ABCB4',
+            'corretagem' => 5.5,
+            'quantidade' => 10,
+            'valor' => 100,
+            'valor_total' => 1005.5,
+            'data' => '2024-06-10 00:00:00',
         ]);
     }
+
+    /**
+     * Testa o método show para um usuário autenticado.
+     */
     public function testShowAtivos()
     {
         $user = User::factory()->create();
