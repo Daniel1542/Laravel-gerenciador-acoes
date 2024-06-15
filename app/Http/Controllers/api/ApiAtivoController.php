@@ -49,7 +49,6 @@ class ApiAtivoController extends Controller
             $ativos-> valor = $request->valor;
             $ativos-> data = $request->data;
             $ativos-> valor_total = ($request->corretagem + ($request->valor * $request->quantidade));
-
             $ativos->save();
 
             return response()->json(['message' => 'Cadastrado com sucesso'], 201);
@@ -65,7 +64,6 @@ class ApiAtivoController extends Controller
     {
         try {
             $user = $request->user();
-
             $ativo = MovimentoAtivos::where('user_id', $user->id)->findOrFail($id);
 
             return response()->json($ativo);
@@ -91,7 +89,8 @@ class ApiAtivoController extends Controller
         ]);
         try {
             $user = $request->user();
-            $ativos  = MovimentoAtivos::where('user_id', $user->id)->findOrFail($id);
+            $ativos  = MovimentoAtivos::where('user_id', $user->id)
+                        ->findOrFail($id);
 
             $ativos->update([
                 'tipo' => $request->tipo,
@@ -117,9 +116,10 @@ class ApiAtivoController extends Controller
     {
         try {
             $user = $request->user();
-
             $Ativos = MovimentoAtivos::where('user_id', $user->id)->findOrFail($id);
+
             $Ativos-> delete();
+
             return response()->json('Deletado' , 200);
         } catch (\Exception $e) {
             return response()->json(['Erro ao deletar movimento' => $e->getMessage()], 500);

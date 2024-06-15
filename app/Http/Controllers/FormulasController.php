@@ -77,7 +77,7 @@ class FormulasController extends Controller
         }
     }
 
-    public function createBazin(Request $request)
+    public function storeBazin(Request $request)
     {
         $validatedData = $request->validate([
             'ticker' => 'string|max:6|regex:/^[A-Z0-9]+$/',
@@ -137,7 +137,7 @@ class FormulasController extends Controller
             return response()->json(['message' => 'Item não encontrado'], 404);
         }
     }
-    public function createGraham(Request $request)
+    public function storeGraham(Request $request)
     {
         $request->validate([
             'ticker' => 'string|max:6|regex:/^[A-Z0-9]+$/',
