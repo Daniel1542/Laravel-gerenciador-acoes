@@ -148,10 +148,10 @@ class FormulasController extends Controller
         $user = Auth::user();
         $formula = new FormulaGraham();
 
-        $formula-> user_id = $user->id;
-        $formula-> ticker = $request->ticker;
-        $formula-> lpa = $request->lpa;
-        $formula-> vpa = $request->vpa;
+        $formula->user_id = $user->id;
+        $formula->ticker = $request->ticker;
+        $formula->lpa = $request->lpa;
+        $formula->vpa = $request->vpa;
         $formula->save();
 
         return redirect()->route('formula.index')->with('msg', 'Cadastrado com sucesso.');

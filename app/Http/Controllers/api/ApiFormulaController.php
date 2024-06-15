@@ -23,14 +23,14 @@ class ApiFormulaController extends Controller
             
             foreach ($bazin as $formula) {
                 $precoTeto = $formula['lpa'] * $formula['payout'] / ($formula['yield_projetado'] / 100);
-                $dividendoAcao = $formula['lpa'] * $formula['payout'] / 100;
+                $dpa = $formula['lpa'] * $formula['payout'] / 100;
     
                 $dados[] = [
                     'id' => $formula['id'],
                     'user_id' => $formula['user_id'],
                     'ticker' => $formula['ticker'],
                     'lpa' => $formula['lpa'],
-                    'dpa' => $dividendoAcao,
+                    'dpa' => $dpa,
                     'payout' => $formula['payout'],
                     'yield_projetado' => $formula['yield_projetado'],
                     'preco_teto' => $precoTeto,
@@ -56,14 +56,14 @@ class ApiFormulaController extends Controller
         ]);
         try {
             $user = $request->user();
-            $FormulaBazin = new FormulaBazin();
+            $formulaBazin = new FormulaBazin();
 
-            $FormulaBazin->user_id = $user->id;
-            $FormulaBazin->ticker = $request->ticker;
-            $FormulaBazin->lpa = $request->lpa;
-            $FormulaBazin->payout = $request->payout;
-            $FormulaBazin->yield_projetado = $request->yield_projetado;
-            $FormulaBazin->save();
+            $formulaBazin->user_id = $user->id;
+            $formulaBazin->ticker = $request->ticker;
+            $formulaBazin->lpa = $request->lpa;
+            $formulaBazin->payout = $request->payout;
+            $formulaBazin->yield_projetado = $request->yield_projetado;
+            $formulaBazin->save();
 
             return response()->json(['message' => 'Cadastrada com sucesso'], 201);
         } catch (\Exception $e) {
@@ -106,10 +106,22 @@ class ApiFormulaController extends Controller
     {
         try {
             $user = $request->user();
-            $ativo = FormulaBazin::where('user_id', $user->id)->findOrFail($id);
+            $formula = FormulaBazin::where('user_id', $user->id)->findOrFail($id);
 
-            return response()->json($ativo);
+            return response()->json($formula);
+        } catch (\Exception $e) {
+            return response()->json(['Formula não encontrada' => $e->getMessage()], 500);
+        }
+    }
+    public function destroyBazin(Request $request, string $id)
+    {
+        try{
+            $user = $request->user();
+            $formula = FormulaBazin::where('user_id', $user->id)
+                ->findOrFail($id);
 
+            $formula->delete();
+            return response()->json(['message' => 'Deletada com sucesso'], 200);
         } catch (\Exception $e) {
             return response()->json(['Formula não encontrada' => $e->getMessage()], 500);
         }
@@ -128,8 +140,10 @@ class ApiFormulaController extends Controller
             
             foreach ($graham as $formula) {
                 $precoJusto = sqrt(22.5 * $formula['lpa'] * $formula['vpa']);
+
                 $dados[] = [
                     'id' => $formula['id'],
+                    'user_id' => $formula['user_id'],
                     'ticker' => $formula['ticker'],
                     'lpa' => $formula['lpa'],
                     'vpa' => $formula['vpa'],
@@ -151,19 +165,17 @@ class ApiFormulaController extends Controller
         $request->validate([
             'ticker' => 'string|max:6|regex:/^[A-Z0-9]+$/',
             'lpa' => 'numeric',
-            'payout' => 'numeric',
-            'yield_projetado' => 'numeric',
+            'vpa' => 'numeric',
         ]);
         try {
             $user = $request->user();
-            $FormulaGraham = new FormulaGraham();
+            $formulaGraham = new FormulaGraham();
 
-            $FormulaGraham->user_id = $user->id;
-            $FormulaGraham->ticker = $request->ticker;
-            $FormulaGraham->lpa = $request->lpa;
-            $FormulaGraham->payout = $request->payout;
-            $FormulaGraham->yield_projetado = $request->yield_projetado;
-            $FormulaGraham->save();
+            $formulaGraham->user_id = $user->id;
+            $formulaGraham->ticker = $request->ticker;
+            $formulaGraham->lpa = $request->lpa;
+            $formulaGraham->vpa = $request->vpa;
+            $formulaGraham->save();
 
             return response()->json(['message' => 'Cadastrada com sucesso'], 201);
         } catch (\Exception $e) {
@@ -177,22 +189,20 @@ class ApiFormulaController extends Controller
     public function updateGraham(Request $request, string $id)
     {
         $request->validate([
-            'ticker' => 'string|max:6|regex:/^[A-Z0-9]+$/',
+             'ticker' => 'string|max:6|regex:/^[A-Z0-9]+$/',
             'lpa' => 'numeric',
-            'payout' => 'numeric',
-            'yield_projetado' => 'numeric',
+            'vpa' => 'numeric',
         ]);
         try{
             $user = $request->user();
-            $formula = FormulaGraham::where('user_id', $user->id)
+            $FormulaGraham = FormulaGraham::where('user_id', $user->id)
                         ->findOrFail($id);
 
-            $formula->user_id = $user->id;
-            $formula->ticker = $request->ticker;
-            $formula->lpa = $request->lpa;
-            $formula->payout = $request->payout;
-            $formula->yield_projetado = $request->yield_projetado;
-            $formula->save();
+            $FormulaGraham->user_id = $user->id;
+            $FormulaGraham->ticker = $request->ticker;
+            $FormulaGraham->lpa = $request->lpa;
+            $FormulaGraham->vpa = $request->vpa;
+            $FormulaGraham->save();
 
             return response()->json('Formula atualizada com sucesso', 200);
         } catch (\Exception $e) {
@@ -210,6 +220,20 @@ class ApiFormulaController extends Controller
 
             return response()->json($ativo);
 
+        } catch (\Exception $e) {
+            return response()->json(['Formula não encontrada' => $e->getMessage()], 500);
+        }
+    }
+    public function destroyGraham(Request $request, string $id)
+    {
+        try{
+            $user = $request->user();
+            $formula = FormulaGraham::where('user_id', $user->id)
+                ->findOrFail($id);
+
+            $formula->delete();
+
+            return response()->json(['message' => 'Deletada com sucesso'], 200);
         } catch (\Exception $e) {
             return response()->json(['Formula não encontrada' => $e->getMessage()], 500);
         }
