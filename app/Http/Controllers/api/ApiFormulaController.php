@@ -9,7 +9,6 @@ use App\Models\FormulaGraham;
 
 class ApiFormulaController extends Controller
 {
-
     /**
      * Display a listing of the resource.
      */
@@ -20,11 +19,11 @@ class ApiFormulaController extends Controller
             $bazin = FormulaBazin::orderBy('ticker')
                     ->where('user_id', $user->id)
                     ->get();
-            
+
             foreach ($bazin as $formula) {
                 $precoTeto = $formula['lpa'] * $formula['payout'] / ($formula['yield_projetado'] / 100);
                 $dpa = $formula['lpa'] * $formula['payout'] / 100;
-    
+
                 $dados[] = [
                     'id' => $formula['id'],
                     'user_id' => $formula['user_id'],
@@ -37,7 +36,6 @@ class ApiFormulaController extends Controller
                 ];
             }
             return response()->json($dados);
-            
         } catch (\Exception $e) {
             return response()->json(['Erro ao mostrar formulas' => $e->getMessage()], 500);
         }
@@ -68,7 +66,7 @@ class ApiFormulaController extends Controller
             return response()->json(['message' => 'Cadastrada com sucesso'], 201);
         } catch (\Exception $e) {
             return response()->json(['Erro ao criar formula' => $e->getMessage()], 500);
-        }   
+        }
     }
 
     /**
@@ -82,7 +80,7 @@ class ApiFormulaController extends Controller
             'payout' => 'numeric',
             'yield_projetado' => 'numeric',
         ]);
-        try{
+        try {
             $user = $request->user();
             $formula = FormulaBazin::where('user_id', $user->id)
                         ->findOrFail($id);
@@ -97,7 +95,7 @@ class ApiFormulaController extends Controller
             return response()->json('Formula atualizada com sucesso', 200);
         } catch (\Exception $e) {
             return response()->json(['Erro ao atualizar formula' => $e->getMessage()], 500);
-        }   
+        }
     }
     /**
      * Display the specified resource.
@@ -115,7 +113,7 @@ class ApiFormulaController extends Controller
     }
     public function destroyBazin(Request $request, string $id)
     {
-        try{
+        try {
             $user = $request->user();
             $formula = FormulaBazin::where('user_id', $user->id)
                 ->findOrFail($id);
@@ -137,7 +135,7 @@ class ApiFormulaController extends Controller
             $graham = FormulaGraham::orderBy('ticker')
                     ->where('user_id', $user->id)
                     ->get();
-            
+
             foreach ($graham as $formula) {
                 $precoJusto = sqrt(22.5 * $formula['lpa'] * $formula['vpa']);
 
@@ -151,7 +149,6 @@ class ApiFormulaController extends Controller
                 ];
             }
             return response()->json($dados);
-            
         } catch (\Exception $e) {
             return response()->json(['Erro ao mostrar formulas' => $e->getMessage()], 500);
         }
@@ -180,7 +177,7 @@ class ApiFormulaController extends Controller
             return response()->json(['message' => 'Cadastrada com sucesso'], 201);
         } catch (\Exception $e) {
             return response()->json(['Erro ao criar formula' => $e->getMessage()], 500);
-        }   
+        }
     }
 
     /**
@@ -189,11 +186,11 @@ class ApiFormulaController extends Controller
     public function updateGraham(Request $request, string $id)
     {
         $request->validate([
-             'ticker' => 'string|max:6|regex:/^[A-Z0-9]+$/',
+            'ticker' => 'string|max:6|regex:/^[A-Z0-9]+$/',
             'lpa' => 'numeric',
             'vpa' => 'numeric',
         ]);
-        try{
+        try {
             $user = $request->user();
             $FormulaGraham = FormulaGraham::where('user_id', $user->id)
                         ->findOrFail($id);
@@ -207,7 +204,7 @@ class ApiFormulaController extends Controller
             return response()->json('Formula atualizada com sucesso', 200);
         } catch (\Exception $e) {
             return response()->json(['Erro ao atualizar formula' => $e->getMessage()], 500);
-        }   
+        }
     }
     /**
      * Display the specified resource.
@@ -219,14 +216,13 @@ class ApiFormulaController extends Controller
             $ativo = FormulaGraham::where('user_id', $user->id)->findOrFail($id);
 
             return response()->json($ativo);
-
         } catch (\Exception $e) {
             return response()->json(['Formula não encontrada' => $e->getMessage()], 500);
         }
     }
     public function destroyGraham(Request $request, string $id)
     {
-        try{
+        try {
             $user = $request->user();
             $formula = FormulaGraham::where('user_id', $user->id)
                 ->findOrFail($id);

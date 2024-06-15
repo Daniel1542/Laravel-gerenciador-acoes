@@ -7,7 +7,6 @@ use App\Models\User;
 use Tests\TestCase;
 use Laravel\Sanctum\Sanctum;
 
-
 class ApiLoginControllerTest extends TestCase
 {
     use RefreshDatabase;

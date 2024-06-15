@@ -41,17 +41,17 @@ class ApiAtivoControllerTest extends TestCase
         // Verifica se os dados retornados são os esperados
         $response->assertJsonStructure([
             '*' => [
-                'id', 
-                'user_id', 
-                'tipo', 
-                'movimento', 
-                'nome', 
-                'data', 
-                'corretagem', 
-                'quantidade', 
-                'valor', 
-                'valor_total', 
-                'created_at', 
+                'id',
+                'user_id',
+                'tipo',
+                'movimento',
+                'nome',
+                'data',
+                'corretagem',
+                'quantidade',
+                'valor',
+                'valor_total',
+                'created_at',
                 'updated_at'
             ]
         ]);

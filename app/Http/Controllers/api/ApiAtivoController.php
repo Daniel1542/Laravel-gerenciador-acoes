@@ -16,7 +16,6 @@ class ApiAtivoController extends Controller
         try {
             $user = $request->user();
             return response()->json(MovimentoAtivos::where('user_id', $user->id)->get());
-            
         } catch (\Exception $e) {
             return response()->json(['Erro ao mostrar movimentos' => $e->getMessage()], 500);
         }
@@ -67,7 +66,6 @@ class ApiAtivoController extends Controller
             $ativo = MovimentoAtivos::where('user_id', $user->id)->findOrFail($id);
 
             return response()->json($ativo);
-
         } catch (\Exception $e) {
             return response()->json(['Movimento não encontrado' => $e->getMessage()], 500);
         }
@@ -120,7 +118,7 @@ class ApiAtivoController extends Controller
 
             $Ativos-> delete();
 
-            return response()->json('Deletado' , 200);
+            return response()->json('Deletado', 200);
         } catch (\Exception $e) {
             return response()->json(['Erro ao deletar movimento' => $e->getMessage()], 500);
         }
