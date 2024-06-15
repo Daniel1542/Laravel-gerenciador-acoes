@@ -17,13 +17,13 @@ class FormulasController extends Controller
         $dados = [];
         foreach ($dado as $formula) {
             $precoTeto = $formula['lpa'] * $formula['payout'] / ($formula['yield_projetado'] / 100);
-            $dividendoAcao = $formula['lpa'] * $formula['payout'] / 100;
+            $dpa = $formula['lpa'] * $formula['payout'] / 100;
 
             $dados[] = [
                 'id' => $formula['id'],
                 'ticker' => $formula['ticker'],
                 'lpa' => $formula['lpa'],
-                'dpa' => $dividendoAcao,
+                'dpa' => $dpa,
                 'payout' => $formula['payout'],
                 'yield_projetado' => $formula['yield_projetado'],
                 'preco_teto' => $precoTeto,
@@ -50,21 +50,20 @@ class FormulasController extends Controller
     public function index()
     {
         $user = Auth::user();
-
-        $Bazin = FormulaBazin::orderBy('ticker')
+        $bazin = FormulaBazin::orderBy('ticker')
             ->where('user_id', $user->id)
             ->get();
-        $Graham = FormulaGraham::orderBy('ticker')
+        $graham = FormulaGraham::orderBy('ticker')
             ->where('user_id', $user->id)
             ->get();
 
-        $dadosBazin = $this->bazinIndex($Bazin->toArray());
-        $dadosGraham = $this->grahamIndex($Graham->toArray());
+        $dadosBazin = $this->bazinIndex($bazin->toArray());
+        $dadosGraham = $this->grahamIndex($graham->toArray());
 
         return view('formula.formulas', compact('dadosBazin', 'dadosGraham'));
     }
 
-    /*Opção de baixar excel*/
+    /*Opção de baixar planilhas*/
 
     public function opcoesFormula(Request $request)
     {
@@ -86,10 +85,8 @@ class FormulasController extends Controller
             'payout' => 'numeric',
             'yield_projetado' => 'numeric',
         ]);
-
         // Disparar a job
         ProcessFormulaBazin::dispatch($validatedData);
-
 
         return redirect()->route('formula.index')->with('msg', 'Cadastrado com sucesso.');
     }
@@ -97,7 +94,6 @@ class FormulasController extends Controller
     public function editBazin(string $id)
     {
         $user = Auth::user();
-
         $formula  = FormulaBazin::where('user_id', $user->id)
             ->findOrFail($id);
 
@@ -113,7 +109,6 @@ class FormulasController extends Controller
         ]);
 
         $user = Auth::user();
-
         $formula = FormulaBazin::where('user_id', $user->id)
             ->findOrFail($id);
 
@@ -151,14 +146,12 @@ class FormulasController extends Controller
         ]);
 
         $user = Auth::user();
-
         $formula = new FormulaGraham();
 
         $formula-> user_id = $user->id;
         $formula-> ticker = $request->ticker;
         $formula-> lpa = $request->lpa;
         $formula-> vpa = $request->vpa;
-
         $formula->save();
 
         return redirect()->route('formula.index')->with('msg', 'Cadastrado com sucesso.');
@@ -182,7 +175,6 @@ class FormulasController extends Controller
         ]);
 
         $user = Auth::user();
-
         $formula = FormulaGraham::where('user_id', $user->id)
             ->findOrFail($id);
 
@@ -190,7 +182,6 @@ class FormulasController extends Controller
         $formula-> ticker = $request->ticker;
         $formula-> lpa = $request->lpa;
         $formula-> vpa = $request->vpa;
-
         $formula->save();
 
         return redirect()->route('formula.index')->with('msg', 'formula atualizada com sucesso.');
@@ -198,7 +189,6 @@ class FormulasController extends Controller
     public function destroyGraham(string $id)
     {
         $user = Auth::user();
-
         $ativos = FormulaGraham::where('user_id', $user->id)
             ->findOrFail($id);
 

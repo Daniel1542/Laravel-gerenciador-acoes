@@ -27,7 +27,6 @@ class ApiAtivoController extends Controller
      */
     public function store(Request $request)
     {
-       
         $request->validate([
             'tipo' => 'required|in:fundo imobiliario,acao',
             'movimento' => 'required|in:compra,venda',
@@ -37,11 +36,8 @@ class ApiAtivoController extends Controller
             'quantidade' => 'required|numeric|gt:0',
             'valor' => 'required|numeric|gt:0',
         ]);
-
         try {
-
             $user = $request->user();
-
             $ativos = new MovimentoAtivos();
 
             $ativos-> user_id = $user->id;
@@ -94,7 +90,6 @@ class ApiAtivoController extends Controller
             'valor' => 'required|numeric|gt:0',
         ]);
         try {
-
             $user = $request->user();
             $ativos  = MovimentoAtivos::where('user_id', $user->id)->findOrFail($id);
 
