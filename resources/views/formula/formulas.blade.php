@@ -97,7 +97,4 @@
   </div>
 </section>
 
-<script src="js/modal_add_bazin.js"></script>
-<script src="js/modal_add_graham.js"></script>
-
 @endsection
