@@ -4,13 +4,12 @@
 
 <section class=secao_login>
   <div class="container">
-    <div class="row justify-content-center">
-      <div class="col-md-6 text-center">
-          <h1 class="mt-4">Login</h1>
-      </div>
+    <div class="titulo">
+      <h1 class="text-center">Gerenciador de ações</h1>
     </div>
-    <form action="/auth" method="POST">
-      <div id="caixa" class="form-group">
+    <h1 class="text-center">Login</h1> 
+    <div id="caixa" class="form-group">
+      <form action="/auth" method="POST">
         {{ csrf_field() }}
         <div class="form-group">
           <label for="email">Email:</label>
@@ -26,14 +25,9 @@
         <div class="form-group mt-2">
           <input type="submit" id="botao" class="btn btn-danger btn-sm" value="Logar">
         </div>
-      </div>
-    </form>
+      </form>
+    </div>
   </div>
-  <!-- 
-  <div id="app">
-    O componente Vue será montado aqui 
-    <Home />
-  </div> -->
 </section> 
 
 @endsection

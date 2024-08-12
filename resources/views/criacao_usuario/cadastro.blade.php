@@ -9,8 +9,8 @@
           <h1 class="mt-4">Cadastro</h1>
       </div>
     </div>
-    <form action="{{ route('user.store') }}" method="POST" enctype="multipart/form-data">
-      <div id="caixa" class="form-group">
+    <div id="caixa" class="form-group">
+      <form action="{{ route('user.store') }}" method="POST" enctype="multipart/form-data">
         {{ csrf_field() }}
         <div class="form-group">
           <label for="email">Email:</label>
@@ -23,8 +23,8 @@
         <div class="form-group mt-4">
           <input type="submit" id="botao" class="btn btn-danger btn-sm" value="Cadastrar">
         </div>
-      </div>
-    </form>
+      </form>
+    </div>
 </section> 
 
 

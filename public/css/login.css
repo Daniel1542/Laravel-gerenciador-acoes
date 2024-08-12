@@ -5,13 +5,12 @@
 }
 
 .secao_login .container {
-  padding: 50px 100px;
-  margin-top: 50px;
+  margin-top: 80px;
   margin-bottom: 300px;
 }
 
-.secao_login form {
-  margin-top: 20px;
+.secao_login .titulo {
+  margin-bottom: 100px;
 }
 
 .secao_login #caixa {
@@ -30,18 +29,18 @@
 
 @media screen and (max-width: 768px) {
 
-  .secao_login {
-    margin-top: 10px;
-  }
   .secao_login #caixa {
+    width: 95vw;
     padding: 50px;
-
   }
 
   .secao_login .container {
-    padding: 40px;
-    margin-bottom: 300px;
+    margin-top: 100px;
+    margin-bottom: 250px;
   }
 
+  .secao_login .titulo {
+    margin-bottom: 50px;
+  }
 
 }
