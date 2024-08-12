@@ -53,12 +53,8 @@
 .secao_ir #procura {
   display: flex;
   flex-direction: row;
-  max-width: 200px;
-}
-
-.secao_ir #procura label {
-  margin-right: 20px;
-  flex-direction: row;
+  gap: 30px;
+  min-width: 300px;
 }
 
 .secao_ir .btn-custom{
@@ -143,6 +139,9 @@
     max-height: 400px;
     padding: 50px;
     gap: 10px;
+  }
+  .secao_ir #procura {
+    max-width: 300px;
   }
 
   .secao_ir2 thead tr th,

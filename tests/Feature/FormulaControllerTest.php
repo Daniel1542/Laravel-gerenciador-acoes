@@ -8,10 +8,10 @@ use App\Models\FormulaBazin;
 use App\Models\FormulaGraham;
 use Tests\TestCase;
 
-
 class FormulaControllerTest extends TestCase
 {
     use RefreshDatabase;
+
     /**
      * A basic feature test example.
      */
@@ -29,11 +29,10 @@ class FormulaControllerTest extends TestCase
         $response->assertViewIs('formula.formulas');
         $response->assertViewHas('dadosBazin');
         $response->assertViewHas('dadosGraham');
-       
     }
 
-     public function testItDownloadsGrahamExcel()
-     {
+    public function testItDownloadsGrahamExcel()
+    {
         $user = User::factory()->create();
         $this->actingAs($user);
         // Faz uma requisição GET para a rota do método opcoesFormula com 'graham'
@@ -42,5 +41,5 @@ class FormulaControllerTest extends TestCase
         // Verifica se a resposta é um download do arquivo correto
         $response->assertStatus(200);
         $response->assertHeader('Content-Disposition', 'attachment; filename=bejamim_graham.xlsx');
-     }
+    }
 }

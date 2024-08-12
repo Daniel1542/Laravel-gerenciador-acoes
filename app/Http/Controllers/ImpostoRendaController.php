@@ -25,6 +25,7 @@ class ImpostoRendaController extends Controller
             $quantidadeVenda = $vendas->sum('quantidade');
             $quantidadeTotal = $quantidadeCompra - $quantidadeVenda;
 
+            $ano = $movimentos->first()->data->year;
             $movimento = $quantidadeTotal > 0 ? 'compra' : 'venda';
 
             $dados[] = [
@@ -32,10 +33,12 @@ class ImpostoRendaController extends Controller
                 'compra' => [
                     'quantidadeTotal' => $quantidadeTotal,
                     'total' => $quantidadeCompra > 0 ? $compras->sum('valor_total') : 0,
+                    'ano' => $ano,
                 ],
                 'venda' => [
                     'quantidadeTotal' => $quantidadeVenda,
                     'total' => $quantidadeVenda > 0 ? $vendas->sum('valor_total') : 0,
+                    'ano' => $ano,
                 ],
             ];
         }

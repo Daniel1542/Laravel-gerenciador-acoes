@@ -16,8 +16,7 @@
               <select class="form-select" id="data" name="data" required>
                 <?php
                 $anoAtual = date('Y');
-                $anosParaExibir = 20;
-        
+                $anosParaExibir = 24;
                 for ($i = $anoAtual; $i >= $anoAtual - $anosParaExibir; $i--) {
                     echo "<option value='$i'>$i</option>";
                 }
@@ -49,29 +48,26 @@
       {{-- Formulário para procurar IR por ano --}}
       <form action="{{ route('imposto.index') }}" method="GET">
         {{ csrf_field() }}
-          <div id="formulario2" class="container justify-content-center">
-            <div class="col-md-5 mx-auto" id="procura">
-              <label for="data" class="form-label">Procurar por ano:</label>
-              <select class="form-select" id="data" name="data" required>
-                <?php
-                $anoAtual = date('Y');
-                $anosParaExibir = 20;
-        
-                for ($i = $anoAtual; $i >= $anoAtual - $anosParaExibir; $i--) {
-                    echo "<option value='$i'>$i</option>";
-                }
-                ?>
-              </select>
-            </div> 
-            <div class="mt-4">
-              <button type="submit" class="btn btn-custom">Buscar</button>
-            </div>  
-            <div class="mt-4">
-              <tr>
-                <th id="anoSelecionado"></th>         
-              </tr>
-            </div>
-          </div>          
+        <div id="formulario2" class="container justify-content-center">
+          <div class="col-md-5 mx-auto" id="procura">
+            <label for="data" class="form-label">Procurar por ano:</label>
+            <select class="form-select" id="data" name="data" required>
+              <?php
+              $anoAtual = date('Y');
+              $anosParaExibir = 24;
+              for ($i = $anoAtual; $i >= $anoAtual - $anosParaExibir; $i--) {
+                echo "<option value='$i'>$i</option>";
+              }
+              ?>
+            </select>
+            <button type="submit" class="btn btn-custom">Buscar</button>
+          </div> 
+          <div class="mt-4">
+            <tr>
+              <th id="anoSelecionado"></th>         
+            </tr>
+          </div>
+        </div>          
       </form>
     </div>
   </div>
@@ -97,24 +93,24 @@
           @foreach ($dadosAtivos as $ativo)
             @if ($ativo['compra']['quantidadeTotal'] == 1 && $ativo['compra']['total'] > 0)
               <tr>
-                <td> Compra de {{ $ativo['compra']['quantidadeTotal'] }} ação de {{ $ativo['nome'] }}, custo total R${{number_format ($ativo['compra']['total'], 2) }}.</td>    
+                <td> Compra de {{ $ativo['compra']['quantidadeTotal'] }} ação de {{ $ativo['nome'] }}, custo total R${{number_format ($ativo['compra']['total'], 2) }} no ano de {{ $ativo['compra']['ano'] }}.</td>    
               </tr>
             @endif
             @if ($ativo['compra']['quantidadeTotal'] > 1 && $ativo['compra']['total'] > 0)
               <tr>
-                <td> Compra de {{ $ativo['compra']['quantidadeTotal'] }} ações de {{ $ativo['nome'] }}, custo total R${{number_format ($ativo['compra']['total'], 2) }}.</td>    
+                <td> Compra de {{ $ativo['compra']['quantidadeTotal'] }} ações de {{ $ativo['nome'] }}, custo total R${{number_format ($ativo['compra']['total'], 2) }} no ano de {{ $ativo['compra']['ano'] }}.</td>    
               </tr>
             @endif
           @endforeach
           @foreach ($dadosAtivos as $ativo)
             @if ($ativo['venda']['quantidadeTotal'] == 1 && $ativo['venda']['total'] > 0)
               <tr>
-                <td> venda de {{ $ativo['venda']['quantidadeTotal'] }} ação de {{ $ativo['nome'] }}, custo total R${{number_format ($ativo['venda']['total'], 2) }}.</td>    
+                <td> venda de {{ $ativo['venda']['quantidadeTotal'] }} ação de {{ $ativo['nome'] }}, custo total R${{number_format ($ativo['venda']['total'], 2) }} no ano de {{ $ativo['venda']['ano'] }}.</td>    
               </tr>
             @endif
             @if ($ativo['venda']['quantidadeTotal'] > 1 && $ativo['venda']['total'] > 0)
               <tr>
-                <td> Venda de {{ $ativo['venda']['quantidadeTotal'] }} ações de {{ $ativo['nome'] }}, custo total R${{ number_format($ativo['venda']['total'], 2) }}.</td>
+                <td> Venda de {{ $ativo['venda']['quantidadeTotal'] }} ações de {{ $ativo['nome'] }}, custo total R${{ number_format($ativo['venda']['total'], 2) }} no ano de {{ $ativo['venda']['ano'] }}.</td>
               </tr>
             @endif
           @endforeach
@@ -147,24 +143,24 @@
           @foreach ($dadosfiis as $fiis)
             @if ($fiis['compra']['quantidadeTotal'] == 1 && $fiis['compra']['total'] > 0)
               <tr>
-                <td> Compra de {{ $fiis['compra']['quantidadeTotal'] }} fundo imobiliário {{ $fiis['nome'] }}, custo total R$ {{number_format ($fiis['compra']['total'], 2) }}.</td>    
+                <td> Compra de {{ $fiis['compra']['quantidadeTotal'] }} fundo imobiliário {{ $fiis['nome'] }}, custo total R$ {{number_format ($fiis['compra']['total'], 2) }} no ano de {{ $ativo['compra']['ano'] }}.</td>    
               </tr>
             @endif
             @if ($fiis['compra']['quantidadeTotal'] > 1 && $fiis['compra']['total'] > 0)
               <tr>
-                <td> Compra de {{ $fiis['compra']['quantidadeTotal'] }} fundos imobiliários {{ $fiis['nome'] }}, custo total R$ {{number_format ($fiis['compra']['total'], 2) }}.</td>    
+                <td> Compra de {{ $fiis['compra']['quantidadeTotal'] }} fundos imobiliários {{ $fiis['nome'] }}, custo total R$ {{number_format ($fiis['compra']['total'], 2) }} no ano de {{ $ativo['compra']['ano'] }}.</td>    
               </tr>              
             @endif
           @endforeach    
           @foreach ($dadosfiis as $fiis)
             @if ($fiis['venda']['quantidadeTotal'] == 1 && $fiis['venda']['total'] > 0)
               <tr>
-                <td> venda de {{ $fiis['venda']['quantidadeTotal'] }} fundo imobiliário {{ $fiis['nome'] }}, custo total R$ {{number_format ($fiis['venda']['total'], 2) }}.</td>    
+                <td> venda de {{ $fiis['venda']['quantidadeTotal'] }} fundo imobiliário {{ $fiis['nome'] }}, custo total R$ {{number_format ($fiis['venda']['total'], 2) }} no ano de {{ $ativo['venda']['ano'] }}.</td>    
               </tr>
             @endif
             @if ($fiis['venda']['quantidadeTotal'] > 1 && $fiis['venda']['total'] > 0)
               <tr>
-                <td> Venda de {{ $fiis['venda']['quantidadeTotal'] }} fundos imobiliários {{ $fiis['nome'] }}, custo total R$ {{number_format ($fiis['venda']['total'], 2) }}.</td>    
+                <td> Venda de {{ $fiis['venda']['quantidadeTotal'] }} fundos imobiliários {{ $fiis['nome'] }}, custo total R$ {{number_format ($fiis['venda']['total'], 2) }} no ano de {{ $ativo['venda']['ano'] }}.</td>    
               </tr>
             @endif
           @endforeach  
