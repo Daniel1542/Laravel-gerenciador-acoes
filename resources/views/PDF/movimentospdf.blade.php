@@ -6,6 +6,10 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">  
   <title>Movimentações</title>
   <style>
+    *{    
+      padding: 0;
+      font-family: 'Roboto';
+    }
 
     .secao_ativos{
       align-items: center;
@@ -24,19 +28,20 @@
     }
 
     .secao_ativos .table thead th {
-      background-color: rgb(73, 140, 199);
       text-align: center;
-      border: 1px solid #dee2e6;
-      padding: 8px;
+      background-color: rgb(73, 140, 199); 
+      border: 2px solid rgb(245, 237, 237);
+      padding: 10px;
       gap: 10px;
     }
 
     .secao_ativos .table td {
       background-color: rgb(166, 203, 236);
-      border: 1px solid #dee2e6;
+      border: 2px solid rgb(245, 237, 237);
       text-align: center;
-      padding: 8px;
+      padding: 10px;
     }
+
     .secao_ativos .fundos{
       margin-top: 50px
     }
@@ -51,7 +56,7 @@
         <div>
           <h2>Ações</h2>
         </div>
-        <table class="table" >
+        <table class="table">
           <thead>
             <tr>
               <th>Nome:</th>   
@@ -78,7 +83,7 @@
         <div class="fundos">
           <h2>Fundos</h2>
         </div>
-        <table class="table" >
+        <table class="table">
           <thead>
             <tr>
               <th>Nome:</th>   
@@ -107,6 +112,3 @@
   </section>
 </body>
 </html>
-
- 
-

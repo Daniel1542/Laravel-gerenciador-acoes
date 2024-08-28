@@ -10,6 +10,7 @@
         padding: 0;
         font-family: 'Roboto';
       }
+
       .secao_ir{
         align-items: center;
         text-align: center;
@@ -28,9 +29,10 @@
 
       .secao_ir .table td {
         background-color: rgb(166, 203, 236);
-        border: 1px solid #dee2e6;
+        border: 2px solid rgb(245, 237, 237);
         padding: 10px;
       }
+
       .secao_ir .fundos{
         margin-top: 50px
       }
@@ -85,4 +87,3 @@
       </section>  
   </body>
 </html>
-
