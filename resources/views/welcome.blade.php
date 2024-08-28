@@ -6,7 +6,7 @@
   <div class="container">
     <div class="titulo">
       <img class="logotipo" src="logo/bear_and_bull.svg" alt="Logotipo">
-      <h1 class="text-center">Gerenciador de ações</h1>
+      <h1>Gerenciador de ações</h1>
     </div>
     <h1 class="text-center">Login</h1> 
     <div id="caixa" class="form-group">

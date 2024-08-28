@@ -6,12 +6,12 @@
 
 .secao_login .container {
   margin-top: 80px;
-  margin-bottom: 300px;
+  margin-bottom: 250px;
 }
 
 .secao_login .titulo {
   text-align: center;
-  margin-bottom: 100px;
+  margin-bottom: 50px;
 }
 
 .secao_login .logotipo {
@@ -20,8 +20,9 @@
 
 .secao_login #caixa {
   background-color: rgb(196, 110, 104);
-  padding: 70px;
-  border: 1px solid #ddd;
+  padding: 60px;
+  width: 50vw;
+  border: 2px solid rgb(198, 198, 198);
   border-radius: 8px;
 }
 
@@ -42,10 +43,6 @@
   .secao_login .container {
     margin-top: 100px;
     margin-bottom: 250px;
-  }
-
-  .secao_login .titulo {
-    margin-bottom: 50px;
   }
   
   .secao_login .logotipo {
