@@ -5,6 +5,7 @@
 <section class=secao_login>
   <div class="container">
     <div class="titulo">
+      <img class="logotipo" src="logo/bear_and_bull.svg" alt="Logotipo">
       <h1 class="text-center">Gerenciador de ações</h1>
     </div>
     <h1 class="text-center">Login</h1> 

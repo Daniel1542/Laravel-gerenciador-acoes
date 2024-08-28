@@ -10,7 +10,12 @@
 }
 
 .secao_login .titulo {
+  text-align: center;
   margin-bottom: 100px;
+}
+
+.secao_login .logotipo {
+  width: 20vw;
 }
 
 .secao_login #caixa {
@@ -41,6 +46,10 @@
 
   .secao_login .titulo {
     margin-bottom: 50px;
+  }
+  
+  .secao_login .logotipo {
+    width: 30vw;
   }
 
 }
