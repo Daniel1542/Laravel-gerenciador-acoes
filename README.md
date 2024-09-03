@@ -44,6 +44,7 @@ Este projeto é um site para auxiliar na declaração de imposto de renda de aç
 - Execute `npm run build` para iniciar o Vue.js.
 - Acesse o aplicativo em http://localhost:8000.
 - Faça a conexão com a api pelo postman se quiser testar a api rest.
+- É possivel também utilizar Docker.
 
 ### Screenshot
 
