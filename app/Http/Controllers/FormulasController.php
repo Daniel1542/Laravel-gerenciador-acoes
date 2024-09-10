@@ -16,7 +16,7 @@ class FormulasController extends Controller
     {
         $dados = [];
         foreach ($dado as $formula) {
-            $precoTeto = $formula['lpa'] * $formula['payout'] / ($formula['yield_projetado'] / 100);
+            $precoTeto = $formula['lpa'] * $formula['payout'] / ($formula['yield_projetado']);
             $dpa = $formula['lpa'] * $formula['payout'] / 100;
 
             $dados[] = [
